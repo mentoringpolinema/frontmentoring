@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Main Routes
+Route::get('/', '\App\Http\Controllers\MainController@index');
+Route::get('/main', '\App\Http\Controllers\MainController@index');
+
+// Auth Routes
+Route::get('/auth', '\App\Http\Controllers\AuthController@index'); 
+
+//Admin Routes
+Route::get('/admin', '\App\Http\Controllers\AdminController@index'); 
+// Mentor Routes
+
+// Mentee Routes
