@@ -108,31 +108,31 @@
                                                                 <div class="timeline-status bg-primary is-outline"></div>
                                                                 <div class="timeline-date">05 Jan <em class="icon ni ni-alarm-alt"></em></div>
                                                                 <div class="timeline-data">
-                                                                    <h6 class="timeline-title">Submited KYC Application</h6>
+                                                                    <h6 class="timeline-title">Pertemuan Zoom : Minggu 1</h6>
                                                                     <div class="timeline-des">
-                                                                        <p>Re-submitted KYC Application form.</p>
+                                                                        <p>Pertemuan Mentee dengan Mentor melalui Media Daring Zoom.</p>
                                                                         <span class="time">09:30am</span>
                                                                     </div>
                                                                 </div>
                                                             </li>
                                                             <li class="timeline-item">
                                                                 <div class="timeline-status bg-primary"></div>
-                                                                <div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
+                                                                <div class="timeline-date">06 Jan <em class="icon ni ni-alarm-alt"></em></div>
                                                                 <div class="timeline-data">
-                                                                    <h6 class="timeline-title">Submited KYC Application</h6>
+                                                                    <h6 class="timeline-title">Penyampaian Materi : Minggu 2</h6>
                                                                     <div class="timeline-des">
-                                                                        <p>Re-submitted KYC Application form.</p>
+                                                                        <p>Materi berupa video dan Mengerjakan Kuis.</p>
                                                                         <span class="time">09:30am</span>
                                                                     </div>
                                                                 </div>
                                                             </li>
                                                             <li class="timeline-item">
                                                                 <div class="timeline-status bg-pink"></div>
-                                                                <div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
+                                                                <div class="timeline-date">07 Jan <em class="icon ni ni-alarm-alt"></em></div>
                                                                 <div class="timeline-data">
-                                                                    <h6 class="timeline-title">Submited KYC Application</h6>
+                                                                    <h6 class="timeline-title">Pertemuan Zoom : Minggu 3</h6>
                                                                     <div class="timeline-des">
-                                                                        <p>Re-submitted KYC Application form.</p>
+                                                                        <p>Pertemuan Mentee dengan Mentor melalui Media Daring Zoom.</p>
                                                                         <span class="time">09:30am</span>
                                                                     </div>
                                                                 </div>

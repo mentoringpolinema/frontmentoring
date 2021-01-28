@@ -50,6 +50,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Alert -->
+                                        @if ((session('sukses')))                                            
+                                        <div class="alert alert-success alert-icon alert-dismissible">
+                                            <div>
+                                                <em class="icon ni ni-check-circle"></em> {{session('sukses')}} <button class="close" data-dismiss="alert"></button>
+                                            </div>
+                                        </div>
+                                        @endif
                                         <div class="card card-preview">
                                             <div class="card-inner">
                                                 <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
@@ -63,48 +71,29 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($data_mentor as $mentor)
                                                         <tr class="nk-tb-item">
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">Irfak Wahyudi <span class="dot dot-success d-md-none ml-1"></span></span>
-                                                                        <span>irfakwahyu@mentoringpolinema.my.id</span>
+                                                                        <span class="tb-lead">{{$mentor->nama_mentor}} <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                                        <span>{{$mentor->email_mentor}}</span>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb" data-order="35040.34">
-                                                                <span class="tb-amount">Jalan A. Satsui Tubun III No.83 M, RT 12 RW 03 <br><span class="currency">Kota Malang</span></span>
+                                                                <span class="tb-amount">{{$mentor->alamat_mentor}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>081259224380</span>
+                                                                <span>{{$mentor->notelp_mentor}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-sm btn-danger"><span>Delete</span> </a>
-                                                                <a href="#" class="btn btn-sm btn-secondary"><span>Detail</span></a>
-                                                                <a href="#" class="btn btn-sm btn-primary"><span>Edit</span> </a>
+                                                                <a href="/admin/{{$mentor->id_mentor}}/delMentor" class="btn btn-sm btn-danger"><span>Delete</span> </a>
+                                                                <a href="#" class="btn btn-sm btn-secondary" ><span>Detail</span></a>
+                                                                <a href="/admin/{{$mentor->id_mentor}}/mentor" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
                                                             </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                        
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col">
-                                                                <div class="user-card">
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">Yahya Hudan <span class="dot dot-success d-md-none ml-1"></span></span>
-                                                                        <span>yahyahudan@mentoringpolinema.my.id</span>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb" data-order="35040.34">
-                                                                <span class="tb-amount">Jalan A. Satsui Tubun III No.83 M, RT 12 RW 03 <br><span class="currency">Kota Malang</span></span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>081259224380</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-sm btn-danger"><span>Delete</span> </a>
-                                                                <a href="#" class="btn btn-sm btn-secondary"><span>Detail</span></a>
-                                                                <a href="#" class="btn btn-sm btn-primary"><span>Edit</span> </a>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                        
+                                                        </tr><!-- .nk-tb-item  -->                                                       
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -114,7 +103,8 @@
                         </div>
                     </div>
                 </div>
-    <!-- Modal Form -->
+
+    <!-- Added Mentor Modal -->
     <div class="modal fade" tabindex="-1" id="modalForm">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -125,28 +115,29 @@
                     </a>
                 </div>
                 <div class="modal-body">
-                    <form action="#" class="form-validate is-alter">
+                    <form action="/admin/addMentor" class="form-validate is-alter" method="POST">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label class="form-label" for="full-name">Nama</label>
                             <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="full-name" required>
+                                <input type="text" class="form-control" id="nama_mentor" name="nama_mentor" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="email-address">Email</label>
                             <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="email-address" required>
+                                <input type="text" class="form-control" id="email_mentor" name="email_mentor" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="phone-no">Nomer Telp</label>
                             <div class="form-control-wrap">
-                                <input type="text" class="form-control" id="phone-no">
+                                <input type="text" class="form-control" id="notelp_mentor" name="notelp_mentor" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="pay-amount">Alamat</label>
-                            <textarea class="form-control form-control-sm" id="cf-default-textarea" placeholder="Alamat"></textarea>
+                            <textarea class="form-control form-control-sm" id="alamat_mentor" name="alamat_mentor" placeholder="Alamat" required></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-lg btn-primary">Tambah Mentor</button>
@@ -159,4 +150,59 @@
             </div>
         </div>
     </div>
+
+    <!-- Profile Edit Modal @e -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                <div class="modal-body modal-body-lg">
+                    <h5 class="title">Update Profile</h5>
+                    <ul class="nk-nav nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#personal">Data Mentor</a>
+                        </li>
+                    </ul><!-- .nav-tabs -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="personal">
+                            <form action="/admin/edtMentor" class="form-validate is-alter" method="POST">
+                            {{ csrf_field() }}
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="full-name">Nama</label>
+                                        <input type="text" class="form-control form-control-lg" id="nama_mentor" name="nama_mentor" value="Abu Bin Ishtiyak" placeholder="Enter Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="display-name">No Telp</label>
+                                        <input type="text" class="form-control form-control-lg" id="email_mentor" name="email_mentor" value="Ishtiyak" placeholder="Enter Email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="phone-no">Alamat</label>
+                                        <textarea type="text" class="form-control form-control-lg" id="notelp_mentor" name="notelp_mentor" value="+880" placeholder="Alamat"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            {{-- <a href="#" class="btn btn-lg btn-primary">Update</a> --}}
+                                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div><!-- .tab-content -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- .modal -->
 @stop

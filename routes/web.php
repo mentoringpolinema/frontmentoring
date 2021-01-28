@@ -27,7 +27,11 @@ Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
 Route::group(['middleware' => 'auth'], function () {
     //Admin Routes
     Route::get('/admin', '\App\Http\Controllers\AdminController@index'); 
-    Route::get('/admin/mentor', '\App\Http\Controllers\AdminController@mentor'); 
+
+        // Mentor
+        Route::get('/admin/mentor', '\App\Http\Controllers\AdminController@mentor'); 
+        Route::post('/admin/addMentor', '\App\Http\Controllers\AdminController@addMentor'); 
+        Route::get('/admin/{id_mentor}/delMentor', '\App\Http\Controllers\AdminController@delMentor'); 
     
     
     // Mentor Routes

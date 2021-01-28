@@ -57,9 +57,9 @@
     <script src="{{asset('template/dashboard/assets/js/bundle.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard/assets/js/scripts.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard/assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
-    <!-- Calendar JS -->
-    <script src="{{asset('template/dashboard/assets/js/libs/fullcalendar.js?ver=2.2.0')}}"></script>
-    <script src="{{asset('template/dashboard/assets/js/apps/calendar.js?ver=2.2.0')}}"></script>
+    <!-- Sweet Alert JS -->
+    <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.2.0')}}"></script>
+
 </body>
 
 </html>
