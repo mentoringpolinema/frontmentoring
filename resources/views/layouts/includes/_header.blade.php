@@ -6,9 +6,9 @@
                                 <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em class="icon ni ni-menu"></em></a>
                             </div>
                             <div class="nk-header-brand d-xl-none">
-                                <a href="html/index.html" class="logo-link">
-                                    <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                                    <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                                <a href="/homepage" class="logo-link">
+                                    <img class="logo-light logo-img" src="{{asset('template/dashboard/images/logoMentoring.png')}}" srcset="{{asset('template/dashboard/images/logoMentoring.png')}} 2x" alt="logo">
+                                    <img class="logo-dark logo-img" src="{{asset('template/dashboard/images/logoMentoring.png')}}" srcset="{{asset('template/dashboard/images/logoMentoring.png')}} 2x" alt="logo-dark">
                                 </a>
                             </div><!-- .nk-header-brand -->
                             <div class="nk-header-search ml-3 ml-xl-0">
@@ -60,8 +60,8 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-active">Super Admin</div>
-                                                    <div class="user-name dropdown-indicator">Yahya Hudan</div>
+                                                    <div class="user-status user-status-active">{{auth()->user()->role}}</div>
+                                                    <div class="user-name dropdown-indicator">{{auth()->user()->username}}</div>
                                                 </div>
                                             </div>
                                         </a>
@@ -72,8 +72,8 @@
                                                         <span>AY</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">A. Yahya Hudan Permana</span>
-                                                        <span class="sub-text">1831710190</span>
+                                                        <span class="lead-text">{{auth()->user()->username}}</span>
+                                                        <span class="sub-text">{{auth()->user()->role}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="/auth"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                                    <li><a href="/logout"><em class="icon ni ni-signout"></em><span>Log out</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>

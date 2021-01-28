@@ -85,7 +85,7 @@
                                 <li class="nav-item"><a class="page-scroll" href="#about">QnA</a></li>
                                 {{-- <li class="nav-item"><a class="page-scroll" href="#team">Team</a></li> --}}
                                 <li class="nav-item"><a class="page-scroll" href="#contact">Contact</a></li>
-                                <li class="nav-item"><a class="page-scroll" href="#contact">Cek Mentoring</a></li>
+                                <li class="nav-item"><a class="page-scroll" href="/cekMentoring">Cek Mentoring</a></li>
                             </ul>
                         </div>
                         <div class="navbar-btn d-none d-sm-inline-block">

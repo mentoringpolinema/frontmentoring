@@ -14,18 +14,6 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#"><span>Last 30 Days</span></a></li>
-                                                                        <li><a href="#"><span>Last 6 Months</span></a></li>
-                                                                        <li><a href="#"><span>Last 1 Years</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
                                                     </ul>
                                                 </div>
@@ -35,92 +23,159 @@
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
-                                        <div class="col-xxl-3 col-sm-6">
-                                            <div class="card">
-                                                <div class="nk-ecwg nk-ecwg6">
-                                                    <div class="card-inner">
-                                                        <div class="card-title-group">
-                                                            <div class="card-title">
-                                                                <h6 class="title">Today Orders</h6>
-                                                            </div>
+                                        <div class="col-xxl-3 col-md-6">
+                                            <div class="card h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group mb-2">
+                                                        <div class="card-title">
+                                                            <h6 class="title">Data Mentoring</h6>
                                                         </div>
-                                                        <div class="data">
-                                                            <div class="data-group">
-                                                                <div class="amount">1,945</div>
-                                                                <div class="nk-ecwg6-ck">
-                                                                    <canvas class="ecommerce-line-chart-s3" id="todayOrders"></canvas>
-                                                                </div>
+                                                    </div>
+                                                    <ul class="nk-store-statistics">
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">Data Mentee</div>
+                                                                <div class="count">3,795</div>
                                                             </div>
-                                                            <div class="info"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><span> vs. last week</span></div>
-                                                        </div>
-                                                    </div><!-- .card-inner -->
-                                                </div><!-- .nk-ecwg -->
+                                                            <em class="icon bg-primary-dim ni ni-users"></em>
+                                                        </li>
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">Data Mentor</div>
+                                                                <div class="count">120</div>
+                                                            </div>
+                                                            <em class="icon bg-info-dim ni ni-user"></em>
+                                                        </li>
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">Data Materi</div>
+                                                                <div class="count">5</div>
+                                                            </div>
+                                                            <em class="icon bg-pink-dim ni ni-book"></em>
+                                                        </li>
+                                                    </ul>
+                                                </div><!-- .card-inner -->
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-xxl-3 col-sm-6">
-                                            <div class="card">
-                                                <div class="nk-ecwg nk-ecwg6">
-                                                    <div class="card-inner">
-                                                        <div class="card-title-group">
-                                                            <div class="card-title">
-                                                                <h6 class="title">Today Revenue</h6>
-                                                            </div>
+                                        <div class="col-xxl-3 col-md-6">
+                                            <div class="card h-100">
+                                                <div class="card-inner">
+                                                    <div class="card-title-group mb-2">
+                                                        <div class="card-title">
+                                                            <h6 class="title">Data Kampus</h6>
                                                         </div>
-                                                        <div class="data">
-                                                            <div class="data-group">
-                                                                <div class="amount">$2,338</div>
-                                                                <div class="nk-ecwg6-ck">
-                                                                    <canvas class="ecommerce-line-chart-s3" id="todayRevenue"></canvas>
-                                                                </div>
+                                                    </div>
+                                                    <ul class="nk-store-statistics">
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">Data Kelas</div>
+                                                                <div class="count">250</div>
                                                             </div>
-                                                            <div class="info"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>2.34%</span><span> vs. last week</span></div>
-                                                        </div>
-                                                    </div><!-- .card-inner -->
-                                                </div><!-- .nk-ecwg -->
+                                                            <em class="icon bg-primary-dim ni ni-home"></em>
+                                                        </li>
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">Data Prodi</div>
+                                                                <div class="count">25</div>
+                                                            </div>
+                                                            <em class="icon bg-info-dim ni ni-list"></em>
+                                                        </li>
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">Data Jurusan</div>
+                                                                <div class="count">6</div>
+                                                            </div>
+                                                            <em class="icon bg-pink-dim ni ni-setting"></em>
+                                                        </li>
+                                                    </ul>
+                                                </div><!-- .card-inner -->
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-xxl-3 col-sm-6">
-                                            <div class="card">
-                                                <div class="nk-ecwg nk-ecwg6">
-                                                    <div class="card-inner">
-                                                        <div class="card-title-group">
-                                                            <div class="card-title">
-                                                                <h6 class="title">Today Customers</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div class="data">
-                                                            <div class="data-group">
-                                                                <div class="amount">847</div>
-                                                                <div class="nk-ecwg6-ck">
-                                                                    <canvas class="ecommerce-line-chart-s3" id="todayCustomers"></canvas>
+                                        <div class="col-lg-6 col-xxl-4">
+                                            <div class="card h-100">
+                                                <div class="card-inner border-bottom">
+                                                    <div class="card-title-group">
+                                                        <div class="card-title">
+                                                            <h6 class="title">Timeline Mentoring <?php echo date("Y");?></h6>
+                                                        </div>                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="card-inner">
+                                                    <div class="timeline">
+                                                        <h6 class="timeline-head">Januari, 2021</h6>
+                                                        <ul class="timeline-list">
+                                                            <li class="timeline-item">
+                                                                <div class="timeline-status bg-primary is-outline"></div>
+                                                                <div class="timeline-date">05 Jan <em class="icon ni ni-alarm-alt"></em></div>
+                                                                <div class="timeline-data">
+                                                                    <h6 class="timeline-title">Submited KYC Application</h6>
+                                                                    <div class="timeline-des">
+                                                                        <p>Re-submitted KYC Application form.</p>
+                                                                        <span class="time">09:30am</span>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="info"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><span> vs. last week</span></div>
-                                                        </div>
-                                                    </div><!-- .card-inner -->
-                                                </div><!-- .nk-ecwg -->
+                                                            </li>
+                                                            <li class="timeline-item">
+                                                                <div class="timeline-status bg-primary"></div>
+                                                                <div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
+                                                                <div class="timeline-data">
+                                                                    <h6 class="timeline-title">Submited KYC Application</h6>
+                                                                    <div class="timeline-des">
+                                                                        <p>Re-submitted KYC Application form.</p>
+                                                                        <span class="time">09:30am</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="timeline-item">
+                                                                <div class="timeline-status bg-pink"></div>
+                                                                <div class="timeline-date">13 Nov <em class="icon ni ni-alarm-alt"></em></div>
+                                                                <div class="timeline-data">
+                                                                    <h6 class="timeline-title">Submited KYC Application</h6>
+                                                                    <div class="timeline-des">
+                                                                        <p>Re-submitted KYC Application form.</p>
+                                                                        <span class="time">09:30am</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-xxl-3 col-sm-6">
-                                            <div class="card">
-                                                <div class="nk-ecwg nk-ecwg6">
-                                                    <div class="card-inner">
-                                                        <div class="card-title-group">
+                                        <div class="col-xxl-3 col-md-6">
+                                            <div class="card card-full overflow-hidden">
+                                                <div class="nk-ecwg nk-ecwg7 h-100">
+                                                    <div class="card-inner flex-grow-1">
+                                                        <div class="card-title-group mb-4">
                                                             <div class="card-title">
-                                                                <h6 class="title">Today Visitors</h6>
+                                                                <h6 class="title">Statistik Keluhan</h6>
                                                             </div>
                                                         </div>
-                                                        <div class="data">
-                                                            <div class="data-group">
-                                                                <div class="amount">23,485</div>
-                                                                <div class="nk-ecwg6-ck">
-                                                                    <canvas class="ecommerce-line-chart-s3" id="todayVisitors"></canvas>
+                                                        <div class="nk-ecwg7-ck">
+                                                            <canvas class="ecommerce-doughnut-s1" id="orderStatistics"></canvas>
+                                                        </div>
+                                                        <ul class="nk-ecwg7-legends">
+                                                            <li>
+                                                                <div class="title">
+                                                                    <span class="dot dot-lg sq" data-bg="#816bff"></span>
+                                                                    <span>Sertifikat Hilang</span>
                                                                 </div>
-                                                            </div>
-                                                            <div class="info"><span class="change down text-danger"><em class="icon ni ni-arrow-long-down"></em>2.34%</span><span> vs. last week</span></div>
-                                                        </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="title">
+                                                                    <span class="dot dot-lg sq" data-bg="#13c9f2"></span>
+                                                                    <span>Absensi</span>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="title">
+                                                                    <span class="dot dot-lg sq" data-bg="#ff82b7"></span>
+                                                                    <span>Kegiatan</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
                                                     </div><!-- .card-inner -->
-                                                </div><!-- .nk-ecwg -->
+                                                </div>
                                             </div><!-- .card -->
                                         </div><!-- .col -->
                                     </div><!-- .row -->

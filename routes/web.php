@@ -16,12 +16,22 @@ use Illuminate\Support\Facades\Route;
 // Main Routes
 Route::get('/', '\App\Http\Controllers\MainController@index');
 Route::get('/main', '\App\Http\Controllers\MainController@index');
+Route::get('/cekMentoring', '\App\Http\Controllers\MainController@cekMentoring');
 
 // Auth Routes
-Route::get('/auth', '\App\Http\Controllers\AuthController@index'); 
+Route::get('/auth', '\App\Http\Controllers\AuthController@index')->name('login');
+Route::post('/login', '\App\Http\Controllers\AuthController@login');
+Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
 
-//Admin Routes
-Route::get('/admin', '\App\Http\Controllers\AdminController@index'); 
-// Mentor Routes
-
-// Mentee Routes
+// Dashboard Routes
+Route::group(['middleware' => 'auth'], function () {
+    //Admin Routes
+    Route::get('/admin', '\App\Http\Controllers\AdminController@index'); 
+    Route::get('/admin/mentor', '\App\Http\Controllers\AdminController@mentor'); 
+    
+    
+    // Mentor Routes
+    
+    // Mentee Routes
+    
+});

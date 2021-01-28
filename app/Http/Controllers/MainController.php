@@ -13,4 +13,7 @@ class MainController extends Controller
     public function auth(){
         return view('auth.index');
     }
+    public function cekMentoring(){
+        return view('cek.index');
+    }
 }

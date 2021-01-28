@@ -44,12 +44,13 @@
                                         </div>
                                     </div>
                                 </div><!-- .nk-block-head -->
-                                <form action="/admin">
+                                <form action="/login" method="POST" class="form-validate">
+                                    {{ csrf_field() }}
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <label class="form-label" for="default-01">NIM atau Username</label>
                                         </div>
-                                        <input type="text" class="form-control form-control-lg" id="default-01" placeholder="NIM atau Username">
+                                        <input type="text" id="email" name="email" class="form-control form-control-lg" placeholder="NIM atau Username" required>
                                     </div><!-- .foem-group -->
                                     <div class="form-group">
                                         <div class="form-label-group">
@@ -61,7 +62,7 @@
                                                 <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                                 <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                             </a>
-                                            <input type="password" class="form-control form-control-lg" id="password" placeholder="Password anda">
+                                            <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password anda" required>
                                         </div>
                                     </div><!-- .foem-group -->
                                     <div class="form-group">
@@ -81,7 +82,7 @@
                                     <div class="slider-item">
                                         <div class="nk-feature nk-feature-center">
                                             <div class="nk-feature-img">
-                                                <img class="round" src="./images/slides/promo-a.png" srcset="./images/slides/promo-a2x.png 2x" alt="">
+                                                <img class="round" src="template/dashboard/images/slides/1.png" srcset="template/dashboard/images/slides/1.png" alt="">
                                             </div>
                                             <div class="nk-feature-content py-4 p-sm-5">
                                                 <h4>Mentoring Polinema</h4>
@@ -92,7 +93,7 @@
                                     <div class="slider-item">
                                         <div class="nk-feature nk-feature-center">
                                             <div class="nk-feature-img">
-                                                <img class="round" src="./images/slides/promo-b.png" srcset="./images/slides/promo-b2x.png 2x" alt="">
+                                                <img class="round" src="template/dashboard/images/slides/2.png" srcset="template/dashboard/images/slides/2.png" alt="">
                                             </div>
                                             <div class="nk-feature-content py-4 p-sm-5">
                                                 <h4>Mentoring Polinema</h4>
@@ -103,7 +104,7 @@
                                     <div class="slider-item">
                                         <div class="nk-feature nk-feature-center">
                                             <div class="nk-feature-img">
-                                                <img class="round" src="./images/slides/promo-c.png" srcset="./images/slides/promo-c2x.png 2x" alt="">
+                                                <img class="round" src="template/dashboard/images/slides/3.png" srcset="template/dashboard/images/slides/3.png" alt="">
                                             </div>
                                             <div class="nk-feature-content py-4 p-sm-5">
                                                 <h4>Mentoring Polinema</h4>

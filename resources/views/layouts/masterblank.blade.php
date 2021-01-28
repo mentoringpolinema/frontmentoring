@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Ehey.">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="{{asset('template/homepage/assets/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="template/homepage/assets/images/favicon.ico">
     <!-- Page Title  -->
-    <title> Dashboard | Mentoring Polinema <?php echo date("Y");?> </title>
+    <title> Cek Mentoring | Mentoring Polinema <?php echo date("Y");?> </title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{asset('template/dashboard/assets/css/dashlite.css?ver=2.2.0')}}">
     <link id="skin-default" rel="stylesheet" href="{{asset('template/dashboard/css/theme.css?ver=2.2.0')}}">
@@ -19,13 +19,11 @@
     <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main ">
-            <!-- sidebar @s -->
-            @include('layouts.includes._sidebar')
             <!-- sidebar @e -->
             <!-- wrap @s -->
             <div class="nk-wrap ">
                 <!-- main header @s -->
-                @include('layouts.includes._header')
+                @include('layouts.includes._headerblank')
                 <!-- main header @e -->
                 <!-- content @s -->
                 @yield('content')
@@ -54,12 +52,9 @@
     </div>
     <!-- app-root @e -->
     <!-- JavaScript -->
-    <script src="{{asset('template/dashboard/assets/js/bundle.js?ver=2.2.0')}}"></script>
-    <script src="{{asset('template/dashboard/assets/js/scripts.js?ver=2.2.0')}}"></script>
-    <script src="{{asset('template/dashboard/assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
-    <!-- Calendar JS -->
-    <script src="{{asset('template/dashboard/assets/js/libs/fullcalendar.js?ver=2.2.0')}}"></script>
-    <script src="{{asset('template/dashboard/assets/js/apps/calendar.js?ver=2.2.0')}}"></script>
+    <script src="{{asset('template/dashboard//assets/js/bundle.js?ver=2.2.0')}}"></script>
+    <script src="{{asset('template/dashboard//assets/js/scripts.js?ver=2.2.0')}}"></script>
+    <script src="{{asset('template/dashboard//assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
 </body>
 
 </html>
