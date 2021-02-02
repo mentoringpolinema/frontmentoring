@@ -202,7 +202,7 @@
                         <div class="features-title-icon d-flex justify-content-between">
                             <h4 class="features-title"><a href="#">Mentee</a></h4>
                             <div class="features-icon">
-                                <i class="lni lni-brush"></i>
+                                <i class="lni lni-users"></i>
                                 <img class="shape" src="{{asset('template/homepage/assets/images/f-shape-1.svg')}}" alt="Shape">
                             </div>
                         </div>
@@ -216,7 +216,7 @@
                         <div class="features-title-icon d-flex justify-content-between">
                             <h4 class="features-title"><a href="#">Mentor</a></h4>
                             <div class="features-icon">
-                                <i class="lni lni-layout"></i>
+                                <i class="lni lni-user"></i>
                                 <img class="shape" src="{{asset('template/homepage/assets/images/f-shape-1.svg')}}" alt="Shape">
                             </div>
                         </div>
@@ -230,7 +230,7 @@
                         <div class="features-title-icon d-flex justify-content-between">
                             <h4 class="features-title"><a href="#">Panitia</a></h4>
                             <div class="features-icon">
-                                <i class="lni lni-bolt"></i>
+                                <i class="lni lni-consulting"></i>
                                 <img class="shape" src="{{asset('template/homepage/assets/images/f-shape-1.svg')}}" alt="Shape">
                             </div>
                         </div>

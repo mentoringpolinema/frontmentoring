@@ -26,7 +26,10 @@ Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
 // Dashboard Routes
 Route::group(['middleware' => 'auth'], function () {
     //Admin Routes
-    Route::get('/admin', '\App\Http\Controllers\AdminController@index'); 
+    Route::get('/admin', '\App\Http\Controllers\AdminController@index');
+
+        //Cetak
+        Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak'); 
 
         // Mentor
         Route::get('/admin/mentor', '\App\Http\Controllers\AdminController@mentor'); 

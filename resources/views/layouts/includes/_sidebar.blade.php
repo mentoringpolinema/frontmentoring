@@ -74,6 +74,12 @@
                                         <span class="nk-menu-text">Keluhan</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->                                
+                                <li class="nk-menu-item">
+                                    <a href="#" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-printer-fill"></em></span>
+                                        <span class="nk-menu-text">Cetak Bukti</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->                                
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Sistem</h6>
                                 </li><!-- .nk-menu-heading -->
@@ -87,7 +93,10 @@
                                             <a href="html/project-card.html" class="nk-menu-link"><span class="nk-menu-text">Jurusan</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">Project List</span></a>
+                                            <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">Prodi</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">Angkatan</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->

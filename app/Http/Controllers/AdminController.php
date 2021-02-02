@@ -12,6 +12,10 @@ class AdminController extends Controller
         $count = \App\Models\Mentor::where('id_mentor',1)->count();
         return view('admin.index',['data_mentor'=> $count]);
     }
+    // public function cetak()
+    // {
+    //     return view('admin.cetak');
+    // }
     
     // Mentor Function 
     public function mentor()
