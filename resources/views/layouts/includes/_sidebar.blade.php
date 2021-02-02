@@ -74,12 +74,15 @@
                                         <span class="nk-menu-text">Keluhan</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->                                
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Kelola Website</h6>
+                                </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item">
                                     <a href="#" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-printer-fill"></em></span>
-                                        <span class="nk-menu-text">Cetak Bukti</span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-signal"></em></span>
+                                        <span class="nk-menu-text">Pengumuman</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->                                
+                                </li>
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Sistem</h6>
                                 </li><!-- .nk-menu-heading -->

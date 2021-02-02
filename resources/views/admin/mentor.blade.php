@@ -48,6 +48,39 @@
                                                 <div class="nk-block-des">
                                                     <p>Data Mentor Kegiatan Mentoring Keagamaan Politeknik Negeri Malang Tahun <?php echo date("Y");?>.</p>
                                                 </div>
+                                                <br>
+                                                <div class="row g-gs">
+                                                    <div class="col-xxl-3 col-md-4">
+                                                        <div class="card h-100">
+                                                            <div class="card-inner">
+                                                                <ul class="nk-store-statistics">
+                                                                    <li class="item">
+                                                                        <div class="info">
+                                                                            <div class="title">Total Mentor</div>
+                                                                            <div class="count">3,795</div>
+                                                                        </div>
+                                                                        <em class="icon bg-primary-dim ni ni-users"></em>
+                                                                    </li>
+                                                                </ul>
+                                                            </div><!-- .card-inner -->
+                                                        </div><!-- .card -->
+                                                    </div><!-- .col -->
+                                                    <div class="col-xxl-3 col-md-4">
+                                                        <div class="card h-100">
+                                                            <div class="card-inner">
+                                                                <ul class="nk-store-statistics">
+                                                                    <li class="item">
+                                                                        <div class="info">
+                                                                            <div class="title">Total Kelompok</div>
+                                                                            <div class="count">20</div>
+                                                                        </div>
+                                                                        <em class="icon bg-secondary-dim ni ni-link-group"></em>
+                                                                    </li>
+                                                                </ul>
+                                                            </div><!-- .card-inner -->
+                                                        </div><!-- .card -->
+                                                    </div><!-- .col -->
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- Alert -->
@@ -66,6 +99,8 @@
                                                             <th class="nk-tb-col"><span class="sub-text">Nama</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Alamat</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">No.telp</span></th>
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelompok</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
@@ -88,9 +123,15 @@
                                                                 <span>{{$mentor->notelp_mentor}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="/admin/{{$mentor->id_mentor}}/delMentor" class="btn btn-sm btn-danger"><span>Delete</span> </a>
-                                                                <a href="#" class="btn btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                <a href="/admin/{{$mentor->id_mentor}}/mentor" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
+                                                                <span class="tb-status text-success">{{$mentor->status_mentor}}</span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-md">
+                                                                <span class="tb-status text-danger">2</span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-md">
+                                                                <a href="/admin/{{$mentor->id_mentor}}/delMentor" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
+                                                                <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
+                                                                <a href="/admin/{{$mentor->id_mentor}}/mentor" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                       
                                                         @endforeach

@@ -19,6 +19,7 @@ class CreateMentorTable extends Migration
             $table->string('email_mentor');
             $table->string('alamat_mentor');
             $table->string('notelp_mentor');
+            $table->string('status_mentor');
             $table->timestamps();
         });
     }
