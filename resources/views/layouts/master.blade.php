@@ -38,9 +38,7 @@
                             </div>
                             <div class="nk-footer-links">
                                 <ul class="nav nav-sm">
-                                    <li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
+                                    <li class="nav-item"><?php echo date("d M Y");?></li>
                                 </ul>
                             </div>
                         </div>
@@ -58,7 +56,8 @@
     <script src="{{asset('template/dashboard/assets/js/scripts.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard/assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
     <!-- Sweet Alert JS -->
-    <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.2.0')}}"></script>
+    {{-- <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.2.0')}}"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 </body>
 

@@ -24,8 +24,10 @@
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
                         <a href="#" class="logo-link nk-sidebar-logo">
-                            {{-- <img class="" src="{{asset('template/dashboard/images/logoBig.png')}}" srcset="template/dashboard/images/logoBig.png" alt="logo-dark')}}" width="190px" height="50px"> --}}
-                            <img class="logo-small logo-img logo-img-small" src="{{asset('template/dashboard/images/logoMentoring.png')}}" srcset="{{asset('template/dashboard/images/logoMentoring.png')}}" alt="logo-small"><span> <b>Mentoring Polinema</b></span>
+                            {{-- <img class="logo-light logo-img" src="{{asset('template/dashboard/images/logoBig.png')}}" srcset="{{asset('template/dashboard/images/logoBig.png')}}" alt="logo')}}"> --}}
+                            {{-- <img class="logo-small logo-img logo-img-small" src="{{asset('template/dashboard/images/logoBig.png')}}" srcset="{{asset('template/dashboard/images/logoBig.png')}}" alt="logo-small"> --}}
+                            <img class="logo-light logo-img" src="{{asset('template/dashboard/images/LogoBig.png')}}" alt="logo">
+                            <img class="logo-dark logo-img" src="{{asset('template/dashboard/images/logoBig.png')}}" alt="logo-dark">
                         </a>
                     </div>
                     <div class="nk-menu-trigger mr-n2">
@@ -48,7 +50,7 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-heading">
-                                    <h6 class="overline-title text-primary-alt">Menu</h6>
+                                    <h6 class="overline-title text-primary-alt">Kelola Mentoring</h6>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="/admin/mentor" class="nk-menu-link">
@@ -57,7 +59,7 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="#" class="nk-menu-link">
+                                    <a href="/admin/mentee" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                         <span class="nk-menu-text">Mentee</span>
                                     </a>
@@ -72,6 +74,12 @@
                                     <a href="#" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-chat"></em></span>
                                         <span class="nk-menu-text">Keluhan</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->                                
+                                <li class="nk-menu-item">
+                                    <a href="/admin/kegiatan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-alarm-alt"></em></span>
+                                        <span class="nk-menu-text">Kegiatan</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->                                
                                 <li class="nk-menu-heading">
@@ -103,7 +111,7 @@
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
+                                {{-- <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                                         <span class="nk-menu-text">User Manage</span>
@@ -119,7 +127,13 @@
                                             <a href="#" class="nk-menu-link"><span class="nk-menu-text">Super Admin</span></a>
                                         </li>                                        
                                     </ul><!-- .nk-menu-sub -->
-                                </li><!-- .nk-menu-item -->                               
+                                </li><!-- .nk-menu-item -->                                --}}
+                                <li class="nk-menu-item">
+                                    <a href="/admin/user" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                                        <span class="nk-menu-text">User Management</span>
+                                    </a>
+                                </li>
                             </ul><!-- .nk-menu -->
                         </div><!-- .nk-sidebar-menu -->
                     </div><!-- .nk-sidebar-content -->

@@ -53,6 +53,13 @@
                                                             </div>
                                                             <em class="icon bg-pink-dim ni ni-book"></em>
                                                         </li>
+                                                        <li class="item">
+                                                            <div class="info">
+                                                                <div class="title">Data Kegiatan</div>
+                                                                <div class="count">10</div>
+                                                            </div>
+                                                            <em class="icon bg-danger-dim ni ni-book"></em>
+                                                        </li>
                                                     </ul>
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card -->
@@ -91,7 +98,7 @@
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-lg-6 col-xxl-4">
+                                        <div class="col-lg-7 col-xxl-4">
                                             <div class="card h-100">
                                                 <div class="card-inner border-bottom">
                                                     <div class="card-title-group">
@@ -102,20 +109,20 @@
                                                 </div>
                                                 <div class="card-inner">
                                                     <div class="timeline">
-                                                        <h6 class="timeline-head">Januari, 2021</h6>
                                                         <ul class="timeline-list">
+                                                            @foreach ($data_kegiatan as $kegiatan)
                                                             <li class="timeline-item">
-                                                                <div class="timeline-status bg-primary is-outline"></div>
-                                                                <div class="timeline-date">05 Jan <em class="icon ni ni-alarm-alt"></em></div>
+                                                                <div class="timeline-status bg-success is-outline"></div>
+                                                                <div class="timeline-date">{{$kegiatan->tanggal_kegiatan}}</div>
                                                                 <div class="timeline-data">
-                                                                    <h6 class="timeline-title">Pertemuan Zoom : Minggu 1</h6>
+                                                                    <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
                                                                     <div class="timeline-des">
-                                                                        <p>Pertemuan Mentee dengan Mentor melalui Media Daring Zoom.</p>
+                                                                        <p>{{$kegiatan->detail_kegiatan}}</p>
                                                                         <span class="time">09:30am</span>
                                                                     </div>
                                                                 </div>
                                                             </li>
-                                                            <li class="timeline-item">
+                                                            {{-- <li class="timeline-item">
                                                                 <div class="timeline-status bg-primary"></div>
                                                                 <div class="timeline-date">06 Jan <em class="icon ni ni-alarm-alt"></em></div>
                                                                 <div class="timeline-data">
@@ -136,13 +143,14 @@
                                                                         <span class="time">09:30am</span>
                                                                     </div>
                                                                 </div>
-                                                            </li>
+                                                            </li> --}}
+                                                            @endforeach
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-xxl-3 col-md-6">
+                                        <div class="col-xxl-3 col-md-5">
                                             <div class="card card-full overflow-hidden">
                                                 <div class="nk-ecwg nk-ecwg7 h-100">
                                                     <div class="card-inner flex-grow-1">

@@ -30,13 +30,31 @@ Route::group(['middleware' => 'auth'], function () {
 
         //Cetak
         Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak'); 
+        
+        //Kegiatan
+            //Get Kegiatan
+            Route::get('/admin/kegiatan', '\App\Http\Controllers\AdminController@kegiatan'); 
+            //Add Kegiatan
+            Route::post('/admin/addKegiatan', '\App\Http\Controllers\AdminController@addKegiatan');
+            //Delete Kegiatan
+            Route::get('/admin/{id_kegiatan}/delKegiatan', '\App\Http\Controllers\AdminController@delKegiatan');  
 
         // Mentor
-        Route::get('/admin/mentor', '\App\Http\Controllers\AdminController@mentor'); 
-        Route::post('/admin/addMentor', '\App\Http\Controllers\AdminController@addMentor'); 
-        Route::get('/admin/{id_mentor}/delMentor', '\App\Http\Controllers\AdminController@delMentor'); 
-    
-    
+            //Get Mentor
+            Route::get('/admin/mentor', '\App\Http\Controllers\AdminController@mentor'); 
+            //Add Mentor
+            Route::post('/admin/addMentor', '\App\Http\Controllers\AdminController@addMentor'); 
+            //Delete Mentor
+            Route::get('/admin/{id_mentor}/delMentor', '\App\Http\Controllers\AdminController@delMentor');
+
+        // Mentee
+            //Get Mentee
+            Route::get('/admin/mentee', '\App\Http\Controllers\AdminController@mentee');
+
+        //User
+            //Get Users
+            Route::get('/admin/user', '\App\Http\Controllers\AdminController@user');
+        
     // Mentor Routes
     
     // Mentee Routes

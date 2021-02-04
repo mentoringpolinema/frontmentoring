@@ -9,14 +9,26 @@ class AdminController extends Controller
     // Dashboard Functon
     public function index()
     {
-        $count = \App\Models\Mentor::where('id_mentor',1)->count();
-        return view('admin.index',['data_mentor'=> $count]);
+        $data_kegiatan = \App\Models\Kegiatan::all();
+        return view('admin.index', ['data_kegiatan' => $data_kegiatan]);
     }
-    // public function cetak()
-    // {
-    //     return view('admin.cetak');
-    // }
-    
+
+    // Kegiatan Function
+    public function kegiatan(){
+        $data_kegiatan = \App\Models\Kegiatan::all();
+        return view('admin.kegiatan', ['data_kegiatan' => $data_kegiatan]);
+    }
+    public function addKegiatan(Request $request){
+        \App\Models\Kegiatan::create($request->all());
+        return redirect('/admin/kegiatan')->with('sukses', 'Data kegiatan Berhasil ditambahkan !');
+    }
+    public function delKegiatan($id_kegiatan)
+    {
+        $data_kegiatan = \App\Models\Kegiatan::find($id_kegiatan);
+        $data_kegiatan->delete($id_kegiatan);
+        return redirect('/admin/kegiatan')->with('sukses', 'Data Kegiatan Berhasil dihapus !');
+    }
+
     // Mentor Function 
     public function mentor()
     {
@@ -32,5 +44,17 @@ class AdminController extends Controller
         $data_mentor = \App\Models\Mentor::find($id_mentor);
         $data_mentor->delete($data_mentor);
         return redirect('/admin/mentor')->with('sukses', 'Data Mentor Berhasil dihapus !');
+    }
+
+    // Mentee Function
+    public function mentee()
+    {
+        // $data_mentor = \App\Models\Mentor::all();
+        return view('admin.mentee');
+    }
+
+    // Users Function
+    public function user(){
+        return view('admin.user');
     }
 }
