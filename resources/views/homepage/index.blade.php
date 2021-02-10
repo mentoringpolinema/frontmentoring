@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     
     <!--====== Title ======-->
-    <title>Mentoring Polinema - 2020</title>
+    <title>Mentoring Polinema - <?php echo date("Y");?></title>
     
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -97,6 +97,7 @@
                                                     <thead>
                                                         <tr class="nk-tb-item nk-tb-head">
                                                             <th class="nk-tb-col"><span class="sub-text">Kegiatan</span></th>
+                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jenis Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Tanggal Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jam</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Detail</span></th>
@@ -114,6 +115,9 @@
                                                                         <span class="tb-lead">{{$kegiatan->nama_kegiatan}} <span class="dot dot-success d-md-none ml-1"></span></span>
                                                                     </div>
                                                                 </div>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-mb">
+                                                                <span class="tb-amount">{{$kegiatan->jenis_kegiatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
                                                                 <span class="tb-amount">{{$kegiatan->tanggal_kegiatan}}</span>

@@ -222,6 +222,8 @@
                                                             <th class="nk-tb-col"><span class="sub-text">NIM</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Nama</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelas</span></th>
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Jurusan</span></th>
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Prodi</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelompok</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Angkatan</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
@@ -244,6 +246,12 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>1A</span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-md">
+                                                                <span>Teknologi Informasi</span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-md">
+                                                                <span>D3 MI</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>3</span>
@@ -274,6 +282,12 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>1A</span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-md">
+                                                                <span>Teknologi Informasi</span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-md">
+                                                                <span>D3 MI</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>3</span>

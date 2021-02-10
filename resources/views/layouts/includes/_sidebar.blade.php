@@ -65,14 +65,20 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="#" class="nk-menu-link">
+                                    <a href="/admin/tugas" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-todo-fill"></em></span>
                                         <span class="nk-menu-text">Tugas</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->                                
                                 <li class="nk-menu-item">
                                     <a href="#" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-chat"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-view-col3"></em></span>
+                                        <span class="nk-menu-text">Kelompok</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->                                
+                                <li class="nk-menu-item">
+                                    <a href="#" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-chat-fill"></em></span>
                                         <span class="nk-menu-text">Keluhan</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->                                
@@ -94,22 +100,11 @@
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Sistem</h6>
                                 </li><!-- .nk-menu-heading -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                <li class="nk-menu-item">
+                                    <a href="/admin/data" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb-fill"></em></span>
                                         <span class="nk-menu-text">Data</span>
                                     </a>
-                                    <ul class="nk-menu-sub">
-                                        <li class="nk-menu-item">
-                                            <a href="html/project-card.html" class="nk-menu-link"><span class="nk-menu-text">Jurusan</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">Prodi</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="html/project-list.html" class="nk-menu-link"><span class="nk-menu-text">Angkatan</span></a>
-                                        </li>
-                                    </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 {{-- <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">

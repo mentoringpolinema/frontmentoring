@@ -25,13 +25,14 @@ Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
 
 // Dashboard Routes
 Route::group(['middleware' => 'auth'], function () {
+
     //Admin Routes
     Route::get('/admin', '\App\Http\Controllers\AdminController@index');
 
-        //Cetak
+        // Cetak
         Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak'); 
         
-        //Kegiatan
+        // Kegiatan
             //Get Kegiatan
             Route::get('/admin/kegiatan', '\App\Http\Controllers\AdminController@kegiatan'); 
             //Add Kegiatan
@@ -51,11 +52,28 @@ Route::group(['middleware' => 'auth'], function () {
             //Get Mentee
             Route::get('/admin/mentee', '\App\Http\Controllers\AdminController@mentee');
 
-        //User
+        // User Management
             //Get Users
             Route::get('/admin/user', '\App\Http\Controllers\AdminController@user');
-        
-    // Mentor Routes
+
+        // Data Management
+            //Get Data
+            Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
+
+            //Add Data 
+                // Add Data Jurusan
+                Route::post('/admin/addJurusan', '\App\Http\Controllers\AdminController@addJurusan');
+                // Add Data Prodi
+                Route::post('/admin/addProdi', '\App\Http\Controllers\AdminController@addProdi');
+                
+            //Delete Data
+            Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
+
+        // Materi
+            // Get Materi
+            Route::get('/admin/materi', '\App\Http\Controllers\AdminController@materi');
+
+    // Mentor Routes 
     
     // Mentee Routes
     
