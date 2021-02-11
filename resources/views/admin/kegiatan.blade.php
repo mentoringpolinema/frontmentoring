@@ -101,7 +101,6 @@
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Tanggal Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jam</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Detail</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
@@ -127,9 +126,6 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$kegiatan->detail_kegiatan}}</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="tb-status text-success">Active</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
@@ -165,10 +161,23 @@
                             <form action="/admin/addKegiatan" class="form-validate is-alter" method="POST">
                             {{ csrf_field() }}
                             <div class="row gy-4">
-                                <div class="col-md-12">
+                                <div class="col-md-7">
                                     <div class="form-group">
                                         <label class="form-label" for="kegiatan-name">Nama Kegiatan</label>
                                         <input type="text" class="form-control form-control" id="nama_kegiatan" name="nama_kegiatan" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
+                                         <select class="form-select" id="jenis_kegiatan" name="jenis_kegiatan" data-ui="lg">
+                                            {{-- @foreach ($data_prodi as $prodi) --}}
+                                            <option>Pertemuan</option>
+                                            <option>Materi</option>
+                                            <option>Opening Mentoring</option>
+                                            <option>Closing Mentoring</option>
+                                            {{-- @endforeach --}}
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
@@ -178,7 +187,7 @@
                                             <div class="form-icon form-icon-right">
                                                 <em class="icon ni ni-calendar-alt"></em>
                                             </div>
-                                            <input type="text" class="form-control date-picker" id="tanggal_kegiatan" name="tanggal_kegiatan" required">
+                                            <input type="text" class="form-control date-picker" id="tanggal_kegiatan" name="tanggal_kegiatan" required>
                                         </div>
                                     </div>
                                 </div>
