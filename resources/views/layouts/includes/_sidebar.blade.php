@@ -65,9 +65,9 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="/admin/tugas" class="nk-menu-link">
+                                    <a href="/admin/materi" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-todo-fill"></em></span>
-                                        <span class="nk-menu-text">Tugas</span>
+                                        <span class="nk-menu-text">Materi</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->                                
                                 <li class="nk-menu-item">

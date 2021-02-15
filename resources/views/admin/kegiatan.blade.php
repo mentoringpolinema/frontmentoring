@@ -100,6 +100,7 @@
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jenis Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Tanggal Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jam</span></th>
+                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Minggu Ke-</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Detail</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
@@ -124,13 +125,19 @@
                                                             <td class="nk-tb-col tb-col-mb">
                                                                 <span class="tb-amount">{{$kegiatan->jam_kegiatan}}</span>
                                                             </td>
+                                                            <td class="nk-tb-col tb-col-mb">
+                                                                <span class="tb-amount">{{$kegiatan->minggu_kegiatan}}</span>
+                                                            </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$kegiatan->detail_kegiatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                <a href="/admin/{{$kegiatan->id_kegiatan}}/kegiatan" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
+                                                                {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-trash-alt lg"></em></a> --}}
+                                                                <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan" class="btn btn-round btn-icon btn-sm btn-daaanger" data-toggle="tooltip" data-placement="right" title="Hapus Kegiatan"><em class="icon ni ni-trash-alt"></em></a>
+                                                                <a href="#" class="btn btn-round btn-icon btn-sm btn-saecondary" data-toggle="tooltip" data-placement="right" title="Detail Kegiatan"><em class="icon ni ni-eye-fill"></em></a>
+                                                                <a href="#" class="btn btn-round btn-icon btn-sm btn-waraning" data-toggle="modal" data-target="#profile-edit"><em class="icon ni ni-edit"></em></a>
+                                                                {{-- <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a> --}}
+                                                                {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/kegiatan" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                       
                                                         @endforeach
@@ -170,8 +177,9 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
-                                         <select class="form-select" id="jenis_kegiatan" name="jenis_kegiatan" data-ui="lg">
+                                         <select class="form-select" id="jenis_kegiatan" name="jenis_kegiatan" required>
                                             {{-- @foreach ($data_prodi as $prodi) --}}
+                                            <option>- Jenis Kegiatan -</option>
                                             <option>Pertemuan</option>
                                             <option>Materi</option>
                                             <option>Opening Mentoring</option>
@@ -202,10 +210,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-7">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Detail Kegiatan</label>
-                                        <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" value="+880" placeholder="Pertemuan dst..."></textarea>
+                                        <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
+                                    </div>
+                                </div>                                
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-minggu">Minggu Kegiatan</label>
+                                        <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan" required>
                                     </div>
                                 </div>
                                 <div class="col-12">

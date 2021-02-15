@@ -22,14 +22,14 @@ class AdminController extends Controller
         // Add Kegiatan
         public function addKegiatan(Request $request){
             \App\Models\Kegiatan::create($request->all());
-            return redirect('/admin/kegiatan')->with('sukses', 'Data kegiatan Berhasil ditambahkan !');
+            return redirect('/admin/kegiatan')->with('success','kegiatan Berhasil ditambahkan !');
         }
         // Delete Kegiatan
         public function delKegiatan($id_kegiatan)
         {
             $data_kegiatan = \App\Models\Kegiatan::find($id_kegiatan);
             $data_kegiatan->delete($id_kegiatan);
-            return redirect('/admin/kegiatan')->with('sukses', 'Data Kegiatan Berhasil dihapus !');
+            return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil dihapus !');
         }
 
     // Mentor Function 
@@ -42,13 +42,13 @@ class AdminController extends Controller
         // Add Mentor
         public function addMentor(Request $request){
             \App\Models\Mentor::create($request->all());
-            return redirect('/admin/mentor')->with('sukses','Data Mentor Berhasil ditambahkan !');
+            return redirect('/admin/mentor')->with('success','Mentor Berhasil ditambahkan !');
         }
         // Delete Mentor
         public function delMentor($id_mentor){
             $data_mentor = \App\Models\Mentor::find($id_mentor);
             $data_mentor->delete($data_mentor);
-            return redirect('/admin/mentor')->with('sukses', 'Data Mentor Berhasil dihapus !');
+            return redirect('/admin/mentor')->with('success','Mentor Berhasil dihapus !', 'Anjay');
         }
 
     // Mentee Function
@@ -76,13 +76,13 @@ class AdminController extends Controller
             public function addJurusan(Request $request)
             {
                 \App\Models\Jurusan::create($request->all());
-                return redirect('/admin/data')->with('sukses', 'Data Jurusan Berhasil ditambahkan !');
+                return redirect('/admin/data')->with('success', 'Data Jurusan Berhasil ditambahkan !');
             }
             // Add Prodi
             public function addProdi(Request $request)
             {
                 \App\Models\Prodi::create($request->all());
-                return redirect('/admin/data')->with('sukses', 'Data Prodi Berhasil ditambahkan !');
+                return redirect('/admin/data')->with('success', 'Data Prodi Berhasil ditambahkan !');
             }
         // Delete Data
             // Delete Jurusan
@@ -90,9 +90,24 @@ class AdminController extends Controller
             // Delete Prodi
 
     // Materi Function
-    public function materi()
-    {
-        // $data_mentor = \App\Models\Mentor::all();
-        return view('admin.materi');
-    }
+        
+        // Get Materi
+        public function materi()
+        {
+            $data_materi = \App\Models\Materi::all();
+            $data_kegiatan = \App\Models\Kegiatan::all();
+            return view('admin.materi', ['data_materi' => $data_materi], ['data_kegiatan' => $data_kegiatan]);
+        }
+        // Add Materi
+        public function addMateri(Request $request){
+            \App\Models\Materi::create($request->all());
+            return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
+        }
+        // Delete Materi
+        public function delMateri($id_materi)
+        {
+            $data_materi = \App\Models\Materi::find($id_materi);
+            $data_materi->delete($data_materi);
+            return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
+        }
 }

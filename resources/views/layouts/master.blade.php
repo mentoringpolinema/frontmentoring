@@ -51,6 +51,8 @@
         <!-- main @e -->
     </div>
     <!-- app-root @e -->
+    <!-- Sweet Alert-->
+    @include('sweetalert::alert')
     <!-- JavaScript -->
     <script src="{{asset('template/dashboard/assets/js/bundle.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard/assets/js/scripts.js?ver=2.2.0')}}"></script>

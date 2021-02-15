@@ -144,6 +144,9 @@
                         </div>
                     </div>
                 </div>
+                
+    <!-- Sweet Alert-->
+    @include('sweetalert::alert')
 
     <!-- Profile Edit Modal @e -->
     <div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
@@ -209,7 +212,7 @@
                     <h5 class="title">Tambah Mentor</h5>
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
-                            <form action="/admin/eddMentor" class="form-validate is-alter" method="POST">
+                            <form action="/admin/addMentor" class="form-validate is-alter" method="POST">
                             {{ csrf_field() }}
                             <div class="row gy-4">
                                 <div class="col-md-6">
@@ -224,10 +227,16 @@
                                         <input type="text" class="form-control form-control-lg" id="notelp_mentor" name="notelp_mentor" placeholder="Enter No. telp" required>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Email</label>
                                         <input type="text" class="form-control form-control-lg" id="email_mentor" name="email_mentor" placeholder="Enter Email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="display-name">Status</label>
+                                        <input type="text" class="form-control form-control-lg" id="status_mentor" name="status_mentor" placeholder="Enter Status" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

@@ -72,9 +72,24 @@ Route::group(['middleware' => 'auth'], function () {
         // Materi
             // Get Materi
             Route::get('/admin/materi', '\App\Http\Controllers\AdminController@materi');
+            // Add Materi
+            Route::post('/admin/addMateri', '\App\Http\Controllers\AdminController@addMateri');
 
     // Mentor Routes 
-    
+        // Dashboard
+        Route::get('/mentor', '\App\Http\Controllers\MentorController@index');
+        // Profile
+        Route::get('/mentor/profile', '\App\Http\Controllers\MentorController@profile');
+        // Kelompok
+            // Get Kelompok
+            Route::get('/mentor/kelompok', '\App\Http\Controllers\MentorController@kelompok');
+
+        // Materi
+            // Get Materi
+            Route::get('/mentor/materi', '\App\Http\Controllers\MentorController@materi');
+            // Add Materi
+            Route::post('/mentor/addMateri', '\App\Http\Controllers\MentorController@addMateri');
+
     // Mentee Routes
     
 });
