@@ -8,7 +8,7 @@
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
                                             <h3 class="nk-block-title page-title">Dashboard</h3>
-                                            <h5>Selamat Datang ! Mentor Yahya</h5>
+                                            <h5>Selamat Datang ! {{auth()->user()->username}}</h5>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">

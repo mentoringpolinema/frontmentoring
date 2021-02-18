@@ -195,7 +195,7 @@
                                             <div class="form-icon form-icon-right">
                                                 <em class="icon ni ni-calendar-alt"></em>
                                             </div>
-                                            <input type="text" class="form-control date-picker" id="tanggal_kegiatan" name="tanggal_kegiatan" required>
+                                            <input type="date" class="form-control date-picker" id="tanggal_kegiatan" name="tanggal_kegiatan" required>
                                         </div>
                                     </div>
                                 </div>

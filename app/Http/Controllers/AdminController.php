@@ -110,4 +110,12 @@ class AdminController extends Controller
             $data_materi->delete($data_materi);
             return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
         }
+
+    // Kelompok Function
+
+        // Get Kelompok
+        public function kelompok()
+        {
+            return view('admin.kelompok');
+        }
 }

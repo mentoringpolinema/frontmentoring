@@ -29,14 +29,14 @@
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
                                                                 <span class="data-label">Nama Lengkap</span>
-                                                                <span class="data-value">A. Yahya Hudan Permana</span>
+                                                                <span class="data-value">{{auth()->user()->username}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Email</span>
-                                                                <span class="data-value">yahyahudan19@mentoringpolinema.my.id</span>
+                                                                <span class="data-value">{{auth()->user()->email}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more disable"><em class="icon ni ni-lock-alt"></em></span></div>
                                                         </div><!-- data-item -->

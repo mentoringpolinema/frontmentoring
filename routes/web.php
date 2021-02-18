@@ -74,8 +74,15 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/admin/materi', '\App\Http\Controllers\AdminController@materi');
             // Add Materi
             Route::post('/admin/addMateri', '\App\Http\Controllers\AdminController@addMateri');
+        
+        // Kelompok
+            // Get Kelompok
+            Route::get('/admin/kelompok', '\App\Http\Controllers\AdminController@kelompok');
+            // Add Kelompok
+
 
     // Mentor Routes 
+    
         // Dashboard
         Route::get('/mentor', '\App\Http\Controllers\MentorController@index');
         // Profile
