@@ -98,5 +98,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/mentor/addMateri', '\App\Http\Controllers\MentorController@addMateri');
 
     // Mentee Routes
-    
+        // Dashboard
+        Route::get('/mentee', '\App\Http\Controllers\MenteeController@index');
 });
