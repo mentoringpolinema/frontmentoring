@@ -20,6 +20,8 @@ class CreateMentorTable extends Migration
             $table->string('alamat_mentor');
             $table->string('notelp_mentor');
             $table->string('status_mentor');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

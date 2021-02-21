@@ -547,7 +547,7 @@ class LazyCollection implements Enumerable
     }
 
     /**
-     * Determine if the items is empty or not.
+     * Determine if the items are empty or not.
      *
      * @return bool
      */
@@ -825,24 +825,6 @@ class LazyCollection implements Enumerable
         $result = $this->collect()->random(...func_get_args());
 
         return is_null($number) ? $result : new static($result);
-    }
-
-    /**
-     * Reduce the collection to a single value.
-     *
-     * @param  callable  $callback
-     * @param  mixed  $initial
-     * @return mixed
-     */
-    public function reduce(callable $callback, $initial = null)
-    {
-        $result = $initial;
-
-        foreach ($this as $value) {
-            $result = $callback($result, $value);
-        }
-
-        return $result;
     }
 
     /**
