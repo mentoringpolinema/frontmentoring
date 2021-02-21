@@ -59,7 +59,7 @@
                                                                 <div class="title">Data Kegiatan</div>
                                                                 <div class="count">10</div>
                                                             </div>
-                                                            <em class="icon bg-danger-dim ni ni-book"></em>
+                                                            <em class="icon bg-warning-dim ni ni-video-fill"></em>
                                                         </li>
                                                     </ul>
                                                 </div><!-- .card-inner -->

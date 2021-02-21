@@ -79,7 +79,14 @@ Route::group(['middleware' => 'auth'], function () {
             // Get Kelompok
             Route::get('/admin/kelompok', '\App\Http\Controllers\AdminController@kelompok');
             // Add Kelompok
-
+            
+        // Keluhan
+            // Get Keluhan
+            Route::get('/admin/keluhan', '\App\Http\Controllers\AdminController@keluhan');
+            
+        // Pertemuan
+            // Get Pertemuan
+            Route::get('/admin/pertemuan', '\App\Http\Controllers\AdminController@pertemuan');
 
     // Mentor Routes 
     

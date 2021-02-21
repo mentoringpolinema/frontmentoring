@@ -67,30 +67,38 @@
                                         <span class="nk-menu-text">Mentee</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
-                                    <a href="/admin/materi" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-todo-fill"></em></span>
-                                        <span class="nk-menu-text">Materi</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->                                
+                                                                
                                 <li class="nk-menu-item">
                                     <a href="/admin/kelompok" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-view-col3"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-view-cols-fill"></em></span>
                                         <span class="nk-menu-text">Kelompok</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->                                
+                                </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="#" class="nk-menu-link">
+                                    <a href="/admin/materi" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-todo"></em></span>
+                                        <span class="nk-menu-text">Materi</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/admin/pertemuan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-video-fill"></em></span>
+                                        <span class="nk-menu-text">Pertemuan</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                
+                                <li class="nk-menu-item">
+                                    <a href="/admin/kegiatan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-clock"></em></span>
+                                        <span class="nk-menu-text">Kegiatan</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->                                 
+                                <li class="nk-menu-item">
+                                    <a href="/admin/keluhan" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-chat-fill"></em></span>
                                         <span class="nk-menu-text">Keluhan</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->                                
-                                <li class="nk-menu-item">
-                                    <a href="/admin/kegiatan" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-alarm-alt"></em></span>
-                                        <span class="nk-menu-text">Kegiatan</span>
-                                    </a>
-                                </li><!-- .nk-menu-item -->                                
+                                </li><!-- .nk-menu-item -->   
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Website</h6>
                                 </li><!-- .nk-menu-heading -->
@@ -128,7 +136,7 @@
                                 </li><!-- .nk-menu-item -->                                --}}
                                 <li class="nk-menu-item">
                                     <a href="/admin/user" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
                                         <span class="nk-menu-text">User Management</span>
                                     </a>
                                 </li>

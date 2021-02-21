@@ -42,7 +42,8 @@ class AdminController extends Controller
         // Add Mentor
         public function addMentor(Request $request){
             \App\Models\Mentor::create($request->all());
-            return redirect('/admin/mentor')->with('success','Mentor Berhasil ditambahkan !');
+            return redirect('/admin/mentor')->with('toast_
+            success','Mentor Berhasil ditambahkan !');
         }
         // Delete Mentor
         public function delMentor($id_mentor){
@@ -117,5 +118,21 @@ class AdminController extends Controller
         public function kelompok()
         {
             return view('admin.kelompok');
+        }
+
+    // Keluhan Function
+
+        // Get keluhan
+        public function keluhan()
+        {
+            return view('admin.keluhan');
+        }
+
+    // Pertemuan Function 
+
+    // Get keluhan
+        public function pertemuan()
+        {
+            return view('admin.pertemuan');
         }
 }

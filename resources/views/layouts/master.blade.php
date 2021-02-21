@@ -60,6 +60,8 @@
     <!-- Sweet Alert JS -->
     {{-- <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.2.0')}}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <!-- Messages JS -->
+    <script src="{{asset('template/dashboard/assets/js/apps/messages.js?ver=2.2.0')}}"></script>
 
 </body>
 
