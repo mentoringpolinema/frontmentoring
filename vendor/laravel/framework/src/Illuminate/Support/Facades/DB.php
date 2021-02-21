@@ -22,8 +22,14 @@ namespace Illuminate\Support\Facades;
  * @method static string getDefaultConnection()
  * @method static void beginTransaction()
  * @method static void commit()
+ * @method static void afterCommit(\Closure $callback)
  * @method static void listen(\Closure $callback)
  * @method static void rollBack(int $toLevel = null)
+ * @method static void enableQueryLog()
+ * @method static void disableQueryLog()
+ * @method static bool logging()
+ * @method static array getQueryLog()
+ * @method static void flushQueryLog()
  * @method static void setDefaultConnection(string $name)
  *
  * @see \Illuminate\Database\DatabaseManager

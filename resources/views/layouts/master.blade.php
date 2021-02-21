@@ -12,7 +12,7 @@
     <title> Dashboard | Mentoring Polinema <?php echo date("Y");?> </title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="{{asset('template/dashboard/assets/css/dashlite.css?ver=2.2.0')}}">
-    <link id="skin-default" rel="stylesheet" href="{{asset('template/dashboard/css/theme.css?ver=2.2.0')}}">
+    <link id="skin-default" rel="stylesheet" href="{{asset('template/dashboard/assets/css/theme.css?ver=2.2.0')}}">
 </head>
 
 <body class="nk-body bg-lighter npc-default has-sidebar ">

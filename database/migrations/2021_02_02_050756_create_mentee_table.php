@@ -21,6 +21,8 @@ class CreateMenteeTable extends Migration
             $table->string('kelompok_id');
             $table->string('angkatan_id');
             $table->string('status_mentee');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
