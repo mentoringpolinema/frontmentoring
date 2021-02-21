@@ -129,9 +129,14 @@
                                                                 <span class="tb-status text-danger">2</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="/admin/{{$mentor->id_mentor}}/delMentor" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                <a href="/admin/{{$mentor->id_mentor}}/mentor" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
+                                                                <form action="/admin/mentor/{{$mentor->id_mentor}}" method="post" style="display: inline">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button class="btn btn-round btn-sm btn-danger" type="submit" class="fa fa-trash">Delete</button>
+                                                                </form>
+                                                                {{-- <a href="/admin/{{$mentor->id_mentor}}/delMentor" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a> --}}
+                                                                <a href="/admin/mentor/{{$mentor->id_mentor}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
+                                                                <a href="/admin/mentor/{{$mentor->id_mentor}}" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span></a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                       
                                                         @endforeach
@@ -162,7 +167,7 @@
                     </ul><!-- .nav-tabs -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
-                            <form action="/admin/edtMentor" class="form-validate is-alter" method="POST">
+                            <form action="/admin/mentor/" class="form-validate is-alter" method="POST">
                             {{ csrf_field() }}
                             <div class="row gy-4">
                                 <div class="col-md-6">
@@ -212,7 +217,7 @@
                     <h5 class="title">Tambah Mentor</h5>
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
-                            <form action="/admin/addMentor" class="form-validate is-alter" method="POST">
+                            <form action="/admin/mentor/addMentor" class="form-validate is-alter" method="POST">
                             {{ csrf_field() }}
                             <div class="row gy-4">
                                 <div class="col-md-6">
@@ -230,13 +235,17 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Email</label>
-                                        <input type="text" class="form-control form-control-lg" id="email_mentor" name="email_mentor" placeholder="Enter Email" required>
+                                        <input type="email" class="form-control form-control-lg" id="email_mentor" name="email_mentor" placeholder="Enter Email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Status</label>
-                                        <input type="text" class="form-control form-control-lg" id="status_mentor" name="status_mentor" placeholder="Enter Status" required>
+                                        <select class="form-control form-control-lg" id="status_mentor" name="status_mentor" required>
+                                            <option value="">-Pilih Status-</option>
+                                            <option value="aktif">Aktif</option>
+                                            <option value="tidak aktif">Tidak Aktif</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

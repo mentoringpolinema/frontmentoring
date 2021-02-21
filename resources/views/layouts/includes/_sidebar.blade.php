@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="zxx" class="js">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="author" content="Mentoring Polinema">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Ehey.">
-    <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="template/homepage/assets/images/favicon.ico">
-    <!-- Page Title  -->
-    <title> Dashboard | Mentoring Polinema <?php echo date("Y");?> </title>
-    <!-- StyleSheets  -->
-    <link rel="stylesheet" href="{{asset('template/dashboard/assets/css/dashlite.css?ver=2.2.0')}}">
-    <link id="skin-default" rel="stylesheet" href="{{asset('template/dashboard/css/theme.css?ver=2.2.0')}}">
-</head>
-
-<body class="nk-body bg-lighter npc-default has-sidebar ">
-    <div class="nk-app-root">
-        <!-- main @s -->
-        <div class="nk-main ">
-            <!-- sidebar @s -->
             <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
