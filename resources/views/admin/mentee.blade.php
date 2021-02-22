@@ -330,56 +330,59 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="full-name">Nama</label>
-                                        <input type="text" class="form-control form-control-lg" id="full-name" value="A. Yahya Hudan Permana" placeholder="Enter Full name">
+                                        <input type="text" class="form-control form-control-lg" id="full-name" name="nama_mentee" value="A. Yahya Hudan Permana" placeholder="Enter Full name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">NIM</label>
-                                        <input type="text" class="form-control form-control-lg" id="display-name" value="1831710190" placeholder="Enter display name">
+                                        <input type="text" class="form-control form-control-lg" id="display-name" name="nim_mentee" value="1831710190" placeholder="Enter display name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Jurusan</label>
-                                        <select class="form-select" id="Jurusan" data-ui="lg">
-                                            <option>Teknologi Informasi</option>
-                                            <option>Teknik Elektro</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Prodi</label>
-                                        <select class="form-select" id="Prodi" data-ui="lg">
-                                            <option>D3 Manajemen Informatika</option>
-                                            <option>D4 Teknik Informatika</option>
+                                        <select class="form-select" id="jurusan_mentee" name="jurusan_mentee" data-ui="lg" required>
+                                            <option value="">-Pilih Jurusan-</option>
+                                            <option value="Teknologi Informasi">Teknologi Informasi</option>
+                                            <option value="Teknik Elektro">Teknik Elektro</option>
+                                            <option value="Teknik Sipil">Teknik Sipil</option>
+                                            <option value="Teknik Mesin">Teknik Mesin</option>
+                                            <option value="Akuntansi">Akuntansi</option>
+                                            <option value="Bahasa Inggris">Bahasa Inggris</option>
+                                            <option value="Teknik Kimia">Teknik Kimia</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kelas</label>
-                                        <select class="form-select" id="kelas" data-ui="lg">
-                                            <option>A</option>
-                                            <option>B</option>
-                                            <option>C</option>
-                                            <option>D</option>
-                                            <option>E</option>
-                                            <option>F</option>
+                                        <select class="form-select" id="kelas_mentee" name="kelas_mentee" data-ui="lg" required>
+                                            <option value="">-Pilih Kelas-</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="F">F</option>
+                                            <option value="G">G</option>
+                                            <option value="H">H</option>
+                                            <option value="I">I</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kelompok</label>
-                                        <select class="form-select" id="kelompok" data-ui="lg">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
+                                        <select class="form-select" id="kelompok_mentee" name="kelompok_mentee" data-ui="lg">
+                                            <option value="">-Pilih Kelompok-</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
                                         </select>
                                     </div>
                                 </div>

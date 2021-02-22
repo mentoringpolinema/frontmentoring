@@ -99,7 +99,7 @@
                                                             <th class="nk-tb-col"><span class="sub-text">Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jenis Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Tanggal Kegiatan</span></th>
-                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jam</span></th>
+                                                            {{-- <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jam</span></th> --}}
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Minggu Ke-</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Detail</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
@@ -122,9 +122,9 @@
                                                             <td class="nk-tb-col tb-col-mb">
                                                                 <span class="tb-amount">{{$kegiatan->tanggal_kegiatan}}</span>
                                                             </td>
-                                                            <td class="nk-tb-col tb-col-mb">
+                                                            {{-- <td class="nk-tb-col tb-col-mb">
                                                                 <span class="tb-amount">{{$kegiatan->jam_kegiatan}}</span>
-                                                            </td>
+                                                            </td> --}}
                                                             <td class="nk-tb-col tb-col-mb">
                                                                 <span class="tb-amount">{{$kegiatan->minggu_kegiatan}}</span>
                                                             </td>
@@ -167,8 +167,8 @@
                         </li>
                     </ul><!-- .nav-tabs -->
                     <div class="tab-content">
-                        <div class="tab-pane active" id="pertemuan">
-                            <form action="#" class="form-validate is-alter" method="POST">
+                        <div class="tab-pane active" id="personal">
+                            <form action="/admin/kegiatan/addKegiatan" class="form-validate is-alter" method="POST">
                             {{ csrf_field() }}
                             <div class="row gy-4">
                                 <div class="col-md-7">
@@ -183,9 +183,10 @@
                                          <select class="form-select" id="jenis_kegiatan" name="jenis_kegiatan" required>
                                             {{-- @foreach ($data_prodi as $prodi) --}}
                                             <option>- Jenis Kegiatan -</option>
-                                            <option>Pertemuan</option>
-                                            <option>Opening Mentoring</option>
-                                            <option>Closing Mentoring</option>
+                                            <option value="Pertemuan">Pertemuan</option>
+                                            <option value="Materi">Materi</option>
+                                            <option value="Opening Mentoring">Opening Mentoring</option>
+                                            <option value="Closing Mentoring">Closing Mentoring</option>
                                             {{-- @endforeach --}}
                                         </select>
                                     </div>
@@ -194,14 +195,14 @@
                                     <div class="form-group">
                                         <label class="form-label" for="kegiatan-date">Tanggal Kegiatan</label>
                                         <div class="form-control-wrap">
-                                            <div class="form-icon form-icon-right">
+                                            {{-- <div class="form-icon form-icon-right">
                                                 <em class="icon ni ni-calendar-alt"></em>
-                                            </div>
-                                            <input type="date" class="form-control date-picker" id="tanggal_kegiatan" name="tanggal_kegiatan" required>
+                                            </div> --}}
+                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan" required>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                {{-- <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="form-label" for="kegiatan-date">Jam Kegiatan</label>
                                         <div class="form-control-wrap">
@@ -211,19 +212,24 @@
                                             <input type="text" class="form-control time-picker" id="jam_kegiatan" name="jam_kegiatan" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Detail Kegiatan</label>
-                                        <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
-                                    </div>
-                                </div>                                
+                                </div> --}}
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label class="form-label" for="kegiatan-minggu">Minggu Kegiatan</label>
+                                        <label class="form-label" for="kegiatan-minggu">Minggu Ke-</label>
                                         <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan" required>
+                                        <small>Contoh : 1</small>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    {{-- <div class="form-group">
+                                        <label class="form-label" for="phone-no">Detail Kegiatan</label>
+                                        <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
+                                    </div> --}}
+                                    <textarea id="detail_kegiatan" name="detail_kegiatan">
+                                        
+                                    </textarea>
+                                </div>                                
+                                
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>

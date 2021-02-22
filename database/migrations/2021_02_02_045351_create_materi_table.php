@@ -17,6 +17,7 @@ class CreateMateriTable extends Migration
             $table->increments('id_materi');
             $table->string('nama_materi');
             $table->string('link_materi');
+            $table->string('detail_materi');
             $table->timestamps();
         });
     }
