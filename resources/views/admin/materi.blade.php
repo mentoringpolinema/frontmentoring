@@ -118,7 +118,7 @@
                     </ul><!-- .nav-tabs --> --}}
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
-                            <form action="/admin/addMateri" class="form-validate is-alter" method="POST">
+                            <form action="/admin/materi/addMateri" class="form-validate is-alter" method="POST">
                             {{ csrf_field() }}
                             <div class="row gy-4">
                                 <div class="col-md-9">
@@ -131,6 +131,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="minggu-materi">Minggu Ke-</label>
                                         <select class="form-select" id="minggu_materi" name="minggu_materi" >
+                                            <option>Minggu Ke-</option>
                                             @foreach ($data_kegiatan as $kegiatan)
                                             <option>{{$kegiatan->minggu_kegiatan}}</option>
                                             @endforeach

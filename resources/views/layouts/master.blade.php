@@ -11,6 +11,8 @@
     <!-- Page Title  -->
     <title> Dashboard | Mentoring Polinema <?php echo date("Y");?> </title>
     <!-- StyleSheets  -->
+    
+	<link rel="stylesheet" href="{{asset('ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css')}}">
     <link rel="stylesheet" href="{{asset('template/dashboard/assets/css/dashlite.css?ver=2.2.0')}}">
     <link id="skin-default" rel="stylesheet" href="{{asset('template/dashboard/assets/css/theme.css?ver=2.2.0')}}">
 </head>
@@ -60,6 +62,12 @@
     <!-- Sweet Alert JS -->
     {{-- <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.2.0')}}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="{{asset('ckeditor\ckeditor.js')}}"></script>
+	<script src="{{asset('ckeditor\sample.js')}}"></script>
+    <script>
+        initSample();
+    </script>
+
 
 </body>
 

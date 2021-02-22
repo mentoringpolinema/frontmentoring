@@ -8,36 +8,43 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    // Dashboard Functon
+    // Dashboard Function
     public function index()
     {
         $data_kegiatan = \App\Models\Kegiatan::all();
         return view('admin.index', ['data_kegiatan' => $data_kegiatan]);
     }
 
-    // Kegiatan Function
-    // Get Kegiatan
+    //--Kegiatan Function--
+
+    //Get Kegiatan
     public function kegiatan()
     {
         $data_kegiatan = \App\Models\Kegiatan::all();
         return view('admin.kegiatan', ['data_kegiatan' => $data_kegiatan]);
     }
+
     // Add Kegiatan
     public function addKegiatan(Request $request)
     {
-        \App\Models\Kegiatan::create($request->all());
-        return redirect('/admin/kegiatan')->with('success', 'kegiatan Berhasil ditambahkan !');
+        $kegiatan = \App\Models\Kegiatan::create([
+            "nama_kegiatan" => $request->nama_kegiatan,
+            "jenis_kegiatan" => $request->jenis_kegiatan,
+            "tanggal_kegiatan" => $request->tanggal_kegiatan,
+            "minggu_kegiatan" => $request->minggu_kegiatan,
+            "detail_kegiatan" => $request->detail_kegiatan
+        ]);
+        return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil ditambahkan !');
     }
     // Delete Kegiatan
     public function delKegiatan($id_kegiatan)
     {
         $data_kegiatan = \App\Models\Kegiatan::find($id_kegiatan);
-        $data_kegiatan->delete($id_kegiatan);
+        $data_kegiatan->delete($data_kegiatan);
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil dihapus !');
     }
 
     // Mentor Function 
-    // Get Mentor
     public function mentor()
     {
         $data_mentor = \App\Models\Mentor::all();
@@ -95,19 +102,14 @@ class AdminController extends Controller
     {
         $data_mentor = \App\Models\Mentor::find($id_mentor);
         $data_mentor->delete($data_mentor);
-        return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !', 'Anjay');
+        return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
     }
-
-
-
-
-
 
     // Mentee Function
     public function mentee()
     {
-        // $data_mentor = \App\Models\Mentor::all();
-        return view('admin.mentee');
+        $data_mentee = \App\Models\Mentee::all();
+        return view('admin.mentee', ['data_mentee' => $data_mentee]);
     }
 
     // Users Function
@@ -144,18 +146,21 @@ class AdminController extends Controller
     // Delete Prodi
 
     // Materi Function
-
-    // Get Materi
     public function materi()
     {
         $data_materi = \App\Models\Materi::all();
         $data_kegiatan = \App\Models\Kegiatan::all();
         return view('admin.materi', ['data_materi' => $data_materi], ['data_kegiatan' => $data_kegiatan]);
     }
+
     // Add Materi
     public function addMateri(Request $request)
     {
-        \App\Models\Materi::create($request->all());
+        $materi = \App\Models\Materi::create([
+            "nama_materi" => $request->nama_materi,
+            "link_materi" => $request->link_materi,
+            "detail_materi" => $request->detail_materi
+        ]);
         return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
     }
     // Delete Materi
@@ -167,10 +172,26 @@ class AdminController extends Controller
     }
 
     // Kelompok Function
-
-    // Get Kelompok
     public function kelompok()
     {
-        return view('admin.kelompok');
+        $data_kelompok = \App\Models\Kelompok::all();
+        return view('admin.kelompok', ['data_kelompok' => $data_kelompok]);
     }
+
+    //Add Kelompok
+    public function addKelompok(Request $request)
+    {
+
+        $kegiatan = \App\Models\Kelompok::create([
+            "nama_kegiatan" => $request->nama_kegiatan,
+            "jenis_kegiatan" => $request->jenis_kegiatan,
+            "tanggal_kegiatan" => $request->tanggal_kegiatan,
+            "detail_kegiatan" => $request->detail_kegiatan,
+        ]);
+
+        return redirect('/admin/kegiatan')->with('success', 'Kelompok Berhasil ditambahkan !');
+    }
+    // Get Kelompok
+
+
 }

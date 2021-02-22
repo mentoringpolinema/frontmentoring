@@ -329,11 +329,11 @@
                                         <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
                                          <select class="form-select" id="jenis_kegiatan" name="jenis_kegiatan" required>
                                             {{-- @foreach ($data_prodi as $prodi) --}}
-                                            <option>- Jenis Kegiatan -</option>
-                                            <option>Pertemuan</option>
-                                            <option>Materi</option>
-                                            <option>Opening Mentoring</option>
-                                            <option>Closing Mentoring</option>
+                                            <option value="">- Jenis Kegiatan -</option>
+                                            <option value=Pertemuan"">Pertemuan</option>
+                                            <option value="Materi">Materi</option>
+                                            <option value="Opening Mentoring">Opening Mentoring</option>
+                                            <option value="Closing Mentoring">Closing Mentoring</option>
                                             {{-- @endforeach --}}
                                         </select>
                                     </div>
