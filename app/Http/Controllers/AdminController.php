@@ -189,9 +189,15 @@ class AdminController extends Controller
             "detail_kegiatan" => $request->detail_kegiatan,
         ]);
 
-        return redirect('/admin/kegiatan')->with('success', 'Kelompok Berhasil ditambahkan !');
+        return redirect('/admin/kelompok')->with('success', 'Kelompok Berhasil ditambahkan !');
     }
     // Get Kelompok
 
+
+    // Keluhan Function
+    public function keluhan()
+    {
+        return view('admin.keluhan');
+    }
 
 }

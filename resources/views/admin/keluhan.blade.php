@@ -1,4 +1,5 @@
 @extends('layouts.master')
+<br>
 @section('content')
                 <div class="nk-content p-0">
                     <div class="nk-content-inner">

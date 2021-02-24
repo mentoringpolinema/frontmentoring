@@ -1,4 +1,4 @@
-<?php
+{{-- <?php
     function dateIndonesia($date){
         if($date != '0000-00-00'){
             $date = explode('-', $date);
@@ -55,7 +55,7 @@
         return $bulan;
     }
 
-?>
+?> --}}
 
 @extends('layouts.master')
 @section('content')
@@ -173,7 +173,7 @@
                                                             @foreach ($data_kegiatan as $kegiatan)
                                                             <li class="timeline-item">
                                                                 <div class="timeline-status bg-success is-outline"></div>
-                                                                <div class="timeline-date">{{dateIndonesia($kegiatan->tanggal_kegiatan)}}</div>
+                                                                <div class="timeline-date">{{$kegiatan->tanggal_kegiatan}}</div>
                                                                 <div class="timeline-data">
                                                                     <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
                                                                     <div class="timeline-des">
