@@ -95,28 +95,28 @@
                                                         <li class="item">
                                                             <div class="info">
                                                                 <div class="title">Data Mentee</div>
-                                                                <div class="count">3,795</div>
+                                                                <div class="count">{{$totalMentee}}</div>
                                                             </div>
                                                             <em class="icon bg-primary-dim ni ni-users"></em>
                                                         </li>
                                                         <li class="item">
                                                             <div class="info">
                                                                 <div class="title">Data Mentor</div>
-                                                                <div class="count">120</div>
+                                                                <div class="count">{{$totalMentor}}</div>
                                                             </div>
                                                             <em class="icon bg-info-dim ni ni-user"></em>
                                                         </li>
                                                         <li class="item">
                                                             <div class="info">
                                                                 <div class="title">Data Materi</div>
-                                                                <div class="count">5</div>
+                                                                <div class="count">{{$totalMateri}}</div>
                                                             </div>
                                                             <em class="icon bg-pink-dim ni ni-book"></em>
                                                         </li>
                                                         <li class="item">
                                                             <div class="info">
                                                                 <div class="title">Data Kegiatan</div>
-                                                                <div class="count">10</div>
+                                                                <div class="count">{{$totalKegiatan}}</div>
                                                             </div>
                                                             <em class="icon bg-warning-dim ni ni-video-fill"></em>
                                                         </li>
@@ -143,14 +143,14 @@
                                                         <li class="item">
                                                             <div class="info">
                                                                 <div class="title">Data Prodi</div>
-                                                                <div class="count">25</div>
+                                                                <div class="count">{{$totalProdi}}</div>
                                                             </div>
                                                             <em class="icon bg-info-dim ni ni-list"></em>
                                                         </li>
                                                         <li class="item">
                                                             <div class="info">
                                                                 <div class="title">Data Jurusan</div>
-                                                                <div class="count">6</div>
+                                                                <div class="count">{{$totalJurusan}}</div>
                                                             </div>
                                                             <em class="icon bg-pink-dim ni ni-setting"></em>
                                                         </li>
@@ -173,7 +173,7 @@
                                                             @foreach ($data_kegiatan as $kegiatan)
                                                             <li class="timeline-item">
                                                                 <div class="timeline-status bg-success is-outline"></div>
-                                                                <div class="timeline-date">{{$kegiatan->tanggal_kegiatan}}</div>
+                                                                <div class="timeline-date">{{($kegiatan->tanggal_kegiatan)}}</div>
                                                                 <div class="timeline-data">
                                                                     <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
                                                                     <div class="timeline-des">

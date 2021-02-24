@@ -11,8 +11,21 @@ class AdminController extends Controller
     // Dashboard Function
     public function index()
     {
+        $totalMentee = \App\Models\Mentee::count();
+        $totalMentor = \App\Models\Mentor::count();
         $data_kegiatan = \App\Models\Kegiatan::all();
-        return view('admin.index', ['data_kegiatan' => $data_kegiatan]);
+        $totalKegiatan = \App\Models\Kegiatan::count();
+        $totalMateri = \App\Models\Materi::count();
+        $totalJurusan = \App\Models\Jurusan::count();
+        $totalProdi = \App\Models\Prodi::count();
+        return view('admin.index', ['data_kegiatan' => $data_kegiatan], [
+            'totalMentee' => $totalMentee, 
+            'totalMentor' => $totalMentor,
+            'totalKegiatan' => $totalKegiatan,
+            'totalMateri' => $totalMateri,
+            'totalJurusan' => $totalJurusan,
+            'totalProdi' => $totalProdi
+            ]);
     }
 
     //--Kegiatan Function--
@@ -199,5 +212,10 @@ class AdminController extends Controller
     {
         return view('admin.keluhan');
     }
-
+    
+    // Pertemuan Function
+    public function pertemuan()
+    {
+        return view('admin.pertemuan');
+    }
 }

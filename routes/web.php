@@ -88,7 +88,12 @@ Route::group(['middleware' => 'auth'], function () {
     // Get Keluhan
     Route::get('/admin/keluhan', '\App\Http\Controllers\AdminController@keluhan');
     // Add Keluhan
-
+    
+    // Pertemuan
+    // Get Pertemuan
+    Route::get('/admin/pertemuan', '\App\Http\Controllers\AdminController@pertemuan');
+    // Add Pertemuan
+    
     // Mentor Routes 
 
     // Dashboard
