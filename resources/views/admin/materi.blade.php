@@ -16,7 +16,7 @@
                                         <div class="nk-block-head-content">
                                             <h3 class="nk-block-title page-title">Materi Mentoring </h3>
                                             <div class="nk-block-des text-soft">
-                                                <p>You have total 1 Materi.</p>
+                                                <p>You have total {{$totalMateri}} Materi.</p>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">

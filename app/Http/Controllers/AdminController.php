@@ -34,7 +34,8 @@ class AdminController extends Controller
     public function kegiatan()
     {
         $data_kegiatan = \App\Models\Kegiatan::all();
-        return view('admin.kegiatan', ['data_kegiatan' => $data_kegiatan]);
+        $totalKegiatan = \App\Models\Kegiatan::count();
+        return view('admin.kegiatan', ['data_kegiatan' => $data_kegiatan], ['totalKegiatan' => $totalKegiatan]);
     }
 
     // Add Kegiatan
@@ -61,7 +62,8 @@ class AdminController extends Controller
     public function mentor()
     {
         $data_mentor = \App\Models\Mentor::all();
-        return view('admin.mentor', ['data_mentor' => $data_mentor]);
+        $totalMentor = \App\Models\Mentor::count();
+        return view('admin.mentor', ['data_mentor' => $data_mentor], ['totalMentor' => $totalMentor]);
     }
 
     // Get Mentor By ID
@@ -160,10 +162,11 @@ class AdminController extends Controller
 
     // Materi Function
     public function materi()
-    {
+    {   
         $data_materi = \App\Models\Materi::all();
         $data_kegiatan = \App\Models\Kegiatan::all();
-        return view('admin.materi', ['data_materi' => $data_materi], ['data_kegiatan' => $data_kegiatan]);
+        $totalMateri = \App\Models\Materi::count();
+        return view('admin.materi', ['data_materi' => $data_materi, 'data_kegiatan' => $data_kegiatan],['totalMateri' => $totalMateri]);
     }
 
     // Add Materi

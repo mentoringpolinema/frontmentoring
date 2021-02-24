@@ -50,14 +50,14 @@
                                                 </div>
                                                 <br>
                                                 <div class="row g-gs">
-                                                    <div class="col-xxl-3 col-md-4">
+                                                    <div class="col-xxl-3 col-md-6">
                                                         <div class="card h-100">
                                                             <div class="card-inner">
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
-                                                                            <div class="title">Total kegiatan</div>
-                                                                            <div class="count">10</div>
+                                                                            <div class="title">Total Kegiatan</div>
+                                                                            <div class="count">{{$totalKegiatan}}</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
                                                                     </li>
@@ -65,7 +65,7 @@
                                                             </div><!-- .card-inner -->
                                                         </div><!-- .card -->
                                                     </div><!-- .col -->
-                                                    <div class="col-xxl-3 col-md-4">
+                                                    <div class="col-xxl-3 col-md-6">
                                                         <div class="card h-100">
                                                             <div class="card-inner">
                                                                 <ul class="nk-store-statistics">
@@ -74,7 +74,7 @@
                                                                             <div class="title">Total Kelompok</div>
                                                                             <div class="count">20</div>
                                                                         </div>
-                                                                        <em class="icon bg-secondary-dim ni ni-link-group"></em>
+                                                                        <em class="icon bg-success-dim ni ni-link-group"></em>
                                                                     </li>
                                                                 </ul>
                                                             </div><!-- .card-inner -->

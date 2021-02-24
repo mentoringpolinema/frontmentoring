@@ -50,14 +50,14 @@
                                                 </div>
                                                 <br>
                                                 <div class="row g-gs">
-                                                    <div class="col-xxl-3 col-md-4">
+                                                    <div class="col-xxl-3 col-md-6">
                                                         <div class="card h-100">
                                                             <div class="card-inner">
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Mentor</div>
-                                                                            <div class="count">3,795</div>
+                                                                            <div class="count">{{$totalMentor}}</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
                                                                     </li>
@@ -65,7 +65,7 @@
                                                             </div><!-- .card-inner -->
                                                         </div><!-- .card -->
                                                     </div><!-- .col -->
-                                                    <div class="col-xxl-3 col-md-4">
+                                                    <div class="col-xxl-3 col-md-6">
                                                         <div class="card h-100">
                                                             <div class="card-inner">
                                                                 <ul class="nk-store-statistics">
