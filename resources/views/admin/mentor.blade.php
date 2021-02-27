@@ -36,6 +36,7 @@
                                                             </div>
                                                         </li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalForm"><em class="icon ni ni-user-add"></em><span>Tambah Mentor</span></a></li>
+                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -274,6 +275,57 @@
         </div><!-- .modal-dialog -->
     </div><!-- .modal -->
 
+    <!-- Import Excel Modal @e -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="importModal">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                <div class="modal-body modal-body-lg">
+                    <h5 class="title">Import Data Mentor</h5>
+                    <ul class="nk-nav nav nav-tabs">
+                    </ul><!-- .nav-tabs -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="personal">
+                            <form action="/admin/impMentor" class="form-validate is-alter" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="row gy-4">                              
+                                <div class="col-md-12">
+                                    {{-- <label class="form-label" for="default-06">Default File Upload</label> --}}
+                                        <div class="form-control-wrap">
+                                           <div class="custom-file">
+                                                <input type="file" multiple class="custom-file-input" id="data_mentor" name="data_mentor">
+                                                    <label class="custom-file-label" for="data_mentor">Choose file</label>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="upload-zone small bg-lighter my-2">
+                                            <div class="dz-message">
+                                                 <span class="dz-message-text">Drag and drop file</span>
+                                            </div>
+                                        </div> --}}
+                                </div>
+                                {{-- <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="full-name">File Extensi Harus berupa excel (csx dan xs),<br> Jika Belum ada dowload <a href="#">format excel</a></label>
+                                    </div>
+                                </div> --}}
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            <button type="submit" class="btn btn-lg btn-primary" value="Import">Upload</button>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div><!-- .tab-content -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- .modal -->
     
 
     

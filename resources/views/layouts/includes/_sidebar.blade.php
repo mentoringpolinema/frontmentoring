@@ -82,7 +82,7 @@
                                     <h6 class="overline-title text-primary-alt">Kelola Website</h6>
                                 </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item">
-                                    <a href="#" class="nk-menu-link">
+                                    <a href="/admin/pengumuman" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-signal"></em></span>
                                         <span class="nk-menu-text">Pengumuman</span>
                                     </a>
@@ -187,23 +187,29 @@
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
-                                    <a href="/mentee/materi" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-todo"></em></span>
-                                        <span class="nk-menu-text">Materi</span>
+                                 <li class="nk-menu-item">
+                                    <a href="mentee/kelompok" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-view-col3"></em></span>
+                                        <span class="nk-menu-text">Kelompok</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="/mentee/tugas" class="nk-menu-link">
+                                    <a href="/mentee/materi" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-todo-fill"></em></span>
-                                        <span class="nk-menu-text">Tugas</span>
+                                        <span class="nk-menu-text">Materi dan Tugas</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/mentee/pertemuan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-video"></em></span>
+                                        <span class="nk-menu-text">Pertemuan</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                  <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Menu Pengganti</h6>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="/mentee/profile" class="nk-menu-link">
+                                    <a href="#" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-puzzle-fill"></em></span>
                                         <span class="nk-menu-text">Pengganti</span>
                                     </a>
@@ -215,6 +221,12 @@
                                     <a href="/mentee/profile" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-alt"></em></span>
                                         <span class="nk-menu-text">Profile</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/mentee/keluhan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-chat-fill"></em></span>
+                                        <span class="nk-menu-text">Keluhan</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                             </ul><!-- .nk-menu -->

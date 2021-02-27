@@ -1,4 +1,4 @@
-{{-- <?php
+<?php
     function dateIndonesia($date){
         if($date != '0000-00-00'){
             $date = explode('-', $date);
@@ -55,7 +55,7 @@
         return $bulan;
     }
 
-?> --}}
+?>
 
 @extends('layouts.master')
 @section('content')
