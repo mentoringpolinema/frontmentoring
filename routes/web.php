@@ -37,12 +37,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak');
 
     // Kegiatan
-        //Get Kegiatan
-        Route::get('/admin/kegiatan', '\App\Http\Controllers\AdminController@kegiatan');
-        //Add Kegiatan
-        Route::post('/admin/kegiatan/addKegiatan', '\App\Http\Controllers\AdminController@addKegiatan');
-        //Delete Kegiatan
-        Route::get('/admin/{id_kegiatan}/delKegiatan', '\App\Http\Controllers\AdminController@delKegiatan');
+    //Get Kegiatan
+    Route::get('/admin/kegiatan', '\App\Http\Controllers\AdminController@kegiatan');
+    //Add Kegiatan
+    Route::post('/admin/kegiatan/addKegiatan', '\App\Http\Controllers\AdminController@addKegiatan');
+    //Get Data By Id Kegiatan
+    Route::post('/admin/kegiatan/getByIdKegiatan', '\App\Http\Controllers\AdminController@getByIdKegiatan')->name('getKegiatanByID');
+    //Update Mentor
+    Route::put('/admin/kegiatan', '\App\Http\Controllers\AdminController@editKegiatan');
+    //Delete Kegiatan
+    Route::get('/admin/{id_kegiatan}/delKegiatan', '\App\Http\Controllers\AdminController@delKegiatan');
 
     // Mentor
         //Get Mentor

@@ -56,6 +56,7 @@
     <!-- Sweet Alert-->
     @include('sweetalert::alert')
     <!-- JavaScript -->
+    <script src="{{asset('vendor\jquery\jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('template/dashboard/assets/js/bundle.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard/assets/js/scripts.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard/assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
@@ -63,6 +64,7 @@
     {{-- <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.2.0')}}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="{{asset('ckeditor\ckeditor.js')}}"></script>
+    <script src="{{asset('ckeditor\adapters\jquery.js')}}"></script>
 	<script src="{{asset('ckeditor\sample.js')}}"></script>
     <script>
         initSample();
@@ -72,6 +74,7 @@
     <script src="{{asset('template/dashboard/assets/js/libs/editors/summernote.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard/assets/js/editors.js?ver=2.2.0')}}"></script>
 
+    @yield('jsAdd')
 
 </body>
 

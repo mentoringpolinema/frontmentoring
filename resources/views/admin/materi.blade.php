@@ -71,7 +71,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="project-details">
-                                                            <p>{{$materi->detail_materi}} ...</p>
+                                                            <p>{!!$materi->detail_materi!!} ...</p>
                                                             {{-- <p>{{$materi->link_materi}}</p> --}}
                                                         </div>
                                                         <div class="project-progress">
@@ -144,10 +144,13 @@
                                     </div>
                                 </div>                                
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label class="form-label" for="phone-no">Detail Materi</label>
                                         <textarea type="text" class="form-control form-control-lg" id="detail_materi" name="detail_materi" value="+880" placeholder="Materi Tentang dst..."></textarea>
-                                    </div>
+                                    </div> --}}
+                                    <textarea id="detail_materi" name="detail_materi">
+                                        
+                                    </textarea>
                                 </div>
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">

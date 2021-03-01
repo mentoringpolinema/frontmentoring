@@ -18,22 +18,19 @@ var initSample = ( function() {
 		isBBCodeBuiltIn = !!CKEDITOR.plugins.get( 'bbcode' );
 
 	return function() {
-		var editorElement = CKEDITOR.document.getById( 'detail_kegiatan' );
-
-		// :(((
-		if ( isBBCodeBuiltIn ) {
-			editorElement.setHtml(
-				'Hello world!\n\n' +
-				'I\'m an instance of [url=https://ckeditor.com]CKEditor[/url].'
-			);
-		}
+		var detail_kegiatan = CKEDITOR.document.getById( 'detail_kegiatan' );
+		var editorElement = CKEDITOR.document.getById( 'detail_materi' );
 
 		// Depending on the wysiwygarea plugin availability initialize classic or inline editor.
 		if ( wysiwygareaAvailable ) {
 			CKEDITOR.replace( 'detail_kegiatan' );
+			CKEDITOR.replace( 'detail_materi' );
 		} else {
+			detail_kegiatan.setAttribute( 'contenteditable', 'true' );
+			detail_kegiatan_edit.setAttribute( 'contenteditable', 'true' );
 			editorElement.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( 'detail_kegiatan' );
+			CKEDITOR.inline( 'detail_materi' );
 
 			// TODO we can consider displaying some info box that
 			// without wysiwygarea the classic editor may not work.
@@ -51,3 +48,28 @@ var initSample = ( function() {
 	}
 } )();
 
+var initGetDataKegiatan = ( function() {
+	var wysiwygareaAvailable = isWysiwygareaAvailable();
+
+	return function(id) {
+		var detail_kegiatan_edit = CKEDITOR.document.getById( 'detail_kegiatan_edit' );
+
+		// Depending on the wysiwygarea plugin availability initialize classic or inline editor.
+		if ( wysiwygareaAvailable ) {
+			CKEDITOR.replace( 'detail_kegiatan_edit');
+		} else {
+			detail_kegiatan_edit.setAttribute( 'contenteditable', 'true' );
+			CKEDITOR.inline( 'detail_kegiatan_edit' );
+		}
+	};
+
+	function isWysiwygareaAvailable() {
+		// If in development mode, then the wysiwygarea must be available.
+		// Split REV into two strings so builder does not replace it :D.
+		if ( CKEDITOR.revision == ( '%RE' + 'V%' ) ) {
+			return true;
+		}
+
+		return !!CKEDITOR.plugins.get( 'wysiwygarea' );
+	}
+} )();
