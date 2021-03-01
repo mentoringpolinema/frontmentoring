@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\MentorImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -133,6 +135,13 @@ class AdminController extends Controller
         $data_mentor->delete($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
     }
+    // Import Mentor
+    public function impMentor(Request $request)
+    {
+        Excel::import(new MentorImport,$request->file('data_mentor'));
+        return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Import !');
+        // dd($request->all());
+    }
 
     // Mentee Function
     public function mentee()
@@ -170,6 +179,7 @@ class AdminController extends Controller
         return redirect('/admin/data')->with('success', 'Data Prodi Berhasil ditambahkan !');
     }
     // Delete Data
+    
     // Delete Jurusan
 
     // Delete Prodi
@@ -234,5 +244,10 @@ class AdminController extends Controller
     public function pertemuan()
     {
         return view('admin.pertemuan');
+    }
+
+    // Pengumuman Funcition
+    public function pengumuman(){
+        return view('admin.pengumuman');
     }
 }
