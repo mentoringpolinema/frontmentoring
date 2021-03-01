@@ -8,18 +8,25 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
+use App\Models\Kegiatan;
+use App\Models\Mentee;
+use App\Models\Mentor;
+use App\Models\Materi;
+use App\Models\Jurusan;
+use App\Models\Prodi;
+
 class AdminController extends Controller
 {
     // Dashboard Function
     public function index()
     {
-        $totalMentee = \App\Models\Mentee::count();
-        $totalMentor = \App\Models\Mentor::count();
-        $data_kegiatan = \App\Models\Kegiatan::all();
-        $totalKegiatan = \App\Models\Kegiatan::count();
-        $totalMateri = \App\Models\Materi::count();
-        $totalJurusan = \App\Models\Jurusan::count();
-        $totalProdi = \App\Models\Prodi::count();
+        $totalMentee = Mentee::count();
+        $totalMentor = Mentor::count();
+        $data_kegiatan = Kegiatan::all();
+        $totalKegiatan = Kegiatan::count();
+        $totalMateri = Materi::count();
+        $totalJurusan = Jurusan::count();
+        $totalProdi = Prodi::count();
         return view('admin.index', ['data_kegiatan' => $data_kegiatan], [
             'totalMentee' => $totalMentee, 
             'totalMentor' => $totalMentor,
@@ -35,15 +42,15 @@ class AdminController extends Controller
     //Get Kegiatan
     public function kegiatan()
     {
-        $data_kegiatan = \App\Models\Kegiatan::all();
-        $totalKegiatan = \App\Models\Kegiatan::count();
+        $data_kegiatan = Kegiatan::all();
+        $totalKegiatan = Kegiatan::count();
         return view('admin.kegiatan', ['data_kegiatan' => $data_kegiatan], ['totalKegiatan' => $totalKegiatan]);
     }
 
     // Add Kegiatan
     public function addKegiatan(Request $request)
     {
-        $kegiatan = \App\Models\Kegiatan::create([
+        $kegiatan = Kegiatan::create([
             "nama_kegiatan" => $request->nama_kegiatan,
             "jenis_kegiatan" => $request->jenis_kegiatan,
             "tanggal_kegiatan" => $request->tanggal_kegiatan,
@@ -55,22 +62,31 @@ class AdminController extends Controller
     // Delete Kegiatan
     public function delKegiatan($id_kegiatan)
     {
-        $data_kegiatan = \App\Models\Kegiatan::find($id_kegiatan);
+        $data_kegiatan = Kegiatan::find($id_kegiatan);
         $data_kegiatan->delete($data_kegiatan);
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil dihapus !');
+    }
+
+    // Get By Id Kegiatan
+    public function getByIdKegiatan(Request $request){
+        if($request->ajax()){
+            $data = Kegiatan::findOrFail($request->id_kegiatan);
+            return response()->json(['options'=>$data]);
+        }
     }
 
     // Edit Kegiatan
     public function editKegiatan(Request $request)
     {
-        $kegiatan = \App\Models\Kegiatan::updateOrCreate(
-            ['id_kegiatan'],
-            ["nama_kegiatan" => $request->nama_kegiatan,
-            "jenis_kegiatan" => $request->jenis_kegiatan,
-            "tanggal_kegiatan" => $request->tanggal_kegiatan,
-            "minggu_kegiatan" => $request->minggu_kegiatan,
-            "detail_kegiatan" => $request->detail_kegiatan]
-        );
+        $id = $request->id_kegiatan_edit;
+        $kegiatan = Kegiatan::findOrFail($id);
+        $kegiatan->update([
+            "nama_kegiatan" => $request->nama_kegiatan_edit,
+            "jenis_kegiatan" => $request->jenis_kegiatan_edit,
+            "tanggal_kegiatan" => $request->tanggal_kegiatan_edit,
+            "minggu_kegiatan" => $request->minggu_kegiatan_edit,
+            "detail_kegiatan" => $request->detail_kegiatan_edit
+        ]);
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
     }
 

@@ -28,17 +28,17 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
-                                     <select class="form-select" id="jenis_kegiatan" name="jenis_kegiatan" required>
+                                     <select class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" required>
                                         {{-- @foreach ($data_prodi as $prodi) --}}
                                         <option>- Jenis Kegiatan -</option>
-                                        <option value="Pertemuan">Pertemuan</option>
-                                        <option value="Materi">Materi</option>
-                                        <option value="Opening Mentoring">Opening Mentoring</option>
-                                        <option value="Closing Mentoring">Closing Mentoring</option>
+                                        <option value="Pertemuan" <?php if($jenisKegiatan == "Pertemuan"){ ?> selected <?php } ?>>Pertemuan</option>
+                                        <option value="Materi" <?php if($jenisKegiatan == "Materi"){ ?> selected <?php } ?>>Materi</option>
+                                        <option value="Opening Mentoring" <?php if($jenisKegiatan == "Opening Mentoring"){ ?> selected <?php } ?>>Opening Mentoring</option>
+                                        <option value="Closing Mentoring" <?php if($jenisKegiatan == "Closing Mentoring"){ ?> selected <?php } ?>>Closing Mentoring</option>
                                         {{-- @endforeach --}}
-                                        @foreach ($data_kegiatan as $kegiatan)
+                                        {{-- @foreach ($data_kegiatan as $kegiatan)
                                             <option>{{$kegiatan->minggu_kegiatan}}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                     </select>
                                 </div>
                             </div>
@@ -76,8 +76,8 @@
                                     <label class="form-label" for="phone-no">Detail Kegiatan</label>
                                     <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
                                 </div> --}}
-                                <textarea id="detail_kegiatan" name="detail_kegiatan" value="{{ $detailKegiatan }}">
-                                    
+                                <textarea id="detail_kegiatan_edit" name="detail_kegiatan">
+                                    {{ $detailKegiatan }}
                                 </textarea>
                             </div>                                
                             
@@ -127,4 +127,5 @@
             </div><!-- .modal-body -->
         </div><!-- .modal-content -->
     </div><!-- .modal-dialog -->
-</div><!-- .modal -->
+</div>
+<!-- .modal -->
