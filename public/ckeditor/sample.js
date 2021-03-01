@@ -19,6 +19,7 @@ var initSample = ( function() {
 
 	return function() {
 		var editorElement = CKEDITOR.document.getById( 'detail_kegiatan' );
+		var editorElement = CKEDITOR.document.getById( 'detail_materi' );
 
 		// :(((
 		if ( isBBCodeBuiltIn ) {
@@ -31,9 +32,11 @@ var initSample = ( function() {
 		// Depending on the wysiwygarea plugin availability initialize classic or inline editor.
 		if ( wysiwygareaAvailable ) {
 			CKEDITOR.replace( 'detail_kegiatan' );
+			CKEDITOR.replace( 'detail_materi' );
 		} else {
 			editorElement.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( 'detail_kegiatan' );
+			CKEDITOR.inline( 'detail_materi' );
 
 			// TODO we can consider displaying some info box that
 			// without wysiwygarea the classic editor may not work.

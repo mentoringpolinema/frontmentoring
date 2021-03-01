@@ -55,8 +55,6 @@
         return $bulan;
     }
 
-?>
-
 @extends('layouts.master')
 @section('content')
 <div class="nk-content ">
@@ -173,11 +171,11 @@
                                                             @foreach ($data_kegiatan as $kegiatan)
                                                             <li class="timeline-item">
                                                                 <div class="timeline-status bg-success is-outline"></div>
-                                                                <div class="timeline-date">{{($kegiatan->tanggal_kegiatan)}}</div>
+                                                                <div class="timeline-date">{{dateIndonesia($kegiatan->tanggal_kegiatan)}}</div>
                                                                 <div class="timeline-data">
                                                                     <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
                                                                     <div class="timeline-des">
-                                                                        {{$kegiatan->detail_kegiatan}}
+                                                                        {!!$kegiatan->detail_kegiatan!!}
                                                                         {{-- <strong><span class="time">Waktu : {{$kegiatan->jam_kegiatan}}</span></strong> --}}
                                                                     </div>
                                                                 </div>

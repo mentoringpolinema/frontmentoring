@@ -60,6 +60,20 @@ class AdminController extends Controller
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil dihapus !');
     }
 
+    // Edit Kegiatan
+    public function editKegiatan(Request $request)
+    {
+        $kegiatan = \App\Models\Kegiatan::updateOrCreate(
+            ['id_kegiatan'],
+            ["nama_kegiatan" => $request->nama_kegiatan,
+            "jenis_kegiatan" => $request->jenis_kegiatan,
+            "tanggal_kegiatan" => $request->tanggal_kegiatan,
+            "minggu_kegiatan" => $request->minggu_kegiatan,
+            "detail_kegiatan" => $request->detail_kegiatan]
+        );
+        return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
+    }
+
     // Mentor Function 
     public function mentor()
     {

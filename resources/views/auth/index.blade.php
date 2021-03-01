@@ -45,7 +45,8 @@
                                     </div>
                                 </div><!-- .nk-block-head -->
                                 <form action="/login" method="POST" class="form-validate">
-                                    {{ csrf_field() }}
+                                    {{-- {{ csrf_field() }} --}}
+                                    @csrf
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <label class="form-label" for="default-01">NIM atau Username</label>
