@@ -134,8 +134,8 @@
                                                             <td class="nk-tb-col tb-col-md">
                                                                 {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-trash-alt lg"></em></a> --}}
                                                                 <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan" class="btn btn-round btn-icon btn-sm btn-daaanger" data-toggle="tooltip" data-placement="right" title="Hapus Kegiatan"><em class="icon ni ni-trash-alt"></em></a>
-                                                                <a href="#" class="btn btn-round btn-icon btn-sm btn-saecondary" data-toggle="tooltip" data-placement="right" title="Detail Kegiatan"><em class="icon ni ni-eye-fill"></em></a>
-                                                                <a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" class="btn btn-round btn-icon btn-sm btn-waraning" data-toggle="modal" data-target="{{ "#editKegiatan". $kegiatan->id_kegiatan}}"><em class="icon ni ni-edit"></em></a>
+                                                                <a href="#" class="btn btn-round btn-icon btn-sm btn-saecondary" data-toggle="modal" data-target="#detailModalKegiatan" id="detailKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-eye-fill"></em></a>
+                                                                <a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" class="btn btn-round btn-icon btn-sm btn-waraning" data-toggle="modal" data-target="#editModalKegiatan" id="editKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-edit"></em></a>
                                                                 {{-- <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a> --}}
                                                                 {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/kegiatan" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
@@ -151,7 +151,7 @@
                     </div>
                 </div>
 
- <!--  Tambah Kegiatan Modal @e -->
+    <!--  Tambah Kegiatan Modal @e -->
     <div class="modal fade" tabindex="-1" role="dialog" id="modalKegiatan">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -180,7 +180,7 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
-                                         <select class="form-select" id="jenis_kegiatan" name="jenis_kegiatan" required>
+                                         <select class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" required>
                                             {{-- @foreach ($data_prodi as $prodi) --}}
                                             <option>- Jenis Kegiatan -</option>
                                             <option value="Pertemuan">Pertemuan</option>
@@ -276,13 +276,318 @@
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
-    </div><!-- .modal -->
+    </div>
+    <!-- .modal -->
 
-    <!--  Edit Kegiatan Modal @e -->
+    {{-- Fitur edit kegiatan --}}
+    <div class="modal fade" tabindex="-1" role="dialog" id="editModalKegiatan">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                <div class="modal-body modal-body-lg">
+                    <h5 class="title">Edit Kegiatan</h5>
+                    <ul class="nk-nav nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#pertemuan">Pertemuan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#materi">Materi</a>
+                        </li>
+                    </ul><!-- .nav-tabs -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="personal">
+                            <form action="/admin/kegiatan" class="form-validate is-alter" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="row gy-4">
+                                <input type="hidden" class="form-control form-control" id="id_kegiatan" name="id_kegiatan_edit" value="" required>
+
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-name">Nama Kegiatan</label>
+                                        <input type="text" class="form-control form-control" id="nama_kegiatan" name="nama_kegiatan_edit" value="" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
+                                        <select class="form-control" id="jenis_kegiatan" name="jenis_kegiatan_edit" required>
+                                            {{-- @foreach ($data_prodi as $prodi) --}}
+                                            <option>- Jenis Kegiatan -</option>
+                                            <option value="Pertemuan">Pertemuan</option>
+                                            <option value="Materi">Materi</option>
+                                            <option value="Opening Mentoring">Opening Mentoring</option>
+                                            <option value="Closing Mentoring">Closing Mentoring</option>
+                                            {{-- @endforeach --}}
+                                            {{-- @foreach ($data_kegiatan as $kegiatan)
+                                                <option>{{$kegiatan->minggu_kegiatan}}</option>
+                                                @endforeach --}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-date">Tanggal Kegiatan</label>
+                                        <div class="form-control-wrap">
+                                            {{-- <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-calendar-alt"></em>
+                                            </div> --}}
+                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_edit" value="" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-date">Jam Kegiatan</label>
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-clock"></em>
+                                            </div>
+                                            <input type="text" class="form-control time-picker" id="jam_kegiatan" name="jam_kegiatan" required>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-minggu">Minggu Ke-</label>
+                                        <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan_edit" value="" required>
+                                        <small>Contoh : 1</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <div class="form-group">
+                                        <label class="form-label" for="phone-no">Detail Kegiatan</label>
+                                        <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
+                                    </div> --}}
+                                    <textarea name="detail_kegiatan_edit" id="detail_kegiatan_edit">
+                                        
+                                    </textarea>
+                                </div>                                
+                                
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="materi">
+                            <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
+                            {{ csrf_field() }}
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-l1">Nama Prodi</label>
+                                        <input type="text" class="form-control form-control-lg" id="nama_prodi" name="nama_prodi" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-l2">Singkatan Prodi</label>
+                                        <input type="text" class="form-control form-control-lg" id="singkatan_prodi" name="singkatan_prodi" value="">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            <button type="submit" class="btn btn-lg btn-primary">Tambah Prodi</button>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </form>
+                        </div><!-- .tab-pane -->
+                    </div><!-- .tab-content -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div>
+    <!-- .modal -->
+
+    {{-- Fitur detail kegiatan --}}
+    <div class="modal fade" tabindex="-1" role="dialog" id="detailModalKegiatan">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                <div class="modal-body modal-body-lg">
+                    <h5 class="title">Detail Kegiatan</h5>
+                    <ul class="nk-nav nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#pertemuan">Pertemuan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#materi">Materi</a>
+                        </li>
+                    </ul><!-- .nav-tabs -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="personal">
+                            <form action="" class="form-validate is-alter" method="">
+                            @csrf
+                            <div class="row gy-4">
+                                <input type="hidden" class="form-control form-control" id="id_kegiatan" name="id_kegiatan_detail" value="" readonly>
+
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-name">Nama Kegiatan</label>
+                                        <input type="text" class="form-control form-control" id="nama_kegiatan" name="nama_kegiatan_detail" value="" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
+                                        <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan_detail" value="" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-date">Tanggal Kegiatan</label>
+                                        <div class="form-control-wrap">
+                                            {{-- <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-calendar-alt"></em>
+                                            </div> --}}
+                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_detail" value="" required readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-date">Jam Kegiatan</label>
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-clock"></em>
+                                            </div>
+                                            <input type="text" class="form-control time-picker" id="jam_kegiatan" name="jam_kegiatan" required>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-minggu">Minggu Ke-</label>
+                                        <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan_detail" value="" required readonly>
+                                        <small>Contoh : 1</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <div class="form-group">
+                                        <label class="form-label" for="phone-no">Detail Kegiatan</label>
+                                        <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
+                                    </div> --}}
+                                    <textarea name="detail_kegiatan_detail" id="detail_kegiatan_detail" readonly>
+                                        
+                                    </textarea>
+                                </div>                                
+                                
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="materi">
+                            <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
+                            {{ csrf_field() }}
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-l1">Nama Prodi</label>
+                                        <input type="text" class="form-control form-control-lg" id="nama_prodi" name="nama_prodi" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-l2">Singkatan Prodi</label>
+                                        <input type="text" class="form-control form-control-lg" id="singkatan_prodi" name="singkatan_prodi" value="">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            <button type="submit" class="btn btn-lg btn-primary">Tambah Prodi</button>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </form>
+                        </div><!-- .tab-pane -->
+                    </div><!-- .tab-content -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div>
+    <!-- .modal -->
+
+    {{-- <!--  Edit Kegiatan Modal @e -->
     @foreach ($data_kegiatan as $kegiatan)
-        @include('admin/modalEditKegiatan', ['modalKegiatan' => 'editKegiatan' . $kegiatan->id_kegiatan, 'namaKegiatan' => $kegiatan->nama_kegiatan, 
+        @include('admin/modalEditKegiatan', ['modalKegiatan' => 'editKegiatan' . $kegiatan->id_kegiatan, 'namaKegiatan' => $kegiatan->nama_kegiatan,'jenisKegiatan' => $kegiatan->jenis_kegiatan, 
                     'tglKegiatan' => $kegiatan->tanggal_kegiatan , 'mingguKegiatan' => $kegiatan->minggu_kegiatan
                     , 'detailKegiatan' => $kegiatan->detail_kegiatan])
-    @endforeach
+    @endforeach --}}
+    @section('jsAdd')
+        <script>
+        $('body').on('click', '#editKegiatan', function (event) {
+                event.preventDefault();
+                var token = $("input[name='_token']").val();
+                var id = $(this).data('id');
+                console.log(id)
+                $.ajax({
+                    url: "<?php echo route('getKegiatanByID') ?>",
+                    method: 'POST',
+                    data: {id_kegiatan:id, _token:token},
+                    success: function(data) {
+                        $("input[name='id_kegiatan_edit']").val(data.options.id_kegiatan);
+                        $("input[name='nama_kegiatan_edit']").val(data.options.nama_kegiatan);
+                        $("select[name='jenis_kegiatan_edit']").val(data.options.jenis_kegiatan);
+                        $("input[name='tanggal_kegiatan_edit']").val(data.options.tanggal_kegiatan);
+                        $("input[name='minggu_kegiatan_edit']").val(data.options.minggu_kegiatan);
+                        $("textarea[name='detail_kegiatan_edit']").val(data.options.detail_kegiatan);
+                        // initGetDataKegiatan();
+                        $("textarea[name='detail_kegiatan_edit']").ckeditor();
+                    }
+                });
+        });
         
+        
+        $('body').on('click', '#detailKegiatan', function (event) {
+                event.preventDefault();
+                var token = $("input[name='_token']").val();
+                var id = $(this).data('id');
+                console.log(id)
+                $.ajax({
+                    url: "<?php echo route('getKegiatanByID') ?>",
+                    method: 'POST',
+                    data: {id_kegiatan:id, _token:token},
+                    success: function(data) {
+                        $("input[name='id_kegiatan_detail']").val(data.options.id_kegiatan);
+                        $("input[name='nama_kegiatan_detail']").val(data.options.nama_kegiatan);
+                        $("input[name='jenis_kegiatan_detail']").val(data.options.jenis_kegiatan);
+                        $("input[name='tanggal_kegiatan_detail']").val(data.options.tanggal_kegiatan);
+                        $("input[name='minggu_kegiatan_detail']").val(data.options.minggu_kegiatan);
+                        $("textarea[name='detail_kegiatan_detail']").val(data.options.detail_kegiatan);
+                        // initGetDataKegiatan();
+                        $("textarea[name='detail_kegiatan_detail']").ckeditor();
+                    }
+                });
+        });
+       
+        </script>
+    @endsection
 @stop
