@@ -129,13 +129,13 @@
                                                                 <span class="tb-amount">{{$kegiatan->minggu_kegiatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$kegiatan->detail_kegiatan}}</span>
+                                                                <span>{!!$kegiatan->detail_kegiatan!!}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-trash-alt lg"></em></a> --}}
                                                                 <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan" class="btn btn-round btn-icon btn-sm btn-daaanger" data-toggle="tooltip" data-placement="right" title="Hapus Kegiatan"><em class="icon ni ni-trash-alt"></em></a>
                                                                 <a href="#" class="btn btn-round btn-icon btn-sm btn-saecondary" data-toggle="tooltip" data-placement="right" title="Detail Kegiatan"><em class="icon ni ni-eye-fill"></em></a>
-                                                                <a href="#" class="btn btn-round btn-icon btn-sm btn-waraning" data-toggle="modal" data-target="#profile-edit"><em class="icon ni ni-edit"></em></a>
+                                                                <a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" class="btn btn-round btn-icon btn-sm btn-waraning" data-toggle="modal" data-target="{{ "#editKegiatan". $kegiatan->id_kegiatan}}"><em class="icon ni ni-edit"></em></a>
                                                                 {{-- <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a> --}}
                                                                 {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/kegiatan" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
@@ -277,5 +277,12 @@
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- .modal -->
+
+    <!--  Edit Kegiatan Modal @e -->
+    @foreach ($data_kegiatan as $kegiatan)
+        @include('admin/modalEditKegiatan', ['modalKegiatan' => 'editKegiatan' . $kegiatan->id_kegiatan, 'namaKegiatan' => $kegiatan->nama_kegiatan, 
+                    'tglKegiatan' => $kegiatan->tanggal_kegiatan , 'mingguKegiatan' => $kegiatan->minggu_kegiatan
+                    , 'detailKegiatan' => $kegiatan->detail_kegiatan])
+    @endforeach
         
 @stop

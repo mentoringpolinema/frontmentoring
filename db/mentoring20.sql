@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2021 at 07:58 AM
+-- Generation Time: Feb 25, 2021 at 04:53 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -107,7 +107,6 @@ CREATE TABLE `kegiatan` (
 
 INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `jenis_kegiatan`, `tanggal_kegiatan`, `jam_kegiatan`, `minggu_kegiatan`, `detail_kegiatan`, `created_at`, `updated_at`) VALUES
 (1, 'Opening Mentoring 2021/2022', 'Opening Mentoring', '2021-02-06', '11.30 AM', 'Minggu 1', 'Kegiatan Opening Mentoring Bagi Mahasiswa Muslim Polinema Angkatan 2021. Online di Channel Official Youtube Rohis Polinema', '2021-02-03 05:46:31', NULL),
-(12, 'Pertemuan Zoom', 'Materi', '0000-00-00', '09:30 AM', 'Minggu 2', 'Ashiap', '2021-02-14 19:32:33', '2021-02-14 19:32:33'),
 (13, 'Penyampaian Materi', 'Materi', '02/20/2021', '09:00 AM', 'Minggu 5', 'Zoom Ashiap', '2021-02-17 23:37:16', '2021-02-17 23:37:16');
 
 -- --------------------------------------------------------
@@ -245,7 +244,8 @@ CREATE TABLE `mentor` (
 INSERT INTO `mentor` (`id_mentor`, `nama_mentor`, `email_mentor`, `alamat_mentor`, `notelp_mentor`, `status_mentor`, `created_at`, `updated_at`) VALUES
 (2, 'A. Yahya Hudan Permana', 'yahyahudan@mentoringpolinema.my.id', 'Jalan A. Satsui Tubun III No.83M RT 12 RW03 Malang', '081259224380', 'Aktif', NULL, NULL),
 (3, 'Rijalus Sholihin', 'rijaluss@mentoringpolinema.my.id', 'Jalan Sepanjang Kenangan Indah No.69 Kab. Probolinggo', '082337105933', 'Aktif', '2021-01-28 05:30:35', '2021-01-28 05:30:35'),
-(12, 'Galih Pamungkas I', 'galihp@mentoringpolinema.my.id', 'Darjo', '0812359224380', 'Aktif', '2021-02-15 03:04:43', '2021-02-15 03:04:43');
+(12, 'Galih Pamungkas I', 'galihp@mentoringpolinema.my.id', 'Darjo', '0812359224380', 'Aktif', '2021-02-15 03:04:43', '2021-02-15 03:04:43'),
+(13, 'Sena Adi Fakhruddiin', 'senadi@mentoringpolinema.my.id', 'Sengkaleng', '082337105933', 'Aktif', '2021-02-18 16:42:01', '2021-02-18 16:42:01');
 
 -- --------------------------------------------------------
 
@@ -369,7 +369,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Panitia', 'Ahmad Yahya', 'panitia@mentoringpolinema.my.id', NULL, '$2y$10$5VOyqn9iQuxiUAQXOoCk4OdAy2w01k8451VGKwnFsUYyxE2vqkc5O', 'UeRO1IUWpHEdqWvMEArkUp8KDdxetkmKZt4n7yRV33yblrSQd3TGWkcjN8GJ', '2021-01-27 20:10:08', '2021-01-27 20:10:08'),
+(1, 'Panitia', 'Ahmad Yahya', 'panitia@mentoringpolinema.my.id', NULL, '$2y$10$5VOyqn9iQuxiUAQXOoCk4OdAy2w01k8451VGKwnFsUYyxE2vqkc5O', 'gqnphiRSJcAn554baGL4dsyGEBGSXQYxOGQ1Yot8xSAjKQVhWLNXzr8DWqWa', '2021-01-27 20:10:08', '2021-01-27 20:10:08'),
 (2, 'Mentor', 'Mentor', 'mentor@mentoringpolinema.my.id', NULL, '$2y$10$MxqXdmLcxNhCz57DsQUkwOrPbEXcbm6vD87LhRNsrEi6PAAZaw/Ym', NULL, '2021-02-17 23:07:24', '2021-02-17 23:07:24'),
 (3, 'Mentee', 'Irfak Wahyudi', 'irfak@mentoringpolinema.my.id', NULL, '$2y$10$/jul3vL8T/4bgftf/isb4uEpUv97HIgBKMnzSCo1EZgsLj6Vzzp.C', NULL, '2021-02-17 23:10:11', '2021-02-17 23:10:11');
 
@@ -550,7 +550,7 @@ ALTER TABLE `mentee`
 -- AUTO_INCREMENT for table `mentor`
 --
 ALTER TABLE `mentor`
-  MODIFY `id_mentor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_mentor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `migrations`
