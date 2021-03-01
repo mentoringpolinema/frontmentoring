@@ -67,6 +67,10 @@
     <script>
         initSample();
     </script>
+    <!-- Summernote -->
+    <link rel="stylesheet" href="{{asset('template/dashboard/assets/css/editors/summernote.css?ver=2.2.0')}}">
+    <script src="{{asset('template/dashboard/assets/js/libs/editors/summernote.js?ver=2.2.0')}}"></script>
+    <script src="{{asset('template/dashboard/assets/js/editors.js?ver=2.2.0')}}"></script>
 
 
 </body>

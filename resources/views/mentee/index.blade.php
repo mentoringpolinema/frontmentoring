@@ -94,7 +94,7 @@
                                                                         @foreach ($data_kegiatan as $kegiatan)
                                                                         <li class="timeline-item">
                                                                             <div class="timeline-status bg-success is-outline"></div>
-                                                                            <div class="timeline-date">{{$kegiatan->tanggal_kegiatan}}</div>
+                                                                            <div class="timeline-date">{{$kegiatan->tanggal_kegiatan->format('d M Y')}}</div>
                                                                             <div class="timeline-data">
                                                                                 <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
                                                                                 <div class="timeline-des">

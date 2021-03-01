@@ -167,7 +167,7 @@
                         </li>
                     </ul><!-- .nav-tabs -->
                     <div class="tab-content">
-                        <div class="tab-pane active" id="personal">
+                        <div class="tab-pane active" id="pertemuan">
                             <form action="/admin/kegiatan/addKegiatan" class="form-validate is-alter" method="POST">
                             {{ csrf_field() }}
                             <div class="row gy-4">

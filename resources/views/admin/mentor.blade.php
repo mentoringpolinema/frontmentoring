@@ -37,6 +37,7 @@
                                                         </li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalForm"><em class="icon ni ni-user-add"></em><span>Tambah Mentor</span></a></li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li>
+                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-warning" ><em class="icon ni ni-file-pdf"></em><span>Export PDF</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
