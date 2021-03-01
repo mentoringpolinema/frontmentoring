@@ -54,7 +54,6 @@
         }
         return $bulan;
     }
-?>
 
 @extends('layouts.master')
 @section('content')
