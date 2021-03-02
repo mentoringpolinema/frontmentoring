@@ -158,14 +158,6 @@
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Tambah Kegiatan</h5>
-                    <ul class="nk-nav nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#pertemuan">Pertemuan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#materi">Materi</a>
-                        </li>
-                    </ul><!-- .nav-tabs -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="pertemuan">
                             <form action="/admin/kegiatan/addKegiatan" class="form-validate is-alter" method="POST">
@@ -286,14 +278,6 @@
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Edit Kegiatan</h5>
-                    <ul class="nk-nav nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#pertemuan">Pertemuan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#materi">Materi</a>
-                        </li>
-                    </ul><!-- .nav-tabs -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="/admin/kegiatan" class="form-validate is-alter" method="POST">
@@ -420,14 +404,6 @@
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Detail Kegiatan</h5>
-                    <ul class="nk-nav nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#pertemuan">Pertemuan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#materi">Materi</a>
-                        </li>
-                    </ul><!-- .nav-tabs -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="" class="form-validate is-alter" method="">
