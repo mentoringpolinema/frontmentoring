@@ -19,7 +19,7 @@ var initSample = ( function() {
 
 	return function() {
 		var detail_kegiatan = CKEDITOR.document.getById( 'detail_kegiatan' );
-		var editorElement = CKEDITOR.document.getById( 'detail_materi' );
+		var detail_materi = CKEDITOR.document.getById( 'detail_materi' );
 
 		// Depending on the wysiwygarea plugin availability initialize classic or inline editor.
 		if ( wysiwygareaAvailable ) {
@@ -28,7 +28,8 @@ var initSample = ( function() {
 		} else {
 			detail_kegiatan.setAttribute( 'contenteditable', 'true' );
 			detail_kegiatan_edit.setAttribute( 'contenteditable', 'true' );
-			editorElement.setAttribute( 'contenteditable', 'true' );
+			detail_materi.setAttribute( 'contenteditable', 'true' );
+			detail_materi_edit.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( 'detail_kegiatan' );
 			CKEDITOR.inline( 'detail_materi' );
 
@@ -53,13 +54,17 @@ var initGetDataKegiatan = ( function() {
 
 	return function(id) {
 		var detail_kegiatan_edit = CKEDITOR.document.getById( 'detail_kegiatan_edit' );
+		var detail_materi_edit = CKEDITOR.document.getById( 'detail_materi_edit' );
 
 		// Depending on the wysiwygarea plugin availability initialize classic or inline editor.
 		if ( wysiwygareaAvailable ) {
 			CKEDITOR.replace( 'detail_kegiatan_edit');
+			CKEDITOR.replace( 'detail_materi_edit');
 		} else {
 			detail_kegiatan_edit.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( 'detail_kegiatan_edit' );
+			detail_materi_edit.setAttribute( 'contenteditable', 'true' );
+			CKEDITOR.inline( 'detail_materi_edit' );
 		}
 	};
 

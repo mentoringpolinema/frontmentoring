@@ -63,9 +63,9 @@
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
                                                                         <li><a href="#" data-toggle="modal" data-target="#modalDetailMateri"><em class="icon ni ni-eye"></em><span>Lihat Materi</span></a></li>
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditMateri"><em class="icon ni ni-edit"></em><span>Edit Materi</span></a></li>
+                                                                        <li><a href="/admin/{{$materi->id_materi}}/editMateri" data-toggle="modal" data-target="#modalEditMateri"><em class="icon ni ni-edit" id="editMateri" data-id="{{ $materi->id_materi }}"></em><span>Edit Materi</span></a></li>
                                                                         <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Tandai Materi</span></a></li>
-                                                                        <li><a href="#"><em class="icon ni ni-trash-alt"></em><span>Hapus Materi</span></a></li>
+                                                                        <li><a href="/admin/{{$materi->id_materi}}/delMateri"><em class="icon ni ni-trash-alt"></em><span>Hapus Materi</span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -172,7 +172,7 @@
     </div><!-- .modal -->
 
     <!--  Edit Materi Modal @e -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditMateri">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalDetailMateri">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
@@ -186,12 +186,12 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="#" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                                @csrf
                             <div class="row gy-4">
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <label class="form-label" for="materi-name">Nama Materi</label>
-                                        <input type="text" class="form-control form-control" id="nama_materi" name="nama_materi" required>
+                                        <input type="text" class="form-control form-control" id="nama_materi" name="nama_materi_edit" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -209,19 +209,18 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="materi-link">Link Materi</label>
-                                        <input type="text" class="form-control form-control" id="link_materi" name="link_materi" required>
+                                        <input type="text" class="form-control form-control" id="link_materi" name="link_materi_edit" required>
                                     </div>
                                 </div>                                
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Detail Materi</label>
-                                        <textarea type="text" class="form-control form-control-lg" id="detail_materi" name="detail_materi" value="+880" placeholder="Materi Tentang dst..."></textarea>
-                                    </div>
+                                    <textarea name="detail_materi_edit" id="detail_materi_edit">
+                                        
+                                    </textarea>
                                 </div>
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Tambah</button>
+                                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
@@ -254,11 +253,11 @@
                             <form action="#" class="form-validate is-alter" method="POST">
                             {{ csrf_field() }}
                             <div class="row gy-4">
+                                <input type="hidden" class="form-control form-control" id="id_materi" name="id_materi_detail" value="" readonly>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="materi-name">Nama Materi</label>
-                                        {{-- <input type="text" class="form-control form-control" id="nama_materi" name="nama_materi" required> --}}
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi culpa quae esse laborum ipsam repellat mollitia quam, dicta accusantium ad minima consequatur eos fugit nulla ipsum cumque debitis dignissimos repudiandae!</p>
+                                        <input type="text" class="form-control form-control" id="nama_materi" name="nama_materi_detail" value="" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -266,6 +265,7 @@
                                         <label class="form-label" for="phone-no">Video Materi</label>
                                         <div class="embed-responsive embed-responsive-16by9">
                                             <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1c3nyGDzDBQ" allowfullscreen></iframe>
+                                            <object width="425" height="350" data="http://www.youtube.com/v/Ahg6qcgoay4" type="application/x-shockwave-flash"><param name="src" value="http://www.youtube.com/v/Ahg6qcgoay4" /></object>
                                         </div>
                                     </div>
                                 </div>                            

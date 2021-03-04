@@ -489,10 +489,7 @@
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            <a href="#" data-dismiss="modal" class="btn btn-lg btn-primary">Kembali</a>
                                         </li>
                                     </ul>
                                 </div>

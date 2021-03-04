@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 use App\Models\Kegiatan;
+use App\Models\Kelompok;
 use App\Models\Mentee;
 use App\Models\Mentor;
 use App\Models\Materi;
 use App\Models\Jurusan;
 use App\Models\Prodi;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -28,18 +30,18 @@ class AdminController extends Controller
         $totalJurusan = Jurusan::count();
         $totalProdi = Prodi::count();
         return view('admin.index', ['data_kegiatan' => $data_kegiatan], [
-            'totalMentee' => $totalMentee, 
+            'totalMentee' => $totalMentee,
             'totalMentor' => $totalMentor,
             'totalKegiatan' => $totalKegiatan,
             'totalMateri' => $totalMateri,
             'totalJurusan' => $totalJurusan,
             'totalProdi' => $totalProdi
-            ]);
+        ]);
     }
 
-    //--Kegiatan Function--
+    //-----------------------------------------Kegiatan----------------------------------------------
 
-    //Get Kegiatan
+    //Function Kegiatan
     public function kegiatan()
     {
         $data_kegiatan = Kegiatan::all();
@@ -59,6 +61,7 @@ class AdminController extends Controller
         ]);
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil ditambahkan !');
     }
+
     // Delete Kegiatan
     public function delKegiatan($id_kegiatan)
     {
@@ -68,10 +71,11 @@ class AdminController extends Controller
     }
 
     // Get By Id Kegiatan
-    public function getByIdKegiatan(Request $request){
-        if($request->ajax()){
+    public function getByIdKegiatan(Request $request)
+    {
+        if ($request->ajax()) {
             $data = Kegiatan::findOrFail($request->id_kegiatan);
-            return response()->json(['options'=>$data]);
+            return response()->json(['options' => $data]);
         }
     }
 
@@ -90,18 +94,20 @@ class AdminController extends Controller
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
     }
 
+    //-----------------------------------------Mentor----------------------------------------------
+
     // Mentor Function 
     public function mentor()
     {
-        $data_mentor = \App\Models\Mentor::all();
-        $totalMentor = \App\Models\Mentor::count();
+        $data_mentor = Mentor::all();
+        $totalMentor = Mentor::count();
         return view('admin.mentor', ['data_mentor' => $data_mentor], ['totalMentor' => $totalMentor]);
     }
 
     // Get Mentor By ID
     public function mentorById($id)
     {
-        $data_mentor = \App\Models\Mentor::find($id);
+        $data_mentor = Mentor::find($id);
         return view('admin.mentor', ['data_mentor' => $data_mentor]);
     }
 
@@ -109,7 +115,7 @@ class AdminController extends Controller
     public function addMentor(Request $request)
     {
 
-        $user = \App\Models\User::create([
+        $user = User::create([
             "role" => "mentor",
             "name" => $request->nama_mentor,
             "email" => $request->email_mentor,
@@ -118,7 +124,7 @@ class AdminController extends Controller
 
         $productId = DB::getPdo()->lastInsertId();
 
-        $mentor = \App\Models\Mentor::create([
+        $mentor = Mentor::create([
             "nama_mentor" => $request->nama_mentor,
             "email_mentor" => $request->email_mentor,
             "alamat_mentor" => $request->alamat_mentor,
@@ -133,8 +139,8 @@ class AdminController extends Controller
     // Update Mentor
     public function updateMentor(Request $request, $id)
     {
-        $data_mentor = \App\Models\Mentor::findOrFail($id);
-        $data_mentor = \App\Models\User::update([
+        $data_mentor = Mentor::findOrFail($id);
+        $data_mentor = User::update([
             "role" => "mentor",
             "name" => $request->nama_mentor,
             "email" => $request->email_mentor,
@@ -147,24 +153,28 @@ class AdminController extends Controller
     // Delete Mentor
     public function delMentor($id_mentor)
     {
-        $data_mentor = \App\Models\Mentor::find($id_mentor);
+        $data_mentor = Mentor::find($id_mentor);
         $data_mentor->delete($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
     }
     // Import Mentor
     public function impMentor(Request $request)
     {
-        Excel::import(new MentorImport,$request->file('data_mentor'));
+        Excel::import(new MentorImport, $request->file('data_mentor'));
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Import !');
         // dd($request->all());
     }
 
+    //-----------------------------------------Mentee----------------------------------------------
+
     // Mentee Function
     public function mentee()
     {
-        $data_mentee = \App\Models\Mentee::all();
+        $data_mentee = Mentee::all();
         return view('admin.mentee', ['data_mentee' => $data_mentee]);
     }
+
+    //-----------------------------------------Users----------------------------------------------
 
     // Users Function
     public function user()
@@ -177,60 +187,88 @@ class AdminController extends Controller
     // Get Data
     public function data()
     {
-        $data_jurusan = \App\Models\Jurusan::all();
-        $data_prodi = \App\Models\Prodi::all();
+        $data_jurusan = Jurusan::all();
+        $data_prodi = Prodi::all();
         return view('admin.data', ['data_jurusan' => $data_jurusan], ['data_prodi' => $data_prodi]);
     }
     // Add Data
+
+    //-----------------------------------------Jurusan----------------------------------------------
+
     // Add Jurusan
     public function addJurusan(Request $request)
     {
-        \App\Models\Jurusan::create($request->all());
+        Jurusan::create($request->all());
         return redirect('/admin/data')->with('success', 'Data Jurusan Berhasil ditambahkan !');
     }
+
+    //-----------------------------------------Prodi----------------------------------------------
+
     // Add Prodi
     public function addProdi(Request $request)
     {
-        \App\Models\Prodi::create($request->all());
+        Prodi::create($request->all());
         return redirect('/admin/data')->with('success', 'Data Prodi Berhasil ditambahkan !');
     }
-    // Delete Data
-    
-    // Delete Jurusan
 
-    // Delete Prodi
+    //-----------------------------------------Materi----------------------------------------------
 
-    // Materi Function
+    //Function Materi
     public function materi()
-    {   
-        $data_materi = \App\Models\Materi::all();
-        $data_kegiatan = \App\Models\Kegiatan::all();
-        $totalMateri = \App\Models\Materi::count();
-        return view('admin.materi', ['data_materi' => $data_materi, 'data_kegiatan' => $data_kegiatan],['totalMateri' => $totalMateri]);
+    {
+        $data_materi = Materi::all();
+        $data_kegiatan = Kegiatan::all();
+        $totalMateri = Materi::count();
+        return view('admin.materi', ['data_materi' => $data_materi, 'data_kegiatan' => $data_kegiatan], ['totalMateri' => $totalMateri]);
     }
 
     // Add Materi
     public function addMateri(Request $request)
     {
-        $materi = \App\Models\Materi::create([
+        $materi = Materi::create([
             "nama_materi" => $request->nama_materi,
             "link_materi" => $request->link_materi,
             "detail_materi" => $request->detail_materi
         ]);
         return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
     }
+
     // Delete Materi
     public function delMateri($id_materi)
     {
-        $data_materi = \App\Models\Materi::find($id_materi);
+        $data_materi = Materi::find($id_materi);
         $data_materi->delete($data_materi);
         return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
     }
 
+    // Get By Id Materi
+    public function getByIdMateri(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Materi::findOrFail($request->id_materi);
+            return response()->json(['options' => $data]);
+        }
+    }
+
+    // Edit Materi
+    public function editMateri(Request $request)
+    {
+        $id = $request->id_materi_edit;
+        $materi = Materi::findOrFail($id);
+        $materi->update([
+            "nama_materi" => $request->nama_materi_edit,
+            "link_materi" => $request->link_materi_edit,
+            "detail_materi" => $request->detail_materi_edit
+        ]);
+        return redirect('/admin/materi')->with('success', 'Materi Berhasil diedit !');
+    }
+
+    //-----------------------------------------Kelompok----------------------------------------------
+
     // Kelompok Function
     public function kelompok()
     {
-        $data_kelompok = \App\Models\Kelompok::all();
+        $data_kelompok = Kelompok::all();
         return view('admin.kelompok', ['data_kelompok' => $data_kelompok]);
     }
 
@@ -238,7 +276,7 @@ class AdminController extends Controller
     public function addKelompok(Request $request)
     {
 
-        $kegiatan = \App\Models\Kelompok::create([
+        $kegiatan = Kelompok::create([
             "nama_kegiatan" => $request->nama_kegiatan,
             "jenis_kegiatan" => $request->jenis_kegiatan,
             "tanggal_kegiatan" => $request->tanggal_kegiatan,
@@ -249,21 +287,27 @@ class AdminController extends Controller
     }
     // Get Kelompok
 
+    //-----------------------------------------Keluhan----------------------------------------------
 
     // Keluhan Function
     public function keluhan()
     {
         return view('admin.keluhan');
     }
-    
+
+    //-----------------------------------------Pertemuan----------------------------------------------
+
     // Pertemuan Function
     public function pertemuan()
     {
         return view('admin.pertemuan');
     }
 
+    //-----------------------------------------Pengumuman----------------------------------------------
+
     // Pengumuman Funcition
-    public function pengumuman(){
+    public function pengumuman()
+    {
         return view('admin.pengumuman');
     }
 }
