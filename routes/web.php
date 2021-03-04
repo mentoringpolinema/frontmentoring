@@ -83,7 +83,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/admin/addJurusan', '\App\Http\Controllers\AdminController@addJurusan');
             // Add Data Prodi
             Route::post('/admin/addProdi', '\App\Http\Controllers\AdminController@addProdi');
-
             //Delete Data
             Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
 
@@ -92,6 +91,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/admin/materi', '\App\Http\Controllers\AdminController@materi');
         // Add Materi
         Route::post('/admin/materi/addMateri', '\App\Http\Controllers\AdminController@addMateri');
+        //Delete Materi
+        Route::get('/admin/{id_materi}/delMateri', '\App\Http\Controllers\AdminController@delMateri');
 
     // Kelompok
         // Get Kelompok
