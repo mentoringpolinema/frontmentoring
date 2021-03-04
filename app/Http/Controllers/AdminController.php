@@ -37,9 +37,9 @@ class AdminController extends Controller
             'totalProdi']));
     }
 
-    //--Kegiatan Function--
+    //-------------------------------------------Kegiatan-------------------------------------------
 
-    //Get Kegiatan
+    //Function Kegiatan
     public function kegiatan()
     {
         $data_kegiatan = Kegiatan::all();
@@ -59,6 +59,7 @@ class AdminController extends Controller
         ]);
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil ditambahkan !');
     }
+
     // Delete Kegiatan
     public function delKegiatan($id_kegiatan)
     {
@@ -89,6 +90,8 @@ class AdminController extends Controller
         ]);
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
     }
+
+    //-------------------------------------------Mentor-------------------------------------------
 
     // Mentor Function 
     public function mentor()
@@ -137,17 +140,20 @@ class AdminController extends Controller
         $data_mentor->delete($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
     }
+
     // Import Mentor
     public function impMentor(Request $request)
     {
         Excel::import(new MentorImport,$request->file('data_mentor'));
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Import !');
     }
+
     // Detail Mentor
     public function detailMentor($id_mentor){
         $data_mentor = \App\Models\Mentor::find($id_mentor);
         return view('admin.mentor.detailMentor',compact(['data_mentor']));
     }
+
     // Update Mentor
     public function updMentor(Request $request,$id_mentor){
         $data_mentor = \App\Models\Mentor::find($id_mentor);
@@ -155,12 +161,17 @@ class AdminController extends Controller
         // dd($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
     }
+
+    //-------------------------------------------Mentee-------------------------------------------
+
     // Mentee Function
     public function mentee()
     {
         $data_mentee = \App\Models\Mentee::all();
         return view('admin.mentee', ['data_mentee' => $data_mentee]);
     }
+
+    //-------------------------------------------Users-------------------------------------------
 
     // Users Function
     public function user()
@@ -178,6 +189,9 @@ class AdminController extends Controller
         return view('admin.data', ['data_jurusan' => $data_jurusan], ['data_prodi' => $data_prodi]);
     }
     // Add Data
+
+    //-------------------------------------------Jurusan-------------------------------------------
+
     // Add Jurusan
     public function addJurusan(Request $request)
     {
@@ -194,34 +208,41 @@ class AdminController extends Controller
     
     // Delete Jurusan
 
+    //-------------------------------------------Prodi-------------------------------------------
+
     // Delete Prodi
 
-    // Materi Function
+    //-------------------------------------------Materi-------------------------------------------
+
+    //Function Materi
     public function materi()
-    {   
-        $data_materi = \App\Models\Materi::all();
-        $data_kegiatan = \App\Models\Kegiatan::all();
-        $totalMateri = \App\Models\Materi::count();
-        return view('admin.materi', ['data_materi' => $data_materi, 'data_kegiatan' => $data_kegiatan],['totalMateri' => $totalMateri]);
+    {
+        $data_materi = Materi::all();
+        $data_kegiatan = Kegiatan::all();
+        $totalMateri = Materi::count();
+        return view('admin.materi', ['data_materi' => $data_materi, 'data_kegiatan' => $data_kegiatan], ['totalMateri' => $totalMateri]);
     }
 
     // Add Materi
     public function addMateri(Request $request)
     {
-        $materi = \App\Models\Materi::create([
+        $materi = Materi::create([
             "nama_materi" => $request->nama_materi,
             "link_materi" => $request->link_materi,
             "detail_materi" => $request->detail_materi
         ]);
         return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
     }
+
     // Delete Materi
     public function delMateri($id_materi)
     {
-        $data_materi = \App\Models\Materi::find($id_materi);
+        $data_materi = Materi::find($id_materi);
         $data_materi->delete($data_materi);
         return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
     }
+
+    //-------------------------------------------Kelompok-------------------------------------------
 
     // Kelompok Function
     // Get Kelompok
@@ -235,6 +256,7 @@ class AdminController extends Controller
         return view('admin.kelompok.detailKelompok');
     }
 
+    //-------------------------------------------Keluhan-------------------------------------------
 
     // Keluhan Function
     public function keluhan()
@@ -242,11 +264,15 @@ class AdminController extends Controller
         return view('admin.keluhan');
     }
     
+    //-------------------------------------------Pertemuan-------------------------------------------
+
     // Pertemuan Function
     public function pertemuan()
     {
         return view('admin.pertemuan');
     }
+
+    //-------------------------------------------Pengumuman-------------------------------------------
 
     // Pengumuman Funcition
     public function pengumuman(){
