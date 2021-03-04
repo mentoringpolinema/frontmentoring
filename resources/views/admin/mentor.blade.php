@@ -23,18 +23,6 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#"><span>Last 30 Days</span></a></li>
-                                                                        <li><a href="#"><span>Last 6 Months</span></a></li>
-                                                                        <li><a href="#"><span>Last 1 Years</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalForm"><em class="icon ni ni-user-add"></em><span>Tambah Mentor</span></a></li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-warning" ><em class="icon ni ni-file-pdf"></em><span>Export PDF</span></a></li>
@@ -85,14 +73,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Alert -->
-                                        @if ((session('sukses')))
-                                        <div class="alert alert-success alert-icon alert-dismissible">
-                                            <div>
-                                                <em class="icon ni ni-check-circle"></em> {{session('sukses')}} <button class="close" data-dismiss="alert"></button>
-                                            </div>
-                                        </div>
-                                        @endif
                                         <div class="card card-preview">
                                             <div class="card-inner">
                                                 <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
@@ -136,9 +116,7 @@
                                                                     @method('DELETE')
                                                                     <button class="btn btn-round btn-sm btn-danger" type="submit" class="fa fa-trash">Delete</button>
                                                                 </form>
-                                                                {{-- <a href="/admin/{{$mentor->id_mentor}}/delMentor" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a> --}}
-                                                                <a href="/admin/mentor/{{$mentor->id_mentor}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                <a href="/admin/mentor/{{$mentor->id_mentor}}" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span></a>
+                                                                <a href="/admin/detailMentor/{{$mentor->id_mentor}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>                                                            
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                       
                                                         @endforeach

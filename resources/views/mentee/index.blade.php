@@ -17,7 +17,7 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-round btn-warning"><em class="icon ni ni-loader"></em><span>Status Mentoring : On Progress</span></a></li>
+                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-round btn-warning eg-swal-warningMenteeStatus"><em class="icon ni ni-loader"></em><span>Status Mentoring : On Progress</span></a></li>
                                                         {{-- <button type="button" class="btn btn-round btn-success" data-toggle="tooltip" data-placement="bottom" title="Mentoring Anda Sudah Lulus, Segera Cetak Bukti."><em class="icon ni ni-check-circle-fill"></em>
                                                         Status Mentoring : Lulus
                                                         </button> --}}
@@ -40,7 +40,7 @@
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
-                                                                            <div class="title">Total kegiatan</div>
+                                                                            <div class="title">Total Kegiatan</div>
                                                                             <div class="count">10</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
@@ -55,10 +55,10 @@
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
-                                                                            <div class="title">Total Kelompok</div>
+                                                                            <div class="title">Total Materi</div>
                                                                             <div class="count">20</div>
                                                                         </div>
-                                                                        <em class="icon bg-secondary-dim ni ni-link-group"></em>
+                                                                        <em class="icon bg-success-dim ni ni-book-read"></em>
                                                                     </li>
                                                                 </ul>
                                                             </div><!-- .card-inner -->
@@ -70,10 +70,10 @@
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
-                                                                            <div class="title">Total Kelompok</div>
+                                                                            <div class="title">Total Pertemuan</div>
                                                                             <div class="count">20</div>
                                                                         </div>
-                                                                        <em class="icon bg-secondary-dim ni ni-link-group"></em>
+                                                                        <em class="icon bg-warning-dim ni ni-link-group"></em>
                                                                     </li>
                                                                 </ul>
                                                             </div><!-- .card-inner -->

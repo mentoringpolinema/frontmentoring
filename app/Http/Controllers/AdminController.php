@@ -27,14 +27,14 @@ class AdminController extends Controller
         $totalMateri = Materi::count();
         $totalJurusan = Jurusan::count();
         $totalProdi = Prodi::count();
-        return view('admin.index', ['data_kegiatan' => $data_kegiatan], [
-            'totalMentee' => $totalMentee, 
-            'totalMentor' => $totalMentor,
-            'totalKegiatan' => $totalKegiatan,
-            'totalMateri' => $totalMateri,
-            'totalJurusan' => $totalJurusan,
-            'totalProdi' => $totalProdi
-            ]);
+        return view('admin.index',compact([
+            'totalMentee',
+            'data_kegiatan',
+            'totalMentor',
+            'totalKegiatan',
+            'totalMateri',
+            'totalJurusan',
+            'totalProdi']));
     }
 
     //--Kegiatan Function--
@@ -44,7 +44,7 @@ class AdminController extends Controller
     {
         $data_kegiatan = Kegiatan::all();
         $totalKegiatan = Kegiatan::count();
-        return view('admin.kegiatan', ['data_kegiatan' => $data_kegiatan], ['totalKegiatan' => $totalKegiatan]);
+        return view('admin.kegiatan', compact(['data_kegiatan','totalKegiatan']));
     }
 
     // Add Kegiatan
@@ -130,20 +130,6 @@ class AdminController extends Controller
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil ditambahkan !');
     }
 
-    // Update Mentor
-    public function updateMentor(Request $request, $id)
-    {
-        $data_mentor = \App\Models\Mentor::findOrFail($id);
-        $data_mentor = \App\Models\User::update([
-            "role" => "mentor",
-            "name" => $request->nama_mentor,
-            "email" => $request->email_mentor,
-            "password" => Hash::make($request->nama_mentor),
-        ]);
-
-        return redirect('/admin/mentor')->with('success', 'Mentor Berhasil diperbarui !');
-    }
-
     // Delete Mentor
     public function delMentor($id_mentor)
     {
@@ -156,9 +142,19 @@ class AdminController extends Controller
     {
         Excel::import(new MentorImport,$request->file('data_mentor'));
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Import !');
-        // dd($request->all());
     }
-
+    // Detail Mentor
+    public function detailMentor($id_mentor){
+        $data_mentor = \App\Models\Mentor::find($id_mentor);
+        return view('admin.mentor.detailMentor',compact(['data_mentor']));
+    }
+    // Update Mentor
+    public function updMentor(Request $request,$id_mentor){
+        $data_mentor = \App\Models\Mentor::find($id_mentor);
+        $data_mentor->update($request->all());
+        // dd($data_mentor);
+        return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
+    }
     // Mentee Function
     public function mentee()
     {
@@ -228,26 +224,16 @@ class AdminController extends Controller
     }
 
     // Kelompok Function
+    // Get Kelompok
     public function kelompok()
     {
         $data_kelompok = \App\Models\Kelompok::all();
         return view('admin.kelompok', ['data_kelompok' => $data_kelompok]);
     }
-
-    //Add Kelompok
-    public function addKelompok(Request $request)
-    {
-
-        $kegiatan = \App\Models\Kelompok::create([
-            "nama_kegiatan" => $request->nama_kegiatan,
-            "jenis_kegiatan" => $request->jenis_kegiatan,
-            "tanggal_kegiatan" => $request->tanggal_kegiatan,
-            "detail_kegiatan" => $request->detail_kegiatan,
-        ]);
-
-        return redirect('/admin/kelompok')->with('success', 'Kelompok Berhasil ditambahkan !');
+    // Detail Kelompok
+    public function detailKelompok(){
+        return view('admin.kelompok.detailKelompok');
     }
-    // Get Kelompok
 
 
     // Keluhan Function

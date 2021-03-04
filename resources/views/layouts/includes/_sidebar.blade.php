@@ -188,7 +188,7 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                  <li class="nk-menu-item">
-                                    <a href="mentee/kelompok" class="nk-menu-link">
+                                    <a href="/mentee/kelompok" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-view-col3"></em></span>
                                         <span class="nk-menu-text">Kelompok</span>
                                     </a>

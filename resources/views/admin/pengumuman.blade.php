@@ -45,14 +45,14 @@
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
-                                        {{-- @foreach ($data_materi as $materi) --}}
+                                        {{-- @foreach ($data_pengumuman as $pengumuman) --}}
                                         <div class="col-sm-6 col-lg-4 col-xxl-3">
                                             <div class="card h-100">
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
-                                                            <a href="#" data-toggle="modal" data-target="#modalDetailMateri" class="project-title">
-                                                                <div class="user-avatar sq bg-warning"><span>MM</span></div>
+                                                            <a href="#" data-toggle="modal" data-target="#modalDetailpengumuman" class="project-title">
+                                                                <div class="user-avatar sq bg-warning"><span>PM</span></div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">Ashiap</h6>
                                                                     <span class="sub-text">Ashiap</span>
@@ -62,26 +62,17 @@
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalDetailMateri"><em class="icon ni ni-eye"></em><span>Lihat Materi</span></a></li>
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditMateri"><em class="icon ni ni-edit"></em><span>Edit Materi</span></a></li>
-                                                                        <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Tandai Materi</span></a></li>
-                                                                        <li><a href="#"><em class="icon ni ni-trash-alt"></em><span>Hapus Materi</span></a></li>
+                                                                        <li><a href="#" data-toggle="modal" data-target="#modalDetailpengumuman"><em class="icon ni ni-eye"></em><span>Lihat pengumuman</span></a></li>
+                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditpengumuman"><em class="icon ni ni-edit"></em><span>Edit pengumuman</span></a></li>
+                                                                        <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Tandai pengumuman</span></a></li>
+                                                                        <li><a href="#"><em class="icon ni ni-trash-alt"></em><span>Hapus pengumuman</span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="project-details">
                                                             <p>Ashiap</p>
-                                                            {{-- <p>{{$materi->link_materi}}</p> --}}
-                                                        </div>
-                                                        <div class="project-progress">
-                                                            <div class="project-progress-details">
-                                                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>1 Materi</span></div>
-                                                                <div class="project-progress-percent">100%</div>
-                                                            </div>
-                                                            <div class="progress progress-pill progress-md bg-success">
-                                                                <div class="progress-bar" data-progress="100"></div>
-                                                            </div>
+                                                            {{-- <p>{{$pengumuman->link_pengumuman}}</p> --}}
                                                         </div>
                                                         <div class="project-meta">
                                                             <ul class="project-users g-1">
@@ -123,32 +114,41 @@
                             <form action="/admin/pengumuman/addPengumuman" class="form-validate is-alter" method="POST">
                             {{ csrf_field() }}
                             <div class="row gy-4">
-                                <div class="col-md-9">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="materi-name">Nama Materi</label>
-                                        <input type="text" class="form-control form-control" id="nama_materi" name="nama_materi" required>
+                                        <label class="form-label" for="pengumuman-judul">Judul pengumuman</label>
+                                        <input type="text" class="form-control form-control" id="judul_pengumuman" name="judul_pengumuman" required>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="minggu-materi">Minggu Ke-</label>
-                                        <select class="form-select" id="minggu_materi" name="minggu_materi" >
-                                            <option>Minggu Ke-</option>
+                                        <label class="form-label" for="tangline-pengumuman">Tagline</label>
+                                        <select class="form-select" id="tangline_pengumuman" name="tangline_pengumuman" >
+                                            <option>Mentoring</option>
                                             {{-- @foreach ($data_kegiatan as $kegiatan) --}}
-                                            <option>Ashiap</option>
+                                            <option>Opening Mentoring</option>
+                                            <option>Closing Mentoring</option>
+                                            <option>Pengambilan Sertifikat</option>
+                                            {{-- @endforeach --}}
+                                        </select></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="status-pengumuman">Status</label>
+                                        <select class="form-select" id="status_pengumuman" name="status_pengumuman" >
+                                            <option>Selesai</option>
+                                            {{-- @foreach ($data_kegiatan as $kegiatan) --}}
+                                            <option>On Going</option>
+                                            <option>Coming Soon</option>
                                             {{-- @endforeach --}}
                                         </select></div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="materi-link">Link Materi</label>
-                                        <input type="text" class="form-control form-control" id="link_materi" name="link_materi" required>
-                                    </div>
-                                </div>                                
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="form-label" for="materi-link">Detail Pengumuman</label>
-                                        <div class="summernote-basic"></div>
+                                        <label class="form-label" for="pengumuman-link">Detail Pengumuman</label>
+                                        {{-- <div class="summernote-basic"> --}}
+                                            <input type="text" class="summernote-basic" id="detail_pengumuman" name="detail_pengumuman" required>
+                                        {{-- </div> --}}
                                     </div>
                                 </div>
                                 <div class="col-12">

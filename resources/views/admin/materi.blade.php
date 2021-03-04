@@ -144,9 +144,9 @@
                                     </div>
                                 </div>                                
                                 <div class="col-md-12">
-                                    {{-- <div class="form-group">
+                                    {{-- <div class="form-group"> --}}
                                         <label class="form-label" for="phone-no">Detail Materi</label>
-                                        <textarea type="text" class="form-control form-control-lg" id="detail_materi" name="detail_materi" value="+880" placeholder="Materi Tentang dst..."></textarea>
+                                        {{-- <textarea type="text" class="form-control form-control-lg" id="detail_materi" name="detail_materi" value="+880" placeholder="Materi Tentang dst..."></textarea>
                                     </div> --}}
                                     <textarea id="detail_materi" name="detail_materi">
                                         

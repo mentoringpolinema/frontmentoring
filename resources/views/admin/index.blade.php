@@ -24,7 +24,7 @@
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
-                                        <div class="col-xxl-3 col-md-6">
+                                    <div class="col-xxl-3 col-md-6">
                                             <div class="card h-100">
                                                 <div class="card-inner">
                                                     <div class="card-title-group mb-2">
