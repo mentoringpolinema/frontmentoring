@@ -111,8 +111,12 @@ Route::group(['middleware' => 'auth'], function () {
         // Add Pertemuan
         
     // Pengumuman
-        // Get Pertemuan
+        // Get Pengumuman
         Route::get('/admin/pengumuman', '\App\Http\Controllers\AdminController@pengumuman');
+        // Add Pengumuman
+        Route::post('/admin/pengumuman/addPengumuman', '\App\Http\Controllers\AdminController@addPengumuman');
+        // Delete Pengumuman
+        Route::get('/admin/{id_pengumuman}/delPengumuman', '\App\Http\Controllers\AdminController@delPengumuman');
         
 
 // MENTOR ROUTES ===================================================================================>

@@ -9,11 +9,14 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 use App\Models\Kegiatan;
+use App\Models\Kelompok;
 use App\Models\Mentee;
 use App\Models\Mentor;
 use App\Models\Materi;
 use App\Models\Jurusan;
 use App\Models\Prodi;
+use App\Models\User;
+use App\Models\Pengumuman;
 
 class AdminController extends Controller
 {
@@ -104,7 +107,7 @@ class AdminController extends Controller
     // Get Mentor By ID
     public function mentorById($id)
     {
-        $data_mentor = \App\Models\Mentor::find($id);
+        $data_mentor = Mentor::find($id);
         return view('admin.mentor', ['data_mentor' => $data_mentor]);
     }
 
@@ -112,7 +115,7 @@ class AdminController extends Controller
     public function addMentor(Request $request)
     {
 
-        $user = \App\Models\User::create([
+        $user = User::create([
             "role" => "mentor",
             "name" => $request->nama_mentor,
             "email" => $request->email_mentor,
@@ -121,7 +124,7 @@ class AdminController extends Controller
 
         $productId = DB::getPdo()->lastInsertId();
 
-        $mentor = \App\Models\Mentor::create([
+        $mentor = Mentor::create([
             "nama_mentor" => $request->nama_mentor,
             "email_mentor" => $request->email_mentor,
             "alamat_mentor" => $request->alamat_mentor,
@@ -136,7 +139,7 @@ class AdminController extends Controller
     // Delete Mentor
     public function delMentor($id_mentor)
     {
-        $data_mentor = \App\Models\Mentor::find($id_mentor);
+        $data_mentor = Mentor::find($id_mentor);
         $data_mentor->delete($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
     }
@@ -150,7 +153,7 @@ class AdminController extends Controller
 
     // Detail Mentor
     public function detailMentor($id_mentor){
-        $data_mentor = \App\Models\Mentor::find($id_mentor);
+        $data_mentor = Mentor::find($id_mentor);
         return view('admin.mentor.detailMentor',compact(['data_mentor']));
     }
 
@@ -167,7 +170,7 @@ class AdminController extends Controller
     // Mentee Function
     public function mentee()
     {
-        $data_mentee = \App\Models\Mentee::all();
+        $data_mentee = Mentee::all();
         return view('admin.mentee', ['data_mentee' => $data_mentee]);
     }
 
@@ -184,8 +187,8 @@ class AdminController extends Controller
     // Get Data
     public function data()
     {
-        $data_jurusan = \App\Models\Jurusan::all();
-        $data_prodi = \App\Models\Prodi::all();
+        $data_jurusan = Jurusan::all();
+        $data_prodi = Prodi::all();
         return view('admin.data', ['data_jurusan' => $data_jurusan], ['data_prodi' => $data_prodi]);
     }
     // Add Data
@@ -195,13 +198,13 @@ class AdminController extends Controller
     // Add Jurusan
     public function addJurusan(Request $request)
     {
-        \App\Models\Jurusan::create($request->all());
+        Jurusan::create($request->all());
         return redirect('/admin/data')->with('success', 'Data Jurusan Berhasil ditambahkan !');
     }
     // Add Prodi
     public function addProdi(Request $request)
     {
-        \App\Models\Prodi::create($request->all());
+        Prodi::create($request->all());
         return redirect('/admin/data')->with('success', 'Data Prodi Berhasil ditambahkan !');
     }
     // Delete Data
@@ -248,7 +251,7 @@ class AdminController extends Controller
     // Get Kelompok
     public function kelompok()
     {
-        $data_kelompok = \App\Models\Kelompok::all();
+        $data_kelompok = Kelompok::all();
         return view('admin.kelompok', ['data_kelompok' => $data_kelompok]);
     }
     // Detail Kelompok
@@ -274,8 +277,29 @@ class AdminController extends Controller
 
     //-------------------------------------------Pengumuman-------------------------------------------
 
-    // Pengumuman Funcition
-    public function pengumuman(){
-        return view('admin.pengumuman');
+    //Function Pengumuman
+    public function pengumuman()
+    {
+        $data_pengumuman = Pengumuman::all();
+        return view('admin.pengumuman', ['data_pengumuman' => $data_pengumuman]);
+    }
+
+    // Add Pengumuman
+    public function addPengumuman(Request $request)
+    {
+        $pengumuman = Pengumuman::create([
+            "judul_pengumuman" => $request->judul_pengumuman,
+            "tagline_pengumuman" => $request->tagline_pengumuman,
+            "status_pengumuman" => $request->status_pengumuman,
+            "detail_pengumuman" => $request->detail_pengumuman
+        ]);
+        return redirect('/admin/pengumuman')->with('success', 'Pengumuman Berhasil ditambahkan !');
+    }
+    // Delete Pengumuman
+    public function delPengumuman($id_pengumuman)
+    {
+        $data_pengumuman = Pengumuman::find($id_pengumuman);
+        $data_pengumuman->delete($data_pengumuman);
+        return redirect('/admin/pengumuman')->with('success', 'Pengumuman Berhasil dihapus !');
     }
 }
