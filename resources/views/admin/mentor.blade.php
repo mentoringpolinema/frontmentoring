@@ -25,7 +25,18 @@
                                                     <ul class="nk-block-tools g-3">
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalForm"><em class="icon ni ni-user-add"></em><span>Tambah Mentor</span></a></li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li>
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-warning" ><em class="icon ni ni-file-pdf"></em><span>Export PDF</span></a></li>
+                                                        {{-- <li class="nk-block-tools-opt"><a href="/admin/expMentor/" class="btn btn-info" ><em class="icon ni ni-file-pdf"></em><span>Export Excel</span></a></li> --}}
+                                                        <li class="preview-btn-item col-sm-6 col-lg-3">                                                        
+                                                        <div class="dropdown">
+                                                            <a href="#" class="btn btn-warning" data-toggle="dropdown"><em class="icon ni ni-download-cloud"></em><span>Export</span><em class="icon ni ni-chevron-down"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-auto mt-1">
+                                                                <ul class="link-list-plain">
+                                                                    <li><a href="#">Export PDF</a></li>
+                                                                    <li><a href="/admin/expMentor/">Export Excel</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>

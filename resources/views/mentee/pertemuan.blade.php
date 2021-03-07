@@ -35,123 +35,58 @@
                                         </div>
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
-                                <div class="nk-block">
+                               <div class="nk-block">
                                     <div class="row g-gs">
-                                        <div class="col-xxl-3 col-md-6">
-                                            <div class="nk-download">
-                                                <div class="data">
-                                                    <div class="thumb">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-                                                            <path d="M50,61H22a6,6,0,0,1-6-6V22l9-11H50a6,6,0,0,1,6,6V55A6,6,0,0,1,50,61Z" style="fill:#755de0" />
-                                                            <path d="M27.2223,43H44.7086s2.325-.2815.7357-1.897l-5.6034-5.4985s-1.5115-1.7913-3.3357.7933L33.56,40.4707a.6887.6887,0,0,1-1.0186.0486l-1.9-1.6393s-1.3291-1.5866-2.4758,0c-.6561.9079-2.0261,2.8489-2.0261,2.8489S25.4268,43,27.2223,43Z" style="fill:#fff" />
-                                                            <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill:#b5b3ff" /></svg>
-                                                    </div>
-                                                    <div class="info">
-                                                        <h6 class="title"><span class="name">Materi Minggu 1</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
-                                                        <div class="meta">
-                                                            <span class="version">
-                                                                <span class="text-soft">Materi: </span> <span>Makhorijul Huruf</span>
-                                                            </span>
-                                                            <span class="release">
-                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-success">Selesai</span>
-                                                            </span>
+                                        {{-- @foreach ($data_materi as $materi) --}}
+                                        <div class="col-sm-6 col-lg-4 col-xxl-3">
+                                            <div class="card h-100">
+                                                <div class="card-inner">
+                                                    <div class="project">
+                                                        <div class="project-head">
+                                                            <a href="#" data-toggle="modal" data-target="#modalDetailMateri" class="project-title">
+                                                                <div class="user-avatar sq bg-warning"><span>MM</span></div>
+                                                                <div class="project-info">
+                                                                    <h6 class="title">Ashiap</h6>
+                                                                    <span class="sub-text">Ashiap</span>
+                                                                </div>
+                                                            </a>
+                                                            <div class="drodown">
+                                                                <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                <div class="dropdown-menu dropdown-menu-right">
+                                                                    <ul class="link-list-opt no-bdr">
+                                                                        <li><a href="#" data-toggle="modal" data-target="#modalDetailMateri"><em class="icon ni ni-eye"></em><span>Lihat Pertemuan</span></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="project-details">
+                                                            <p>Ashiap ...</p>
+                                                            {{-- <p>{{$materi->link_materi}}</p> --}}
+                                                        </div>
+                                                        <div class="project-progress">
+                                                            <div class="project-progress-details">
+                                                                <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>1 Link Pertemuan</span></div>
+                                                                <div class="project-progress-percent">100%</div>
+                                                            </div>
+                                                            <div class="progress progress-pill progress-md bg-success">
+                                                                <div class="progress-bar" data-progress="100"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="project-meta">
+                                                            <ul class="project-users g-1">
+                                                                <li>
+                                                                    <div class="user-avatar sm bg-primary"><span>A</span></div>
+                                                                </li>
+                                                            </ul>
+                                                            {{-- <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>4 Days Left</span></span> --}}
+                                                            <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Selesai</span></span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="actions">
-                                                    <a href="#" class="btn btn-sm btn-secondary">Detail</a>
-                                                </div>
-                                            </div><!-- .sp-pdl-item -->
-                                        </div><!-- .col -->                                        
-                                        <div class="col-xxl-3 col-md-6">
-                                            <div class="nk-download">
-                                                <div class="data">
-                                                    <div class="thumb">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-                                                            <g>
-                                                                <path d="M50,61H22a6,6,0,0,1-6-6V22l9-11H50a6,6,0,0,1,6,6V55A6,6,0,0,1,50,61Z" style="fill:#599def" />
-                                                                <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill:#c2e1ff" />
-                                                                <rect x="27" y="31" width="18" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                                <rect x="27" y="36" width="18" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                                <rect x="27" y="41" width="18" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                                <rect x="27" y="46" width="12" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                            </g>
-                                                        </svg></div>
-                                                    <div class="info">
-                                                        <h6 class="title"><span class="name">Tugas Minggu 1</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
-                                                        <div class="meta">
-                                                            <span class="version">
-                                                                <span class="text-soft">Tugas: </span> <span>Makhorijul Huruf</span>
-                                                            </span>
-                                                            <span class="release">
-                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-success">Selesai</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="actions">
-                                                    <a href="#" class="btn btn-sm btn-warning">Detail</a>
-                                                </div>
-                                            </div><!-- .sp-pdl-item -->
-                                        </div><!-- .col -->                                        
-                                        <div class="col-xxl-3 col-md-6">
-                                            <div class="nk-download">
-                                                <div class="data">
-                                                    <div class="thumb">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-                                                            <path d="M50,61H22a6,6,0,0,1-6-6V22l9-11H50a6,6,0,0,1,6,6V55A6,6,0,0,1,50,61Z" style="fill:#755de0" />
-                                                            <path d="M27.2223,43H44.7086s2.325-.2815.7357-1.897l-5.6034-5.4985s-1.5115-1.7913-3.3357.7933L33.56,40.4707a.6887.6887,0,0,1-1.0186.0486l-1.9-1.6393s-1.3291-1.5866-2.4758,0c-.6561.9079-2.0261,2.8489-2.0261,2.8489S25.4268,43,27.2223,43Z" style="fill:#fff" />
-                                                            <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill:#b5b3ff" /></svg>
-                                                    </div>
-                                                    <div class="info">
-                                                        <h6 class="title"><span class="name">Materi Minggu 3</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
-                                                        <div class="meta">
-                                                            <span class="version">
-                                                                <span class="text-soft">Tugas: </span> <span>Makhorijul Huruf</span>
-                                                            </span>
-                                                            <span class="release">
-                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-danger"> Belum</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="actions">
-                                                    <a href="#" class="btn btn-sm btn-secondary">Detail</a>
-                                                </div>
-                                            </div><!-- .sp-pdl-item -->
-                                        </div><!-- .col -->                                        
-                                        <div class="col-xxl-3 col-md-6">
-                                            <div class="nk-download">
-                                                <div class="data">
-                                                    <div class="thumb">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-                                                            <g>
-                                                                <path d="M50,61H22a6,6,0,0,1-6-6V22l9-11H50a6,6,0,0,1,6,6V55A6,6,0,0,1,50,61Z" style="fill:#599def" />
-                                                                <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill:#c2e1ff" />
-                                                                <rect x="27" y="31" width="18" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                                <rect x="27" y="36" width="18" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                                <rect x="27" y="41" width="18" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                                <rect x="27" y="46" width="12" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                            </g>
-                                                        </svg></div>
-                                                    <div class="info">
-                                                        <h6 class="title"><span class="name">Tugas Minggu 3</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
-                                                        <div class="meta">
-                                                            <span class="version">
-                                                                <span class="text-soft">Tugas: </span> <span>Makhorijul Huruf</span>
-                                                            </span>
-                                                            <span class="release">
-                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-danger">Belum</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="actions">
-                                                    <a href="#" class="btn btn-sm btn-warning">Detail</a>
-                                                </div>
-                                            </div><!-- .sp-pdl-item -->
-                                        </div><!-- .col -->                                        
-                                    </div><!-- .row -->
+                                            </div>
+                                        </div>
+                                        {{-- @endforeach --}}
+                                    </div>
                                 </div><!-- .nk-block -->
                             </div>
                         </div>

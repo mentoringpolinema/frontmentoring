@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\MenteeController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MentorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,13 +35,13 @@ Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
 Route::group(['middleware' => 'auth'], function () {
 
     
-    // Dashboard Routes
+    // Dashboard Routes ===================================================================================================>
     Route::get('/admin', '\App\Http\Controllers\AdminController@index');
 
-    // Cetak
+    // Cetak ==============================================================================================================>
     Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak');
 
-    // Kegiatan
+    // Kegiatan ===========================================================================================================>
         //Get Kegiatan
         Route::get('/admin/kegiatan', '\App\Http\Controllers\AdminController@kegiatan');
         //Add Kegiatan
@@ -48,10 +53,10 @@ Route::group(['middleware' => 'auth'], function () {
         //Delete Kegiatan
         Route::get('/admin/{id_kegiatan}/delKegiatan', '\App\Http\Controllers\AdminController@delKegiatan');
 
-    // Mentor
+    // Mentor ============================================================================================================>
         //Get Mentor
         Route::get('/admin/mentor', '\App\Http\Controllers\AdminController@mentor');
-        //Get Mentor
+        //Get Mentor by ID
         Route::get('/admin/mentor/{id}', '\App\Http\Controllers\AdminController@mentorById');
         //Add Mentor
         Route::post('/admin/mentor/addMentor', '\App\Http\Controllers\AdminController@addMentor');
@@ -65,16 +70,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/admin/detailMentor/{id}', '\App\Http\Controllers\AdminController@detailMentor');
         //Update Mentor
         Route::post('/admin/{id_mentor}/updMentor', '\App\Http\Controllers\AdminController@updMentor');
+        //Export Excel
+        Route::get('/admin/expMentor/', '\App\Http\Controllers\AdminController@exportMentorExcel');
 
-    // Mentee
+    // Mentee ============================================================================================================>
         //Get Mentee
         Route::get('/admin/mentee', '\App\Http\Controllers\AdminController@mentee');
 
-    // User Management
+    // User Management ===================================================================================================>
         //Get Users
         Route::get('/admin/user', '\App\Http\Controllers\AdminController@user');
 
-    // Data Management
+    // Data Management ===================================================================================================>
         //Get Data
         Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
 
@@ -86,32 +93,45 @@ Route::group(['middleware' => 'auth'], function () {
 
             //Delete Data
             Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
-
-    // Materi
+        // Export Data Jurusan
+            //Export Excel
+            Route::get('/admin/jurusan/extJur/', '\App\Http\Controllers\AdminController@extJur');
+    // Materi ============================================================================================================>
         // Get Materi
         Route::get('/admin/materi', '\App\Http\Controllers\AdminController@materi');
         // Add Materi
         Route::post('/admin/materi/addMateri', '\App\Http\Controllers\AdminController@addMateri');
+        // Delete Materi
+        Route::get('/admin/materi/{id}', '\App\Http\Controllers\AdminController@delMateri');
 
-    // Kelompok
+    // Kelompok ==========================================================================================================>
         // Get Kelompok
         Route::get('/admin/kelompok', '\App\Http\Controllers\AdminController@kelompok');
         // Detail Kelompok
         Route::get('/admin/kelompok/detail', '\App\Http\Controllers\AdminController@detailKelompok');
 
-    // Keluhan
+    // Keluhan ===========================================================================================================>
         // Get Keluhan
         Route::get('/admin/keluhan', '\App\Http\Controllers\AdminController@keluhan');
         // Add Keluhan
     
-    // Pertemuan
+    // Pertemuan =========================================================================================================>
         // Get Pertemuan
         Route::get('/admin/pertemuan', '\App\Http\Controllers\AdminController@pertemuan');
         // Add Pertemuan
-        
-    // Pengumuman
-        // Get Pertemuan
+        Route::post('/admin/addPertemuan', '\App\Http\Controllers\AdminController@addPertemuan');
+        // Delete Pertemuan
+        Route::get('/admin/delPertemuan/{id}', '\App\Http\Controllers\AdminController@delPertemuan');
+        // Search Pertemuan
+        Route::get('/admin/cariPertemuan/{id}', '\App\Http\Controllers\AdminController@cariPertemuan');
+        // Detail Pertemuan
+        Route::get('/admin/detPertemuan/{id}', '\App\Http\Controllers\AdminController@detPertemuan');
+        // Update Pertemuan
+
+    // Pengumuman ========================================================================================================>
+        // Get Pengumuman
         Route::get('/admin/pengumuman', '\App\Http\Controllers\AdminController@pengumuman');
+        // Add Pengumuman
         
 
 // MENTOR ROUTES ===================================================================================>

@@ -187,6 +187,9 @@
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Menu Mentoring</h6>
+                                </li><!-- .nk-menu-item -->
                                  <li class="nk-menu-item">
                                     <a href="/mentee/kelompok" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-view-col3"></em></span>
