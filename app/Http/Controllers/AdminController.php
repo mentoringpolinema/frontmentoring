@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\JurusanExport;
+use App\Exports\MentorExport;
 use App\Imports\MentorImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +16,7 @@ use App\Models\Mentee;
 use App\Models\Mentor;
 use App\Models\Materi;
 use App\Models\Jurusan;
+use App\Models\Pertemuan;
 use App\Models\Prodi;
 use App\Models\User;
 use App\Models\Pengumuman;
@@ -53,13 +56,7 @@ class AdminController extends Controller
     // Add Kegiatan
     public function addKegiatan(Request $request)
     {
-        $kegiatan = Kegiatan::create([
-            "nama_kegiatan" => $request->nama_kegiatan,
-            "jenis_kegiatan" => $request->jenis_kegiatan,
-            "tanggal_kegiatan" => $request->tanggal_kegiatan,
-            "minggu_kegiatan" => $request->minggu_kegiatan,
-            "detail_kegiatan" => $request->detail_kegiatan
-        ]);
+        $kegiatan = Kegiatan::create($request->all());
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil ditambahkan !');
     }
 
@@ -164,9 +161,16 @@ class AdminController extends Controller
         // dd($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
     }
-
-    //-------------------------------------------Mentee-------------------------------------------
-
+    // Export Mentor
+    public function exportMentorExcel()
+    {
+        return Excel::download(new MentorExport, 'Mentor.xlsx');
+    }
+    // Export PDF
+    public function exportMentor()
+    {
+        // Masih Gabisa :v hehe
+    }
     // Mentee Function
     public function mentee()
     {
@@ -209,41 +213,33 @@ class AdminController extends Controller
     }
     // Delete Data
     
-    // Delete Jurusan
+        // Delete Jurusan
 
-    //-------------------------------------------Prodi-------------------------------------------
+        // Delete Prodi
 
-    // Delete Prodi
+    // Materi Function
 
-    //-------------------------------------------Materi-------------------------------------------
-
-    //Function Materi
-    public function materi()
-    {
-        $data_materi = Materi::all();
-        $data_kegiatan = Kegiatan::all();
-        $totalMateri = Materi::count();
-        return view('admin.materi', ['data_materi' => $data_materi, 'data_kegiatan' => $data_kegiatan], ['totalMateri' => $totalMateri]);
-    }
-
-    // Add Materi
-    public function addMateri(Request $request)
-    {
-        $materi = Materi::create([
-            "nama_materi" => $request->nama_materi,
-            "link_materi" => $request->link_materi,
-            "detail_materi" => $request->detail_materi
-        ]);
-        return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
-    }
-
-    // Delete Materi
-    public function delMateri($id_materi)
-    {
-        $data_materi = Materi::find($id_materi);
-        $data_materi->delete($data_materi);
-        return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
-    }
+        // Get Function
+        public function materi()
+        {   
+            $data_materi = \App\Models\Materi::all();
+            $data_kegiatan = \App\Models\Kegiatan::all();
+            $totalMateri = \App\Models\Materi::count();
+            return view('admin.materi', ['data_materi' => $data_materi, 'data_kegiatan' => $data_kegiatan],['totalMateri' => $totalMateri]);
+        }
+        // Add Materi
+        public function addMateri(Request $request)
+        {
+            $materi = \App\Models\Materi::create($request->all());
+            return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
+        }
+        // Delete Materi
+        public function delMateri($id_materi)
+        {
+            $data_materi = \App\Models\Materi::find($id_materi);
+            $data_materi->delete($data_materi);
+            return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
+        }
 
     //-------------------------------------------Kelompok-------------------------------------------
 
@@ -270,10 +266,43 @@ class AdminController extends Controller
     //-------------------------------------------Pertemuan-------------------------------------------
 
     // Pertemuan Function
-    public function pertemuan()
-    {
-        return view('admin.pertemuan');
-    }
+        // Get Pertemuan
+        public function pertemuan(Request $request)
+        {
+            // Get By Mentor
+            if($request->has('cari')){
+                $data_pertemuan = Pertemuan::where('mentor_pertemuan','LIKE','%'. $request->cari.'%')->get();
+                $total = Pertemuan::count();
+            }else{
+                $data_pertemuan = Pertemuan::all();
+                $total = Pertemuan::count();
+            }
+            return view('admin.pertemuan',compact(['data_pertemuan','total']));
+        }
+        // Add Pertemuan
+        public function addPertemuan(Request $request)
+        {
+            $pertemuan = Pertemuan::create($request->all());
+            return redirect('/admin/pertemuan')->with('success', 'Pertemuan Berhasil Ditambahkan !');
+        }
+        // Del Pertemuan
+        public function delPertemuan($id_pertemuan)
+        {
+            $data_pertemuan = Pertemuan::find($id_pertemuan);
+            $data_pertemuan->delete($data_pertemuan);
+            return redirect('/admin/pertemuan')->with('success', 'Pertemuan Berhasil dihapus !');
+        }        
+        // Search Pertemuan
+        public function cariPertemuan($id_pertemuan)
+        {
+            $data_pertemuan = Pertemuan::find($id_pertemuan);
+            return view('admin.mentor',compact(['data_pertemuan']));
+        }
+        // Detail Pertemuan
+        public function detPertemuan($id_pertemuan){
+        $data_pertemuan = Pertemuan::find($id_pertemuan);
+        return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan']));
+        }
 
     //-------------------------------------------Pengumuman-------------------------------------------
 

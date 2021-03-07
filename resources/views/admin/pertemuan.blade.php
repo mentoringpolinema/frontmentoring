@@ -58,7 +58,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Pertemuan</div>
-                                                                            <div class="count">3,795</div>
+                                                                            <div class="count">{{$total}}</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
                                                                     </li>
@@ -99,14 +99,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Alert -->
-                                        @if ((session('sukses')))
-                                        <div class="alert alert-success alert-icon alert-dismissible">
-                                            <div>
-                                                <em class="icon ni ni-check-circle"></em> {{session('sukses')}} <button class="close" data-dismiss="alert"></button>
-                                            </div>
-                                        </div>
-                                        @endif
                                         <div class="card card-preview">                                            
                                             <div class="card-inner">
                                                 <div class="card-title-group">
@@ -116,13 +108,13 @@
                                                     <div class="card-tools mr-n1">
                                                         <ul class="btn-toolbar gx-1">
                                                             <li>
-                                                                <a href="#" class="search-toggle toggle-search btn btn-icon" data-target="search"><em class="icon ni ni-search"></em></a>
+                                                                <a href="" class="search-toggle toggle-search btn btn-icon" data-target="search"><em class="icon ni ni-search"></em></a>
                                                             </li><!-- li -->
                                                             <li class="btn-toolbar-sep"></li><!-- li -->
                                                             <li>
                                                                 <div class="dropdown">
                                                                     <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <div class="badge badge-circle badge-primary">4</div>
+                                                                        <div class="badge badge-circle badge-primary">2</div>
                                                                         <em class="icon ni ni-filter-alt"></em>
                                                                     </a>
                                                                     <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
@@ -189,9 +181,11 @@
                                                     </div><!-- .card-tools -->
                                                     <div class="card-search search-wrap" data-search="search">
                                                         <div class="search-content">
-                                                            <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                                                            <input type="text" class="form-control border-transparent form-focus-none" placeholder="Cari Data Mentee">
-                                                            <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
+                                                            <form action="/admin/pertemuan" method="GET">
+                                                                <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                                                                <input name="cari" type="text" class="form-control border-transparent form-focus-none" placeholder="Cari Data Mentee">
+                                                                <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
+                                                            </form>
                                                         </div>
                                                     </div><!-- .card-search -->
                                                 </div><!-- .card-title-group -->
@@ -204,6 +198,7 @@
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Minggu Ke-</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Tanggal</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Detail</span></th>
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelompok</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Link</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
@@ -211,41 +206,52 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {{-- @foreach ($data_mentor as $mentor) --}}
+                                                        @foreach ($data_pertemuan as $pertemuan)
                                                         <tr class="nk-tb-item">
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">Pertemuan 1 : Makhorijul Huruf</span>
+                                                                        <span class="tb-lead">{{$pertemuan->nama_pertemuan}}</span>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">Ust. Yahya Hudan</span>
+                                                                <span class="tb-amount">{{$pertemuan->mentor_pertemuan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>2</span>
+                                                                <span>{{$pertemuan->minggu_pertemuan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>21 Maret 2021</span>
+                                                                <span>{{$pertemuan->tanggal_pertemuan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>Pertemuan dilaksanakan secara online menggunakan platform Zoom Meeting</span>
+                                                                <span>{{$pertemuan->detail_pertemuan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span><a href="http://youtube.com/rohispolinema">link Zoom</a></span>
+                                                                <span>{{$pertemuan->kelompok_pertemuan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
+                                                                <span><a href="http://{{$pertemuan->link_pertemuan}}">link Zoom</a></span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-md">
+
+                                                            @if($pertemuan->status_pertemuan == 'Aktif') 
                                                                 <span class="dot bg-warning d-mb-none"></span>
-                                                            <span class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex">On Going</span>
+                                                                <span class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex" >On Going</span>
+                                                            @endif
+
+                                                            @if($pertemuan->status_pertemuan == 'Selesai')
+                                                                <span class="dot bg-warning d-mb-none"></span>
+                                                                <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Selesai</span>
+                                                            @endif
+
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
+                                                                <a href="/admin/delPertemuan/{{$pertemuan->id_pertemuan}}" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
+                                                                <a href="/admin/detPertemuan/{{$pertemuan->id_pertemuan}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                 
-                                                        {{-- @endforeach --}}
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -262,6 +268,8 @@
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Tambah Pertemuan</h5>
+                    <form action="/admin/addPertemuan" class="form-validate is-alter" method="POST">
+                    @csrf
                     <div class="tab-content">
                         <div class="tab-pane active" id="data">
                             <div class="row gy-4">
@@ -276,8 +284,8 @@
                                         <label class="form-label" for="display-name">Mentor</label>
                                         <select class="form-select" id="mentor_pertemuan" name="mentor_pertemuan" data-ui="lg" required>
                                             <option value="#">-Pilih Mentor-</option>
-                                            <option value="#">Ust Yahya</option>
-                                            <option value="#">Ust Rijal</option>
+                                            <option value="Ust Yahya">Ust Yahya</option>
+                                            <option value="Ust Rijal">Ust Rijal</option>
                                         </select>
                                      </div>
                                 </div>
@@ -285,9 +293,9 @@
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Minggu Ke-</label>
                                         <select class="form-select" id="minggu_pertemuan" name="minggu_pertemuan" data-ui="lg" required>
-                                            <option value="#">1</option>
-                                            <option value="#">2</option>
-                                            <option value="#">4</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="4">4</option>
                                         </select>
                                     </div>
                                 </div>
@@ -298,14 +306,14 @@
                                                 <div class="form-icon form-icon-right">
                                                      <em class="icon ni ni-calendar-alt"></em>
                                                 </div>
-                                                 <input type="text" class="form-control date-picker" data-ui="lg" required>
+                                                 <input type="text" class="form-control date-picker" id="tanggal_pertemuan" name="tanggal_pertemuan" data-ui="lg" required>
                                             </div>
                                      </div>
                                 </div>                  
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kelompok</label>
-                                        <select class="form-select" id="kelompok_pertemuan" name="kelompok_pertemuan">
+                                        <select class="form-select" id="kelompok_pertemuan" name="kelompok_pertemuan" required>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -319,30 +327,36 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Sesi</label>
-                                        <select class="form-select" id="sesi_pertemuan" name="sesi_pertemuan">
+                                        <select class="form-select" id="sesi_pertemuan" name="sesi_pertemuan" required>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="form-label" for="link_pertemuan">Link Pertemuan</label>
-                                        <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link">
+                                        <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label" for="phone-no">Status</label>
+                                        <select class="form-select" id="status_pertemuan" name="status_pertemuan" data-ui="lg" required>
+                                            <option value="Aktif">Aktif</option>
+                                            <option value="Selesai">Selesai</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label" for="link_pertemuan">Detail Pertemuan</label>
-                                        <div class="card-inner">
-                                            <div class="summernote-basic"></div>
-                                         </div>
-                                </div>
+                                        <textarea type="textarea" class="form-control form-control-lg" id="detail_pertemuan" name="detail_pertemuan" required></textarea>      
                                 </div>
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            <a href="#" class="btn btn-lg btn-primary">Tambah Pertemuan</a>
+                                            <button class="btn btn-lg btn-primary" type="submit">Tambah Pertemuan</button>
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
@@ -352,6 +366,7 @@
                             </div>
                         </div>
                     </div><!-- .tab-content -->
+                    </form>
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->

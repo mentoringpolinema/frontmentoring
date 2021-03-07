@@ -65,7 +65,7 @@
                                                                         <li><a href="#" data-toggle="modal" data-target="#modalDetailMateri"><em class="icon ni ni-eye"></em><span>Lihat Materi</span></a></li>
                                                                         <li><a href="#" data-toggle="modal" data-target="#modalEditMateri"><em class="icon ni ni-edit"></em><span>Edit Materi</span></a></li>
                                                                         <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Tandai Materi</span></a></li>
-                                                                        <li><a href="/admin/{{$materi->id_materi}}/delMateri"><em class="icon ni ni-trash-alt"></em><span>Hapus Materi</span></a></li>
+                                                                        <li><a href="/admin/materi/{{$materi->id_materi}}"><em class="icon ni ni-trash-alt"></em><span>Hapus Materi</span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
