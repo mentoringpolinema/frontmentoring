@@ -90,7 +90,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/admin/addJurusan', '\App\Http\Controllers\AdminController@addJurusan');
             // Add Data Prodi
             Route::post('/admin/addProdi', '\App\Http\Controllers\AdminController@addProdi');
-
             //Delete Data
             Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
         // Export Data Jurusan

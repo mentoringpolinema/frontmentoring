@@ -40,9 +40,9 @@ class AdminController extends Controller
             'totalProdi']));
     }
 
-    //--Kegiatan Function--
+    //-------------------------------------------Kegiatan-------------------------------------------
 
-    //Get Kegiatan
+    //Function Kegiatan
     public function kegiatan()
     {
         $data_kegiatan = Kegiatan::all();
@@ -56,6 +56,7 @@ class AdminController extends Controller
         $kegiatan = Kegiatan::create($request->all());
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil ditambahkan !');
     }
+
     // Delete Kegiatan
     public function delKegiatan($id_kegiatan)
     {
@@ -86,6 +87,8 @@ class AdminController extends Controller
         ]);
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
     }
+
+    //-------------------------------------------Mentor-------------------------------------------
 
     // Mentor Function 
     public function mentor()
@@ -134,17 +137,20 @@ class AdminController extends Controller
         $data_mentor->delete($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
     }
+
     // Import Mentor
     public function impMentor(Request $request)
     {
         Excel::import(new MentorImport,$request->file('data_mentor'));
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Import !');
     }
+
     // Detail Mentor
     public function detailMentor($id_mentor){
         $data_mentor = \App\Models\Mentor::find($id_mentor);
         return view('admin.mentor.detailMentor',compact(['data_mentor']));
     }
+
     // Update Mentor
     public function updMentor(Request $request,$id_mentor){
         $data_mentor = \App\Models\Mentor::find($id_mentor);
@@ -168,6 +174,8 @@ class AdminController extends Controller
         $data_mentee = \App\Models\Mentee::all();
         return view('admin.mentee', ['data_mentee' => $data_mentee]);
     }
+
+    //-------------------------------------------Users-------------------------------------------
 
     // Users Function
     public function user()
@@ -233,6 +241,8 @@ class AdminController extends Controller
             return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
         }
 
+    //-------------------------------------------Kelompok-------------------------------------------
+
     // Kelompok Function
         // Get Kelompok
         public function kelompok()
@@ -245,6 +255,7 @@ class AdminController extends Controller
             return view('admin.kelompok.detailKelompok');
         }
 
+    //-------------------------------------------Keluhan-------------------------------------------
 
     // Keluhan Function
     public function keluhan()
@@ -252,6 +263,8 @@ class AdminController extends Controller
         return view('admin.keluhan');
     }
     
+    //-------------------------------------------Pertemuan-------------------------------------------
+
     // Pertemuan Function
         // Get Pertemuan
         public function pertemuan(Request $request)
@@ -290,6 +303,8 @@ class AdminController extends Controller
         $data_pertemuan = Pertemuan::find($id_pertemuan);
         return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan']));
         }
+
+    //-------------------------------------------Pengumuman-------------------------------------------
 
     // Pengumuman Funcition
         // Get Pengumuman
