@@ -118,7 +118,7 @@
                                                                 <div class="timeline-data">
                                                                     <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
                                                                     <div class="timeline-des">
-                                                                        {{$kegiatan->detail_kegiatan}}
+                                                                        {!!$kegiatan->detail_kegiatan!!}
                                                                     </div>
                                                                 </div>
                                                             </li>

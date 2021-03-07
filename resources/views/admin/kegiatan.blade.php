@@ -35,7 +35,7 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalKegiatan"><em class="icon ni ni-user-add"></em><span>Tambah kegiatan</span></a></li>
+                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalAddKegiatan"><em class="icon ni ni-user-add"></em><span>Tambah kegiatan</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -152,7 +152,7 @@
                 </div>
 
     <!--  Tambah Kegiatan Modal @e -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalKegiatan">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalAddKegiatan">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>

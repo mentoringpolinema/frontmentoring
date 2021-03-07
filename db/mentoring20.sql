@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 04:53 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Mar 07, 2021 at 03:54 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -50,12 +51,12 @@ INSERT INTO `angkatan` (`id_angkatan`, `angkatan`, `created_at`, `updated_at`) V
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -91,12 +92,11 @@ INSERT INTO `jurusan` (`id_jurusan`, `nama_jurusan`, `singkatan_jurusan`, `creat
 
 CREATE TABLE `kegiatan` (
   `id_kegiatan` int(10) UNSIGNED NOT NULL,
-  `nama_kegiatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_kegiatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tanggal_kegiatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jam_kegiatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `minggu_kegiatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `detail_kegiatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_kegiatan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_kegiatan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `minggu_kegiatan` int(2) NOT NULL,
+  `tanggal_kegiatan` date NOT NULL,
+  `detail_kegiatan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -105,9 +105,10 @@ CREATE TABLE `kegiatan` (
 -- Dumping data for table `kegiatan`
 --
 
-INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `jenis_kegiatan`, `tanggal_kegiatan`, `jam_kegiatan`, `minggu_kegiatan`, `detail_kegiatan`, `created_at`, `updated_at`) VALUES
-(1, 'Opening Mentoring 2021/2022', 'Opening Mentoring', '2021-02-06', '11.30 AM', 'Minggu 1', 'Kegiatan Opening Mentoring Bagi Mahasiswa Muslim Polinema Angkatan 2021. Online di Channel Official Youtube Rohis Polinema', '2021-02-03 05:46:31', NULL),
-(13, 'Penyampaian Materi', 'Materi', '02/20/2021', '09:00 AM', 'Minggu 5', 'Zoom Ashiap', '2021-02-17 23:37:16', '2021-02-17 23:37:16');
+INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `jenis_kegiatan`, `minggu_kegiatan`, `tanggal_kegiatan`, `detail_kegiatan`, `created_at`, `updated_at`) VALUES
+(1, 'aaaaaaaaaaaaa', 'Materi', 2, '2021-02-12', '<p>md&nbsp;</p>', '2021-02-25 03:36:18', '2021-03-01 01:34:30'),
+(2, 'Makhrojul Huruf', 'Pertemuan', 4, '2021-02-12', '<p>haha</p>', '2021-02-25 04:17:23', '2021-02-25 04:17:23'),
+(3, 'haha', 'Materi', 1, '2021-03-15', '<p>aaaaaa</p>\r\n\r\n<p>aaa</p>', '2021-03-07 06:30:57', '2021-03-07 06:30:57');
 
 -- --------------------------------------------------------
 
@@ -178,10 +179,9 @@ CREATE TABLE `mahasiswa` (
 
 CREATE TABLE `materi` (
   `id_materi` int(10) UNSIGNED NOT NULL,
-  `nama_materi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `minggu_materi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `link_materi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `detail_materi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_materi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link_materi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detail_materi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -190,10 +190,9 @@ CREATE TABLE `materi` (
 -- Dumping data for table `materi`
 --
 
-INSERT INTO `materi` (`id_materi`, `nama_materi`, `minggu_materi`, `link_materi`, `detail_materi`, `created_at`, `updated_at`) VALUES
-(1, 'Makhorijul Huruf ', 'Minggu 3', 'https://www.youtube.com/watch?v=1c3nyGDzDBQ', 'Materi Makhorijul Huruf dapat diaksesi di laman berikut ini', '2021-02-15 04:10:35', NULL),
-(2, 'Makhorijul Huruf Part 2', 'Minggu 5', 'https://www.youtube.com/watch?v=NWA1IPAzUmc', 'Materi Minggu 5 dapat diaksesi di laman berikut ini ', '2021-02-15 04:15:51', NULL),
-(3, 'Sifat-Sifat Huruf', 'Minggu 2', 'https://www.youtube.com/rohispolinema', 'Materi dapat diakses di laman berikut ini', '2021-02-15 00:02:22', '2021-02-15 00:02:22');
+INSERT INTO `materi` (`id_materi`, `nama_materi`, `link_materi`, `detail_materi`, `created_at`, `updated_at`) VALUES
+(1, 'Mengaji', 'hthuhewhhej', '<p>JJWJEJW</p>', '2021-02-25 04:30:39', '2021-02-25 04:30:39'),
+(2, 'AYO GASS', 'lifkjei', '<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>', '2021-03-01 01:22:15', '2021-03-01 01:22:15');
 
 -- --------------------------------------------------------
 
@@ -255,7 +254,7 @@ INSERT INTO `mentor` (`id_mentor`, `nama_mentor`, `email_mentor`, `alamat_mentor
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -268,18 +267,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2021_01_28_024723_create_mahasiswa_table', 1),
-(5, '2021_01_28_114810_create_mentor_table', 2),
-(6, '2021_02_02_044120_create_jurusan_table', 3),
-(7, '2021_02_02_044300_create_prodi_table', 3),
-(8, '2021_02_02_044321_create_angkatan_table', 3),
-(9, '2021_02_02_045206_create_kelompok_table', 3),
-(10, '2021_02_02_045351_create_materi_table', 3),
-(11, '2021_02_02_050625_create_pengganti_table', 3),
-(12, '2021_02_02_050756_create_mentee_table', 3),
-(13, '2021_02_02_050825_create_panitia_table', 4),
-(14, '2021_02_02_050848_create_keluhan_table', 4),
-(15, '2021_02_02_053434_create_kelas_table', 4),
-(16, '2021_02_02_145451_create_kegiatan_table', 5);
+(5, '2021_01_28_114810_create_mentor_table', 1),
+(6, '2021_02_02_044120_create_jurusan_table', 1),
+(7, '2021_02_02_044300_create_prodi_table', 1),
+(8, '2021_02_02_044321_create_angkatan_table', 1),
+(9, '2021_02_02_045206_create_kelompok_table', 1),
+(10, '2021_02_02_045351_create_materi_table', 1),
+(11, '2021_02_02_050625_create_pengganti_table', 1),
+(12, '2021_02_02_050756_create_mentee_table', 1),
+(13, '2021_02_02_050825_create_panitia_table', 1),
+(14, '2021_02_02_050848_create_keluhan_table', 1),
+(15, '2021_02_02_053434_create_kelas_table', 1),
+(16, '2021_02_02_145451_create_kegiatan_table', 1);
 
 -- --------------------------------------------------------
 
@@ -322,6 +321,29 @@ CREATE TABLE `pengganti` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengumuman`
+--
+
+CREATE TABLE `pengumuman` (
+  `id_pengumuman` int(11) UNSIGNED NOT NULL,
+  `judul_pengumuman` varchar(255) NOT NULL,
+  `tagline_pengumuman` varchar(255) NOT NULL,
+  `status_pengumuman` varchar(255) NOT NULL,
+  `detail_pengumuman` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengumuman`
+--
+
+INSERT INTO `pengumuman` (`id_pengumuman`, `judul_pengumuman`, `tagline_pengumuman`, `status_pengumuman`, `detail_pengumuman`, `created_at`, `updated_at`) VALUES
+(2, 'a', 'Mentoring', 'Selesai', '<p>a</p>\r\n\r\n<p>a</p>', '2021-03-07 07:37:55', '2021-03-07 07:37:55');
 
 -- --------------------------------------------------------
 
@@ -451,17 +473,10 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `panitia`
---
-ALTER TABLE `panitia`
-  ADD PRIMARY KEY (`id_panitia`),
-  ADD UNIQUE KEY `panitia_email_panitia_unique` (`email_panitia`);
-
---
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
+  ADD KEY `password_resets_email_index` (`email`(191));
 
 --
 -- Indexes for table `pengganti`
@@ -470,17 +485,16 @@ ALTER TABLE `pengganti`
   ADD PRIMARY KEY (`id_pengganti`);
 
 --
+-- Indexes for table `pengumuman`
+--
+ALTER TABLE `pengumuman`
+  ADD PRIMARY KEY (`id_pengumuman`);
+
+--
 -- Indexes for table `prodi`
 --
 ALTER TABLE `prodi`
   ADD PRIMARY KEY (`id_prodi`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -499,58 +513,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `jurusan`
---
-ALTER TABLE `jurusan`
-  MODIFY `id_jurusan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `kelas`
---
-ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `kelompok`
---
-ALTER TABLE `kelompok`
-  MODIFY `id_kelompok` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `keluhan`
---
-ALTER TABLE `keluhan`
-  MODIFY `id_keluhan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `mahasiswa`
---
-ALTER TABLE `mahasiswa`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kegiatan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `id_materi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `mentee`
---
-ALTER TABLE `mentee`
-  MODIFY `id_mentee` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `mentor`
---
-ALTER TABLE `mentor`
-  MODIFY `id_mentor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_materi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -559,28 +531,10 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `panitia`
+-- AUTO_INCREMENT for table `pengumuman`
 --
-ALTER TABLE `panitia`
-  MODIFY `id_panitia` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pengganti`
---
-ALTER TABLE `pengganti`
-  MODIFY `id_pengganti` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `prodi`
---
-ALTER TABLE `prodi`
-  MODIFY `id_prodi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `pengumuman`
+  MODIFY `id_pengumuman` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -118,19 +118,14 @@ Route::group(['middleware' => 'auth'], function () {
         // Get Pertemuan
         Route::get('/admin/pertemuan', '\App\Http\Controllers\AdminController@pertemuan');
         // Add Pertemuan
-        Route::post('/admin/addPertemuan', '\App\Http\Controllers\AdminController@addPertemuan');
-        // Delete Pertemuan
-        Route::get('/admin/delPertemuan/{id}', '\App\Http\Controllers\AdminController@delPertemuan');
-        // Search Pertemuan
-        Route::get('/admin/cariPertemuan/{id}', '\App\Http\Controllers\AdminController@cariPertemuan');
-        // Detail Pertemuan
-        Route::get('/admin/detPertemuan/{id}', '\App\Http\Controllers\AdminController@detPertemuan');
-        // Update Pertemuan
-
-    // Pengumuman ========================================================================================================>
+      
+    // Pengumuman
         // Get Pengumuman
         Route::get('/admin/pengumuman', '\App\Http\Controllers\AdminController@pengumuman');
         // Add Pengumuman
+        Route::post('/admin/pengumuman/addPengumuman', '\App\Http\Controllers\AdminController@addPengumuman');
+        // Delete Pengumuman
+        Route::get('/admin/{id_pengumuman}/delPengumuman', '\App\Http\Controllers\AdminController@delPengumuman');
         
 
 // MENTOR ROUTES ===================================================================================>

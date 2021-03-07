@@ -45,7 +45,7 @@
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
-                                        {{-- @foreach ($data_pengumuman as $pengumuman) --}}
+                                        @foreach ($data_pengumuman as $pengumuman)
                                         <div class="col-sm-6 col-lg-4 col-xxl-3">
                                             <div class="card h-100">
                                                 <div class="card-inner">
@@ -54,8 +54,8 @@
                                                             <a href="#" data-toggle="modal" data-target="#modalDetailpengumuman" class="project-title">
                                                                 <div class="user-avatar sq bg-warning"><span>PM</span></div>
                                                                 <div class="project-info">
-                                                                    <h6 class="title">Ashiap</h6>
-                                                                    <span class="sub-text">Ashiap</span>
+                                                                    <h6 class="title">{{$pengumuman->judul_pengumuman}}</h6>
+                                                                    <span class="sub-text">{{$pengumuman->tagline_pengumuman}}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
@@ -65,13 +65,13 @@
                                                                         <li><a href="#" data-toggle="modal" data-target="#modalDetailpengumuman"><em class="icon ni ni-eye"></em><span>Lihat pengumuman</span></a></li>
                                                                         <li><a href="#" data-toggle="modal" data-target="#modalEditpengumuman"><em class="icon ni ni-edit"></em><span>Edit pengumuman</span></a></li>
                                                                         <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Tandai pengumuman</span></a></li>
-                                                                        <li><a href="#"><em class="icon ni ni-trash-alt"></em><span>Hapus pengumuman</span></a></li>
+                                                                        <li><a href="/admin/{{$pengumuman->id_pengumuman}}/delPengumuman"><em class="icon ni ni-trash-alt"></em><span>Hapus pengumuman</span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="project-details">
-                                                            <p>Ashiap</p>
+                                                            <p>{!!$pengumuman->detail_pengumuman!!}</p>
                                                             {{-- <p>{{$pengumuman->link_pengumuman}}</p> --}}
                                                         </div>
                                                         <div class="project-meta">
@@ -81,13 +81,13 @@
                                                                 </li>
                                                             </ul>
                                                             {{-- <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>4 Days Left</span></span> --}}
-                                                            <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Selesai</span></span>
+                                                            <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>{{$pengumuman->status_pengumuman}}</span></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </div>
                                 </div><!-- .nk-block -->
                             </div>
@@ -122,33 +122,35 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="tangline-pengumuman">Tagline</label>
-                                        <select class="form-select" id="tangline_pengumuman" name="tangline_pengumuman" >
-                                            <option>Mentoring</option>
+                                        <label class="form-label" for="tagline-pengumuman">Tagline</label>
+                                        <select class="form-select" id="tagline_pengumuman" name="tagline_pengumuman" required>
+                                            <option>- Pilih Tagline -</option>
+                                            <option value="Mentoring">Mentoring</option>
                                             {{-- @foreach ($data_kegiatan as $kegiatan) --}}
-                                            <option>Opening Mentoring</option>
-                                            <option>Closing Mentoring</option>
-                                            <option>Pengambilan Sertifikat</option>
+                                            <option value="Opening Mentoring">Opening Mentoring</option>
+                                            <option value="Closing Mentoring">Closing Mentoring</option>
+                                            <option value="Pengambilan Sertifikat">Pengambilan Sertifikat</option>
                                             {{-- @endforeach --}}
                                         </select></div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="status-pengumuman">Status</label>
-                                        <select class="form-select" id="status_pengumuman" name="status_pengumuman" >
-                                            <option>Selesai</option>
+                                        <select class="form-select" id="status_pengumuman" name="status_pengumuman" required>
+                                            <option>- Pilih Status -</option>
+                                            <option value="Selesai">Selesai</option>
                                             {{-- @foreach ($data_kegiatan as $kegiatan) --}}
-                                            <option>On Going</option>
-                                            <option>Coming Soon</option>
+                                            <option value="On Going">On Going</option>
+                                            <option value="Coming Soon">Coming Soon</option>
                                             {{-- @endforeach --}}
                                         </select></div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="pengumuman-link">Detail Pengumuman</label>
-                                        {{-- <div class="summernote-basic"> --}}
-                                            <input type="text" class="summernote-basic" id="detail_pengumuman" name="detail_pengumuman" required>
-                                        {{-- </div> --}}
+                                        <label class="form-label" for="pengumuman-link" required>Detail Pengumuman</label>
+                                        <textarea id="detail_pengumuman" name="detail_pengumuman">
+                                        
+                                        </textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
