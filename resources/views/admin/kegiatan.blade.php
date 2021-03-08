@@ -134,8 +134,8 @@
                                                             <td class="nk-tb-col tb-col-md">
                                                                 {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-trash-alt lg"></em></a> --}}
                                                                 <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan" class="btn btn-round btn-icon btn-sm btn-daaanger" data-toggle="tooltip" data-placement="right" title="Hapus Kegiatan"><em class="icon ni ni-trash-alt"></em></a>
-                                                                <a href="#" class="btn btn-round btn-icon btn-sm btn-saecondary" data-toggle="modal" data-target="#detailModalKegiatan" id="detailKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-eye-fill"></em></a>
-                                                                <a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" class="btn btn-round btn-icon btn-sm btn-waraning" data-toggle="modal" data-target="#editModalKegiatan" id="editKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-edit"></em></a>
+                                                                <a href="#" class="btn btn-round btn-icon btn-sm btn-saecondary" data-toggle="modal" data-target="#modalDetailKegiatan" id="detailKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-eye-fill"></em></a>
+                                                                <a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" class="btn btn-round btn-icon btn-sm btn-waraning" data-toggle="modal" data-target="#modalEditKegiatan" id="editKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-edit"></em></a>
                                                                 {{-- <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a> --}}
                                                                 {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/kegiatan" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
@@ -161,7 +161,8 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="pertemuan">
                             <form action="/admin/kegiatan/addKegiatan" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-7">
                                     <div class="form-group">
@@ -237,7 +238,8 @@
                         </div>
                         <div class="tab-pane" id="materi">
                             <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -272,7 +274,7 @@
     <!-- .modal -->
 
     {{-- Fitur edit kegiatan --}}
-    <div class="modal fade" tabindex="-1" role="dialog" id="editModalKegiatan">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditKegiatan">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
@@ -343,7 +345,7 @@
                                         <label class="form-label" for="phone-no">Detail Kegiatan</label>
                                         <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
                                     </div> --}}
-                                    <textarea name="detail_kegiatan_edit" id="detail_kegiatan_edit">
+                                    <textarea name="detail_kegiatan_edit" id="detail_kegiatan_edit" required>
                                         
                                     </textarea>
                                 </div>                                
@@ -363,7 +365,8 @@
                         </div>
                         <div class="tab-pane" id="materi">
                             <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -398,7 +401,7 @@
     <!-- .modal -->
 
     {{-- Fitur detail kegiatan --}}
-    <div class="modal fade" tabindex="-1" role="dialog" id="detailModalKegiatan">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalDetailKegiatan">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
@@ -430,7 +433,7 @@
                                             {{-- <div class="form-icon form-icon-right">
                                                 <em class="icon ni ni-calendar-alt"></em>
                                             </div> --}}
-                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_detail" value="" required readonly>
+                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_detail" value="" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -448,7 +451,7 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="form-label" for="kegiatan-minggu">Minggu Ke-</label>
-                                        <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan_detail" value="" required readonly>
+                                        <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan_detail" value="" readonly>
                                         <small>Contoh : 1</small>
                                     </div>
                                 </div>
@@ -477,7 +480,8 @@
                         </div>
                         <div class="tab-pane" id="materi">
                             <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <div class="form-group">

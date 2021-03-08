@@ -119,7 +119,8 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="/admin/materi/addMateri" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -186,7 +187,8 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="#" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-9">
                                     <div class="form-group">
@@ -252,7 +254,8 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="#" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-12">
                                     <div class="form-group">
