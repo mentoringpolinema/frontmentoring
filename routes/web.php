@@ -29,18 +29,18 @@ Route::get('/auth', '\App\Http\Controllers\AuthController@index')->name('login')
 Route::post('/login', '\App\Http\Controllers\AuthController@login');
 Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
 
-// PANITIA ROUTES ===================================================================================>'
 
-//Admin Routes
-Route::group(['middleware' => 'auth'], function () {
+// DASHBOARD ROUTES ================================================================================>
+Route::middleware(['auth', 'checkRole:Panitia,Mentor,Mentee'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index']);
+});
 
-    
+// PANITIA ROUTES ===================================================================================>
+    Route::group(['middleware' => 'auth'], function () {
     // Dashboard Routes ===================================================================================================>
     Route::get('/admin', '\App\Http\Controllers\AdminController@index');
-
     // Cetak ==============================================================================================================>
     Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak');
-
     // Kegiatan ===========================================================================================================>
         //Get Kegiatan
         Route::get('/admin/kegiatan', '\App\Http\Controllers\AdminController@kegiatan');
