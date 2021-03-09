@@ -294,7 +294,8 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="jurusan">
                             <form action="/admin/addJurusan" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -323,7 +324,8 @@
                         </div><!-- .tab-pane -->
                         <div class="tab-pane" id="prodi">
                             <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <div class="form-group">

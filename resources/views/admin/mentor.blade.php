@@ -159,7 +159,8 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="/admin/mentor/" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -209,7 +210,8 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="/admin/mentor/addMentor" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <div class="form-group">
