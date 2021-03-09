@@ -113,21 +113,20 @@ class AdminController extends Controller
     {
 
         $user = User::create([
-            "role" => "mentor",
-            "name" => $request->nama_mentor,
+            "role" => "Mentor",
+            "username" => $request->nama_mentor,
             "email" => $request->email_mentor,
-            "password" => Hash::make($request->nama_mentor),
+            "password" => Hash::make('mentor123'),
         ]);
 
-        $productId = DB::getPdo()->lastInsertId();
+        $userID = DB::getPdo()->lastInsertId();
 
         $mentor = Mentor::create([
             "nama_mentor" => $request->nama_mentor,
             "email_mentor" => $request->email_mentor,
             "alamat_mentor" => $request->alamat_mentor,
             "notelp_mentor" => $request->notelp_mentor,
-            "status_mentor" => $request->status_mentor,
-            "user_id" => $productId
+            "status_mentor" => $request->status_mentor
         ]);
 
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil ditambahkan !');
@@ -312,16 +311,10 @@ class AdminController extends Controller
         $data_pengumuman = Pengumuman::all();
         return view('admin.pengumuman', ['data_pengumuman' => $data_pengumuman]);
     }
-
     // Add Pengumuman
     public function addPengumuman(Request $request)
     {
-        $pengumuman = Pengumuman::create([
-            "judul_pengumuman" => $request->judul_pengumuman,
-            "tagline_pengumuman" => $request->tagline_pengumuman,
-            "status_pengumuman" => $request->status_pengumuman,
-            "detail_pengumuman" => $request->detail_pengumuman
-        ]);
+        $pengumuman = Pengumuman::create($request->all());
         return redirect('/admin/pengumuman')->with('success', 'Pengumuman Berhasil ditambahkan !');
     }
     // Delete Pengumuman

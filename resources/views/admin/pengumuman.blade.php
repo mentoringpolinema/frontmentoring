@@ -52,7 +52,18 @@
                                                     <div class="project">
                                                         <div class="project-head">
                                                             <a href="#" data-toggle="modal" data-target="#modalDetailpengumuman" class="project-title">
-                                                                <div class="user-avatar sq bg-warning"><span>PM</span></div>
+                                                                @if($pengumuman->tagline_pengumuman == 'Mentoring') 
+                                                                <div class="user-avatar sq bg-warning"><span>MT</span></div>
+                                                                @endif
+                                                                @if($pengumuman->tagline_pengumuman == 'Closing Mentoring') 
+                                                                <div class="user-avatar sq bg-secondary"><span>CM</span></div>
+                                                                @endif
+                                                                @if($pengumuman->tagline_pengumuman == 'Opening Mentoring') 
+                                                                <div class="user-avatar sq bg-info"><span>OPM</span></div>
+                                                                @endif
+                                                                @if($pengumuman->tagline_pengumuman == 'Pengambilan Sertifikat') 
+                                                                <div class="user-avatar sq bg-success"><span>PBS</span></div>
+                                                                @endif
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{$pengumuman->judul_pengumuman}}</h6>
                                                                     <span class="sub-text">{{$pengumuman->tagline_pengumuman}}</span>
@@ -80,8 +91,15 @@
                                                                     <div class="user-avatar sm bg-primary"><span>A</span></div>
                                                                 </li>
                                                             </ul>
-                                                            {{-- <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>4 Days Left</span></span> --}}
+                                                            @if($pengumuman->status_pengumuman == 'Selesai') 
                                                             <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>{{$pengumuman->status_pengumuman}}</span></span>
+                                                            @endif
+                                                            @if($pengumuman->status_pengumuman == 'On Going') 
+                                                            <span class="badge badge-dim badge-warning"><em class="icon ni ni-check-circle"></em><span>{{$pengumuman->status_pengumuman}}</span></span>
+                                                            @endif
+                                                            @if($pengumuman->status_pengumuman == 'Coming Soon') 
+                                                            <span class="badge badge-dim badge-secondary"><em class="icon ni ni-check-circle"></em><span>{{$pengumuman->status_pengumuman}}</span></span>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>

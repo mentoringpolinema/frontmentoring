@@ -13,15 +13,21 @@ class AuthController extends Controller
         return view('auth.index');
     }
     public function login(Request $request){
-        // $password = "irfak123";
-        // $hashesh = Hash::make($password);
-        // echo $hashesh;
         if(Auth::attempt($request->only('email','password'))){
-            return redirect('/admin');
+            return redirect('/dashboard')->with('success', 'Yeay Anda Berhasil Login !');
         }else{
-            return redirect('/auth');
+            return redirect('/auth')->with('error', 'User/Pass Anda Salah Goblok !');
         }
     }
+    // public function login(Request $request, $user)
+    // {
+    //     if ($user->hasRole('Panitia')) {
+    //         return redirect()->route('admin.index');
+    //     }elseif($user->hasRole('Mentor')){
+    //         return redirect()->route('mentor.index');
+    //     }
+    //     return redirect()->route('mentee.index');
+    // }
     public function logout(){
         Auth::logout(); 
         return redirect('/auth');

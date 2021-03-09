@@ -14,7 +14,11 @@ class CreatePengumumanTable extends Migration
     public function up()
     {
         Schema::create('pengumuman', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_pengumuman');
+            $table->string('judul_pengumuman');
+            $table->string('tagline_pengumuman');
+            $table->string('status_pengumuman');
+            $table->string('detail_pengumuman');
             $table->timestamps();
         });
     }

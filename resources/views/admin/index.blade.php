@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+
+@if(auth()->user()->role == 'Panitia')
 <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
@@ -191,5 +193,19 @@
                             </div>
                         </div>
                     </div>
-                </div>
+</div>
+@endif
+
+@if(auth()->user()->role == 'Mentee')
+<script type="text/javascript">
+    window.location = "/mentee";
+</script>
+@endif
+
+@if(auth()->user()->role == 'Mentor')
+<script type="text/javascript">
+    window.location = "/mentor";
+</script>
+@endif
+
 @stop

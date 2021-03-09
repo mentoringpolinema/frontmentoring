@@ -196,7 +196,7 @@
                                                                 <span class="tb-amount">{{$prodi->singkatan_prodi}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$prodi->jurusan->nama_jurusan}}</span>
+                                                                <span>{{$prodi->nama_jurusan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>

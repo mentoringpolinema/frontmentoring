@@ -19,28 +19,28 @@ use App\Http\Controllers\MentorController;
 */
 
 // Main Routes
-Route::get('/', '\App\Http\Controllers\MainController@index');
-Route::get('/main', '\App\Http\Controllers\MainController@index');
+Route::get('/', [MainController::class,'index']);
+
 // Cek Mentoring
 Route::get('/cekMentoring', '\App\Http\Controllers\MainController@cekMentoring');
 
 // Auth Routes
-Route::get('/auth', '\App\Http\Controllers\AuthController@index')->name('login');
-Route::post('/login', '\App\Http\Controllers\AuthController@login');
-Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
+Route::get('/auth', [AuthController::class,'index'])->name('login');
+Route::post('/login', [AuthController::class,'login']);
+Route::get('/logout', [AuthController::class,'logout']);
 
-// PANITIA ROUTES ===================================================================================>'
-
-//Admin Routes
-Route::group(['middleware' => 'auth'], function () {
-
-    
+// DASHBOARD ROUTES ================================================================================>
+Route::middleware(['auth', 'checkRole:Panitia,Mentor,Mentee'])->group(function () {
+    Route::get('/dashboard', [MainController::class, 'index']);
+});
+// PANITIA ROUTES ==================================================================================>
+Route::group(['middleware' => ['auth','checkRole:Panitia']], function () {
     // Dashboard Routes ===================================================================================================>
-    Route::get('/admin', '\App\Http\Controllers\AdminController@index');
-
+        // Get Dashboard
+        Route::get('/admin', '\App\Http\Controllers\AdminController@index');
     // Cetak ==============================================================================================================>
-    Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak');
-
+        // Get Cetak
+        Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak');
     // Kegiatan ===========================================================================================================>
         //Get Kegiatan
         Route::get('/admin/kegiatan', '\App\Http\Controllers\AdminController@kegiatan');
@@ -53,7 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
         //Delete Kegiatan
         Route::get('/admin/{id_kegiatan}/delKegiatan', '\App\Http\Controllers\AdminController@delKegiatan');
 
-    // Mentor ============================================================================================================>
+    // Mentor =============================================================================================================>
         //Get Mentor
         Route::get('/admin/mentor', '\App\Http\Controllers\AdminController@mentor');
         //Get Mentor by ID
@@ -72,16 +72,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/admin/{id_mentor}/updMentor', '\App\Http\Controllers\AdminController@updMentor');
         //Export Excel
         Route::get('/admin/expMentor/', '\App\Http\Controllers\AdminController@exportMentorExcel');
-
-    // Mentee ============================================================================================================>
+    // Mentee =============================================================================================================>
         //Get Mentee
         Route::get('/admin/mentee', '\App\Http\Controllers\AdminController@mentee');
 
-    // User Management ===================================================================================================>
+    // User Management ====================================================================================================>
         //Get Users
         Route::get('/admin/user', '\App\Http\Controllers\AdminController@user');
 
-    // Data Management ===================================================================================================>
+    // Data Management ====================================================================================================>
         //Get Data
         Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
 
@@ -95,7 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Export Data Jurusan
             //Export Excel
             Route::get('/admin/jurusan/extJur/', '\App\Http\Controllers\AdminController@extJur');
-    // Materi ============================================================================================================>
+    // Materi =============================================================================================================>
         // Get Materi
         Route::get('/admin/materi', '\App\Http\Controllers\AdminController@materi');
         // Add Materi
@@ -103,18 +102,18 @@ Route::group(['middleware' => 'auth'], function () {
         // Delete Materi
         Route::get('/admin/materi/{id}', '\App\Http\Controllers\AdminController@delMateri');
 
-    // Kelompok ==========================================================================================================>
+    // Kelompok ===========================================================================================================>
         // Get Kelompok
         Route::get('/admin/kelompok', '\App\Http\Controllers\AdminController@kelompok');
         // Detail Kelompok
         Route::get('/admin/kelompok/detail', '\App\Http\Controllers\AdminController@detailKelompok');
 
-    // Keluhan ===========================================================================================================>
+    // Keluhan ============================================================================================================>
         // Get Keluhan
         Route::get('/admin/keluhan', '\App\Http\Controllers\AdminController@keluhan');
         // Add Keluhan
     
-    // Pertemuan =========================================================================================================>
+    // Pertemuan ==========================================================================================================>
         // Get Pertemuan
         Route::get('/admin/pertemuan', '\App\Http\Controllers\AdminController@pertemuan');
         // Add Pertemuan
@@ -126,34 +125,37 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/admin/pengumuman/addPengumuman', '\App\Http\Controllers\AdminController@addPengumuman');
         // Delete Pengumuman
         Route::get('/admin/{id_pengumuman}/delPengumuman', '\App\Http\Controllers\AdminController@delPengumuman');
-        
 
+    
+
+});
 // MENTOR ROUTES ===================================================================================>
-
+Route::group(['middleware' => ['auth','checkRole:Mentor']], function () {
     // Dashboard
-    Route::get('/mentor', '\App\Http\Controllers\MentorController@index');
-        // Profile
+        // Get Data
+        Route::get('/mentor', '\App\Http\Controllers\MentorController@index');
+    // Profile
+        // Get Profile
         Route::get('/mentor/profile', '\App\Http\Controllers\MentorController@profile');
     // Kelompok
         // Get Kelompok
         Route::get('/mentor/kelompok', '\App\Http\Controllers\MentorController@kelompok');
-
     // Materi
         // Get Materi
         Route::get('/mentor/materi', '\App\Http\Controllers\MentorController@materi');
         // Add Materi
         Route::post('/mentor/addMateri', '\App\Http\Controllers\MentorController@addMateri');
-
-    
+});
 // MENTEE ROUTES ===================================================================================>
+Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     // Dashboard
         // Get Dashboard
         Route::get('/mentee', '\App\Http\Controllers\MenteeController@index');
-    
+
     // Kelompok
         // Get Kelompok
         Route::get('/mentee/kelompok', '\App\Http\Controllers\MenteeController@kelompok');
-        
+
     // Profile 
         // Get Profile
         Route::get('/mentee/profile', '\App\Http\Controllers\MenteeController@profile');
@@ -164,13 +166,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Pertemuan
         // Get Pertemuan
-        Route::get('/mentee/pertemuan','\App\Http\Controllers\MenteeController@pertemuan');
+        Route::get('/mentee/pertemuan', '\App\Http\Controllers\MenteeController@pertemuan');
 
     // Keluhan
         // Get Keluhan
-        Route::get('/mentee/keluhan','\App\Http\Controllers\MenteeController@keluhan');
+        Route::get('/mentee/keluhan', '\App\Http\Controllers\MenteeController@keluhan');
 
     // Pengganti
         // Get Pengganti
-        Route::get('/mentee/pengganti','\App\Http\Controllers\MenteeController@pengganti');
+        Route::get('/mentee/pengganti', '\App\Http\Controllers\MenteeController@pengganti');
 });

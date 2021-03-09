@@ -14,12 +14,11 @@ class CheckRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next,...$roles)
+    public function handle(Request $request, Closure $next,...$role)
     {
-        if (in_array($request->user()->role,$roles)) {
+        if (in_array($request->user()->role,$role)) {
             return $next($request);
         }
-        
-        return redirect('/');
+        return redirect('/dashboard');
     }
 }
