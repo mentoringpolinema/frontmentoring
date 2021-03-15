@@ -1703,8 +1703,7 @@ class Xls extends BaseReader
                 //        max 2048 bytes will probably throw a wobbly.
                 $row = self::getUInt2d($recordData, 0);
                 $extension = true;
-                $arrayKeys = array_keys($this->phpSheet->getComments());
-                $cellAddress = array_pop($arrayKeys);
+                $cellAddress = array_pop(array_keys($this->phpSheet->getComments()));
             }
 
             $cellAddress = str_replace('$', '', $cellAddress);
@@ -2287,8 +2286,8 @@ class Xls extends BaseReader
                     $rotation = $angle;
                 } elseif ($angle <= 180) {
                     $rotation = 90 - $angle;
-                } elseif ($angle == Alignment::TEXTROTATION_STACK_EXCEL) {
-                    $rotation = Alignment::TEXTROTATION_STACK_PHPSPREADSHEET;
+                } elseif ($angle == 255) {
+                    $rotation = -165;
                 }
                 $objStyle->getAlignment()->setTextRotation($rotation);
 
@@ -2390,7 +2389,7 @@ class Xls extends BaseReader
 
                         break;
                     case 1:
-                        $objStyle->getAlignment()->setTextRotation(Alignment::TEXTROTATION_STACK_PHPSPREADSHEET);
+                        $objStyle->getAlignment()->setTextRotation(-165);
 
                         break;
                     case 2:

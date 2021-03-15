@@ -120,7 +120,11 @@
                                                                 <span class="tb-amount">{{$kegiatan->jenis_kegiatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">{{$kegiatan->tanggal_kegiatan}}</span>
+                                                                <?php
+                                                                    $date = Date('d/M/Y', strtotime($kegiatan->tanggal_kegiatan));   
+                                                                    
+                                                                ?>
+                                                                <span class="tb-amount">{{$date}}</span>
                                                             </td>
                                                             {{-- <td class="nk-tb-col tb-col-mb">
                                                                 <span class="tb-amount">{{$kegiatan->jam_kegiatan}}</span>
@@ -433,7 +437,7 @@
                                             {{-- <div class="form-icon form-icon-right">
                                                 <em class="icon ni ni-calendar-alt"></em>
                                             </div> --}}
-                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_detail" value="" readonly>
+                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_detail" value="{{ date('d-m-Y', strtotime($kegiatan->tanggal_kegiatan)) }}" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -460,6 +464,7 @@
                                         <label class="form-label" for="phone-no">Detail Kegiatan</label>
                                         <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
                                     </div> --}}
+                                    <label class="form-label" for="detail_kegiatan">Detail Kegiatan</label>
                                     <textarea name="detail_kegiatan_detail" id="detail_kegiatan_detail" readonly>
                                         
                                     </textarea>
@@ -467,11 +472,11 @@
                                 
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
+                                        {{-- <li>
                                             <button type="submit" class="btn btn-lg btn-primary">Update</button>
-                                        </li>
+                                        </li> --}}
                                         <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            <a href="#" data-dismiss="modal" class="btn btn-lg btn-primary">Kembali</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -533,10 +538,12 @@
                     method: 'POST',
                     data: {id_kegiatan:id, _token:token},
                     success: function(data) {
+                        var d = new Date(data.options.tanggal_kegiatan);
+                        console.log(d)
                         $("input[name='id_kegiatan_edit']").val(data.options.id_kegiatan);
                         $("input[name='nama_kegiatan_edit']").val(data.options.nama_kegiatan);
                         $("select[name='jenis_kegiatan_edit']").val(data.options.jenis_kegiatan);
-                        $("input[name='tanggal_kegiatan_edit']").val(data.options.tanggal_kegiatan);
+                        $("input[name='tanggal_kegiatan_edit']").val(d);
                         $("input[name='minggu_kegiatan_edit']").val(data.options.minggu_kegiatan);
                         $("textarea[name='detail_kegiatan_edit']").val(data.options.detail_kegiatan);
                         // initGetDataKegiatan();
@@ -550,7 +557,8 @@
                 event.preventDefault();
                 var token = $("input[name='_token']").val();
                 var id = $(this).data('id');
-                console.log(id)
+                console.log("Testt");
+                // console.log(data)
                 $.ajax({
                     url: "<?php echo route('getKegiatanByID') ?>",
                     method: 'POST',
@@ -559,15 +567,29 @@
                         $("input[name='id_kegiatan_detail']").val(data.options.id_kegiatan);
                         $("input[name='nama_kegiatan_detail']").val(data.options.nama_kegiatan);
                         $("input[name='jenis_kegiatan_detail']").val(data.options.jenis_kegiatan);
-                        $("input[name='tanggal_kegiatan_detail']").val(data.options.tanggal_kegiatan);
                         $("input[name='minggu_kegiatan_detail']").val(data.options.minggu_kegiatan);
+                        $("input[name='tanggal_kegiatan_detail']").val(data.options.tanggal_kegiatan);
                         $("textarea[name='detail_kegiatan_detail']").val(data.options.detail_kegiatan);
                         // initGetDataKegiatan();
                         $("textarea[name='detail_kegiatan_detail']").ckeditor();
+                        // $("input[name='tanggal_kegiatan_detail']").datepicker({ dateFormat: 'dd-mm-yy' }).val(data.options.tanggal_kegiatan);
+                        console.log(data);
+                        // console.log(new Date(data.options.tanggal_kegiatan))
+
+                        // let dateString = data.options.tanggal_kegiatan
+                        // let dateParts = dateString.split("/")
+
+                        // let dateObjects = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0])
+                        // console.log(dateObjects.toString())
+                        // $("input[name='tanggal_kegiatan_detail']").val(dateObjects.toString());
+                        // dd($data);
+                        // var_dump(data);
+                        
                     }
                 });
         });
        
         </script>
+
     @endsection
 @stop

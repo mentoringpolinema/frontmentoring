@@ -373,9 +373,7 @@ class Spreadsheet
      */
     private function getExtensionOnly($path)
     {
-        $extension = pathinfo($path, PATHINFO_EXTENSION);
-
-        return is_array($extension) ? '' : $extension;
+        return pathinfo($path, PATHINFO_EXTENSION);
     }
 
     /**
