@@ -539,11 +539,11 @@
                     data: {id_kegiatan:id, _token:token},
                     success: function(data) {
                         var d = new Date(data.options.tanggal_kegiatan);
-                        console.log(d)
+                        const dateDB =d.getFullYear()+"-"+ ("0" + (d.getMonth() + 1)).slice(-2) +"-"+ ("0" + d.getDate()).slice(-2);
                         $("input[name='id_kegiatan_edit']").val(data.options.id_kegiatan);
                         $("input[name='nama_kegiatan_edit']").val(data.options.nama_kegiatan);
                         $("select[name='jenis_kegiatan_edit']").val(data.options.jenis_kegiatan);
-                        $("input[name='tanggal_kegiatan_edit']").val(d);
+                        $("input[name='tanggal_kegiatan_edit']").val(dateDB);
                         $("input[name='minggu_kegiatan_edit']").val(data.options.minggu_kegiatan);
                         $("textarea[name='detail_kegiatan_edit']").val(data.options.detail_kegiatan);
                         // initGetDataKegiatan();
@@ -564,11 +564,13 @@
                     method: 'POST',
                     data: {id_kegiatan:id, _token:token},
                     success: function(data) {
+                        var d = new Date(data.options.tanggal_kegiatan);
+                        const dateDB =d.getFullYear()+"-"+ ("0" + (d.getMonth() + 1)).slice(-2) +"-"+ ("0" + d.getDate()).slice(-2);
                         $("input[name='id_kegiatan_detail']").val(data.options.id_kegiatan);
                         $("input[name='nama_kegiatan_detail']").val(data.options.nama_kegiatan);
                         $("input[name='jenis_kegiatan_detail']").val(data.options.jenis_kegiatan);
                         $("input[name='minggu_kegiatan_detail']").val(data.options.minggu_kegiatan);
-                        $("input[name='tanggal_kegiatan_detail']").val(data.options.tanggal_kegiatan);
+                        $("input[name='tanggal_kegiatan_detail']").val(dateDB);
                         $("textarea[name='detail_kegiatan_detail']").val(data.options.detail_kegiatan);
                         // initGetDataKegiatan();
                         $("textarea[name='detail_kegiatan_detail']").ckeditor();

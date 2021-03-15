@@ -71,7 +71,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="project-details">
-                                                            <p>{{$materi->detail_materi}} ...</p>
+                                                            <p>{!!$materi->detail_materi!!} ...</p>
                                                             {{-- <p>{{$materi->link_materi}}</p> --}}
                                                         </div>
                                                         <div class="project-progress">
