@@ -42,4 +42,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function mentor()
+    {
+        return $this->hasOne(Mentor::class);
+    }
+
+    public function mentee()
+    {
+        return $this->hasOne(Mentee::class);
+    }
+
+    public function panitia()
+    {
+        return $this->hasOne(Panitia::class);
+    }
 }

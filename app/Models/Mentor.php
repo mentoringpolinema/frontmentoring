@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Mentor extends Model{
     protected $table = 'mentor';
     protected $primaryKey = 'id_mentor';
-    protected $fillable = ['nama_mentor','email_mentor','alamat_mentor','status_mentor','notelp_mentor', 'user_id'];
+    protected $fillable = ['id_user', 'nama_mentor','email_mentor','alamat_mentor','status_mentor','notelp_mentor'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
