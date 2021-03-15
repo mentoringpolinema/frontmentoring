@@ -122,12 +122,12 @@
                                                                 <span class="tb-status text-danger">2</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <form action="/admin/mentor/{{$mentor->id_mentor}}" method="post" style="display: inline">
+                                                                <form action="/admin/mentor/{{$mentor->slug}}" method="post" style="display: inline">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button class="btn btn-round btn-sm btn-danger" type="submit" class="fa fa-trash">Delete</button>
                                                                 </form>
-                                                                <a href="/admin/detailMentor/{{$mentor->id_mentor}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>                                                            
+                                                                <a href="/admin/detailMentor/{{$mentor->slug}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>                                                            
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                       
                                                         @endforeach
