@@ -90,7 +90,7 @@
                         </div>
                         <div class="navbar-btn d-none d-sm-inline-block">
                             <ul>
-                                <li><a class="solid" href="/auth">Log In</a></li>
+                                <li><a class="solid" href="/login">Log In</a></li>
                             </ul>
                         </div>
                     </nav> <!-- navbar -->

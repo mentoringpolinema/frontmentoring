@@ -25,9 +25,9 @@ Route::get('/main', '\App\Http\Controllers\MainController@index');
 Route::get('/cekMentoring', '\App\Http\Controllers\MainController@cekMentoring');
 
 // Auth Routes
-Route::get('/auth', '\App\Http\Controllers\AuthController@index')->name('login');
-Route::post('/login', '\App\Http\Controllers\AuthController@login');
-Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
+// Route::get('/auth', '\App\Http\Controllers\AuthController@index')->name('login');
+// Route::post('/login', '\App\Http\Controllers\AuthController@login');
+// Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
 
 
 // DASHBOARD ROUTES ================================================================================>
@@ -184,3 +184,7 @@ Route::middleware(['auth', 'checkRole:Panitia,Mentor,Mentee'])->group(function (
         // Get Pengganti
         Route::get('/mentee/pengganti','\App\Http\Controllers\MenteeController@pengganti');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
