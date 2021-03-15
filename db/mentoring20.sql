@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2021 at 03:54 PM
+-- Generation Time: Mar 15, 2021 at 08:33 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -106,9 +106,9 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `jenis_kegiatan`, `minggu_kegiatan`, `tanggal_kegiatan`, `detail_kegiatan`, `created_at`, `updated_at`) VALUES
-(1, 'aaaaaaaaaaaaa', 'Materi', 2, '2021-02-12', '<p>md&nbsp;</p>', '2021-02-25 03:36:18', '2021-03-01 01:34:30'),
-(2, 'Makhrojul Huruf', 'Pertemuan', 4, '2021-02-12', '<p>haha</p>', '2021-02-25 04:17:23', '2021-02-25 04:17:23'),
-(3, 'haha', 'Materi', 1, '2021-03-15', '<p>aaaaaa</p>\r\n\r\n<p>aaa</p>', '2021-03-07 06:30:57', '2021-03-07 06:30:57');
+(2, 'Makhrojul Huruf', 'Pertemuan', 9, '2021-03-16', '<p>haha</p>', '2021-02-25 04:17:23', '2021-03-11 03:15:20'),
+(3, 'haha', 'Materi', 1, '2021-03-15', '<p>aaaaaa</p>\r\n\r\n<p>aaa</p>', '2021-03-07 06:30:57', '2021-03-07 06:30:57'),
+(5, 'n', 'Materi', 3, '2021-03-26', '<p>a,</p>', '2021-03-11 03:14:03', '2021-03-11 03:16:21');
 
 -- --------------------------------------------------------
 
@@ -180,7 +180,9 @@ CREATE TABLE `mahasiswa` (
 CREATE TABLE `materi` (
   `id_materi` int(10) UNSIGNED NOT NULL,
   `nama_materi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `link_materi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link_materi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link_materi_embed` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `minggu_materi` int(2) NOT NULL,
   `detail_materi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -190,9 +192,8 @@ CREATE TABLE `materi` (
 -- Dumping data for table `materi`
 --
 
-INSERT INTO `materi` (`id_materi`, `nama_materi`, `link_materi`, `detail_materi`, `created_at`, `updated_at`) VALUES
-(1, 'Mengaji', 'hthuhewhhej', '<p>JJWJEJW</p>', '2021-02-25 04:30:39', '2021-02-25 04:30:39'),
-(2, 'AYO GASS', 'lifkjei', '<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>', '2021-03-01 01:22:15', '2021-03-01 01:22:15');
+INSERT INTO `materi` (`id_materi`, `nama_materi`, `link_materi`, `link_materi_embed`, `minggu_materi`, `detail_materi`, `created_at`, `updated_at`) VALUES
+(15, 'Mengaji', 'https://www.youtube.com/watch?v=_jEkvAHLbp0', 'https://youtube.com/embed/_jEkvAHLbp0', 9, '<p>Sesi 1 09.00</p>\r\n\r\n<p>Sesi 2 10.00</p>', '2021-03-14 22:26:00', '2021-03-14 22:26:00');
 
 -- --------------------------------------------------------
 
@@ -202,6 +203,7 @@ INSERT INTO `materi` (`id_materi`, `nama_materi`, `link_materi`, `detail_materi`
 
 CREATE TABLE `mentee` (
   `id_mentee` int(10) UNSIGNED NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nim_mentee` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_mentee` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kelas_id` int(10) NOT NULL,
@@ -216,8 +218,8 @@ CREATE TABLE `mentee` (
 -- Dumping data for table `mentee`
 --
 
-INSERT INTO `mentee` (`id_mentee`, `nim_mentee`, `nama_mentee`, `kelas_id`, `kelompok_id`, `angkatan_id`, `status_mentee`, `created_at`, `updated_at`) VALUES
-(1, '1831710190', 'A. Yahya Hudan Permana', 0, 0, 0, '', '2021-02-03 13:37:55', NULL);
+INSERT INTO `mentee` (`id_mentee`, `id_user`, `nim_mentee`, `nama_mentee`, `kelas_id`, `kelompok_id`, `angkatan_id`, `status_mentee`, `created_at`, `updated_at`) VALUES
+(1, 0, '1831710190', 'A. Yahya Hudan Permana', 0, 0, 0, '', '2021-02-03 13:37:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -227,6 +229,7 @@ INSERT INTO `mentee` (`id_mentee`, `nim_mentee`, `nama_mentee`, `kelas_id`, `kel
 
 CREATE TABLE `mentor` (
   `id_mentor` int(10) UNSIGNED NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nama_mentor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_mentor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat_mentor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -240,11 +243,11 @@ CREATE TABLE `mentor` (
 -- Dumping data for table `mentor`
 --
 
-INSERT INTO `mentor` (`id_mentor`, `nama_mentor`, `email_mentor`, `alamat_mentor`, `notelp_mentor`, `status_mentor`, `created_at`, `updated_at`) VALUES
-(2, 'A. Yahya Hudan Permana', 'yahyahudan@mentoringpolinema.my.id', 'Jalan A. Satsui Tubun III No.83M RT 12 RW03 Malang', '081259224380', 'Aktif', NULL, NULL),
-(3, 'Rijalus Sholihin', 'rijaluss@mentoringpolinema.my.id', 'Jalan Sepanjang Kenangan Indah No.69 Kab. Probolinggo', '082337105933', 'Aktif', '2021-01-28 05:30:35', '2021-01-28 05:30:35'),
-(12, 'Galih Pamungkas I', 'galihp@mentoringpolinema.my.id', 'Darjo', '0812359224380', 'Aktif', '2021-02-15 03:04:43', '2021-02-15 03:04:43'),
-(13, 'Sena Adi Fakhruddiin', 'senadi@mentoringpolinema.my.id', 'Sengkaleng', '082337105933', 'Aktif', '2021-02-18 16:42:01', '2021-02-18 16:42:01');
+INSERT INTO `mentor` (`id_mentor`, `id_user`, `nama_mentor`, `email_mentor`, `alamat_mentor`, `notelp_mentor`, `status_mentor`, `created_at`, `updated_at`) VALUES
+(2, 0, 'A. Yahya Hudan Permana', 'yahyahudan@mentoringpolinema.my.id', 'Jalan A. Satsui Tubun III No.83M RT 12 RW03 Malang', '081259224380', 'Aktif', NULL, NULL),
+(3, 0, 'Rijalus Sholihin', 'rijaluss@mentoringpolinema.my.id', 'Jalan Sepanjang Kenangan Indah No.69 Kab. Probolinggo', '082337105933', 'Aktif', '2021-01-28 05:30:35', '2021-01-28 05:30:35'),
+(12, 0, 'Galih Pamungkas I', 'galihp@mentoringpolinema.my.id', 'Darjo', '0812359224380', 'Aktif', '2021-02-15 03:04:43', '2021-02-15 03:04:43'),
+(13, 0, 'Sena Adi Fakhruddiin', 'senadi@mentoringpolinema.my.id', 'Sengkaleng', '082337105933', 'Aktif', '2021-02-18 16:42:01', '2021-02-18 16:42:01');
 
 -- --------------------------------------------------------
 
@@ -288,6 +291,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `panitia` (
   `id_panitia` int(10) UNSIGNED NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nama_panitia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username_panitia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password_panitia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -375,9 +379,9 @@ INSERT INTO `prodi` (`id_prodi`, `nama_prodi`, `singkatan_prodi`, `created_at`, 
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` int(20) UNSIGNED NOT NULL,
+  `role` enum('Panitia','Mentee','Mentor','') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Panitia',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -390,10 +394,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role`, `username`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Panitia', 'Ahmad Yahya', 'panitia@mentoringpolinema.my.id', NULL, '$2y$10$5VOyqn9iQuxiUAQXOoCk4OdAy2w01k8451VGKwnFsUYyxE2vqkc5O', 'gqnphiRSJcAn554baGL4dsyGEBGSXQYxOGQ1Yot8xSAjKQVhWLNXzr8DWqWa', '2021-01-27 20:10:08', '2021-01-27 20:10:08'),
-(2, 'Mentor', 'Mentor', 'mentor@mentoringpolinema.my.id', NULL, '$2y$10$MxqXdmLcxNhCz57DsQUkwOrPbEXcbm6vD87LhRNsrEi6PAAZaw/Ym', NULL, '2021-02-17 23:07:24', '2021-02-17 23:07:24'),
-(3, 'Mentee', 'Irfak Wahyudi', 'irfak@mentoringpolinema.my.id', NULL, '$2y$10$/jul3vL8T/4bgftf/isb4uEpUv97HIgBKMnzSCo1EZgsLj6Vzzp.C', NULL, '2021-02-17 23:10:11', '2021-02-17 23:10:11');
+INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'Mentee', 'Izza Putri', 'izza.mentee@mentoringpolinema.my.id', NULL, '$2y$10$fFqkKbYnYeJyEwZkN.S5yOB6o4khnAx.Z5h6XDUgpB.9RXo44fiiq', NULL, '2021-03-14 23:36:06', '2021-03-14 23:36:06'),
+(3, 'Mentor', 'Rizal Putra', 'rizal.mentor@mentoringpolinema.my.id', NULL, '$2y$10$UPEF0HEzIiSXcRW0D95wZeGG2FyQZYmGKr/Va2LM5r.WCuLLtn56G', NULL, '2021-03-14 23:41:22', '2021-03-14 23:41:22'),
+(4, 'Panitia', 'Irfak Wahyudi', 'irfak.panitia@mentoringpolinema.my.id', NULL, '$2y$10$ziqkdS77Ghq0nEDwnV6z6e7.tJsX0ru8w3cVxrj5.5erP11GSy6eq', NULL, '2021-03-15 00:02:04', '2021-03-15 00:02:04');
 
 --
 -- Indexes for dumped tables
@@ -473,6 +477,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `panitia`
+--
+ALTER TABLE `panitia`
+  ADD PRIMARY KEY (`id_panitia`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -497,6 +507,12 @@ ALTER TABLE `prodi`
   ADD PRIMARY KEY (`id_prodi`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -516,13 +532,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kegiatan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `id_materi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_materi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -531,10 +547,22 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `panitia`
+--
+ALTER TABLE `panitia`
+  MODIFY `id_panitia` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
   MODIFY `id_pengumuman` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
