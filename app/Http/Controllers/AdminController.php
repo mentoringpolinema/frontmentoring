@@ -114,7 +114,7 @@ class AdminController extends Controller
 
         $user = User::create([
             "role" => "Mentor",
-            "username" => $request->nama_mentor,
+            "name" => $request->nama_mentor,
             "email" => $request->email_mentor,
             "password" => Hash::make('mentor123'),
         ]);
@@ -122,6 +122,7 @@ class AdminController extends Controller
         $userID = DB::getPdo()->lastInsertId();
 
         $mentor = Mentor::create([
+            "id_user" => $userID,
             "nama_mentor" => $request->nama_mentor,
             "email_mentor" => $request->email_mentor,
             "alamat_mentor" => $request->alamat_mentor,
