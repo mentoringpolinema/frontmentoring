@@ -162,7 +162,7 @@ class TextData
         if (!is_numeric($value) || !is_numeric($decimals)) {
             return Functions::VALUE();
         }
-        $decimals = (int) $decimals;
+        $decimals = floor($decimals);
 
         $mask = '$#,##0';
         if ($decimals > 0) {
@@ -172,7 +172,7 @@ class TextData
             if ($value < 0) {
                 $round = 0 - $round;
             }
-            $value = MathTrig\Mround::funcMround($value, $round);
+            $value = MathTrig::MROUND($value, $round);
         }
         $mask = "$mask;($mask)";
 
@@ -672,26 +672,5 @@ class TextData
         }
 
         return implode($delimiter, $aArgs);
-    }
-
-    /**
-     * REPT.
-     *
-     * Returns the result of builtin function round after validating args.
-     *
-     * @param string $str Should be numeric
-     * @param mixed $number Should be int
-     *
-     * @return string
-     */
-    public static function builtinREPT($str, $number)
-    {
-        $number = Functions::flattenSingleValue($number);
-
-        if (!is_numeric($number) || $number < 0) {
-            return Functions::VALUE();
-        }
-
-        return str_repeat($str, $number);
     }
 }

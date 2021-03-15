@@ -96,8 +96,8 @@ class AdminController extends Controller
     // Mentor Function 
     public function mentor()
     {
-        $data_mentor = \App\Models\Mentor::all();
-        $totalMentor = \App\Models\Mentor::count();
+        $data_mentor = Mentor::all();
+        $totalMentor = Mentor::count();
         return view('admin.mentor', ['data_mentor' => $data_mentor], ['totalMentor' => $totalMentor]);
     }
 
@@ -155,7 +155,7 @@ class AdminController extends Controller
 
     // Update Mentor
     public function updMentor(Request $request,$id_mentor){
-        $data_mentor = \App\Models\Mentor::find($id_mentor);
+        $data_mentor = Mentor::find($id_mentor);
         $data_mentor->update($request->all());
         // dd($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
@@ -216,28 +216,78 @@ class AdminController extends Controller
 
         // Delete Prodi
 
+    //-------------------------------------------Materi-------------------------------------------
+
     // Materi Function
 
         // Get Function
         public function materi()
         {   
-            $data_materi = \App\Models\Materi::all();
-            $data_kegiatan = \App\Models\Kegiatan::all();
-            $totalMateri = \App\Models\Materi::count();
+            $data_materi = Materi::all();
+            $data_kegiatan = Kegiatan::all('minggu_kegiatan');
+            $totalMateri = Materi::count();
             return view('admin.materi', ['data_materi' => $data_materi, 'data_kegiatan' => $data_kegiatan],['totalMateri' => $totalMateri]);
         }
         // Add Materi
         public function addMateri(Request $request)
         {
-            $materi = \App\Models\Materi::create($request->all());
+            // $materi = Materi::create($request->all());
+
+            // Convert link materi untuk ditampilkan di embed 
+
+            // Dari input link youtube, dipecah berdasarkan / 
+            //explode itu string ke array
+            $last = explode("/",$request->link_materi);
+
+            //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
+            //0 dan 8 panjang dari watch?v=
+            $convertedLast = substr_replace($last[3],"embed/",0,8);
+
+            $embedLink = "https://youtube.com/".$convertedLast;
+            $materi = Materi::create([
+                "nama_materi" => $request->nama_materi,
+                "link_materi" => $request->link_materi,
+                "minggu_materi" => $request->minggu_materi,
+                "link_materi_embed" => $embedLink,
+                "detail_materi" => $request->detail_materi
+            ]);
             return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
         }
         // Delete Materi
         public function delMateri($id_materi)
         {
-            $data_materi = \App\Models\Materi::find($id_materi);
+            $data_materi = Materi::find($id_materi);
             $data_materi->delete($data_materi);
             return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
+        }
+        // Get By Id Materi
+        public function getByIdMateri(Request $request){
+            if($request->ajax()){
+                $data = Materi::findOrFail($request->id_materi);
+                return response()->json(['options'=>$data]);
+            }
+        }
+        // Edit Materi
+        public function editMateri(Request $request)
+        {
+            $id = $request->id_materi_edit;
+            $materi = Materi::findOrFail($id);
+            $last = explode("/",$request->link_materi_edit);
+
+            //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
+            //0 dan 8 panjang dari watch?v=
+            $convertedLast = substr_replace($last[3],"embed/",0,8);
+
+            $embedLink = "https://youtube.com/".$convertedLast;
+            $materi->update([
+                "nama_materi" => $request->nama_materi_edit,
+                "link_materi" => $request->link_materi_edit,
+                "minggu_materi" => $request->minggu_materi_edit,
+                "link_materi_embed" => $embedLink,
+                "detail_materi" => $request->detail_materi_edit
+            ]);
+            // dd($materi);
+            return redirect('/admin/materi')->with('success', 'Materi Berhasil diedit !');
         }
 
     //-------------------------------------------Kelompok-------------------------------------------
