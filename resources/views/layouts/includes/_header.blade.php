@@ -194,7 +194,7 @@
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
                                                     <div class="user-status user-status-active">{{auth()->user()->role}}</div>
-                                                    <div class="user-name dropdown-indicator">{{auth()->user()->username}}</div>
+                                                    <div class="user-name dropdown-indicator">{{auth()->user()->name}}</div>
                                                 </div>
                                             </div>
                                         </a>
@@ -205,7 +205,7 @@
                                                         <span>AY</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">{{auth()->user()->username}}</span>
+                                                        <span class="lead-text">{{auth()->user()->name}}</span>
                                                         <span class="sub-text">{{auth()->user()->role}}</span>
                                                     </div>
                                                 </div>
@@ -223,7 +223,12 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="/logout"><em class="icon ni ni-signout"></em><span>Log out</span></a></li>
+                                                    <li>
+                                                        <form action="/logout" method="POST">
+                                                            @csrf
+                                                            <button type="submit"><em class="icon ni ni-signout"></em><span>Log out</span></button>
+                                                        </form>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
