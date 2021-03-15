@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
 
 use App\Models\Kegiatan;
 use App\Models\Kelompok;
@@ -127,16 +128,17 @@ class AdminController extends Controller
             "email_mentor" => $request->email_mentor,
             "alamat_mentor" => $request->alamat_mentor,
             "notelp_mentor" => $request->notelp_mentor,
-            "status_mentor" => $request->status_mentor
+            "status_mentor" => $request->status_mentor,
+            "slug" => Str::slug($request->nama_mentor, '-')
         ]);
 
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil ditambahkan !');
     }
 
     // Delete Mentor
-    public function delMentor($id_mentor)
+    public function delMentor($slug)
     {
-        $data_mentor = Mentor::find($id_mentor);
+        $data_mentor = Mentor::where('slug', $slug)->get()->first();
         $data_mentor->delete($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
     }
@@ -149,8 +151,8 @@ class AdminController extends Controller
     }
 
     // Detail Mentor
-    public function detailMentor($id_mentor){
-        $data_mentor = Mentor::find($id_mentor);
+    public function detailMentor($slug){
+        $data_mentor = Mentor::where('slug', $slug)->get()->first();
         return view('admin.mentor.detailMentor',compact(['data_mentor']));
     }
 

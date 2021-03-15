@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2021 at 08:33 AM
+-- Generation Time: Mar 15, 2021 at 10:40 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -108,7 +108,8 @@ CREATE TABLE `kegiatan` (
 INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `jenis_kegiatan`, `minggu_kegiatan`, `tanggal_kegiatan`, `detail_kegiatan`, `created_at`, `updated_at`) VALUES
 (2, 'Makhrojul Huruf', 'Pertemuan', 9, '2021-03-16', '<p>haha</p>', '2021-02-25 04:17:23', '2021-03-11 03:15:20'),
 (3, 'haha', 'Materi', 1, '2021-03-15', '<p>aaaaaa</p>\r\n\r\n<p>aaa</p>', '2021-03-07 06:30:57', '2021-03-07 06:30:57'),
-(5, 'n', 'Materi', 3, '2021-03-26', '<p>a,</p>', '2021-03-11 03:14:03', '2021-03-11 03:16:21');
+(5, 'n', 'Materi', 3, '2021-03-26', '<p>a,</p>', '2021-03-11 03:14:03', '2021-03-11 03:16:21'),
+(6, 'Makhrojul Huruf', 'Materi', 4, '2021-03-10', '<p>Sesi 1 09.00</p>\r\n\r\n<p>Sesi 2 10.00</p>\r\n\r\n<p>Sesi 3 11.00</p>', '2021-03-15 01:00:07', '2021-03-15 01:01:08');
 
 -- --------------------------------------------------------
 
@@ -235,6 +236,7 @@ CREATE TABLE `mentor` (
   `alamat_mentor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `notelp_mentor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status_mentor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -243,11 +245,8 @@ CREATE TABLE `mentor` (
 -- Dumping data for table `mentor`
 --
 
-INSERT INTO `mentor` (`id_mentor`, `id_user`, `nama_mentor`, `email_mentor`, `alamat_mentor`, `notelp_mentor`, `status_mentor`, `created_at`, `updated_at`) VALUES
-(2, 0, 'A. Yahya Hudan Permana', 'yahyahudan@mentoringpolinema.my.id', 'Jalan A. Satsui Tubun III No.83M RT 12 RW03 Malang', '081259224380', 'Aktif', NULL, NULL),
-(3, 0, 'Rijalus Sholihin', 'rijaluss@mentoringpolinema.my.id', 'Jalan Sepanjang Kenangan Indah No.69 Kab. Probolinggo', '082337105933', 'Aktif', '2021-01-28 05:30:35', '2021-01-28 05:30:35'),
-(12, 0, 'Galih Pamungkas I', 'galihp@mentoringpolinema.my.id', 'Darjo', '0812359224380', 'Aktif', '2021-02-15 03:04:43', '2021-02-15 03:04:43'),
-(13, 0, 'Sena Adi Fakhruddiin', 'senadi@mentoringpolinema.my.id', 'Sengkaleng', '082337105933', 'Aktif', '2021-02-18 16:42:01', '2021-02-18 16:42:01');
+INSERT INTO `mentor` (`id_mentor`, `id_user`, `nama_mentor`, `email_mentor`, `alamat_mentor`, `notelp_mentor`, `status_mentor`, `slug`, `created_at`, `updated_at`) VALUES
+(15, 11, 'Master', 'halo@halo.com', 'tyftr', '0878976858', 'aktif', 'master', '2021-03-15 02:26:49', '2021-03-15 02:26:49');
 
 -- --------------------------------------------------------
 
@@ -293,9 +292,6 @@ CREATE TABLE `panitia` (
   `id_panitia` int(10) UNSIGNED NOT NULL,
   `id_user` int(11) NOT NULL,
   `nama_panitia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username_panitia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password_panitia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_panitia` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -339,7 +335,7 @@ CREATE TABLE `pengumuman` (
   `status_pengumuman` varchar(255) NOT NULL,
   `detail_pengumuman` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -348,6 +344,24 @@ CREATE TABLE `pengumuman` (
 
 INSERT INTO `pengumuman` (`id_pengumuman`, `judul_pengumuman`, `tagline_pengumuman`, `status_pengumuman`, `detail_pengumuman`, `created_at`, `updated_at`) VALUES
 (2, 'a', 'Mentoring', 'Selesai', '<p>a</p>\r\n\r\n<p>a</p>', '2021-03-07 07:37:55', '2021-03-07 07:37:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pertemuan`
+--
+
+CREATE TABLE `pertemuan` (
+  `id_pertemuan` int(11) NOT NULL,
+  `nama_pertemuan` varchar(100) NOT NULL,
+  `mentor_pertemuan` varchar(100) NOT NULL,
+  `minggu_pertemuan` int(2) NOT NULL,
+  `tanggal_pertemuan` date NOT NULL,
+  `detail_pertemuan` text NOT NULL,
+  `link_pertemuan` varchar(100) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -397,7 +411,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `role`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'Mentee', 'Izza Putri', 'izza.mentee@mentoringpolinema.my.id', NULL, '$2y$10$fFqkKbYnYeJyEwZkN.S5yOB6o4khnAx.Z5h6XDUgpB.9RXo44fiiq', NULL, '2021-03-14 23:36:06', '2021-03-14 23:36:06'),
 (3, 'Mentor', 'Rizal Putra', 'rizal.mentor@mentoringpolinema.my.id', NULL, '$2y$10$UPEF0HEzIiSXcRW0D95wZeGG2FyQZYmGKr/Va2LM5r.WCuLLtn56G', NULL, '2021-03-14 23:41:22', '2021-03-14 23:41:22'),
-(4, 'Panitia', 'Irfak Wahyudi', 'irfak.panitia@mentoringpolinema.my.id', NULL, '$2y$10$ziqkdS77Ghq0nEDwnV6z6e7.tJsX0ru8w3cVxrj5.5erP11GSy6eq', NULL, '2021-03-15 00:02:04', '2021-03-15 00:02:04');
+(4, 'Panitia', 'Irfak Wahyudi', 'irfak.panitia@mentoringpolinema.my.id', NULL, '$2y$10$ziqkdS77Ghq0nEDwnV6z6e7.tJsX0ru8w3cVxrj5.5erP11GSy6eq', NULL, '2021-03-15 00:02:04', '2021-03-15 00:02:04'),
+(10, 'Mentor', 'test', 'djasd!!=@askdnsakd.xom', NULL, '$2y$10$Xa0uf6ctrJ4vmntBCFA1eOzlVXuGFs94bW93LO9u5fjs9fb11cgNy', NULL, '2021-03-15 01:29:16', '2021-03-15 01:29:16'),
+(11, 'Mentor', 'Master', 'halo@halo.com', NULL, '$2y$10$78MUTy8q0hwcI0zUAsTGvO8o4vy2caotQu3l8sKi7NbpFk5D70AuK', NULL, '2021-03-15 02:26:49', '2021-03-15 02:26:49'),
+(12, 'Mentor', 'a', 'test@gmail.asodm', NULL, '$2y$10$8SCl5o2mAceVuzcN4AZLbumIc2HDeR0T22qbofa./G/82BpxhaXnS', NULL, '2021-03-15 02:30:56', '2021-03-15 02:30:56');
 
 --
 -- Indexes for dumped tables
@@ -532,13 +549,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_kegiatan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
   MODIFY `id_materi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `mentee`
+--
+ALTER TABLE `mentee`
+  MODIFY `id_mentee` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `mentor`
+--
+ALTER TABLE `mentor`
+  MODIFY `id_mentor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -562,7 +591,7 @@ ALTER TABLE `pengumuman`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
