@@ -226,7 +226,7 @@
                                                     <li>
                                                         <form action="/logout" method="POST">
                                                             @csrf
-                                                            <button type="submit"><em class="icon ni ni-signout"></em><span>Log out</span></button>
+                                                            <button type="submit" class="btn btn-sm btn-danger"><em class="icon ni ni-signout"></em><span>Log out</span></button>
                                                         </form>
                                                     </li>
                                                 </ul>

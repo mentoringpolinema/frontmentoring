@@ -6,6 +6,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\MenteeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MentorController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,13 +31,13 @@ Route::get('/cekMentoring', '\App\Http\Controllers\MainController@cekMentoring')
 // Route::get('/logout', '\App\Http\Controllers\AuthController@logout');
 
 
-// DASHBOARD ROUTES ================================================================================>
+// DASHBOARD ROUTES ======================================================================================================>
 Route::middleware(['auth', 'checkRole:Panitia,Mentor,Mentee'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index']);
 });
 
-// PANITIA ROUTES ===================================================================================>
-    Route::group(['middleware' => 'auth'], function () {
+// PANITIA ROUTES =========================================================================================================>
+Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Dashboard Routes ===================================================================================================>
     Route::get('/admin', '\App\Http\Controllers\AdminController@index');
     // Cetak ==============================================================================================================>
@@ -136,10 +137,9 @@ Route::middleware(['auth', 'checkRole:Panitia,Mentor,Mentee'])->group(function (
         Route::get('/admin/pengumuman', '\App\Http\Controllers\AdminController@pengumuman');
         // Add Pengumuman
         Route::post('/admin/pengumuman/addPengumuman', '\App\Http\Controllers\AdminController@addPengumuman');
-        
-
-// MENTOR ROUTES ===================================================================================>
-
+});
+// MENTOR ROUTES =========================================================================================================>
+Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
     // Dashboard
     Route::get('/mentor', '\App\Http\Controllers\MentorController@index');
         // Profile
@@ -153,9 +153,10 @@ Route::middleware(['auth', 'checkRole:Panitia,Mentor,Mentee'])->group(function (
         Route::get('/mentor/materi', '\App\Http\Controllers\MentorController@materi');
         // Add Materi
         Route::post('/mentor/addMateri', '\App\Http\Controllers\MentorController@addMateri');
+});
 
-    
-// MENTEE ROUTES ===================================================================================>
+// MENTEE ROUTES =========================================================================================================>
+Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     // Dashboard
         // Get Dashboard
         Route::get('/mentee', '\App\Http\Controllers\MenteeController@index');
