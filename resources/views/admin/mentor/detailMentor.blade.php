@@ -17,9 +17,9 @@
                                                             <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
                                                         </div>
                                                         <div class="nk-block-head-content">
-                                                        <a href="/admin/mentor" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a>
-                                                        <a href="/admin/mentor" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
-                                                    </div>
+                                                            <a href="/admin/mentor" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a>
+                                                            <a href="/admin/mentor" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                                                        </div>
                                                     </div>                                                    
                                                 </div><!-- .nk-block-head -->
                                                 <div class="nk-block">

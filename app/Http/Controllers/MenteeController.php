@@ -19,12 +19,22 @@ class MenteeController extends Controller
         return view('mentee.kelompok');
     }
 
-    // Materi
-    
-    public function materi()
-    {
-        return view('mentee.materi');
-    }
+    // Materi dan Tugas
+        // Materi 
+        public function materi()
+        {
+            return view('mentee.materi');
+        }
+        // Detail Materi
+        public function detailMateri()
+        {
+            return view('mentee.materi.detail');
+        }
+        // Detail Materi
+        public function detailTugas()
+        {
+            return view('mentee.tugas.detail');
+        }
     
     // Pertemuan
     

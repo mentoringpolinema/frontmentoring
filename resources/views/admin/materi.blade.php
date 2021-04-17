@@ -51,11 +51,11 @@
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
-                                                            <a href="#" data-toggle="modal" data-target="#modalDetailMateri" class="project-title">
+                                                            <a href="#" data-toggle="modal" data-target="#modalDetailMateri" id="detailMateri" data-id="{{ $materi->id_materi }}" class="project-title">
                                                                 <div class="user-avatar sq bg-warning"><span>MM</span></div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{$materi->nama_materi}}</h6>
-                                                                    <span class="sub-text">{{$materi->minggu_materi}}</span>
+                                                                    <span class="sub-text">Minggu Ke-{{$materi->minggu_materi}}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
@@ -71,8 +71,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="project-details">
-                                                            <p>{!!$materi->detail_materi!!} ...</p>
-                                                            {{-- <p>{{$materi->link_materi}}</p> --}}
+                                                            <p>{!!$materi->detail_materi!!}</p>
+                                                            <p>{{$materi->link_materi}}</p>
                                                         </div>
                                                         <div class="project-progress">
                                                             <div class="project-progress-details">

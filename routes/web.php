@@ -130,13 +130,20 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::get('/admin/cariPertemuan/{id}', '\App\Http\Controllers\AdminController@cariPertemuan');
         // Detail Pertemuan
         Route::get('/admin/detPertemuan/{id}', '\App\Http\Controllers\AdminController@detPertemuan');
-        // Update Pertemuan
+        // Edit Pertemuan
 
     // Pengumuman ========================================================================================================>
         // Get Pengumuman
         Route::get('/admin/pengumuman', '\App\Http\Controllers\AdminController@pengumuman');
         // Add Pengumuman
         Route::post('/admin/pengumuman/addPengumuman', '\App\Http\Controllers\AdminController@addPengumuman');
+        // Del Pengumuman
+        Route::get('/admin/{id}/delPengumuman', '\App\Http\Controllers\AdminController@delPengumuman');
+        // Det Pengumuman
+        Route::get('/admin/{id}/detPengumuman', '\App\Http\Controllers\AdminController@detPengumuman');
+        // Edit Pengumuman
+        Route::post('/admin/{id}/edtPengumuman', '\App\Http\Controllers\AdminController@edtPengumuman');
+
 });
 // MENTOR ROUTES =========================================================================================================>
 Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
@@ -169,9 +176,13 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
         // Get Profile
         Route::get('/mentee/profile', '\App\Http\Controllers\MenteeController@profile');
 
-    // Materi
-        // Get Materi
+    // Materi dan Tugas
+        // Get Materi dan Tugas
         Route::get('/mentee/materi', '\App\Http\Controllers\MenteeController@materi');
+        // Detail Materi 
+        Route::get('/mentee/materi/detailMateri', '\App\Http\Controllers\MenteeController@detailMateri');
+        // Detail Tugas 
+        Route::get('/mentee/materi/detailTugas', '\App\Http\Controllers\MenteeController@detailTugas');
 
     // Pertemuan
         // Get Pertemuan

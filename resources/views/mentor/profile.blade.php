@@ -29,7 +29,7 @@
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
                                                                 <span class="data-label">Nama Lengkap</span>
-                                                                <span class="data-value">{{auth()->user()->username}}</span>
+                                                                <span class="data-value">{{auth()->user()->name}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
@@ -85,7 +85,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="full-name">Nama Lengkap</label>
-                                        <input type="text" class="form-control form-control-lg" id="full-name" value="Abu Bin Ishtiyak" placeholder="Enter Full name">
+                                        <input type="text" class="form-control form-control-lg" id="full-name" value="{{auth()->user()->name}}" placeholder="Enter Full name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

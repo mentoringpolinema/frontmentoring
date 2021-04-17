@@ -82,13 +82,7 @@ class AdminController extends Controller
     {
         $id = $request->id_kegiatan_edit;
         $kegiatan = Kegiatan::findOrFail($id);
-        $kegiatan->update([
-            "nama_kegiatan" => $request->nama_kegiatan_edit,
-            "jenis_kegiatan" => $request->jenis_kegiatan_edit,
-            "tanggal_kegiatan" => $request->tanggal_kegiatan_edit,
-            "minggu_kegiatan" => $request->minggu_kegiatan_edit,
-            "detail_kegiatan" => $request->detail_kegiatan_edit
-        ]);
+        $kegiatan->update($request->all());
         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
     }
 
@@ -160,7 +154,6 @@ class AdminController extends Controller
     public function updMentor(Request $request,$id_mentor){
         $data_mentor = Mentor::find($id_mentor);
         $data_mentor->update($request->all());
-        // dd($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
     }
     // Export Mentor
@@ -254,6 +247,7 @@ class AdminController extends Controller
                 "link_materi_embed" => $embedLink,
                 "detail_materi" => $request->detail_materi
             ]);
+            // $materi = Materi::create($request->all());
             return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
         }
         // Delete Materi
@@ -352,8 +346,8 @@ class AdminController extends Controller
         }
         // Detail Pertemuan
         public function detPertemuan($id_pertemuan){
-        $data_pertemuan = Pertemuan::find($id_pertemuan);
-        return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan']));
+            $data_pertemuan = Pertemuan::find($id_pertemuan);
+            return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan']));
         }
 
     //-------------------------------------------Pengumuman-------------------------------------------
@@ -376,5 +370,18 @@ class AdminController extends Controller
         $data_pengumuman = Pengumuman::find($id_pengumuman);
         $data_pengumuman->delete($data_pengumuman);
         return redirect('/admin/pengumuman')->with('success', 'Pengumuman Berhasil dihapus !');
+    }
+    // Detail Pengumuman
+    public function detPengumuman($id_pengumuman)
+    {
+        $data_pengumuman = Pengumuman::find($id_pengumuman);
+        return view('admin.pengumuman.detailPengumuman', compact(['data_pengumuman']));
+    }
+    // Edit Pengumuman
+    public function edtPengumuman(Request $request,$id_pengumuman){
+        $data_pengumuman = Pengumuman::find($id_pengumuman);
+        $data_pengumuman->update($request->all());
+        return redirect('/admin/pengumuman')->with('success', 'Pengumuman Berhasil di Update !');
+        
     }
 }

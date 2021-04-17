@@ -51,7 +51,7 @@
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
-                                                            <a href="#" data-toggle="modal" data-target="#modalDetailpengumuman" class="project-title">
+                                                            <a href="/admin/{{$pengumuman->id_pengumuman}}/detPengumuman" class="project-title">
                                                                 @if($pengumuman->tagline_pengumuman == 'Mentoring') 
                                                                 <div class="user-avatar sq bg-warning"><span>MT</span></div>
                                                                 @endif
@@ -73,8 +73,8 @@
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalDetailpengumuman"><em class="icon ni ni-eye"></em><span>Lihat pengumuman</span></a></li>
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditpengumuman"><em class="icon ni ni-edit"></em><span>Edit pengumuman</span></a></li>
+                                                                        <li><a href="/admin/{{$pengumuman->id_pengumuman}}/detPengumuman" data-toggle="modal" data-target="#modalDetailpengumuman"><em class="icon ni ni-eye"></em><span>Lihat pengumuman</span></a></li>
+                                                                        <li><a href="/admin/{{$pengumuman->id_pengumuman}}/detPengumuman" data-toggle="modal" data-target="#modalEditpengumuman"><em class="icon ni ni-edit"></em><span>Edit pengumuman</span></a></li>
                                                                         <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Tandai pengumuman</span></a></li>
                                                                         <li><a href="/admin/{{$pengumuman->id_pengumuman}}/delPengumuman"><em class="icon ni ni-trash-alt"></em><span>Hapus pengumuman</span></a></li>
                                                                     </ul>
@@ -150,7 +150,8 @@
                                             <option value="Closing Mentoring">Closing Mentoring</option>
                                             <option value="Pengambilan Sertifikat">Pengambilan Sertifikat</option>
                                             {{-- @endforeach --}}
-                                        </select></div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -162,7 +163,8 @@
                                             <option value="On Going">On Going</option>
                                             <option value="Coming Soon">Coming Soon</option>
                                             {{-- @endforeach --}}
-                                        </select></div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
