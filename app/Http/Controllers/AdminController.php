@@ -166,11 +166,16 @@ class AdminController extends Controller
     {
         // Masih Gabisa :v hehe
     }
+     //-------------------------------------------Mentee-------------------------------------------
     // Mentee Function
     public function mentee()
     {
         $data_mentee = Mentee::all();
         return view('admin.mentee', ['data_mentee' => $data_mentee]);
+    }
+    // Detail Mentee
+    public function detailMentee(){
+        return view('admin.mentee.detail');
     }
 
     //-------------------------------------------Users-------------------------------------------
