@@ -1,10 +1,10 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?3rpiw1');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?3rpiw1#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?3rpiw1') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?3rpiw1') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?3rpiw1##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -258,6 +258,11 @@
 .ni-pen2 {
   &:before {
     content: $ni-pen2; 
+  }
+}
+.ni-property-blank {
+  &:before {
+    content: $ni-property-blank; 
   }
 }
 .ni-propert-blank {
@@ -2090,6 +2095,11 @@
     content: $ni-blank; 
   }
 }
+.ni-blank-fill {
+  &:before {
+    content: $ni-blank-fill; 
+  }
+}
 .ni-blankf-fill {
   &:before {
     content: $ni-blankf-fill; 
@@ -3190,6 +3200,11 @@
     content: $ni-meh; 
   }
 }
+.ni-happy-fill {
+  &:before {
+    content: $ni-happy-fill; 
+  }
+}
 .ni-happyf-fill {
   &:before {
     content: $ni-happyf-fill; 
@@ -3750,6 +3765,11 @@
     content: $ni-invest; 
   }
 }
+.ni-history {
+  &:before {
+    content: $ni-history; 
+  }
+}
 .ni-histroy {
   &:before {
     content: $ni-histroy; 
@@ -4175,9 +4195,19 @@
     content: $ni-label-fill; 
   }
 }
+.ni-priority {
+  &:before {
+    content: $ni-priority; 
+  }
+}
 .ni-piority {
   &:before {
     content: $ni-piority; 
+  }
+}
+.ni-priority-fill {
+  &:before {
+    content: $ni-priority-fill; 
   }
 }
 .ni-piority-fill {

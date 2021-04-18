@@ -1,7 +1,7 @@
 /*!
  * Theme: BlueLite
- * Package: DashLite v2.2.0
- * Updated: 11.28.2020
+ * Package: DashLite v2.4.0
+ * Updated: 03.03.2021
  * Author: Softnio
  * Author URI: http://themeforest.net/user/softnio
 **/
@@ -76,6 +76,8 @@ a:hover { color: #3c52ff; }
 .bg-lighter { background-color: #f5f6fa !important; }
 
 .bg-primary { background-color: #6576ff !important; }
+
+a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-primary:focus { background-color: #3249ff !important; }
 
 .bg-primary-dim { background-color: #f0f1ff !important; }
 
@@ -178,3 +180,9 @@ a:hover { color: #3c52ff; }
 .kanban-add-task { color: #6576ff; }
 
 .kanban-add-task:hover { background: #6576ff; border-color: #6576ff; }
+
+.actions ul li a { border-color: #6576ff; background: #6576ff; }
+
+.nk-wizard-simple .steps ul li.done h5, .nk-wizard-simple .steps ul li.done .number, .nk-wizard-simple .steps ul li.current h5, .nk-wizard-simple .steps ul li.current .number { color: #6576ff; }
+
+.nk-wizard-simple .steps ul li:after { background: #6576ff; }

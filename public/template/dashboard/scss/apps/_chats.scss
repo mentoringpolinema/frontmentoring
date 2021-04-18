@@ -15,6 +15,8 @@ $chat-profile-width: 325px;
 $chat-profile-width-xl: 365px;
 $chat-profile-width-sm: 280px;
 
+$chat-meta-sap: $ni-dot !default;
+
 // for Extend
 .add-opt {
     &:hover {
@@ -361,7 +363,7 @@ $chat-profile-width-sm: 280px;
             font-size: $fx-sz-12;
             color: $base-light;
             &:not(:first-child):before{
-                content:$ni-dot;
+                content:$chat-meta-sap;
                 font-family: $nk-dashlite-font;
                 position: absolute;
                 @if($rtl==false){

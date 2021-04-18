@@ -12,8 +12,8 @@
     <!-- Page Title  -->
     <title>Tabs Nav | DashLite Admin Template</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="./assets/css/dashlite.css?ver=2.2.0">
-    <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=2.2.0">
+    <link rel="stylesheet" href="./assets/css/dashlite.css?ver=2.4.0">
+    <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=2.4.0">
 </head>
 
 <body class="nk-body bg-lighter npc-default has-sidebar ">
@@ -155,6 +155,20 @@
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                                        <span class="nk-menu-text">Invoice</span>
+                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="html/invoice-list.html" class="nk-menu-link"><span class="nk-menu-text">Invoice List</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="html/invoice-details.html" class="nk-menu-link"><span class="nk-menu-text">Invoice Details</span></a>
+                                        </li>
+                                    </ul><!-- .nk-menu-sub -->
+                                </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Misc Pages</h6>
                                 </li><!-- .nk-menu-heading -->
@@ -271,6 +285,9 @@
                                             <a href="html/components/elements/accordions.html" class="nk-menu-link"><span class="nk-menu-text">Accordions</span></a>
                                         </li>
                                         <li class="nk-menu-item">
+                                            <a href="html/components/elements/avatar.html" class="nk-menu-link"><span class="nk-menu-text">Avatar</span><span class="nk-menu-badge badge-warning">New</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
                                             <a href="html/components/elements/badges.html" class="nk-menu-link"><span class="nk-menu-text">Badges</span></a>
                                         </li>
                                         <li class="nk-menu-item">
@@ -289,6 +306,9 @@
                                             <a href="html/components/elements/carousel.html" class="nk-menu-link"><span class="nk-menu-text">Carousel</span></a>
                                         </li>
                                         <li class="nk-menu-item">
+                                            <a href="html/components/elements/list-dropdown.html" class="nk-menu-link"><span class="nk-menu-text">List Dropdown</span><span class="nk-menu-badge badge-warning">New</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
                                             <a href="html/components/elements/modals.html" class="nk-menu-link"><span class="nk-menu-text">Modals</span></a>
                                         </li>
                                         <li class="nk-menu-item">
@@ -304,7 +324,7 @@
                                             <a href="html/components/elements/spinner.html" class="nk-menu-link"><span class="nk-menu-text">Spinner</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="html/components/elements/tabs.html" class="nk-menu-link"><span class="nk-menu-text">Tabs</span></a>
+                                            <a href="html/components/elements/tabs.html" class="nk-menu-link"><span class="nk-menu-text">Tabs</span> <span class="nk-menu-badge badge-warning">Updated</span></a>
                                         </li>
                                         <li class="nk-menu-item">
                                             <a href="html/components/elements/toast.html" class="nk-menu-link"><span class="nk-menu-text">Toasts</span></a>
@@ -349,6 +369,13 @@
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="html/components/misc/icons.html" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-menu-circled"></em></span>
+                                        <span class="nk-menu-text">Icon Libraries</span>
+                                        <span class="nk-menu-badge badge-warning">New</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-table-view-fill"></em></span>
@@ -374,6 +401,15 @@
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
                                             <a href="html/components/forms/form-elements.html" class="nk-menu-link"><span class="nk-menu-text">Form Elements</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="html/components/forms/form-upload.html" class="nk-menu-link"><span class="nk-menu-text">Form Upload</span> <span class="nk-menu-badge badge-warning">New</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="html/components/forms/datetime-picker.html" class="nk-menu-link"><span class="nk-menu-text">Date &amp; Time Picker</span> <span class="nk-menu-badge badge-warning">New</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="html/components/forms/number-spinner.html" class="nk-menu-link"><span class="nk-menu-text">Number Spinner</span> <span class="nk-menu-badge badge-warning">New</span></a>
                                         </li>
                                         <li class="nk-menu-item">
                                             <a href="html/components/forms/form-layouts.html" class="nk-menu-link"><span class="nk-menu-text">Form Layouts</span></a>
@@ -408,17 +444,25 @@
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
-                                    <a href="html/components/misc/toastr.html" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-alert-circle-fill"></em></span>
-                                        <span class="nk-menu-text">Toastr</span>
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-block-over"></em></span>
+                                        <span class="nk-menu-text">Miscellaneous</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
-                                    <a href="html/components/misc/sweet-alert.html" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-caution-fill"></em></span>
-                                        <span class="nk-menu-text">Sweet Alert</span>
-                                    </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="html/components/misc/toastr.html" class="nk-menu-link"><span class="nk-menu-text">Toastr</span></a>
+                                        </li><!-- .nk-menu-item -->
+                                        <li class="nk-menu-item">
+                                            <a href="html/components/misc/sweet-alert.html" class="nk-menu-link"><span class="nk-menu-text">Sweet Alert</span></a>
+                                        </li><!-- .nk-menu-item -->
+                                        <li class="nk-menu-item">
+                                            <a href="html/components/misc/js-tree.html" class="nk-menu-link"><span class="nk-menu-text">jsTree</span><span class="nk-menu-badge badge-warning">New</span></a>
+                                        </li><!-- .nk-menu-item -->
+                                        <li class="nk-menu-item">
+                                            <a href="html/components/misc/dual-listbox.html" class="nk-menu-link"><span class="nk-menu-text">Dual Listbox</span><span class="nk-menu-badge badge-warning">New</span></a>
+                                        </li><!-- .nk-menu-item -->
+                                    </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="html/email-templates.html" class="nk-menu-link">
@@ -947,6 +991,190 @@
 </pre>
                                         </div><!-- .code-block -->
                                     </div>
+                                    <div class="nk-block nk-block-lg">
+                                        <div class="nk-block-head">
+                                            <div class="nk-block-head-content">
+                                                <h4 class="title nk-block-title">Vertical Tab style</h4>
+                                                <div class="nk-block-des">
+                                                    <p>You can simply activate add <code>.link-list-menu</code> and some utility class with <code>.nav</code> class to make a Vertical tab. please check those code given below</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card card-preview">
+                                            <div class="card-inner">
+                                                <div class="row g-gs">
+                                                    <div class="col-md-4">
+                                                        <ul class="nav link-list-menu border border-light round m-0">
+                                                            <li>
+                                                                <a class="active" data-toggle="tab" href="#tabItem13">Personal</a>
+                                                            </li>
+                                                            <li>
+                                                                <a data-toggle="tab" href="#tabItem14">Security</a>
+                                                            </li>
+                                                            <li>
+                                                                <a data-toggle="tab" href="#tabItem15">Notifications</a>
+                                                            </li>
+                                                            <li>
+                                                                <a data-toggle="tab" href="#tabItem16">Connect</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="tabItem13">
+                                                                <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur. Deserunt non laborum enim et cillum eu deserunt excepteur ea incid.</p>
+                                                                <p>Culpa dolor voluptate do laboris laboris irure reprehenderit id incididunt duis pariatur mollit aute magna pariatur consectetur. Eu veniam duis non ut dolor deserunt commodo et minim in quis laboris ipsum velit id veniam. Quis ut consectetur adipisicing officia excepteur non sit. Ut et elit aliquip labore Lorem enim eu. Ullamco mollit occaecat dolore ipsum id officia mollit.</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="tabItem14">
+                                                                <p>Culpa dolor voluptate do laboris laboris irure reprehenderit id incididunt duis pariatur mollit aute magna pariatur consectetur. Eu veniam duis non ut dolor deserunt commodo et minim in quis laboris ipsum velit id veniam. Quis ut consectetur adipisicing officia excepteur non sit. Ut et elit aliquip labore Lorem enim eu. Ullamco mollit occaecat dolore ipsum id officia mollit qui esse anim eiusmod do sint minim consectetur qui.</p>
+                                                                <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur.</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="tabItem15">
+                                                                <p>Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.</p>
+                                                                <p>Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur elit id dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum duis aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi id do Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in aute tempor commodo eiusmod.</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="tabItem16">
+                                                                <p>Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur elit id dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum duis aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi id do Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in aute tempor commodo eiusmod.</p>
+                                                                <p>Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- .card-preview -->
+                                        <div class="code-block">
+                                            <h6 class="overline-title title">Code Example</h6>
+                                            <button class="btn btn-sm clipboard-init" title="Copy to clipboard" data-clipboard-target="#Tab4" data-clip-success="Copied" data-clip-text="Copy"><span class="clipboard-text">Copy</span></button>
+                                            <pre class="prettyprint lang-html" id="Tab4">
+&lt;div class=&quot;row g-gs&quot;&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+        &lt;ul class=&quot;nav link-list-menu border border-light round m-0&quot;&gt;
+            &lt;li&gt;
+                &lt;a class=&quot;active&quot; data-toggle=&quot;tab&quot; href=&quot;#tabItem13&quot;&gt;nav&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a data-toggle=&quot;tab&quot; href=&quot;#tabItem14&quot;&gt;nav&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a data-toggle=&quot;tab&quot; href=&quot;#tabItem15&quot;&gt;nav&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a data-toggle=&quot;tab&quot; href=&quot;#tabItem16&quot;&gt;nav&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-8&quot;&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;tab-pane active&quot; id=&quot;tabItem13&quot;&gt;
+                &lt;p&gt;contnet&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;tabItem14&quot;&gt;
+                &lt;p&gt;contnet&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;tabItem15&quot;&gt;
+                &lt;p&gt;contnet&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;tabItem16&quot;&gt;
+                &lt;p&gt;contnet&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                                        </div><!-- .code-block -->
+                                    </div>
+                                    <div class="nk-block nk-block-lg">
+                                        <div class="nk-block-head">
+                                            <div class="nk-block-head-content">
+                                                <h4 class="title nk-block-title">Vertical Tab style - With Icon</h4>
+                                                <div class="nk-block-des">
+                                                    <p>You can simply activate add <code>.link-list-menu</code> and some utility class with <code>.nav</code> class to make a Vertical tab. please check those code given below</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card card-preview">
+                                            <div class="card-inner">
+                                                <div class="row g-gs">
+                                                    <div class="col-md-4">
+                                                        <ul class="nav link-list-menu border border-light round m-0">
+                                                            <li>
+                                                                <a class="active" data-toggle="tab" href="#tabItem17"><em class="icon ni ni-user"></em><span>Personal</span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a data-toggle="tab" href="#tabItem18"><em class="icon ni ni-lock-alt"></em><span>Security</span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a data-toggle="tab" href="#tabItem19"><em class="icon ni ni-bell"></em><span>Notifications</span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a data-toggle="tab" href="#tabItem20"><em class="icon ni ni-link"></em><span>Connect</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="tabItem17">
+                                                                <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur. Deserunt non laborum enim et cillum eu deserunt excepteur ea incid.</p>
+                                                                <p>Culpa dolor voluptate do laboris laboris irure reprehenderit id incididunt duis pariatur mollit aute magna pariatur consectetur. Eu veniam duis non ut dolor deserunt commodo et minim in quis laboris ipsum velit id veniam. Quis ut consectetur adipisicing officia excepteur non sit. Ut et elit aliquip labore Lorem enim eu. Ullamco mollit occaecat dolore ipsum id officia mollit.</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="tabItem18">
+                                                                <p>Culpa dolor voluptate do laboris laboris irure reprehenderit id incididunt duis pariatur mollit aute magna pariatur consectetur. Eu veniam duis non ut dolor deserunt commodo et minim in quis laboris ipsum velit id veniam. Quis ut consectetur adipisicing officia excepteur non sit. Ut et elit aliquip labore Lorem enim eu. Ullamco mollit occaecat dolore ipsum id officia mollit qui esse anim eiusmod do sint minim consectetur qui.</p>
+                                                                <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur.</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="tabItem19">
+                                                                <p>Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.</p>
+                                                                <p>Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur elit id dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum duis aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi id do Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in aute tempor commodo eiusmod.</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="tabItem20">
+                                                                <p>Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur elit id dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum duis aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi id do Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in aute tempor commodo eiusmod.</p>
+                                                                <p>Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- .card-preview -->
+                                        <div class="code-block">
+                                            <h6 class="overline-title title">Code Example</h6>
+                                            <button class="btn btn-sm clipboard-init" title="Copy to clipboard" data-clipboard-target="#Tab5" data-clip-success="Copied" data-clip-text="Copy"><span class="clipboard-text">Copy</span></button>
+                                            <pre class="prettyprint lang-html" id="Tab5">
+&lt;div class=&quot;row g-gs&quot;&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+        &lt;ul class=&quot;nav link-list-menu border border-light round m-0&quot;&gt;
+            &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link active&quot; data-toggle=&quot;tab&quot; href=&quot;#tabItem17&quot;&gt;&lt;em class=&quot;icon ni ni-user&quot;&gt;&lt;/em&gt;&lt;span&gt;nav&lt;/span&gt;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; data-toggle=&quot;tab&quot; href=&quot;#tabItem18&quot;&gt;&lt;em class=&quot;icon ni ni-lock-alt&quot;&gt;&lt;/em&gt;&lt;span&gt;nav&lt;/span&gt;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; data-toggle=&quot;tab&quot; href=&quot;#tabItem19&quot;&gt;&lt;em class=&quot;icon ni ni-bell&quot;&gt;&lt;/em&gt;&lt;span&gt;nav&lt;/span&gt;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; data-toggle=&quot;tab&quot; href=&quot;#tabItem20&quot;&gt;&lt;em class=&quot;icon ni ni-link&quot;&gt;&lt;/em&gt;&lt;span&gt;nav&lt;/span&gt;&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-8&quot;&gt;
+        &lt;div class=&quot;tab-content&quot;&gt;
+            &lt;div class=&quot;tab-pane active&quot; id=&quot;tabItem17&quot;&gt;
+                &lt;p&gt;contnet&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;tabItem18&quot;&gt;
+                &lt;p&gt;contnet&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;tabItem19&quot;&gt;
+                &lt;p&gt;contnet&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;tab-pane&quot; id=&quot;tabItem20&quot;&gt;
+                &lt;p&gt;contnet&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+                                        </div><!-- .code-block -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -977,8 +1205,8 @@
     </div>
     <!-- app-root @e -->
     <!-- JavaScript -->
-    <script src="./assets/js/bundle.js?ver=2.2.0"></script>
-    <script src="./assets/js/scripts.js?ver=2.2.0"></script>
+    <script src="./assets/js/bundle.js?ver=2.4.0"></script>
+    <script src="./assets/js/scripts.js?ver=2.4.0"></script>
 </body>
 
 </html>

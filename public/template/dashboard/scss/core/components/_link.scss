@@ -1,3 +1,6 @@
+$link-active-icon: $ni-check-thick !default;
+$link-list-menu-icon-ltr: $ni-chevron-right !default;
+$link-list-menu-icon-rtl: $ni-chevron-left !default;
 // Used for Extend.
 .link-bdr-t {
     border-top: 1px solid $border-light;
@@ -10,7 +13,7 @@
 }
 .link-act-check {
     &:after {
-        content: $ni-check-thick;
+        content: $link-active-icon;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -31,14 +34,17 @@
     + .link-check{
         @extend .link-bdr-t;
     }
+    .divider {
+        margin: .5rem 0;
+    }
     li{
         display: block;
-        span, a{
+        > span, a{
             display: block;
             line-height: 1.25rem;
             padding: .35rem 1rem;
         }
-        span{
+        > span{
             text-transform: uppercase;
             color: $base-color;
             font-weight: 700;
@@ -46,6 +52,8 @@
             letter-spacing: 1px;
         }
         a{
+            display: flex;
+            align-items: center;
             color: $base-text;
             font-size: $fx-sz-13;
             position: relative;
@@ -53,6 +61,10 @@
                 color: $accent-color; 
                 background: $lighter; 
             }
+        }
+        .icon{
+            width: 1.75rem;
+            font-size: 1.125rem;
         }
         &.active > a, a.active {
             @extend .link-act-check;
@@ -95,6 +107,9 @@
     padding: .75rem 0;
     + .link-list{
         @extend .link-bdr-t;
+    }
+    .divider {
+        margin: .5rem 0;
     }
     a{
         display: flex;
@@ -201,10 +216,10 @@
             font-family: $nk-dashlite-font;
             @if($rtl==false){
                 right: 1.25rem;
-                content: $ni-chevron-right;
+                content: $link-list-menu-icon-ltr;
             }
             @if($rtl==true){
-                content: $ni-chevron-left;
+                content: $link-list-menu-icon-rtl;
                 left: 1.25rem;
             }
             color: $base-light;
@@ -247,6 +262,9 @@
             border-top-width: 0;
         }
     }
+    .divider {
+        margin: .5rem 0;
+    }
     a{
         display: flex;
         align-items: center;
@@ -266,9 +284,20 @@
             color: $accent-color;
         }
     }
+    li.active > a, a.active {
+        color: $accent-color; 
+        background: $lighter; 
+    }
     &.sm{
         a{
             @extend .link-pd-sm;
+        }
+    }
+    &.text-center {
+        a {
+            justify-content: center;
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
         }
     }
 }

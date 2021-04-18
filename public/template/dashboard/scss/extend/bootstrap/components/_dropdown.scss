@@ -249,3 +249,10 @@
 .dropdown-menu-s1 {
     border-top:3px solid $primary;
 }
+
+.dropdown-toggle-split {
+    > .icon {
+        margin-left: -0.25rem;
+        margin-right: -0.25rem;
+    }
+}

@@ -1,3 +1,6 @@
+$change-up-icon: $ni-arrow-long-up !default;
+$change-down-icon: $ni-arrow-long-down !default;
+
 /// Misc
 ///////////////////////////
 .filter-wg {
@@ -18,13 +21,13 @@
     &.up {
         color: $success !important;
         .sign:before {
-            content: $ni-arrow-long-up;
+            content: $change-up-icon;
         }
     }
     &.down {
         color: $danger !important;
         .sign:before {
-            content: $ni-arrow-long-down;
+            content: $change-down-icon;
         }
     }
 }

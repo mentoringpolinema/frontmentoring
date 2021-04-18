@@ -19,16 +19,8 @@
     Swal.fire("Good job!", "You clicked the button!", "info");
     e.preventDefault();
   });
-  $('.eg-swal-infoMateriMentee').on("click", function (e) {
-    Swal.fire("Semangaat ! ", "Mentoring Masih Berjalan, Jangan Kasih Kendor ya Ikhwah !", "info");
-    e.preventDefault();
-  });
   $('.eg-swal-warning').on("click", function (e) {
     Swal.fire("Good job!", "You clicked the button!", "warning");
-    e.preventDefault();
-  });
-  $('.eg-swal-warningMenteeStatus').on("click", function (e) {
-    Swal.fire("Semangaat ! ", "Mentoring Masih Berjalan, Jangan Kasih Kendor ya Ikhwah !", "warning");
     e.preventDefault();
   });
   $('.eg-swal-error').on("click", function (e) {

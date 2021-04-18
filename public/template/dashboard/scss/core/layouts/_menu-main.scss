@@ -72,6 +72,13 @@ $menu-footer-link-fs:    $fx-sz-12;
 $menu-footer-link-lh:    1.125rem;
 $menu-footer-icon-color: $accent-color;
 
+// Icon
+$menu-toggle-icon-ltr: $ni-chevron-right !default;
+$menu-toggle-icon-rtl: $ni-chevron-left !default;
+$menu-main-toggle-icon: $ni-chevron-down !default;
+$menu-main-sub-toggle-icon-ltr: $ni-chevron-right !default;
+$menu-main-sub-toggle-icon-rtl: $ni-chevron-left !default;
+
 /////////////////////////
 /// Menu Navigation
 /////////////////////////
@@ -376,11 +383,11 @@ $menu-footer-icon-color: $accent-color;
             font-family: $nk-dashlite-font;
             top: 50%;
             @if($rtl==false){
-                content: $ni-chevron-right;
+                content: $menu-toggle-icon-ltr;
                 right: 1.25rem;
             }
             @if($rtl==true){
-                content: $ni-chevron-left;
+                content: $menu-toggle-icon-rtl;
                 left: 1.25rem;
             }
             transform: translateY(-50%);
