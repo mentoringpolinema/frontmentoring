@@ -15,15 +15,18 @@ class CreateMenteeTable extends Migration
     {
         Schema::create('mentee', function (Blueprint $table) {
             $table->increments('id_mentee');
+            $table->unsignedBigInteger('user_id');
             $table->string('nim_mentee');
             $table->string('nama_mentee');
-            $table->string('kelas_id');
-            $table->string('kelompok_id');
-            $table->string('angkatan_id');
+            $table->integer('kelas_id')->unsigned();
+            $table->integer('kelompok_id')->unsigned();
+            $table->integer('angkatan_id')->unsigned();
             $table->string('status_mentee');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('kelas_id')->references('id_kelas')->on('kelas')->onDelete('cascade');
+            $table->foreign('kelompok_id')->references('id_kelompok')->on('kelompok')->onDelete('cascade');
+            $table->foreign('angkatan_id')->references('id_angkatan')->on('angkatan')->onDelete('cascade');
         });
     }
 

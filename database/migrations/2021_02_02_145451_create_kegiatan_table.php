@@ -17,6 +17,7 @@ class CreateKegiatanTable extends Migration
             $table->increments('id_kegiatan');
             $table->string('nama_kegiatan');
             $table->string('jenis_kegiatan');
+            $table->integer('minggu_kegiatan');
             $table->date('tanggal_kegiatan');
             $table->string('detail_kegiatan');
             $table->timestamps();
