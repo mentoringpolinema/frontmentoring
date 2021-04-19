@@ -19,7 +19,7 @@ class CreateProdiTable extends Migration
             $table->string('singkatan_prodi');
             $table->integer('jurusan_id')->unsigned();
             $table->timestamps();
-            $table->foreign('jurusan_id')->references('id_jurusan')->on('jurusan')->onDelete('cascade');
+            $table->foreign('jurusan_id')->references('id_jurusan')->on('jurusan');
         });
     }
 

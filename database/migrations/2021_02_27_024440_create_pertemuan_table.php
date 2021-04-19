@@ -22,7 +22,7 @@ class CreatePertemuanTable extends Migration
             $table->string('detail_pertemuan');
             $table->string('link_pertemuan');
             $table->timestamps();
-            $table->foreign('mentor_id')->references('id_mentor')->on('mentor')->onDelete('cascade');
+            $table->foreign('mentor_id')->references('id_mentor')->on('mentor');
         });
     }
 

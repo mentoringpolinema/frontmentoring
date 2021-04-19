@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mentor extends Model{
     protected $table = 'mentor';
     protected $primaryKey = 'id_mentor';
-    protected $fillable = ['id_user', 'nama_mentor','email_mentor','alamat_mentor','status_mentor','notelp_mentor', 'slug'];
+    protected $fillable = ['user_id', 'nama_mentor','email_mentor','alamat_mentor','status_mentor','notelp_mentor', 'slug'];
 
     public function user()
     {

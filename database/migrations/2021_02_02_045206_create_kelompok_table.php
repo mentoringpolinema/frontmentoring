@@ -19,8 +19,8 @@ class CreateKelompokTable extends Migration
             $table->integer('mentor_id')->unsigned();
             $table->integer('materi_id')->unsigned();
             $table->timestamps();
-            $table->foreign('mentor_id')->references('id_mentor')->on('mentor')->onDelete('cascade');
-            $table->foreign('materi_id')->references('id_materi')->on('materi')->onDelete('cascade');
+            $table->foreign('mentor_id')->references('id_mentor')->on('mentor');
+            $table->foreign('materi_id')->references('id_materi')->on('materi');
 
         });
     }

@@ -23,10 +23,10 @@ class CreateMenteeTable extends Migration
             $table->integer('angkatan_id')->unsigned();
             $table->string('status_mentee');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('kelas_id')->references('id_kelas')->on('kelas')->onDelete('cascade');
-            $table->foreign('kelompok_id')->references('id_kelompok')->on('kelompok')->onDelete('cascade');
-            $table->foreign('angkatan_id')->references('id_angkatan')->on('angkatan')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('kelas_id')->references('id_kelas')->on('kelas');
+            $table->foreign('kelompok_id')->references('id_kelompok')->on('kelompok');
+            $table->foreign('angkatan_id')->references('id_angkatan')->on('angkatan');
         });
     }
 

@@ -118,7 +118,7 @@ class AdminController extends Controller
         $userID = DB::getPdo()->lastInsertId();
 
         $mentor = Mentor::create([
-            "id_user" => $userID,
+            "user_id" => $userID,
             "nama_mentor" => $request->nama_mentor,
             "email_mentor" => $request->email_mentor,
             "alamat_mentor" => $request->alamat_mentor,
@@ -134,7 +134,8 @@ class AdminController extends Controller
     public function delMentor($slug)
     {
         $data_mentor = Mentor::where('slug', $slug)->get()->first();
-        $data_mentor->delete($data_mentor);
+        $dataUser = User::where('id', $data_mentor->user_id)->get()->first();
+        $dataUser->delete($dataUser);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
     }
 

@@ -20,8 +20,8 @@ class CreateKeluhanTable extends Migration
             $table->text('isi_keluhan');
             $table->text('jawab_keluhan')->nullable();
             $table->timestamps();
-            $table->foreign('mentee_id')->references('id_mentee')->on('mentee')->onDelete('cascade');
-            $table->foreign('panitia_id')->references('id_panitia')->on('panitia')->onDelete('cascade');
+            $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
+            $table->foreign('panitia_id')->references('id_panitia')->on('panitia');
         });
     }
 
