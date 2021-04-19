@@ -11,5 +11,5 @@ class Panitia extends Model
 
     protected $table = 'panitia';
     protected $primaryKey = 'id_panitia';
-    protected $fillable = ['id_user', 'nama_panitia'];
+    protected $fillable = ['user_id', 'nama_panitia'];
 }

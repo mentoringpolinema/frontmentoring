@@ -11,5 +11,5 @@ class Mentee extends Model
 
     protected $table = 'mentee';
     protected $primaryKey = 'id_mentee';
-    protected $fillable = ['id_user', 'nama_mentor','email_mentor','alamat_mentor','status_mentor','notelp_mentor'];
+    protected $fillable = ['user_id', 'nama_mentor','email_mentor','alamat_mentor','status_mentor','notelp_mentor'];
 }

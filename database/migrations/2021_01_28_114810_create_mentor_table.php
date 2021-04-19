@@ -22,7 +22,7 @@ class CreateMentorTable extends Migration
             $table->string('notelp_mentor');
             $table->string('status_mentor');
             $table->string('slug');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
