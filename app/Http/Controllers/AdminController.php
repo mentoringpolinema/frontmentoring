@@ -19,6 +19,7 @@ use App\Models\Materi;
 use App\Models\Jurusan;
 use App\Models\Pertemuan;
 use App\Models\Prodi;
+use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Pengumuman;
 
@@ -193,7 +194,8 @@ class AdminController extends Controller
     {
         $data_jurusan = Jurusan::all();
         $data_prodi = Prodi::all();
-        return view('admin.data', ['data_jurusan' => $data_jurusan], ['data_prodi' => $data_prodi]);
+        $data_kelas = Kelas::with('prodi', 'prodi.jurusan')->get();
+        return view('admin.data', compact(['data_jurusan', 'data_prodi', 'data_kelas']));
     }
     // Add Data
 
@@ -210,6 +212,12 @@ class AdminController extends Controller
     {
         Prodi::create($request->all());
         return redirect('/admin/data')->with('success', 'Data Prodi Berhasil ditambahkan !');
+    }
+    // Add Kelas
+    public function addKelas(Request $request)
+    {
+        Kelas::create($request->all());
+        return redirect('/admin/data')->with('success', 'Data Kelas Berhasil ditambahkan !');
     }
     // Delete Data
     

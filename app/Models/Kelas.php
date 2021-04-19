@@ -9,5 +9,9 @@ class Kelas extends Model
 {
     protected $table = 'kelas';
     protected $primaryKey = 'id_kelas';
-    protected $fillable = ['kelas'];
+    protected $fillable = ['kelas', 'prodi_id'];
+
+    public function prodi(){
+        return $this->belongsTo(Prodi::class, 'prodi_id', 'id_prodi');
+    }
 }

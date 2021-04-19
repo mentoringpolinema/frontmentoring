@@ -93,6 +93,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
             Route::post('/admin/addJurusan', '\App\Http\Controllers\AdminController@addJurusan');
             // Add Data Prodi
             Route::post('/admin/addProdi', '\App\Http\Controllers\AdminController@addProdi');
+             // Add Data Kelas
+             Route::post('/admin/addKelas', '\App\Http\Controllers\AdminController@addKelas');
             //Delete Data
             Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
         // Export Data Jurusan
