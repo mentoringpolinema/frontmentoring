@@ -437,7 +437,7 @@
                                             {{-- <div class="form-icon form-icon-right">
                                                 <em class="icon ni ni-calendar-alt"></em>
                                             </div> --}}
-                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_detail" value="{{ date('d-m-Y', strtotime($kegiatan->tanggal_kegiatan)) }}" readonly>
+                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_detail" readonly>
                                         </div>
                                     </div>
                                 </div>
