@@ -4,6 +4,8 @@ $fmg-file-icon-width-xs :    24px;
 $fmg-file-icon-width-sm :    32px;
 $fmg-file-icon-width-lg :    72px;
 
+$file-desc-sap:           $ni-dot !default;
+
 /// Layout for FMG
 .nk-fmg{
     position: relative;
@@ -456,7 +458,7 @@ $fmg-file-icon-width-lg :    72px;
             font-size: $fx-sz-12;
             color: $base-light;
             &:not(:first-child):before{
-                content:$ni-dot;
+                content:$file-desc-sap;
                 font-family: $nk-dashlite-font;
                 position: absolute;
                 @if($rtl==false){

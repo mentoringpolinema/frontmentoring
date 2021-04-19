@@ -84,6 +84,18 @@
     }
     &.sq{
         border-radius: $border-radius;
+        img{
+            border-radius: $border-radius;
+        }
+        .status{
+            bottom: -6px;
+            @if($rtl==false){
+                right: -6px;
+            }
+            @if($rtl==true){
+                left: -6px;
+            }
+        }
     }
 }
 
@@ -184,12 +196,30 @@
         height: 32px;
         width: 32px;
         font-size: 12px;
+        .status{
+            bottom: -2px;
+            @if($rtl==false){
+                right: -2px;
+            }
+            @if($rtl==true){
+                left: -2px;
+            }
+        }
     }
     &-xs, &.xs{
         height: 26px;
         width: 26px;
         font-size: 9px;
         font-weight: $fw-bold;
+        .status{
+            bottom: -2px;
+            @if($rtl==false){
+                right: -2px;
+            }
+            @if($rtl==true){
+                left: -2px;
+            }
+        }
     }
 }
 // Colors Fix

@@ -1,7 +1,7 @@
 /*!
  * Theme: Green
- * Package: DashLite v2.2.0
- * Updated: 11.28.2020
+ * Package: DashLite v2.4.0
+ * Updated: 03.03.2021
  * Author: Softnio
  * Author URI: http://themeforest.net/user/softnio
 **/
@@ -257,6 +257,9 @@ a:hover {
 }
 .bg-primary {
    background-color: $skin_accent !important;
+}
+a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-primary:focus {
+    background-color: darken($skin_accent, 10%) !important;
 }
 .bg-primary-dim {
     background-color: mix($skin_accent, $white, 10%) !important;
@@ -520,4 +523,16 @@ a:hover {
       background: $skin_accent;
       border-color: $skin_accent;
     }
+}
+
+// wizard
+.actions ul li a{
+    border-color: $skin_accent;
+    background: $skin_accent;
+}
+.nk-wizard-simple .steps ul li.done h5, .nk-wizard-simple .steps ul li.done .number, .nk-wizard-simple .steps ul li.current h5, .nk-wizard-simple .steps ul li.current .number{
+    color: $skin_accent;
+}
+.nk-wizard-simple .steps ul li:after{
+    background: $skin_accent;
 }

@@ -127,6 +127,104 @@
                 $('.popover').popover('hide');
             },
 
+            events: [
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Reader will be distracted',
+                    start: YM + '-03T13:30:00',
+                    className: "fc-event-danger",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Rabfov va hezow.',
+                    start: YM + '-14T13:30:00',
+                    end: YM + '-14',
+                    className: "fc-event-success",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'The leap into electronic',
+                    start: YM + '-05',
+                    end: YM + '-06',
+                    className: "fc-event-primary",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Lorem Ipsum passage - Product Release',
+                    start: YM + '-02',
+                    end: YM + '-04',
+                    className: "fc-event-primary",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    title: 'Gibmuza viib hepobe.',
+                    start: YM + '-12',
+                    end: YM + '-10',
+                    className: "fc-event-pink-dim",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Jidehse gegoj fupelone.',
+                    start: YM + '-07T16:00:00',
+                    className: "fc-event-danger-dim",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Ke uzipiz zip.',
+                    start: YM + '-16T16:00:00',
+                    end: YM + '-14',
+                    className: "fc-event-info-dim",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Piece of classical Latin literature',
+                    start: TODAY,
+                    end: TODAY + '-01',
+                    className: "fc-event-primary",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Nogok kewwib ezidbi.',
+                    start: TODAY + 'T10:00:00',
+                    className: "fc-event-info",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Mifebi ik cumean.',
+                    start: TODAY + 'T14:30:00',
+                    className: "fc-event-warning-dim",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Play Time',
+                    start: TODAY + 'T17:30:00',
+                    className: "fc-event-info",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'Rujfogve kabwih haznojuf.',
+                    start: YESTERDAY + 'T05:00:00',
+                    className: "fc-event-danger",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                },
+                {
+                    id: 'default-event-id-' + Math.floor(Math.random()*9999999),
+                    title: 'simply dummy text of the printing',
+                    start: YESTERDAY + 'T07:00:00',
+                    className: "fc-event-primary-dim",
+                    description: "Use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden.",
+                }
+            ],
         });
         calendar.render();
 

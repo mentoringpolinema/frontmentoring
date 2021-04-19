@@ -266,8 +266,8 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
+                                                                <a href="/admin/mentee/detail" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
+                                                                {{-- <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                       
                                                         <tr class="nk-tb-item">
@@ -302,8 +302,8 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
+                                                                <a href="/admin/mentee/detail" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
+                                                                {{-- <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                    
                                                         {{-- @endforeach --}}

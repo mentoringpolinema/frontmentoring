@@ -77,6 +77,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Mentee ============================================================================================================>
         //Get Mentee
         Route::get('/admin/mentee', '\App\Http\Controllers\AdminController@mentee');
+        //Detail Mentee
+        Route::get('/admin/mentee/detail', '\App\Http\Controllers\AdminController@detailMentee');
 
     // User Management ===================================================================================================>
         //Get Users

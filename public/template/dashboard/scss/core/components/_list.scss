@@ -1,3 +1,11 @@
+$list-default-icon: $ni-bullet-fill !default;
+$list-checked-icon: $ni-check-fill-c !default;
+$list-checked-circle-icon: $ni-check-circle-fill !default;
+$list-cross-icon: $ni-cross-fill-c !default;
+$list-step-icon: $ni-circle !default;
+$list-step-current-icon: $ni-disk !default;
+$list-step-done-icon: $ni-check-circle-cut !default;
+
 .list{
     &:not(:last-child) {
         margin-bottom: $para-margin;
@@ -25,7 +33,7 @@
             font-size: $fx-sz-14;
             line-height: 1.5rem;
             font-family: $nk-dashlite-font;
-            content: $ni-bullet-fill;
+            content: $list-default-icon;
         }
         span{
             color: $base-light;
@@ -37,19 +45,19 @@
     &-checked{
         li:before{
             color: $accent-color;
-            content: $ni-check-fill-c;
+            content: $list-checked-icon;
         }
         &-circle{
             li:before{
                 color: $accent-color;
-                content: $ni-check-circle-fill;
+                content: $list-checked-circle-icon;
             }
         }
     }
     &-cross {
         li:before{
             color: rgba($danger, .8);
-            content: $ni-cross-fill-c;
+            content: $list-cross-icon;
         }
     }
     &-status {
@@ -113,20 +121,20 @@
             color: $base-light;
             font-weight: 500;
             &:before{
-                content: $ni-circle;
+                content: $list-step-icon;
             }
             &.list-step{
                 &-current{
                     color: $base-color;
                     &:before{
-                        content: $ni-disk;
+                        content: $list-step-current-icon;
                         color: $accent-color;
                     }
                 }
                 &-done{
                     color: $base-text;
                     &:before{
-                        content: $ni-check-circle-cut;
+                        content: $list-step-done-icon;
                         color: $success;
                     }
                 }

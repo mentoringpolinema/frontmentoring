@@ -5,6 +5,21 @@
 // Include NioIcon 
 @import "nioicon/nioicon";
 
+//FontAwesome Icons
+// $fa-font-path: "../fonts";
+// @import "fontawesome/fontawesome.scss";
+// @import "fontawesome/brands.scss";
+// @import "fontawesome/regular.scss";
+// @import "fontawesome/solid.scss";
+
+//Themify Icons
+// $ti-font-path : "../fonts";
+// @import "themify-icons/themify-icons";
+
+//Bootstrap Icons
+// $bi-font-path : "../fonts";
+// @import "bootstrap-icons/bootstrap-icons";
+
 // Include Prettify 
 @import "prettify";
 
@@ -52,3 +67,6 @@
 
 // Include jkanban
 @import "jkanban";
+
+// Include Dual ListBox
+@import "dual-listbox/dual-listbox";

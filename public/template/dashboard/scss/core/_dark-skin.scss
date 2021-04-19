@@ -934,6 +934,22 @@ body.dark-mode {
         color: $base-100;
     }
 
+    //List Box
+    .dual-listbox {
+        .dual-listbox__available,
+        .dual-listbox__selected {
+          border-color:lighten($dark-card-bg, 20%);
+        }
+        .dual-listbox__title {
+          border-left-color:lighten($dark-card-bg, 20%);
+          border-right-color:lighten($dark-card-bg, 20%);
+          border-top-color:lighten($dark-card-bg, 20%);
+        }
+      
+        .dual-listbox__item {
+          border-bottom-color:lighten($dark-card-bg, 20%);
+        }
+    }
 }
 
 @media (max-width: 576px) {

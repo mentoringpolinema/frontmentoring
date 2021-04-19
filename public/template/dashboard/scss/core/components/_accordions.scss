@@ -27,6 +27,14 @@ $accordion-s3-head-gap-md-r: 0;
 $accordion-s3-head-gap-md-l: $accordion-s3-head-gap-md-r + 2.25rem;
 $accordion-s3-inner-gap-md-x: $accordion-s3-head-gap-md-l;
 
+//icons
+$accordion-icon: $ni-chevron-up !default;
+$accordion-icon-collapsed: $ni-chevron-down !default;
+$accordion-s2-icon: $ni-minus !default;
+$accordion-s2-icon-collapsed: $ni-plus !default;
+$accordion-s3-icon: $ni-minus !default;
+$accordion-s3-icon-collapsed: $ni-plus !default;
+
 .accordion {
     border-radius: $border-radius;
     background: $white;
@@ -93,11 +101,11 @@ $accordion-s3-inner-gap-md-x: $accordion-s3-head-gap-md-l;
         text-align: center;
         line-height: 20px;
         &:before {
-            content: $ni-chevron-up;
+            content: $accordion-icon;
             font-family: $nk-dashlite-font;
             transition: 0.4s;
             .accordion-head.collapsed &{
-                content: $ni-chevron-down;
+                content: $accordion-icon-collapsed;
             }
         }
     }
@@ -132,7 +140,7 @@ $accordion-s3-inner-gap-md-x: $accordion-s3-head-gap-md-l;
             left: 0;
         }
         &:before{
-            content: $ni-minus;
+            content: $accordion-s2-icon;
         }
     }
     .accordion-head{
@@ -153,7 +161,7 @@ $accordion-s3-inner-gap-md-x: $accordion-s3-head-gap-md-l;
             }
             .accordion-icon {
                 &:before{
-                    content: $ni-plus;
+                    content: $accordion-s2-icon-collapsed;
                 }
             }
         }
@@ -195,7 +203,7 @@ $accordion-s3-inner-gap-md-x: $accordion-s3-head-gap-md-l;
             left: auto;
         }
         &:before{
-            content: $ni-minus;
+            content: $accordion-s3-icon;
         }
     }
     .accordion-head{
@@ -216,7 +224,7 @@ $accordion-s3-inner-gap-md-x: $accordion-s3-head-gap-md-l;
             }
             .accordion-icon {
                 &:before{
-                    content: $ni-plus;
+                    content: $accordion-s3-icon-collapsed;
                 }
             }
         }

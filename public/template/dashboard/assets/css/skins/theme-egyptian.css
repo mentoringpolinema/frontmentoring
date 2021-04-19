@@ -1,7 +1,7 @@
 /*!
  * Theme: Egyptian
- * Package: DashLite v2.2.0
- * Updated: 11.28.2020
+ * Package: DashLite v2.4.0
+ * Updated: 03.03.2021
  * Author: Softnio
  * Author URI: http://themeforest.net/user/softnio
 **/
@@ -76,6 +76,8 @@ a:hover { color: #1b5091; }
 .bg-lighter { background-color: #f5f6fa !important; }
 
 .bg-primary { background-color: #2263b3 !important; }
+
+a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-primary:focus { background-color: #1a4b88 !important; }
 
 .bg-primary-dim { background-color: #e9eff7 !important; }
 
@@ -178,3 +180,9 @@ a:hover { color: #1b5091; }
 .kanban-add-task { color: #2263b3; }
 
 .kanban-add-task:hover { background: #2263b3; border-color: #2263b3; }
+
+.actions ul li a { border-color: #2263b3; background: #2263b3; }
+
+.nk-wizard-simple .steps ul li.done h5, .nk-wizard-simple .steps ul li.done .number, .nk-wizard-simple .steps ul li.current h5, .nk-wizard-simple .steps ul li.current .number { color: #2263b3; }
+
+.nk-wizard-simple .steps ul li:after { background: #2263b3; }
