@@ -16,9 +16,12 @@ class CreateKelompokTable extends Migration
         Schema::create('kelompok', function (Blueprint $table) {
             $table->increments('id_kelompok');
             $table->string('nama_kelompok');
-            $table->string('mentor_id');
-            $table->string('materi_id');
+            $table->integer('mentor_id')->unsigned();
+            $table->integer('materi_id')->unsigned();
             $table->timestamps();
+            $table->foreign('mentor_id')->references('id_mentor')->on('mentor')->onDelete('cascade');
+            $table->foreign('materi_id')->references('id_materi')->on('materi')->onDelete('cascade');
+
         });
     }
 

@@ -15,9 +15,10 @@ class CreatePenggantiTable extends Migration
     {
         Schema::create('pengganti', function (Blueprint $table) {
             $table->increments('id_pengganti');
-            $table->string('id_mentee');
+            $table->integer('mentee_id')->unsigned();
             $table->string('file_pengganti');
             $table->timestamps();
+            $table->foreign('mentee_id')->references('id_mentee')->on('mentee')->onDelete('cascade');
         });
     }
 

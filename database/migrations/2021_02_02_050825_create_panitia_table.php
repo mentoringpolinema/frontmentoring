@@ -15,11 +15,10 @@ class CreatePanitiaTable extends Migration
     {
         Schema::create('panitia', function (Blueprint $table) {
             $table->increments('id_panitia');
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_panitia');
-            $table->string('username_panitia');
-            $table->string('password_panitia');
-            $table->string('email_panitia')->unique();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

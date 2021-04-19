@@ -15,12 +15,13 @@ class CreateMentorTable extends Migration
     {
         Schema::create('mentor', function (Blueprint $table) {
             $table->increments('id_mentor');
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_mentor');
             $table->string('email_mentor');
             $table->string('alamat_mentor');
             $table->string('notelp_mentor');
             $table->string('status_mentor');
-            $table->unsignedBigInteger('user_id');
+            $table->string('slug');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
