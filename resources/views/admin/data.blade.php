@@ -236,33 +236,29 @@
                                                         <tr class="nk-tb-item nk-tb-head">
                                                             <th class="nk-tb-col"><span class="sub-text">Kelas</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Prodi</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Jurusan</span></th>
+                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jurusan</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {{-- @foreach ($data_mentor as $mentor) --}}
+                                                        @foreach ($data_kelas as $kelas)
                                                         <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col">
-                                                                <div class="user-card">
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">A<span class="dot dot-success d-md-none ml-1"></span></span>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">D3 Manajemen Informatika</span>
+                                                                <span class="tb-amount">{{ $kelas->kelas }}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>Teknologi Informasi</span>
+                                                                <span>{{ $kelas->prodi->nama_prodi }}</span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-md">
+                                                                <span>{{ $kelas->prodi->jurusan->nama_jurusan }}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
                                                                 <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item -->                                                    
-                                                        {{-- @endforeach --}}
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -327,15 +323,25 @@
                             {{-- {{ csrf_field() }} --}}
                             @csrf
                             <div class="row gy-4">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="jurusan_id">Jurusan</label>
+                                        <select class="form-select" id="jurusan_id" name="jurusan_id" data-ui="lg">
+                                            @foreach ($data_jurusan as $jurusan)
+                                            <option value="{{$jurusan->id_jurusan}}">{{$jurusan->nama_jurusan}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="address-l1">Nama Prodi</label>
+                                        <label class="form-label" for="nama_prodi">Nama Prodi</label>
                                         <input type="text" class="form-control form-control-lg" id="nama_prodi" name="nama_prodi" value="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="address-l2">Singkatan Prodi</label>
+                                        <label class="form-label" for="singkatan_prodi">Singkatan Prodi</label>
                                         <input type="text" class="form-control form-control-lg" id="singkatan_prodi" name="singkatan_prodi" value="">
                                     </div>
                                 </div>
@@ -353,44 +359,37 @@
                             </form>
                         </div><!-- .tab-pane -->
                         <div class="tab-pane" id="kelas">
-                            <div class="row gy-4">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Kelas</label>
-                                        <input type="text" class="form-control form-control-lg" id="address-l1" value="">
+                            <form action="/admin/addKelas" class="form-validate is-alter" method="POST">
+                                @csrf
+                                <div class="row gy-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="kelas">Kelas</label>
+                                            <input type="text" name="kelas" class="form-control form-control-lg" id="kelas" value="">
+                                        </div>
+                                    </div>                             
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="prodi_id">Prodi</label>
+                                            <select class="form-select" id="prodi_id" name="prodi_id" data-ui="lg">
+                                                @foreach ($data_prodi as $prodi)
+                                                <option value="{{ $prodi->id_prodi }}">{{$prodi->nama_prodi}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>                             
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-jurusan">Prodi</label>
-                                        <select class="form-select" id="address-jurusan" data-ui="lg">
-                                            @foreach ($data_prodi as $prodi)
-                                            <option>{{$prodi->nama_prodi}}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="col-12">
+                                        <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                            <li>
+                                                <button type="submit" class="btn btn-lg btn-primary">Tambah Kelas</button>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-prodi">Jurusan</label>
-                                        <select class="form-select" id="address-prodi" data-ui="lg">
-                                            @foreach ($data_jurusan as $jurusan)
-                                            <option>{{$jurusan->nama_jurusan}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>                                  
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <a href="#" class="btn btn-lg btn-primary">Tambah Kelas </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            </form>
                         </div><!-- .tab-pane -->
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
