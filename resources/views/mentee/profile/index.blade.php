@@ -31,7 +31,7 @@
                                                                     <div class="form-icon form-icon-left">
                                                                         <em class="icon ni ni-user"></em>
                                                                     </div>
-                                                                    <input type="text" class="form-control" id="default-03" value="{{auth()->user()->username}}">
+                                                                    <input type="text" class="form-control" id="default-03" value="{{auth()->user()->name}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -59,7 +59,7 @@
                                                             <div class="form-group">
                                                                 <label class="form-label" for="default-03">Prodi</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" id="default-03" disabled value="D3 Manajemen">
+                                                                    <input type="text" class="form-control" id="default-03" disabled value="D3 Manajemen Informatika">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -72,6 +72,16 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <br>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="form-control-wrap">
+                                                                <ul>
+                                                                    <li><a href="#" class="btn btn-warning eg-swal-errorhayo">Update</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- .card-preview -->
                                                 </div>
                                             </div>
                                         </div><!-- .card-preview -->

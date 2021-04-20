@@ -37,6 +37,7 @@
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
+                                        @foreach ($data_materi as $materi)
                                         <div class="col-xxl-3 col-md-6">
                                             <div class="nk-download">
                                                 <div class="data">
@@ -47,10 +48,10 @@
                                                             <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill:#b5b3ff" /></svg>
                                                     </div>
                                                     <div class="info">
-                                                        <h6 class="title"><span class="name">Materi Minggu 1</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
+                                                        <h6 class="title"><span class="name">{{$materi->nama_materi}}</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
                                                         <div class="meta">
                                                             <span class="version">
-                                                                <span class="text-soft">Materi: </span> <span>Makhorijul Huruf</span>
+                                                                <span class="text-soft">Minggu Ke : </span> <span>{{$materi->minggu_materi}}</span>
                                                             </span>
                                                             <span class="release">
                                                                 <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-success">Selesai</span>
@@ -62,7 +63,8 @@
                                                     <a href="/mentee/materi/detailMateri" class="btn btn-sm btn-secondary">Detail</a>
                                                 </div>
                                             </div><!-- .sp-pdl-item -->
-                                        </div><!-- .col -->                                        
+                                        </div><!-- .col -->
+                                        @endforeach
                                         <div class="col-xxl-3 col-md-6">
                                             <div class="nk-download">
                                                 <div class="data">
@@ -93,64 +95,7 @@
                                                     <a href="/mentee/materi/detailTugas" class="btn btn-sm btn-warning">Detail</a>
                                                 </div>
                                             </div><!-- .sp-pdl-item -->
-                                        </div><!-- .col -->                                        
-                                        <div class="col-xxl-3 col-md-6">
-                                            <div class="nk-download">
-                                                <div class="data">
-                                                    <div class="thumb">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-                                                            <path d="M50,61H22a6,6,0,0,1-6-6V22l9-11H50a6,6,0,0,1,6,6V55A6,6,0,0,1,50,61Z" style="fill:#755de0" />
-                                                            <path d="M27.2223,43H44.7086s2.325-.2815.7357-1.897l-5.6034-5.4985s-1.5115-1.7913-3.3357.7933L33.56,40.4707a.6887.6887,0,0,1-1.0186.0486l-1.9-1.6393s-1.3291-1.5866-2.4758,0c-.6561.9079-2.0261,2.8489-2.0261,2.8489S25.4268,43,27.2223,43Z" style="fill:#fff" />
-                                                            <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill:#b5b3ff" /></svg>
-                                                    </div>
-                                                    <div class="info">
-                                                        <h6 class="title"><span class="name">Materi Minggu 3</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
-                                                        <div class="meta">
-                                                            <span class="version">
-                                                                <span class="text-soft">Tugas: </span> <span>Makhorijul Huruf</span>
-                                                            </span>
-                                                            <span class="release">
-                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-danger"> Belum</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="actions">
-                                                    <a href="/mentee/materi/detailMateri" class="btn btn-sm btn-secondary">Detail</a>
-                                                </div>
-                                            </div><!-- .sp-pdl-item -->
-                                        </div><!-- .col -->                                        
-                                        <div class="col-xxl-3 col-md-6">
-                                            <div class="nk-download">
-                                                <div class="data">
-                                                    <div class="thumb">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-                                                            <g>
-                                                                <path d="M50,61H22a6,6,0,0,1-6-6V22l9-11H50a6,6,0,0,1,6,6V55A6,6,0,0,1,50,61Z" style="fill:#599def" />
-                                                                <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill:#c2e1ff" />
-                                                                <rect x="27" y="31" width="18" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                                <rect x="27" y="36" width="18" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                                <rect x="27" y="41" width="18" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                                <rect x="27" y="46" width="12" height="2" rx="1" ry="1" style="fill:#fff" />
-                                                            </g>
-                                                        </svg></div>
-                                                    <div class="info">
-                                                        <h6 class="title"><span class="name">Tugas Minggu 3</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
-                                                        <div class="meta">
-                                                            <span class="version">
-                                                                <span class="text-soft">Tugas: </span> <span>Makhorijul Huruf</span>
-                                                            </span>
-                                                            <span class="release">
-                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-danger">Belum</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="actions">
-                                                    <a href="/mentee/materi/detailTugas" class="btn btn-sm btn-warning">Detail</a>
-                                                </div>
-                                            </div><!-- .sp-pdl-item -->
-                                        </div><!-- .col -->                                        
+                                        </div><!-- .col -->
                                     </div><!-- .row -->
                                 </div><!-- .nk-block -->
                             </div>

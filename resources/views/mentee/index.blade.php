@@ -57,7 +57,7 @@
                                                     </div>
                                                 </div><!-- .sp-pdl-item -->
                                         </div><!-- .col -->
-                                                    <div class="col-xxl-3 col-md-4">
+                                                    <div class="col-xxl-3 col-md-3">
                                                         <div class="card h-100 bg-primary text-white">
                                                             <div class="card-inner">
                                                                 <ul class="nk-store-statistics">
@@ -72,7 +72,7 @@
                                                             </div><!-- .card-inner -->
                                                         </div><!-- .card -->
                                                     </div><!-- .col -->
-                                                    <div class="col-xxl-3 col-md-4">
+                                                    <div class="col-xxl-3 col-md-3">
                                                         <div class="card h-100 bg-danger text-white">
                                                             <div class="card-inner">
                                                                 <ul class="nk-store-statistics">
@@ -87,7 +87,7 @@
                                                             </div><!-- .card-inner -->
                                                         </div><!-- .card -->
                                                     </div><!-- .col -->
-                                                    <div class="col-xxl-3 col-md-4">
+                                                    <div class="col-xxl-3 col-md-3">
                                                         <div class="card h-100 bg-warning text-white">
                                                             <div class="card-inner">
                                                                 <ul class="nk-store-statistics">
@@ -102,12 +102,27 @@
                                                             </div><!-- .card-inner -->
                                                         </div><!-- .card -->
                                                     </div><!-- .col -->
-                                                    <div class="col-lg-12 col-xxl-4">
+                                                    <div class="col-xxl-3 col-md-3">
+                                                        <div class="card h-100 bg-success text-white">
+                                                            <div class="card-inner">
+                                                                <ul class="nk-store-statistics">
+                                                                    <li class="item">
+                                                                        <div class="info">
+                                                                            <div class="title text-white">Total Tugas</div>
+                                                                            <div class="count text-white">20</div>
+                                                                        </div>
+                                                                        <em class="icon bg-success-dim ni ni-task"></em>
+                                                                    </li>
+                                                                </ul>
+                                                            </div><!-- .card-inner -->
+                                                        </div><!-- .card -->
+                                                    </div><!-- .col -->
+                                                    <div class="col-lg-6 col-xxl-4">
                                                         <div class="card h-100 bg-dark text-white">
                                                             <div class="card-inner border-bottom">
                                                                 <div class="card-title-group">
                                                                     <div class="card-title">
-                                                                        <h6 class="title">Timeline Mentoring <?php echo date("Y");?></h6>
+                                                                        <h6 class="title"><span><em class="icon ni ni-clock-fill"></em></span>  Timeline Mentoring <?php echo date("Y");?></h6>
                                                                     </div>                                                       
                                                                 </div>
                                                             </div>
@@ -125,29 +140,7 @@
                                                                                     <strong><span class="time">Waktu : {{$kegiatan->jam_kegiatan}}</span></strong>
                                                                                 </div>
                                                                             </div>
-                                                                        </li>
-                                                                        {{-- <li class="timeline-item">
-                                                                            <div class="timeline-status bg-primary"></div>
-                                                                            <div class="timeline-date">06 Jan <em class="icon ni ni-alarm-alt"></em></div>
-                                                                            <div class="timeline-data">
-                                                                                <h6 class="timeline-title">Penyampaian Materi : Minggu 2</h6>
-                                                                                <div class="timeline-des">
-                                                                                    <p>Materi berupa video dan Mengerjakan Kuis.</p>
-                                                                                    <span class="time">09:30am</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                        <li class="timeline-item">
-                                                                            <div class="timeline-status bg-pink"></div>
-                                                                            <div class="timeline-date">07 Jan <em class="icon ni ni-alarm-alt"></em></div>
-                                                                            <div class="timeline-data">
-                                                                                <h6 class="timeline-title">Pertemuan Zoom : Minggu 3</h6>
-                                                                                <div class="timeline-des">
-                                                                                    <p>Pertemuan Mentee dengan Mentor melalui Media Daring Zoom.</p>
-                                                                                    <span class="time">09:30am</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li> --}}
+                                                                        </li>                                                                        
                                                                         @endforeach
                                                                     </ul>
                                                                 </div>
@@ -159,7 +152,7 @@
                                                             <div class="card-inner border-bottom">
                                                                 <div class="card-title-group">
                                                                     <div class="card-title">
-                                                                        <h6 class="title">Pengumuman</h6>
+                                                                        <h6 class="title"><span><em class="icon ni ni-notify"></em></span>  Pengumuman</h6>
                                                                     </div>                                                       
                                                                 </div>
                                                             </div>

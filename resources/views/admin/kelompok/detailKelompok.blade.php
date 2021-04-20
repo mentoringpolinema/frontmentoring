@@ -21,19 +21,7 @@
                                             <div class="toggle-wrap nk-block-tools-toggle">
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            <div class="drodown">
-                                                                <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-search"></em><span><span class="d-none d-md-inline">Cari</span></span><em class="dd-indc icon ni ni-chevron-right"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#"><span>Jurusan</span></a></li>
-                                                                        <li><a href="#"><span>Prodi</span></a></li>
-                                                                        <li><a href="#"><span>Kelas</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                    <ul class="nk-block-tools g-3">                                                       
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#menteeModal"><em class="icon ni ni-user-add"></em><span>Tambah Mentee</span></a></li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li>
                                                     </ul>
@@ -62,7 +50,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="actions">
-                                                        <a href="#" class="btn btn-info">Detail</a>
+                                                        <a href="/admin/mentor/detailMentor" class="btn btn-info">Detail</a>
                                                     </div>
                                                 </div><!-- .sp-pdl-item -->
                                             </div><!-- .col -->
@@ -208,8 +196,6 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                       
                                                         <tr class="nk-tb-item">
@@ -237,7 +223,6 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                    
                                                         {{-- @endforeach --}}
@@ -251,7 +236,7 @@
                     </div>
                 </div>
     
-    <!-- Added Mentor Mentee -->
+    <!-- Added  Mentee -->
     <div class="modal fade" tabindex="-1" role="dialog" id="menteeModal">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -305,21 +290,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Kelompok</label>
-                                        <select class="form-select" id="kelompok_mentee" name="kelompok_mentee" data-ui="lg">
-                                            <option value="">-Pilih Kelompok-</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
@@ -365,61 +335,6 @@
                                 </div>
                             </div>
                         </div><!-- .tab-pane --> --}}
-                    </div><!-- .tab-content -->
-                </div><!-- .modal-body -->
-            </div><!-- .modal-content -->
-        </div><!-- .modal-dialog -->
-    </div><!-- .modal -->
-
-    <!-- Profile Edit Modal @e -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                <div class="modal-body modal-body-lg">
-                    <h5 class="title">Update Profile</h5>
-                    <ul class="nk-nav nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#personal">Data Mentor</a>
-                        </li>
-                    </ul><!-- .nav-tabs -->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="personal">
-                            <form action="/admin/edtMentor" class="form-validate is-alter" method="POST">
-                            {{ csrf_field() }}
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="full-name">Nama</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_mentor" name="nama_mentor" value="Abu Bin Ishtiyak" placeholder="Enter Name" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="display-name">No Telp</label>
-                                        <input type="text" class="form-control form-control-lg" id="email_mentor" name="email_mentor" value="Ishtiyak" placeholder="Enter Email" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Alamat</label>
-                                        <textarea type="text" class="form-control form-control-lg" id="notelp_mentor" name="notelp_mentor" value="+880" placeholder="Alamat"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            {{-- <a href="#" class="btn btn-lg btn-primary">Update</a> --}}
-                                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->

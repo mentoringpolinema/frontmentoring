@@ -192,6 +192,8 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     // Pertemuan
         // Get Pertemuan
         Route::get('/mentee/pertemuan','\App\Http\Controllers\MenteeController@pertemuan');
+        // Detail Pertemuan
+        Route::get('/mentee/pertemuan/detail', '\App\Http\Controllers\MenteeController@detailPertemuan');
 
     // Keluhan
         // Get Keluhan

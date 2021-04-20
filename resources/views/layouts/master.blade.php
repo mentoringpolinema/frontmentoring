@@ -61,8 +61,7 @@
     <script src="{{asset('template/dashboard/assets/js/scripts.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard/assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
     <!-- Sweet Alert JS -->
-    {{-- <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.2.0')}}"></script> --}}
-    <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.2.0')}}"></script>
+    <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.4.0')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     {{-- CK Editor --}}
     <script src="{{asset('ckeditor\ckeditor.js')}}"></script>
@@ -72,10 +71,16 @@
         initSample();
     </script>
     <!-- Summernote -->
-    <link rel="stylesheet" href="{{asset('template/dashboard/assets/css/editors/summernote.css?ver=2.2.0')}}">
-    <script src="{{asset('template/dashboard/assets/js/libs/editors/summernote.js?ver=2.2.0')}}"></script>
+    <link rel="stylesheet" href="{{asset('template/dashboard/assets/css/editors/summernote.css?ver=2.4.0')}}">
+    <script src="{{asset('template/dashboard/assets/js/libs/editors/summernote.js?ver=2.4.0')}}"></script>
+    <!-- editors -->
     <script src="{{asset('template/dashboard/assets/js/editors.js?ver=2.2.0')}}"></script>
-
+    <!-- Inbox -->
+    <script src="{{asset('template/dashboard/assets/js/apps/inbox.js?ver=2.4.0')}}"></script>
+    <!-- Tagify -->
+    <script src="{{asset('template/dashboard/assets/js/libs/tagify.js?ver=2.4.0')}}"></script>
+    <!-- Messages -->
+    <script src="{{asset('template/dashboardassets/js/apps/messages.js?ver=2.4.0')}}"></script>
     @yield('jsAdd')
 
 </body>
