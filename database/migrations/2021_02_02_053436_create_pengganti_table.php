@@ -18,7 +18,7 @@ class CreatePenggantiTable extends Migration
             $table->integer('mentee_id')->unsigned();
             $table->string('file_pengganti');
             $table->timestamps();
-            $table->foreign('mentee_id')->references('id_mentee')->on('mentee')->onDelete('cascade');
+            $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
         });
     }
 

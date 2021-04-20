@@ -18,7 +18,7 @@ class CreateKelasTable extends Migration
             $table->string('kelas');
             $table->integer('prodi_id')->unsigned();
             $table->timestamps();
-            $table->foreign('prodi_id')->references('id_prodi')->on('prodi')->onDelete('cascade');
+            $table->foreign('prodi_id')->references('id_prodi')->on('prodi');
         });
     }
 
