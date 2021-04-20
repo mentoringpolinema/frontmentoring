@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kegiatan;
+use App\Models\Mentee;
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 
 class MenteeController extends Controller
@@ -9,8 +12,9 @@ class MenteeController extends Controller
     // Dashboard 
     public function index()
     {
-        $data_kegiatan = \App\Models\Kegiatan::all();
-        return view('mentee.index', ['data_kegiatan' => $data_kegiatan]);
+        $data_kegiatan = Kegiatan::all();
+        $data_pengumuman = Pengumuman::all();
+        return view('mentee.index',compact(['data_kegiatan','data_pengumuman']));
     }
     // Kelompok
     
@@ -55,6 +59,18 @@ class MenteeController extends Controller
     public function keluhan()
     {
         return view('mentee.keluhan');
+    }
+
+    // Cetak
+    
+    public function cetak()
+    {
+        $data_mentee = Mentee::all();
+        return view('mentee.cetak.index', ['data_mentee' => $data_mentee]);
+    }
+    public function print()
+    {
+        return view('mentee.cetak.print');
     }
 
 }

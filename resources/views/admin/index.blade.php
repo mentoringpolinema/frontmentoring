@@ -9,15 +9,14 @@
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Dashboard</h3>                                            
-                                            <h5>Selamat Datang ! {{auth()->user()->username}}</h5>
+                                            <h3 class="nk-block-title page-title">Dashboard</h3>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
+                                                        {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li> --}}
                                                     </ul>
                                                 </div>
                                             </div>
@@ -26,7 +25,29 @@
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
-                                    <div class="col-xxl-3 col-md-6">
+                                        <div class="col-xxl-6">
+                                                <div class="nk-download">
+                                                    <div class="data">
+                                                        <div class="user-card">
+                                                            <div class="user-avatar bg-info lg">
+                                                                <em class="icon ni ni-user-alt"></em>
+                                                            </div>
+                                                            <div class="user-info">
+                                                                <h4 class="title"><span class="name">Selamat Datang ! {{auth()->user()->name}} </span> <span class="badge badge-dim badge-primary badge-pill">Panitia</span></h4>
+                                                            <div class="meta">
+                                                                <span class="version">
+                                                                    <span class="text-soft">{{auth()->user()->email}}</span>
+                                                                </span>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <a href="#" class="btn btn-info">Detail</a>
+                                                    </div>
+                                                </div><!-- .sp-pdl-item -->
+                                            </div><!-- .col -->
+                                    <div class="col-xxl-3 col-md-4">
                                             <div class="card h-100">
                                                 <div class="card-inner">
                                                     <div class="card-title-group mb-2">
@@ -67,8 +88,8 @@
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-xxl-3 col-md-6">
-                                            <div class="card h-100">
+                                        <div class="col-xxl-3 col-md-4">
+                                            <div class="card h-100 ">
                                                 <div class="card-inner">
                                                     <div class="card-title-group mb-2">
                                                         <div class="card-title">
@@ -76,10 +97,10 @@
                                                         </div>
                                                     </div>
                                                     <ul class="nk-store-statistics">
-                                                        <li class="item">
+                                                        <li class="item ">
                                                             <div class="info">
                                                                 <div class="title">Data Kelas</div>
-                                                                <div class="count">250</div>
+                                                                <div class="count">{{$totalKelas}}</div>
                                                             </div>
                                                             <em class="icon bg-primary-dim ni ni-home"></em>
                                                         </li>
@@ -101,58 +122,7 @@
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-lg-7 col-xxl-4">
-                                            <div class="card h-100">
-                                                <div class="card-inner border-bottom">
-                                                    <div class="card-title-group">
-                                                        <div class="card-title">
-                                                            <h6 class="title">Timeline Mentoring <?php echo date("Y");?></h6>
-                                                        </div>                                                       
-                                                    </div>
-                                                </div>
-                                                <div class="card-inner">
-                                                    <div class="timeline">
-                                                        <ul class="timeline-list">
-                                                            @foreach ($data_kegiatan as $kegiatan)
-                                                            <li class="timeline-item">
-                                                                <div class="timeline-status bg-success is-outline"></div>
-                                                                <div class="timeline-date">{{($kegiatan->tanggal_kegiatan->format('d M Y'))}}</div>
-                                                                <div class="timeline-data">
-                                                                    <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
-                                                                    <div class="timeline-des">
-                                                                        {!!$kegiatan->detail_kegiatan!!}
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            {{-- <li class="timeline-item">
-                                                                <div class="timeline-status bg-primary"></div>
-                                                                <div class="timeline-date">06 Jan <em class="icon ni ni-alarm-alt"></em></div>
-                                                                <div class="timeline-data">
-                                                                    <h6 class="timeline-title">Penyampaian Materi : Minggu 2</h6>
-                                                                    <div class="timeline-des">
-                                                                        <p>Materi berupa video dan Mengerjakan Kuis.</p>
-                                                                        <span class="time">09:30am</span>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="timeline-item">
-                                                                <div class="timeline-status bg-pink"></div>
-                                                                <div class="timeline-date">07 Jan <em class="icon ni ni-alarm-alt"></em></div>
-                                                                <div class="timeline-data">
-                                                                    <h6 class="timeline-title">Pertemuan Zoom : Minggu 3</h6>
-                                                                    <div class="timeline-des">
-                                                                        <p>Pertemuan Mentee dengan Mentor melalui Media Daring Zoom.</p>
-                                                                        <span class="time">09:30am</span>
-                                                                    </div>
-                                                                </div>
-                                                            </li> --}}
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .card -->
-                                        </div><!-- .col -->
-                                        <div class="col-xxl-3 col-md-5">
+                                        <div class="col-xxl-3 col-md-4">
                                             <div class="card card-full overflow-hidden">
                                                 <div class="nk-ecwg nk-ecwg7 h-100">
                                                     <div class="card-inner flex-grow-1">
@@ -188,6 +158,57 @@
                                                 </div>
                                             </div><!-- .card -->
                                         </div><!-- .col -->
+                                        <div class="col-lg-12 col-xxl-4">
+                                            <div class="card h-100 bg-dark text-white">
+                                                <div class="card-inner border-bottom">
+                                                    <div class="card-title-group">
+                                                        <div class="card-title">
+                                                            <h6 class="title">Timeline Mentoring <?php echo date("Y");?></h6>
+                                                        </div>                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="card-inner">
+                                                    <div class="timeline">
+                                                        <ul class="timeline-list">
+                                                            @foreach ($data_kegiatan as $kegiatan)
+                                                            <li class="timeline-item">
+                                                                <div class="timeline-status bg-warning is-outline"></div>
+                                                                <div class="timeline-date">{{($kegiatan->tanggal_kegiatan->format('d M Y'))}}</div>
+                                                                <div class="timeline-data">
+                                                                    <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
+                                                                    <div class="timeline-des">
+                                                                        {!!$kegiatan->detail_kegiatan!!}
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            {{-- <li class="timeline-item">
+                                                                <div class="timeline-status bg-primary"></div>
+                                                                <div class="timeline-date">06 Jan <em class="icon ni ni-alarm-alt"></em></div>
+                                                                <div class="timeline-data">
+                                                                    <h6 class="timeline-title">Penyampaian Materi : Minggu 2</h6>
+                                                                    <div class="timeline-des">
+                                                                        <p>Materi berupa video dan Mengerjakan Kuis.</p>
+                                                                        <span class="time">09:30am</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="timeline-item">
+                                                                <div class="timeline-status bg-pink"></div>
+                                                                <div class="timeline-date">07 Jan <em class="icon ni ni-alarm-alt"></em></div>
+                                                                <div class="timeline-data">
+                                                                    <h6 class="timeline-title">Pertemuan Zoom : Minggu 3</h6>
+                                                                    <div class="timeline-des">
+                                                                        <p>Pertemuan Mentee dengan Mentor melalui Media Daring Zoom.</p>
+                                                                        <span class="time">09:30am</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li> --}}
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->                                        
                                     </div><!-- .row -->
                                 </div><!-- .nk-block -->
                             </div>

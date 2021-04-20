@@ -216,7 +216,7 @@
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">{{$pertemuan->mentor_pertemuan}}</span>
+                                                                <span class="tb-amount">{{$pertemuan->mentor_id}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$pertemuan->minggu_pertemuan}}</span>
@@ -284,8 +284,9 @@
                                         <label class="form-label" for="display-name">Mentor</label>
                                         <select class="form-select" id="mentor_pertemuan" name="mentor_pertemuan" data-ui="lg" required>
                                             <option value="#">-Pilih Mentor-</option>
+                                            @foreach ($data_pertemuan as $pertemuan)                                            
                                             <option value="Ust Yahya">Ust Yahya</option>
-                                            <option value="Ust Rijal">Ust Rijal</option>
+                                            @endforeach
                                         </select>
                                      </div>
                                 </div>

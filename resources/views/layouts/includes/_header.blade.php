@@ -17,6 +17,7 @@
                             </div><!-- .nk-header-news -->
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
+                                    @if(auth()->user()->role == 'Panitia') 
                                     <li class="dropdown chats-dropdown hide-mb-xs">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-toggle="dropdown">
                                             <div class="icon-status icon-status-na"><em class="icon ni ni-comments"></em></div>
@@ -150,13 +151,14 @@
                                             </div>
                                         </div>
                                     </li>
+                                    @endif
                                     <li class="dropdown notification-dropdown">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-toggle="dropdown">
                                             <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em></div>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-xl dropdown-menu-right">
                                             <div class="dropdown-head">
-                                                <span class="sub-title nk-dropdown-title">Notifications</span>
+                                                <span class="sub-title nk-dropdown-title">Pengumuman</span>
                                                 <a href="#">Mark All as Read</a>
                                             </div>
                                             <div class="dropdown-body">
@@ -170,7 +172,7 @@
                                                             <div class="nk-notification-time">2 hrs ago</div>
                                                         </div>
                                                     </div>
-                                                    <div class="nk-notification-item dropdown-inner">
+                                                    {{-- <div class="nk-notification-item dropdown-inner">
                                                         <div class="nk-notification-icon">
                                                             <em class="icon icon-circle bg-success-dim ni ni-curve-down-left"></em>
                                                         </div>
@@ -178,7 +180,7 @@
                                                             <div class="nk-notification-text">Your <span>Deposit Order</span> is placed</div>
                                                             <div class="nk-notification-time">2 hrs ago</div>
                                                         </div>
-                                                    </div>                                                    
+                                                    </div>                                                     --}}
                                                 </div><!-- .nk-notification -->
                                             </div><!-- .nk-dropdown-body -->
                                             <div class="dropdown-foot center">

@@ -31,18 +31,22 @@ class AdminController extends Controller
         $totalMentee = Mentee::count();
         $totalMentor = Mentor::count();
         $data_kegiatan = Kegiatan::all();
+        $data_pengumuman = Pengumuman::all();
         $totalKegiatan = Kegiatan::count();
         $totalMateri = Materi::count();
         $totalJurusan = Jurusan::count();
         $totalProdi = Prodi::count();
+        $totalKelas = Kelas::count();
         return view('admin.index',compact([
             'totalMentee',
             'data_kegiatan',
+            'data_pengumuman',
             'totalMentor',
             'totalKegiatan',
             'totalMateri',
             'totalJurusan',
-            'totalProdi']));
+            'totalProdi',
+            'totalKelas']));
     }
 
     //-------------------------------------------Kegiatan-------------------------------------------
@@ -192,10 +196,13 @@ class AdminController extends Controller
     // Get Data
     public function data()
     {
+        $totalJurusan = Jurusan::count();
+        $totalProdi = Prodi::count();
+        $totalKelas = Kelas::count();
         $data_jurusan = Jurusan::all();
         $data_prodi = Prodi::all();
         $data_kelas = Kelas::with('prodi', 'prodi.jurusan')->get();
-        return view('admin.data', compact(['data_jurusan', 'data_prodi', 'data_kelas']));
+        return view('admin.data', compact(['data_jurusan', 'data_prodi', 'data_kelas','totalProdi','totalJurusan', 'totalKelas']));
     }
     // Add Data
 
