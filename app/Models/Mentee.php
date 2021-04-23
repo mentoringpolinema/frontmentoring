@@ -11,10 +11,12 @@ class Mentee extends Model
 
     protected $table = 'mentee';
     protected $primaryKey = 'id_mentee';
-    protected $fillable = ['id_user', 'nama_mentee','nim_mentee','status_mentee'];
-
+    protected $fillable = ['user_id', 'nama_mentee','nim_mentor','alamat_mentor','status_mentor','notelp_mentor'];
+    
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+
 }
