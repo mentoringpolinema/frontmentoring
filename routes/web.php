@@ -78,7 +78,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         //Get Mentee
         Route::get('/admin/mentee', '\App\Http\Controllers\AdminController@mentee');
         //Detail Mentee
-        Route::get('/admin/mentee/detail', '\App\Http\Controllers\AdminController@detailMentee');
+    Route::get('/admin/mentee/detail', '\App\Http\Controllers\AdminController@detailMentee');
 
     // User Management ===================================================================================================>
         //Get Users
@@ -164,6 +164,7 @@ Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
         Route::get('/mentor/materi', '\App\Http\Controllers\MentorController@materi');
         // Add Materi
         Route::post('/mentor/addMateri', '\App\Http\Controllers\MentorController@addMateri');
+        
 });
 
 // MENTEE ROUTES =========================================================================================================>
@@ -191,6 +192,8 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     // Pertemuan
         // Get Pertemuan
         Route::get('/mentee/pertemuan','\App\Http\Controllers\MenteeController@pertemuan');
+        // Detail Pertemuan
+        Route::get('/mentee/pertemuan/detail', '\App\Http\Controllers\MenteeController@detailPertemuan');
 
     // Keluhan
         // Get Keluhan
@@ -199,6 +202,11 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     // Pengganti
         // Get Pengganti
         Route::get('/mentee/pengganti','\App\Http\Controllers\MenteeController@pengganti');
+    // Cetak 
+        // Get Cetak 
+        Route::get('/mentee/cetak', '\App\Http\Controllers\MenteeController@cetak');
+        // Get Print 
+        Route::get('/mentee/print', '\App\Http\Controllers\MenteeController@print');
 });
 
 Auth::routes();

@@ -27,6 +27,10 @@
     Swal.fire("Good job!", "You clicked the button!", "error");
     e.preventDefault();
   });
+  $('.eg-swal-errorhayo').on("click", function (e) {
+    Swal.fire("Loooo !", "Gabisaa loooh !", "error");
+    e.preventDefault();
+  });
   $('.eg-swal-question').on("click", function (e) {
     Swal.fire("Good job!", "You clicked the button!", "question");
     e.preventDefault();

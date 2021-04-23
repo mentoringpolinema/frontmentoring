@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kegiatan;
+use App\Models\Materi;
+use App\Models\Mentee;
+use App\Models\Pengumuman;
+use App\Models\Pertemuan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MenteeController extends Controller
@@ -9,8 +15,9 @@ class MenteeController extends Controller
     // Dashboard 
     public function index()
     {
-        $data_kegiatan = \App\Models\Kegiatan::all();
-        return view('mentee.index', ['data_kegiatan' => $data_kegiatan]);
+        $data_kegiatan = Kegiatan::all();
+        $data_pengumuman = Pengumuman::all();
+        return view('mentee.index',compact(['data_kegiatan','data_pengumuman']));
     }
     // Kelompok
     
@@ -23,7 +30,8 @@ class MenteeController extends Controller
         // Materi 
         public function materi()
         {
-            return view('mentee.materi');
+            $data_materi = Materi::all();
+            return view('mentee.materi',compact(['data_materi']));
         }
         // Detail Materi
         public function detailMateri()
@@ -37,11 +45,12 @@ class MenteeController extends Controller
         }
     
     // Pertemuan
-    
-    public function pertemuan()
-    {
-        return view('mentee.pertemuan');
-    }
+        // Get Pertemuan
+        public function pertemuan()
+        { 
+            $data_pertemuan = Pertemuan::all();
+            return view('mentee.pertemuan.index',compact(['data_pertemuan']));
+        }
     
     // Pengganti
     
@@ -54,7 +63,25 @@ class MenteeController extends Controller
     
     public function keluhan()
     {
-        return view('mentee.keluhan');
+        return view('mentee.keluhan.index');
+    }
+
+    // Cetak
+    
+    public function cetak()
+    {
+        $data_mentee = Mentee::all();
+        return view('mentee.cetak.index', ['data_mentee' => $data_mentee]);
+    }
+    public function print()
+    {
+        return view('mentee.cetak.print');
+    }
+    // Profile
+    public function profile()
+    {
+        $data_user = User::all();
+        return view('mentee.profile.index');
     }
 
 }

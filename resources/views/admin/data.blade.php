@@ -45,7 +45,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Jurusan</div>
-                                                                            <div class="count">40</div>
+                                                                            <div class="count">{{$totalJurusan}}</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
                                                                     </li>
@@ -60,7 +60,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Prodi</div>
-                                                                            <div class="count">2</div>
+                                                                            <div class="count">{{$totalProdi}}</div>
                                                                         </div>
                                                                         <em class="icon bg-secondary-dim ni ni-link-group"></em>
                                                                     </li>
@@ -75,7 +75,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Kelas</div>
-                                                                            <div class="count">2</div>
+                                                                            <div class="count">{{$totalKelas}}</div>
                                                                         </div>
                                                                         <em class="icon bg-secondary-dim ni ni-link-group"></em>
                                                                     </li>
@@ -196,7 +196,7 @@
                                                                 <span class="tb-amount">{{$prodi->singkatan_prodi}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$prodi->nama_jurusan}}</span>
+                                                                <span>{{$prodi->jurusan->nama_jurusan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>

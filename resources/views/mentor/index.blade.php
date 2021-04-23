@@ -8,49 +8,71 @@
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
                                             <h3 class="nk-block-title page-title">Dashboard</h3>
-                                            <h5>Selamat Datang ! {{auth()->user()->username}}</h5>
-                                        </div><!-- .nk-block-head-content -->
-                                        <div class="nk-block-head-content">
-                                            <div class="toggle-wrap nk-block-tools-toggle">
-                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
-                                                <div class="toggle-expand-content" data-content="pageMenu">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="row g-gs">
-                                        <div class="col-xxl-3 col-md-6">
-                                            <div class="card h-100">
-                                                <div class="card-inner">
-                                                    <div class="card-title-group mb-2">
-                                                        <div class="card-title">
-                                                            <h6 class="title">Data Mentor</h6>
+                                        <div class="col-xxl-4">
+                                                <div class="nk-download">
+                                                    <div class="data">
+                                                        <div class="user-card">
+                                                            <div class="user-avatar bg-dark lg">
+                                                                <em class="icon ni ni-user-alt"></em>
+                                                            </div>
+                                                            <div class="user-info">
+                                                                <h4 class="title"><span class="name">Selamat Datang {{auth()->user()->name}} !</span> <span class="badge badge-dim badge-dark badge-pill">{{auth()->user()->role}}</span></h4>
+                                                            <div class="meta">
+                                                                <span class="version">
+                                                                    <span class="text-soft">{{auth()->user()->email}}</span>
+                                                                </span>
+                                                            </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <div class="actions">
+                                                        <a href="#" class="btn btn-dark">Detail</a>
+                                                    </div>
+                                                </div><!-- .sp-pdl-item -->
+                                        </div><!-- .col -->
+                                        <div class="col-xxl-3 col-md-4">
+                                            <div class="card h-100 bg-warning text-white">
+                                                <div class="card-inner">
                                                     <ul class="nk-store-statistics">
                                                         <li class="item">
                                                             <div class="info">
-                                                                <div class="title">Data Mentee</div>
-                                                                <div class="count">3,795</div>
+                                                                <div class="title text-white">Data Mentee</div>
+                                                                <div class="count text-white">3,795</div>
                                                             </div>
-                                                            <em class="icon bg-primary-dim ni ni-users"></em>
-                                                        </li>
+                                                            <em class="icon bg-warning-dim ni ni-users"></em>
+                                                        </li>                                                        
+                                                    </ul>
+                                                </div><!-- .card-inner -->
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                        <div class="col-xxl-3 col-md-4">
+                                            <div class="card h-100 bg-success text-white">
+                                                <div class="card-inner">
+                                                    <ul class="nk-store-statistics">                                                        
                                                         <li class="item">
                                                             <div class="info">
-                                                                <div class="title">Data Kelompok</div>
-                                                                <div class="count">120</div>
+                                                                <div class="title text-white">Data Kelompok</div>
+                                                                <div class="count text-white">120</div>
                                                             </div>
                                                             <em class="icon bg-info-dim ni ni-user"></em>
-                                                        </li>
+                                                        </li>                                                       
+                                                    </ul>
+                                                </div><!-- .card-inner -->
+                                            </div><!-- .card -->
+                                        </div><!-- .col -->
+                                        <div class="col-xxl-3 col-md-4">
+                                            <div class="card h-100 bg-pink text-white">
+                                                <div class="card-inner">
+                                                    <ul class="nk-store-statistics">
                                                         <li class="item">
                                                             <div class="info">
-                                                                <div class="title">Data Materi</div>
-                                                                <div class="count">5</div>
+                                                                <div class="title text-white">Data Materi</div>
+                                                                <div class="count text-white">5</div>
                                                             </div>
                                                             <em class="icon bg-pink-dim ni ni-book"></em>
                                                         </li>
@@ -58,8 +80,8 @@
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-lg-6 col-xxl-4">
-                                            <div class="card h-100">
+                                        <div class="col-lg-12 col-xxl-4">
+                                            <div class="card h-100 bg-dark text-white">
                                                 <div class="card-inner border-bottom">
                                                     <div class="card-title-group">
                                                         <div class="card-title">

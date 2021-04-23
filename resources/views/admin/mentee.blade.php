@@ -233,20 +233,20 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {{-- @foreach ($data_mentor as $mentor) --}}
+                                                        @foreach ($data_mentee as $mentee)
                                                         <tr class="nk-tb-item">
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">1831710190 <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                                        <span class="tb-lead">{{$mentee->nim_mentee}} <span class="dot dot-success d-md-none ml-1"></span></span>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">A. Yahya Hudan Permana</span>
+                                                                <span class="tb-amount">{{$mentee->nama_mentee}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>1A</span>
+                                                                <span>{{$mentee->kelas_id}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>Teknologi Informasi</span>
@@ -258,55 +258,25 @@
                                                                 <span>3</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>2018</span>
+                                                                <span>{{$mentee->angkatan_id}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
+                                                                @if($mentee->status_mentee == 'Lulus')
                                                                 <span class="dot bg-success d-mb-none"></span>
-                                                            <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Lulus</span>
+                                                                <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">{{$mentee->status_mentee}}</span>
+                                                                @endif
+                                                                @if($mentee->status_mentee == 'Tidak Lulus')
+                                                                <span class="dot bg-success d-mb-none"></span>
+                                                                <span class="badge badge-sm badge-dot has-bg badge-danger d-none d-mb-inline-flex">{{$mentee->status_mentee}}</span>
+                                                                @endif
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
                                                                 <a href="/admin/mentee/detail" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
                                                                 {{-- <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                       
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col">
-                                                                <div class="user-card">
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">1831710191 <span class="dot dot-success d-md-none ml-1"></span></span>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">Rijalus Sholihin</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>1A</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>Teknologi Informasi</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>D3 MI</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>3</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>2018</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="dot bg-danger d-mb-none"></span>
-                                                            <span class="badge badge-sm badge-dot has-bg badge-danger d-none d-mb-inline-flex">Belum Lulus</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="/admin/mentee/detail" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                {{-- <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                    
-                                                        {{-- @endforeach --}}
+                                                        </tr><!-- .nk-tb-item  -->
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
