@@ -94,7 +94,7 @@ class AdminController extends Controller
     {
         $data_mentor = Mentor::all();
         $totalMentor = Mentor::count();
-        return view('admin.mentor', ['data_mentor' => $data_mentor], ['totalMentor' => $totalMentor]);
+        return view('admin.mentor', compact(['data_mentor', 'totalMentor']));
     }
 
     // Get Mentor By ID
@@ -173,11 +173,40 @@ class AdminController extends Controller
     public function mentee()
     {
         $data_mentee = Mentee::all();
-        return view('admin.mentee', ['data_mentee' => $data_mentee]);
+        $data_jurusan = Jurusan::all();
+        $data_prodi = Prodi::all();
+        $data_kelompok = Kelompok::all();
+        $data_kelas = Kelas::with('prodi', 'prodi.jurusan')->get();
+        return view('admin.mentee', compact('data_mentee', 'data_jurusan', 'data_prodi', 'data_kelas', 'data_kelompok'));
     }
     // Detail Mentee
     public function detailMentee(){
         return view('admin.mentee.detail');
+    }
+    //Add Mentee
+    public function addMentee(Request $request)
+    {
+
+        $user = User::create([
+            "role" => "Mentee",
+            "name" => $request->nama_mentee,
+            "nim" => $request->nim_mentee,
+            "password" => Hash::make('mentee123'),
+        ]);
+
+        $userID = DB::getPdo()->lastInsertId();
+
+        $mentee = Mentor::create([
+            "user_id" => $userID,
+            "nama_mentee" => $request->nama_mentor,
+            "nim_mentee" => $request->nim_mentor,
+            "alamat_mentor" => $request->alamat_mentor,
+            "notelp_mentor" => $request->notelp_mentor,
+            "status_mentor" => $request->status_mentor,
+            "slug" => Str::slug($request->nama_mentor, '-')
+        ]);
+
+        return redirect('/admin/mentor')->with('success', 'Mentor Berhasil ditambahkan !');
     }
 
     //-------------------------------------------Users-------------------------------------------
@@ -236,7 +265,7 @@ class AdminController extends Controller
             $data_materi = Materi::all();
             $data_kegiatan = Kegiatan::all('minggu_kegiatan');
             $totalMateri = Materi::count();
-            return view('admin.materi', ['data_materi' => $data_materi, 'data_kegiatan' => $data_kegiatan],['totalMateri' => $totalMateri]);
+            return view('admin.materi', compact(['data_materi', 'data_kegiatan','totalMateri']));
         }
         // Add Materi
         public function addMateri(Request $request)
@@ -308,7 +337,7 @@ class AdminController extends Controller
     public function kelompok()
     {
         $data_kelompok = Kelompok::all();
-        return view('admin.kelompok', ['data_kelompok' => $data_kelompok]);
+        return view('admin.kelompok', compact(['data_kelompok']));
     }
     // Detail Kelompok
     public function detailKelompok(){

@@ -330,13 +330,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="full-name">Nama</label>
-                                        <input type="text" class="form-control form-control-lg" id="full-name" name="nama_mentee" value="A. Yahya Hudan Permana" placeholder="Enter Full name">
+                                        <input type="text" class="form-control form-control-lg" id="nama_mentee" name="nama_mentee" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">NIM</label>
-                                        <input type="text" class="form-control form-control-lg" id="display-name" name="nim_mentee" value="1831710190" placeholder="Enter display name">
+                                        <input type="text" class="form-control form-control-lg" id="nim_mentee" name="nim_mentee" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -344,13 +344,20 @@
                                         <label class="form-label" for="phone-no">Jurusan</label>
                                         <select class="form-select" id="jurusan_mentee" name="jurusan_mentee" data-ui="lg" required>
                                             <option value="">-Pilih Jurusan-</option>
-                                            <option value="Teknologi Informasi">Teknologi Informasi</option>
-                                            <option value="Teknik Elektro">Teknik Elektro</option>
-                                            <option value="Teknik Sipil">Teknik Sipil</option>
-                                            <option value="Teknik Mesin">Teknik Mesin</option>
-                                            <option value="Akuntansi">Akuntansi</option>
-                                            <option value="Bahasa Inggris">Bahasa Inggris</option>
-                                            <option value="Teknik Kimia">Teknik Kimia</option>
+                                            @foreach ($data_jurusan as $jurusan)
+                                                <option value="{{$jurusan->id_jurusan}}">{{$jurusan->nama_jurusan}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="phone-no">Program Studi</label>
+                                        <select class="form-select" id="prodi_mentee" name="prodi_mentee" data-ui="lg" required>
+                                            <option value="">-Pilih Program Studi-</option>
+                                            @foreach ($data_prodi as $prodi)
+                                                <option value="{{$prodi->id_prodi}}">{{$prodi->nama_prodi}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -359,15 +366,9 @@
                                         <label class="form-label" for="phone-no">Kelas</label>
                                         <select class="form-select" id="kelas_mentee" name="kelas_mentee" data-ui="lg" required>
                                             <option value="">-Pilih Kelas-</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                            <option value="F">F</option>
-                                            <option value="G">G</option>
-                                            <option value="H">H</option>
-                                            <option value="I">I</option>
+                                            @foreach ($data_kelas as $kelas)
+                                                <option value="{{$kelas->id_kelas}}">{{$kelas->nama_kelas}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -376,13 +377,20 @@
                                         <label class="form-label" for="phone-no">Kelompok</label>
                                         <select class="form-select" id="kelompok_mentee" name="kelompok_mentee" data-ui="lg">
                                             <option value="">-Pilih Kelompok-</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
+                                            @foreach ($data_kelompok as $kelompok)
+                                                <option value="{{$kelompok->id_kelompok}}">{{$kelompok->nama_kelompok}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="phone-no">Angkatan</label>
+                                        <select class="form-select" id="angkatan_mentee" name="angkatan_mentee" data-ui="lg">
+                                            <option value="">-Pilih Angkatan-</option>
+                                            @foreach ($data_angkatan as $angkatan)
+                                                <option value="{{$angkatan->id_angkatan}}">{{$angkatan->nama_angkatan}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
