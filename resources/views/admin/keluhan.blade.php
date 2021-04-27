@@ -18,7 +18,7 @@
                                                     <span class="badge badge-pill badge-primary">2</span>
                                                 </a>
                                             </li>
-                                            <li>
+                                            <li class="active">
                                                 <a class="nk-ibx-menu-item" href="#">
                                                     <em class="icon ni ni-edit"></em>
                                                     <span class="nk-ibx-menu-text">Laporan</span>
@@ -183,12 +183,7 @@
                                                             <li class="date-msg"><span class="date">14 Jan, 2020</span></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="nk-reply-body nk-ibx-reply-body">
-                                                        <div class="nk-reply-entry entry">
-                                                            <p>Assalamualaikum,</p>
-                                                            <p>Ini Mas , link tugasnya kok error ya ? Terimakasih</p>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                                 <!-- .nk-reply-item -->
                                             </div>

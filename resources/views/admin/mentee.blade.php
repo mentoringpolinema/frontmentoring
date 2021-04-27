@@ -58,7 +58,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Mentee</div>
-                                                                            <div class="count">3,795</div>
+                                                                            <div class="count">{{$totalMentee}}</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
                                                                     </li>
@@ -246,19 +246,20 @@
                                                                 <span class="tb-amount">{{$mentee->nama_mentee}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$mentee->kelas_id}}</span>
+                                                                <span>{{$mentee->kelas->kelas}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>Teknologi Informasi</span>
+                                                                <span>{{$mentee->kelas->prodi->jurusan->nama_jurusan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>D3 MI</span>
+                                                                <span>{{$mentee->kelas->prodi->singkatan_prodi}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>3</span>
+                                                                <span>{{$mentee->kelompok->nama_kelompok}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$mentee->angkatan_id}}</span>
+                                                                <span>{{$mentee->angkatan->angkatan}}</span>
+                                                                {{-- <span>{{$mentee->angkatan_id}}</span> --}}
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 @if($mentee->status_mentee == 'Lulus')
@@ -272,7 +273,7 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="/admin/mentee/detail" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
+                                                                <a href="/admin/detailMentee/{{$mentee->id_mentee}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
                                                                 {{-- <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->

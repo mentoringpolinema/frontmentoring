@@ -78,7 +78,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         //Get Mentee
         Route::get('/admin/mentee', '\App\Http\Controllers\AdminController@mentee');
         //Detail Mentee
-    Route::get('/admin/mentee/detail', '\App\Http\Controllers\AdminController@detailMentee');
+        Route::get('/admin/detailMentee/{id}', '\App\Http\Controllers\AdminController@detailMentee');
 
     // User Management ===================================================================================================>
         //Get Users
@@ -175,7 +175,7 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     
     // Kelompok
         // Get Kelompok
-        Route::get('/mentee/kelompok', '\App\Http\Controllers\MenteeController@kelompok');
+        Route::get('/mentee/kelompok/{id}', '\App\Http\Controllers\MenteeController@kelompok');
         
     // Profile 
         // Get Profile

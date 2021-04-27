@@ -21,9 +21,10 @@ class MenteeController extends Controller
     }
     // Kelompok
     
-    public function kelompok()
+    public function kelompok($id_kelompok)
     {
-        return view('mentee.kelompok');
+        $data_mentee = Mentee::all();
+        return view('mentee.kelompok',compact('data_mentee'));
     }
 
     // Materi dan Tugas
@@ -68,7 +69,7 @@ class MenteeController extends Controller
 
     // Cetak
     
-    public function cetak()
+    Public function cetak()
     {
         $data_mentee = Mentee::all();
         return view('mentee.cetak.index', ['data_mentee' => $data_mentee]);
@@ -80,8 +81,8 @@ class MenteeController extends Controller
     // Profile
     public function profile()
     {
-        $data_user = User::all();
-        return view('mentee.profile.index');
+        $data_mentee = Mentee::all();
+        return view('mentee.profile.index',compact('data_mentee'));
     }
 
 }

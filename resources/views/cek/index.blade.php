@@ -18,7 +18,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form action="#" class="form-validate">
+                                <form class="form-validate">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg" id="default-01" placeholder="contoh : 1831710190">
                                     </div>

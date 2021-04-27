@@ -34,7 +34,7 @@
                                         <div class="nk-block-head">
                                             <div class="nk-block-head-content">
                                                 <div class="nk-block-des">
-                                                    <p>Data Users Kegiatan Mentoring Keagamaan Politeknik Negeri Malang Tahun <?php echo date("Y");?>.</p>
+                                                    <p>Data Kegiatan Mentoring Keagamaan Politeknik Negeri Malang Tahun <?php echo date("Y");?>.</p>
                                                 </div>
                                                 <br>
                                                 <div class="row g-gs">

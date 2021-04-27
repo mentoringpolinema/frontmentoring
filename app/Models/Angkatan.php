@@ -11,4 +11,8 @@ class Angkatan extends Model
     protected $table = 'angkatan';
     protected $primaryKey = 'id_angkatan';
     protected $fillable = ['angkatan'];
+
+    public function mentee(){
+        return $this->hasOne(Mentee::class);
+    }
 }

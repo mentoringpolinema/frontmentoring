@@ -17,5 +17,9 @@ class Mentor extends Model{
     {
         return $this->belongsTo(Pertemuan::class);
     }
+    public function kelompok()
+    {
+        return $this->belongsTo(Kelompok::class);
+    }
     
 }

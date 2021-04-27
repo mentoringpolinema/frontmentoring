@@ -45,7 +45,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Nama Mentor</div>
-                                                                            <div class="count">Ust Rijalus Sholihin</div>
+                                                                            <div class="count">{{auth()->user()->mentee->kelompok->mentor->nama_mentor}}</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
                                                                     </li>
@@ -119,12 +119,12 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {{-- @foreach ($data_mentor as $mentor) --}}
+                                                        @foreach ($data_mentee as $mentee)
                                                         <tr class="nk-tb-item">
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">1831710190 <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                                        <span class="tb-lead">183171190<span class="dot dot-success d-md-none ml-1"></span></span>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -144,7 +144,7 @@
                                                                 <span>3</span>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                       
-                                                        <tr class="nk-tb-item">
+                                                        {{-- <tr class="nk-tb-item">
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
@@ -167,8 +167,8 @@
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>3</span>
                                                             </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                    
-                                                        {{-- @endforeach --}}
+                                                        </tr><!-- .nk-tb-item  -->                                                     --}}
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

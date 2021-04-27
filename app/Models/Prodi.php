@@ -18,4 +18,5 @@ class Prodi extends Model
     {
         return $this->hasMany(Kelas::class);
     }
+    
 }

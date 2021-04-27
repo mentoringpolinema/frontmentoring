@@ -30,35 +30,49 @@
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
                                                                 <span class="data-label">Full Name</span>
-                                                                <span class="data-value">A</span>
+                                                                <span class="data-value">{{$data_mentee->nama_mentee}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->                                                        
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Email</span>
-                                                                <span class="data-value">A</span>
+                                                                <span class="data-value">{{$data_mentee->user->email}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more disable"><em class="icon ni ni-lock-alt"></em></span></div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
-                                                                <span class="data-label">No Telp</span>
-                                                                <span class="data-value text-soft">A</span>
+                                                                <span class="data-label">Kelas</span>
+                                                                <span class="data-value text-soft">{{$data_mentee->kelas->kelas}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->                                                        
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit" data-tab-target="#address">
                                                             <div class="data-col">
-                                                                <span class="data-label">Alamat</span>
-                                                                <span class="data-value">A</span>
+                                                                <span class="data-label">Jurusan</span>
+                                                                <span class="data-value">{{$data_mentee->kelas->prodi->jurusan->nama_jurusan}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
+                                                                <span class="data-label">Prodi</span>
+                                                                <span class="data-value">{{$data_mentee->kelas->prodi->nama_prodi}}</span>
+                                                            </div>
+                                                            <div class="data-col data-col-end"><span class="data-more disable"><em class="icon ni ni-lock-alt"></em></span></div>
+                                                        </div><!-- data-item -->
+                                                        <div class="data-item">
+                                                            <div class="data-col">
+                                                                <span class="data-label">Angkatan</span>
+                                                                <span class="data-value">{{$data_mentee->angkatan->angkatan}}</span>
+                                                            </div>
+                                                            <div class="data-col data-col-end"><span class="data-more disable"><em class="icon ni ni-lock-alt"></em></span></div>
+                                                        </div><!-- data-item -->
+                                                        <div class="data-item">
+                                                            <div class="data-col">
                                                                 <span class="data-label">Status</span>
-                                                                <span class="data-value">A</span>
+                                                                <span class="data-value">{{$data_mentee->status_mentee}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more disable"><em class="icon ni ni-lock-alt"></em></span></div>
                                                         </div><!-- data-item -->

@@ -42,7 +42,7 @@
                                                                 <em class="icon ni ni-user-alt"></em>
                                                             </div>
                                                             <div class="user-info">
-                                                                <h4 class="title"><span class="name">Nama : {{auth()->user()->name}} </span> <span class="badge badge-dim badge-success badge-pill">{{auth()->user()->role}}</span></h4>
+                                                                <h4 class="title"><span class="name">Nama : {{auth()->user()->mentee->nama_mentee}} </span> <span class="badge badge-dim badge-success badge-pill">{{auth()->user()->role}}</span></h4>
                                                             <div class="meta">
                                                                 <span class="version">
                                                                     <span class="text-soft">Email : {{auth()->user()->email}}</span>

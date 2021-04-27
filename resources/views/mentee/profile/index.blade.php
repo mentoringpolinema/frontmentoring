@@ -22,6 +22,7 @@
                                     <div class="card card-preview">
                                             <div class="card-inner">
                                                 <div class="preview-block">
+                                                    {{-- @foreach ($data_mentee as $mentee) --}}
                                                     <div class="row gy-4">
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
@@ -31,10 +32,10 @@
                                                                     <div class="form-icon form-icon-left">
                                                                         <em class="icon ni ni-user"></em>
                                                                     </div>
-                                                                    <input type="text" class="form-control" id="default-03" value="{{auth()->user()->name}}">
+                                                                    <input type="text" class="form-control" id="default-03" value="{{auth()->user()->mentee->nama_mentee}}">
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div>                                                        
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label class="form-label" for="default-03">Email</label>
@@ -49,29 +50,40 @@
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
-                                                                <label class="form-label" for="default-03">Jurusan</label>
+                                                                <label class="form-label" for="default-03">NIM</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" id="default-03" disabled value="Teknologi Informasi">
+                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{auth()->user()->mentee->nim_mentee}}">
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="default-03">Jurusan</label>
+                                                                <div class="form-control-wrap">
+                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{auth()->user()->mentee->kelas->prodi->jurusan->nama_jurusan}}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label class="form-label" for="default-03">Prodi</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" id="default-03" disabled value="D3 Manajemen Informatika">
+                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{auth()->user()->mentee->kelas->prodi->nama_prodi}}">
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label class="form-label" for="default-03">Angkatan</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" id="default-03" disabled value="2020">
+                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{auth()->user()->mentee->angkatan->angkatan}}">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    {{-- @endforeach --}}
                                                     <br>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">

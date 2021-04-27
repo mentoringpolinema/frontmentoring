@@ -14,4 +14,5 @@ class Jurusan extends Model
     {
         return $this->hasMany(Prodi::class);
     }
+    
 }

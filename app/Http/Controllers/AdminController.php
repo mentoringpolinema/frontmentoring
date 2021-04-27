@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\JurusanExport;
 use App\Exports\MentorExport;
 use App\Imports\MentorImport;
+use App\Models\Angkatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -177,15 +178,18 @@ class AdminController extends Controller
     public function mentee()
     {
         $data_mentee = Mentee::all();
+        $totalMentee = Mentee::count();
+        $data_angkatan = Angkatan::all();
         $data_jurusan = Jurusan::all();
         $data_prodi = Prodi::all();
         $data_kelompok = Kelompok::all();
         $data_kelas = Kelas::with('prodi', 'prodi.jurusan')->get();
-        return view('admin.mentee', compact('data_mentee', 'data_jurusan', 'data_prodi', 'data_kelas', 'data_kelompok'));
+        return view('admin.mentee', compact('data_mentee', 'data_jurusan', 'data_prodi', 'data_kelas', 'data_kelompok','data_angkatan','totalMentee'));
     }
     // Detail Mentee
-    public function detailMentee(){
-        return view('admin.mentee.detail');
+    public function detailMentee($id_mentee){
+        $data_mentee = Mentee::find($id_mentee);
+        return view('admin.mentee.detail',compact('data_mentee'));
     }
     //Add Mentee
     public function addMentee(Request $request)

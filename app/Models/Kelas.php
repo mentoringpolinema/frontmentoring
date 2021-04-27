@@ -14,4 +14,7 @@ class Kelas extends Model
     public function prodi(){
         return $this->belongsTo(Prodi::class, 'prodi_id', 'id_prodi');
     }
+    public function mentee(){
+        return $this->hasOne(Kelas::class);
+    }
 }

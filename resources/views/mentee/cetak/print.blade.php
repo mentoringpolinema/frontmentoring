@@ -63,42 +63,42 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>1831710190</td>
+                                                                <td>{{auth()->user()->mentee->nim_mentee}}</td>
                                                             </tr>                                                            
                                                             <tr>
                                                                 <td>Kelas </td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>MI-3A</td>
+                                                                <td>{{auth()->user()->mentee->kelas->kelas}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Prodi</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>D3 Manajemen Informatika</td>
+                                                                <td>{{auth()->user()->mentee->kelas->prodi->nama_prodi}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Jurusan</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>Teknologi Informasi</td>
+                                                                <td>{{auth()->user()->mentee->kelas->prodi->jurusan->nama_jurusan}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Mentor</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>Ust. Rijalus Sholikin</td>
+                                                                <td>{{auth()->user()->mentee->kelompok->mentor->nama_mentor}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Kelompok</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>2</td>
+                                                                <td>{{auth()->user()->mentee->kelompok->nama_kelompok}}</td>
                                                             </tr>                                                            
                                                         </tbody>
                                                          <tfoot>                                                       
@@ -115,7 +115,7 @@
                                                             <tr>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td colspan="3" class="w-20px">{{auth()->user()->name}} - 1831710190</td>
+                                                                <td colspan="3" class="w-20px">{{auth()->user()->name}} - {{auth()->user()->mentee->nim_mentee}}</td>
                                                             </tr>                                                            
                                                         </tfoot>
                                                     </table>
