@@ -11,4 +11,8 @@ class Pertemuan extends Model
     // protected $guarded = ['id_pertemuan'];
     protected $fillable = ['nama_pertemuan', 'mentor_id', 'minggu_pertemuan', 'tanggal_pertemuan', 'link_pertemuan', 'detail_pertemuan'];
 
+    public function absensi(){
+        return $this->hasMany(Absensi::class);
+    }
+
 }

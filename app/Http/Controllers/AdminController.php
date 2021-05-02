@@ -21,6 +21,7 @@ use App\Models\Jurusan;
 use App\Models\Pertemuan;
 use App\Models\Prodi;
 use App\Models\Kelas;
+use App\Models\Keluhan;
 use App\Models\User;
 use App\Models\Pengumuman;
 
@@ -343,7 +344,6 @@ class AdminController extends Controller
 
     //-------------------------------------------Kelompok-------------------------------------------
 
-    // Kelompok Function
     // Get Kelompok
     public function kelompok()
     {
@@ -357,12 +357,26 @@ class AdminController extends Controller
 
     //-------------------------------------------Keluhan-------------------------------------------
 
-    // Keluhan Function
+    // Get Function
     public function keluhan()
     {
-        return view('admin.keluhan');
+        $data_keluhan = Keluhan::all();
+        return view('admin.keluhan.index',compact('data_keluhan'));
     }
-    
+    // Detail Keluhan
+    public function detailKeluhan($id_keluhan)
+    {
+        $data_keluhan = Keluhan::find($id_keluhan);
+        return view('admin.keluhan.detail', compact('data_keluhan'));
+    }
+    // Jawab Keluhan
+    public function jawabKeluhan(Request $request, $id_keluhan)
+    {
+        $data_keluhan = Keluhan::find($id_keluhan);
+        $data_keluhan->update($request->all());
+        return redirect('/admin/keluhan/')->with('success', 'Keluhan Berhasil dijawab !');
+    }
+   
     //-------------------------------------------Pertemuan-------------------------------------------
 
     // Pertemuan Function
@@ -400,7 +414,7 @@ class AdminController extends Controller
         }
         // Detail Pertemuan
         public function detPertemuan($id_pertemuan){
-            $data_pertemuan = Pertemuan::find($id_pertemuan);
+            $data_pertemuan = Pertemuan::find   ($id_pertemuan);
             return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan']));
         }
 

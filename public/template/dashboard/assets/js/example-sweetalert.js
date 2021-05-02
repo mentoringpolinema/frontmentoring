@@ -98,8 +98,8 @@
   $('.eg-swal-av5').on("click", function (e) {
     var timerInterval;
     Swal.fire({
-      title: 'Auto close alert!',
-      html: 'I will close in <b></b> milliseconds.',
+      title: 'Sebentar ya kak :)',
+      html: 'Mendapatkan Data dalam : <b></b> milliseconds.',
       timer: 2000,
       timerProgressBar: true,
       onBeforeOpen: function onBeforeOpen() {

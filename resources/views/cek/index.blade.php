@@ -18,36 +18,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form class="form-validate">
+                                <form action="/cekMentoring" class="form-validate" method="GET" >
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg" id="default-01" placeholder="contoh : 1831710190">
+                                        <input type="text" class="form-control form-control-lg" id="cari" name="cari" placeholder="contoh : 1831710190" required>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#modalAlert2" reqired>Cek</button>
+                                        <button class="btn btn-lg btn-primary btn-block loading-data" type="submit">Cek</button>
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Alert 2 -->
-                <div class="modal fade" tabindex="-1" id="modalAlert2">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body modal-body-lg text-center">
-                                <div class="nk-modal">
-                                    <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
-                                    <h4 class="nk-modal-title">Mentoring anda Masih Kurang!</h4>
-                                    <div class="nk-modal-text">
-                                        <p class="lead">Sertifikat Mentoring Anda belum bisa diambil, Lengkapi aja dulu kekurangannya :).</p>
-                                        <p class="text-soft">Yo ganti en lah, ga tau mentoring ae ngaku" udah penuh sat!.</p>
-                                        <p class="text-soft">-Rijal 2021.</p>
-                                    </div>
-                                    <div class="nk-modal-action mt-5">
-                                        <a href="#" class="btn btn-lg btn-mw btn-light" data-dismiss="modal">Kembali</a>
-                                    </div>
-                                </div>
-                            </div><!-- .modal-body -->
                         </div>
                     </div>
                 </div>

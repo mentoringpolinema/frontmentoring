@@ -165,7 +165,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="pertemuan">
                             <form action="/admin/kegiatan/addKegiatan" class="form-validate is-alter" method="POST">
-                            {{-- {{ csrf_field() }} --}}
+                            {{ csrf_field() }}
                             @csrf
                             <div class="row gy-4">
                                 <div class="col-md-7">

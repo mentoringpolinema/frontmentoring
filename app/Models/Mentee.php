@@ -27,6 +27,12 @@ class Mentee extends Model
     public function kelompok(){
         return $this->belongsTo(Kelompok::class,'kelompok_id');
     }
+    public function keluhan(){
+        return $this->belongsTo(Keluhan::class,'keluhan_id');
+    }
+    public function absensi(){
+        return $this->hasMany(Keluhan::class);
+    }
    
 
 

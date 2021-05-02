@@ -24,6 +24,7 @@ Route::get('/', '\App\Http\Controllers\MainController@index');
 Route::get('/main', '\App\Http\Controllers\MainController@index');
 // Cek Mentoring
 Route::get('/cekMentoring', '\App\Http\Controllers\MainController@cekMentoring');
+Route::get('/cekMentoring/hasil', '\App\Http\Controllers\MainController@cek');
 
 // Auth Routes
 // Route::get('/auth', '\App\Http\Controllers\AuthController@index')->name('login');
@@ -121,7 +122,11 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Keluhan ===========================================================================================================>
         // Get Keluhan
         Route::get('/admin/keluhan', '\App\Http\Controllers\AdminController@keluhan');
-        // Add Keluhan
+        // Detail Keluhan
+        Route::get('/admin/keluhan/{id}', '\App\Http\Controllers\AdminController@detailKeluhan');
+        // Jawab Keluhan
+        Route::get('/admin/keluhan/{id}/update', '\App\Http\Controllers\AdminController@jawabKeluhan');
+        
     
     // Pertemuan =========================================================================================================>
         // Get Pertemuan
@@ -193,11 +198,15 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
         // Get Pertemuan
         Route::get('/mentee/pertemuan','\App\Http\Controllers\MenteeController@pertemuan');
         // Detail Pertemuan
-        Route::get('/mentee/pertemuan/detail', '\App\Http\Controllers\MenteeController@detailPertemuan');
+        Route::get('/mentee/pertemuan/detail/{id}', '\App\Http\Controllers\MenteeController@detPertemuan');
+        // Absensi Pertemuan
+        Route::post('/mentee/pertemuan/absenPertemuan', '\App\Http\Controllers\MenteeController@absenPertemuan');
 
     // Keluhan
         // Get Keluhan
         Route::get('/mentee/keluhan','\App\Http\Controllers\MenteeController@keluhan');
+        // Tanya Keluhan
+        Route::get('/mentee/keluhan/{id}/update','\App\Http\Controllers\MenteeController@tanyaKel');
 
     // Pengganti
         // Get Pengganti

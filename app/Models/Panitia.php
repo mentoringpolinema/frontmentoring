@@ -12,4 +12,8 @@ class Panitia extends Model
     protected $table = 'panitia';
     protected $primaryKey = 'id_panitia';
     protected $fillable = ['user_id', 'nama_panitia'];
+
+    public function keluhan(){
+        return $this->hasOne(Keluhan::class);
+    }
 }

@@ -55,6 +55,38 @@
     <script src="{{asset('template/dashboard//assets/js/bundle.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard//assets/js/scripts.js?ver=2.2.0')}}"></script>
     <script src="{{asset('template/dashboard//assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
+     <!-- Sweet Alert JS -->
+    <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.4.0')}}"></script>
+    <script>
+    (function (NioApp, $){
+        $('.loading-data').on("click", function (e) {
+            var timerInterval;
+            Swal.fire({
+            title: 'Sebentar ya kak :)',
+            html: 'Mencari Data dalam : <b></b> milidetik.',
+            timer: 1000,
+            timerProgressBar: true,
+            onBeforeOpen: function onBeforeOpen() {
+                Swal.showLoading();
+                timerInterval = setInterval(function () {
+                Swal.getContent().querySelector('b').textContent = Swal.getTimerLeft();
+                }, 100);
+            },
+            onClose: function onClose() {
+                clearInterval(timerInterval);
+            }
+            }).then(function (result) {
+            // if (
+            // /* Read more about handling dismissals below */
+            // result.dismiss === Swal.DismissReason.timer) {
+            //     console.log('I was closed by the timer'); // eslint-disable-line
+            // }
+            });
+            // e.preventDefault();
+        });
+    })(NioApp, jQuery);
+    </script>
+
 </body>
 
 </html>

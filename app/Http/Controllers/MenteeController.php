@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absensi;
 use App\Models\Kegiatan;
+use App\Models\Kelas;
+use App\Models\Keluhan;
 use App\Models\Materi;
 use App\Models\Mentee;
 use App\Models\Pengumuman;
@@ -13,11 +16,16 @@ use Illuminate\Http\Request;
 class MenteeController extends Controller
 {
     // Dashboard 
-    public function index()
+    public function index(Request $request)
     {
+        $data_absensi = Absensi::where([
+            ['mentee_id', '=', auth()->user()->mentee->id_mentee],
+            ['pertemuan_id', '=', $request->id_pertemuan]
+        ])->first();
+        
         $data_kegiatan = Kegiatan::all();
         $data_pengumuman = Pengumuman::all();
-        return view('mentee.index',compact(['data_kegiatan','data_pengumuman']));
+        return view('mentee.index',compact(['data_kegiatan','data_pengumuman','data_absensi']));
     }
     // Kelompok
     
@@ -52,20 +60,52 @@ class MenteeController extends Controller
             $data_pertemuan = Pertemuan::all();
             return view('mentee.pertemuan.index',compact(['data_pertemuan']));
         }
+        // Detail Pertemuan 
+        public function detPertemuan($id_pertemuan)
+        {   
+            $data_absensi = Absensi::find($id_pertemuan);
+            $data_pertemuan = Pertemuan::find($id_pertemuan);
+            return view('mentee.pertemuan.detail', compact(['data_pertemuan']));
+        }
+        // Absen Pertemuan
+        public function absenPertemuan(Request $request){
+
+            $absen = Absensi::where([
+                ['mentee_id', '=', auth()->user()->mentee->id_mentee],
+                ['pertemuan_id', '=',$request->id_pertemuan]
+            ])->first();
+
+            if($absen){
+                return redirect()->back()->with('warning', 'Anda Sudah Absen');
+            }else{
+                $request->request->add([
+                'mentee_id' => auth()->user()->mentee->id_mentee,
+                'pertemuan_id' => $request->id_pertemuan
+                ]);
+                $absensi = Absensi::create($request->all());
+                return redirect()->back()->with('success','Berhasil Absen');
+            }
+        }
     
     // Pengganti
     
     public function pengganti()
     {
-        return view('mentee.pengganti');
+        return view('mentee.pengganti.index');
     }
 
     // Keluhan
-    
-    public function keluhan()
-    {
-        return view('mentee.keluhan.index');
-    }
+        // Get Keluhan
+        public function keluhan()
+        {
+            return view('mentee.keluhan.index');
+        }
+        // Tanya Keluhan
+        public function tanyaKel(Request $request, $id_keluhan){
+            $data_keluhan = Keluhan::find($id_keluhan);
+            $data_keluhan->update($request->all());
+            return redirect('/mentee/keluhan/')->with('success', 'Keluhan Berhasil !');
+        }
 
     // Cetak
     
