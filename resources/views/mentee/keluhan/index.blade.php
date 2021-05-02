@@ -19,22 +19,6 @@
                                         <div class="nk-reply-item">
                                             <div class="nk-reply-header">
                                                 <div class="user-card">
-                                                    <div class="user-avatar sm bg-blue">
-                                                        <span>YH</span>
-                                                    </div>
-                                                    <div class="user-name">{{auth()->user()->mentee->nama_mentee}}</div>
-                                                </div>
-                                                {{-- <div class="date-time"><?php echo date("d M Y");?></div> --}}
-                                            </div>
-                                            <div class="nk-reply-body">
-                                                <div class="nk-reply-entry entry">
-                                                    <p>{{auth()->user()->mentee->keluhan->isi_keluhan}}</p>
-                                                </div>
-                                            </div>
-                                        </div><!-- .nk-reply-item -->                                        
-                                        <div class="nk-reply-item">
-                                            <div class="nk-reply-header">
-                                                <div class="user-card">
                                                     <div class="user-avatar sm bg-red">
                                                         <span>PN</span>
                                                     </div>
@@ -44,18 +28,43 @@
                                             </div>
                                             <div class="nk-reply-body">
                                                 <div class="nk-reply-entry entry">
-                                                    {{-- <p>{{auth()->user()->mentee->keluhan->jawab_keluhan}}</p>                                                     --}}
+                                                    <p>{{$keluhan->jawab_keluhan}}</p>                                                    
                                                 </div>
                                             </div>
                                         </div><!-- .nk-reply-item -->
+                                        <div class="nk-reply-item">
+                                            <div class="nk-reply-header">
+                                                <div class="user-card">
+                                                    <div class="user-avatar sm bg-blue">
+                                                        <span>YH</span>
+                                                    </div>
+                                                    <div class="user-name">{{auth()->user()->mentee->nama_mentee}}</div>
+                                                </div>
+                                                {{-- <div class="date-time"><?php echo date("d M Y");?></div> --}}
+                                            </div>
+                                            @if ($keluhan->isi_keluhan == 'NULL')
+                                                 <div class="nk-reply-body">
+                                                    <div class="nk-reply-entry entry">
+                                                        <p>belum ada keluhan</p>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="nk-reply-body">
+                                                    <div class="nk-reply-entry entry">
+                                                        <p>{{$keluhan->isi_keluhan}}</p>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            
+                                        </div><!-- .nk-reply-item -->                                        
+                                        
                                         <div class="nk-reply-form">                                            
-                                            <form action="/mentee/keluhan/{{auth()->user()->mentee->keluhan->id_keluhan}}/update">
+                                            <form action="/mentee/keluhan/{{$keluhan->id_keluhan}}/update">
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="reply-form">
                                                     <div class="nk-reply-form-editor">
                                                         <div class="nk-reply-form-field">
-                                                            {{-- <textarea class="form-control form-control-simple no-resize" placeholder="Hello"></textarea> --}}
-                                                            <input type="textarea" class="form-control form-control-simple no-resize" id="isi_keluhan" name="isi_keluhan" placeholder="Isi Keluhan">
+                                                            <input type="textarea" class="form-control form-control-simple no-resize" id="isi_keluhan" name="isi_keluhan" placeholder="Isi Keluhan" required>
                                                         </div>
                                                         <div class="nk-reply-form-tools">
                                                             <ul class="nk-reply-form-actions g-1">

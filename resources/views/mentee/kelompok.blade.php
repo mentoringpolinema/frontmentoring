@@ -124,50 +124,26 @@
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">183171190<span class="dot dot-success d-md-none ml-1"></span></span>
+                                                                        <span class="tb-lead">{{$mentee->nim_mentee}}<span class="dot dot-success d-md-none ml-1"></span></span>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">A. Yahya Hudan Permana</span>
+                                                                <span class="tb-amount">{{$mentee->nim_mentee}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>1A</span>
+                                                                <span>{{$mentee->kelas->kelas}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>Teknologi Informasi</span>
+                                                                <span>{{$mentee->kelas->prodi->jurusan->nama_jurusan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>D3 MI</span>
+                                                                <span>{{$mentee->kelas->prodi->nama_prodi}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>3</span>
+                                                                <span>{{$mentee->kelompok->nama_kelompok}}</span>
                                                             </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                       
-                                                        {{-- <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col">
-                                                                <div class="user-card">
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">1831710191 <span class="dot dot-success d-md-none ml-1"></span></span>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">Rijalus Sholihin</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>1A</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>Teknologi Informasi</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>D3 MI</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>3</span>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                     --}}
+                                                        </tr><!-- .nk-tb-item  -->
                                                         @endforeach
                                                     </tbody>
                                                 </table>

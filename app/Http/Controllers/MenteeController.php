@@ -18,20 +18,21 @@ class MenteeController extends Controller
     // Dashboard 
     public function index(Request $request)
     {
-        $data_absensi = Absensi::where([
-            ['mentee_id', '=', auth()->user()->mentee->id_mentee],
-            ['pertemuan_id', '=', $request->id_pertemuan]
+        $data_mentee = Mentee::where([
+            ['id_mentee', '=', auth()->user()->mentee->id_mentee]
         ])->first();
-        
+
         $data_kegiatan = Kegiatan::all();
         $data_pengumuman = Pengumuman::all();
-        return view('mentee.index',compact(['data_kegiatan','data_pengumuman','data_absensi']));
+        return view('mentee.index',compact(['data_kegiatan','data_pengumuman','data_mentee']));
     }
     // Kelompok
     
     public function kelompok($id_kelompok)
     {
-        $data_mentee = Mentee::all();
+        $data_mentee = Mentee::where([
+            ['kelompok_id', '=', $id_kelompok]
+        ])->get();
         return view('mentee.kelompok',compact('data_mentee'));
     }
 
@@ -96,9 +97,26 @@ class MenteeController extends Controller
 
     // Keluhan
         // Get Keluhan
-        public function keluhan()
+        public function keluhan(Request $request)
         {
-            return view('mentee.keluhan.index');
+            $keluhan = Keluhan::where([
+                ['mentee_id', '=', auth()->user()->mentee->id_mentee]
+            ])->first();
+
+            if ($keluhan) {
+                return view('mentee.keluhan.index', compact('keluhan'));
+            } else {
+            // $request->request->add(['mentee_id' => auth()->user()->mentee->id_mentee]);
+                
+                $keluhan = Keluhan::create([
+                    'mentee_id' => auth()->user()->mentee->id_mentee,
+                    "panitia_id" => '1',
+                    "isi_keluhan" => 'Belum Ada Pesan !',
+                    "jawab_keluhan" => 'Assalamualaikum, Silahkan kirim kan keluhan anda. Terimakasih',
+                ]);
+                return view('mentee.keluhan.index', compact('keluhan'));
+            }
+            
         }
         // Tanya Keluhan
         public function tanyaKel(Request $request, $id_keluhan){

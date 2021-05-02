@@ -15,7 +15,7 @@
                                     <br>
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Detail Kelompok 1 : </h3>                                            
+                                            <h3 class="nk-block-title page-title">Detail Kelompok {{$data_kelompok->nama_kelompok}} : </h3>                                            
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -38,19 +38,19 @@
                                                     <div class="data">
                                                         <div class="thumb"><img src="{{asset('template/dashboard/images/icons/profile.svg')}}" alt=""></div>
                                                         <div class="info">
-                                                            <h6 class="title"><span class="name">Mentor : Faiz Shofiyulloh</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
+                                                            <h6 class="title"><span class="name">Mentor : {{$data_kelompok->mentor->nama_mentor}}</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
                                                             <div class="meta">
                                                                 <span class="version">
-                                                                    <span class="text-soft">Email: </span> <span>mentor@mentoringpolinema.my.id</span>
+                                                                    <span class="text-soft">Email: </span> <span>{{$data_kelompok->mentor->email_mentor}}</span>
                                                                 </span>
                                                                 <span class="release">
-                                                                    <span class="text-soft">No.Telp: </span> <span>081259224380</span>
+                                                                    <span class="text-soft">No.Telp: </span> <span>{{$data_kelompok->mentor->notelp_mentor}}</span>
                                                                 </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="actions">
-                                                        <a href="/admin/mentor/detailMentor" class="btn btn-info">Detail</a>
+                                                        <a href="/admin/detailMentor/{{$data_kelompok->mentor->slug}}" class="btn btn-info">Detail</a>
                                                     </div>
                                                 </div><!-- .sp-pdl-item -->
                                             </div><!-- .col -->
@@ -60,7 +60,7 @@
                                             <div class="card-inner">
                                                 <div class="card-title-group">
                                                     <div class="card-title">
-                                                        <h5 class="title">Detail Kelompok 1</h5>
+                                                        <h5 class="title">Detail Kelompok {{$data_kelompok->nama_kelompok}}</h5>
                                                     </div>
                                                     <div class="card-tools mr-n1">
                                                         <ul class="btn-toolbar gx-1">
@@ -170,62 +170,36 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {{-- @foreach ($data_mentor as $mentor) --}}
+                                                        @foreach ($data_mentee as $mentee)
                                                         <tr class="nk-tb-item">
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">1831710190 <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                                        <span class="tb-lead">{{$mentee->nim_mentee}} <span class="dot dot-success d-md-none ml-1"></span></span>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">A. Yahya Hudan Permana</span>
+                                                                <span class="tb-amount">{{$mentee->nama_mentee}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>1A</span>
+                                                                <span>{{$mentee->kelas->kelas}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>Teknologi Informasi</span>
+                                                                <span>{{$mentee->kelas->prodi->jurusan->nama_jurusan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>D3 MI</span>
+                                                                <span>{{$mentee->kelas->prodi->nama_prodi}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>2018</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                       
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col">
-                                                                <div class="user-card">
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">1831710191 <span class="dot dot-success d-md-none ml-1"></span></span>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">Rijalus Sholihin</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>1A</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>Teknologi Informasi</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>D3 MI</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>2018</span>
+                                                                <span>{{$mentee->angkatan->angkatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
                                                             </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                    
-                                                        {{-- @endforeach --}}
+                                                        </tr><!-- .nk-tb-item  -->
+                                                        @endforeach
+                                                       
                                                     </tbody>
                                                 </table>
                                             </div>

@@ -351,8 +351,12 @@ class AdminController extends Controller
         return view('admin.kelompok', compact(['data_kelompok']));
     }
     // Detail Kelompok
-    public function detailKelompok(){
-        return view('admin.kelompok.detailKelompok');
+    public function detailKelompok($id_kelompok){
+        $data_kelompok = Kelompok::find($id_kelompok);
+        $data_mentee = Mentee::where([
+            ['kelompok_id', '=', $id_kelompok]
+            ])->get();
+        return view('admin.kelompok.detailKelompok',compact(['data_kelompok', 'data_mentee']));
     }
 
     //-------------------------------------------Keluhan-------------------------------------------

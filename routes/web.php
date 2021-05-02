@@ -117,7 +117,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         // Get Kelompok
         Route::get('/admin/kelompok', '\App\Http\Controllers\AdminController@kelompok');
         // Detail Kelompok
-        Route::get('/admin/kelompok/detail', '\App\Http\Controllers\AdminController@detailKelompok');
+        Route::get('/admin/kelompok/{id}', '\App\Http\Controllers\AdminController@detailKelompok');
 
     // Keluhan ===========================================================================================================>
         // Get Keluhan

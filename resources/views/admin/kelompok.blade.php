@@ -121,8 +121,9 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="row g-gs">                                        
-                                        <div class="col-sm-6 col-lg-4 col-xxl-3">
+                                    <div class="row g-gs">
+                                        @foreach ($data_kelompok as $kelompok)
+                                            <div class="col-sm-6 col-lg-4 col-xxl-3">
                                             <div class="card">
                                                 <div class="card-inner">
                                                     <div class="team">
@@ -140,30 +141,32 @@
                                                         </div>
                                                         <div class="user-card user-card-s2">
                                                             <div class="user-avatar md bg-warning">
-                                                                <span>K1</span>
+                                                                <span>K{{$kelompok->nama_kelompok}}</span>
                                                                 <div class="status dot dot-lg dot-success"></div>
                                                             </div>
                                                             <div class="user-info">
-                                                                <h6>Kelompok 1</h6>
-                                                                <span class="sub-text">Mentor : A. Yahya Hudan</span>
+                                                                <h6>Kelompok {{$kelompok->nama_kelompok}}</h6>
+                                                                <span class="sub-text">Mentor : {{$kelompok->mentor->nama_mentor}}</span>
                                                             </div>
                                                         </div>
-                                                        <div class="team-details">
+                                                        {{-- <div class="team-details">
                                                             <p>Kelompok terdiri dari Jurusan Teknik Sipil dan Administrasi Niaga.</p>
                                                         </div>
                                                         <ul class="team-statistics">
                                                             <li><span>213</span><span>Mentee</span></li>
                                                             <li><span>87.5%</span><span>Kehadiran</span></li>
                                                             <li><span>587</span><span>Tugas</span></li>
-                                                        </ul>
+                                                        </ul> --}}
                                                         <div class="team-view">
-                                                            <a href="/admin/kelompok/detail" class="btn btn-round btn-outline-light w-150px"><span>Detail Kelompok</span></a>
+                                                            <a href="/admin/kelompok/{{$kelompok->id_kelompok}}" class="btn btn-round btn-outline-light w-150px"><span>Detail Kelompok</span></a>
                                                         </div>
                                                     </div><!-- .team -->
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-sm-6 col-lg-4 col-xxl-3">
+                                        @endforeach                                        
+                                        
+                                        {{-- <div class="col-sm-6 col-lg-4 col-xxl-3">
                                             <div class="card">
                                                 <div class="card-inner">
                                                     <div class="team">
@@ -203,7 +206,7 @@
                                                     </div><!-- .team -->
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card -->
-                                        </div><!-- .col -->
+                                        </div><!-- .col --> --}}
                                     </div>
                                 </div><!-- .nk-block -->
                             </div>
