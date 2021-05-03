@@ -1,6 +1,7 @@
+
 @extends('layouts.master')
 @section('content')
-<div class="nk-content ">                    
+<div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
@@ -84,7 +85,7 @@
                                             </div>
                                         </div>
                                         <!-- Alert -->
-                                        @if ((session('sukses')))                                            
+                                        @if ((session('sukses')))
                                         <div class="alert alert-success alert-icon alert-dismissible">
                                             <div>
                                                 <em class="icon ni ni-check-circle"></em> {{session('sukses')}} <button class="close" data-dismiss="alert"></button>
@@ -121,8 +122,8 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
                                                                 <?php
-                                                                    $date = Date('d/M/Y', strtotime($kegiatan->tanggal_kegiatan));   
-                                                                    
+                                                                    $date = Date('d/M/Y', strtotime($kegiatan->tanggal_kegiatan));
+
                                                                 ?>
                                                                 <span class="tb-amount">{{$date}}</span>
                                                             </td>
@@ -143,7 +144,7 @@
                                                                 {{-- <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a> --}}
                                                                 {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/kegiatan" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                       
+                                                        </tr><!-- .nk-tb-item  -->
                                                         @endforeach
                                                     </tbody>
                                                 </table>
@@ -223,10 +224,10 @@
                                         <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
                                     </div> --}}
                                     <textarea id="detail_kegiatan" name="detail_kegiatan">
-                                        
+
                                     </textarea>
-                                </div>                                
-                                
+                                </div>
+
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
@@ -350,10 +351,10 @@
                                         <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
                                     </div> --}}
                                     <textarea name="detail_kegiatan_edit" id="detail_kegiatan_edit" required>
-                                        
+
                                     </textarea>
-                                </div>                                
-                                
+                                </div>
+
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
@@ -466,10 +467,10 @@
                                     </div> --}}
                                     <label class="form-label" for="detail_kegiatan">Detail Kegiatan</label>
                                     <textarea name="detail_kegiatan_detail" id="detail_kegiatan_detail" readonly>
-                                        
+
                                     </textarea>
-                                </div>                                
-                                
+                                </div>
+
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         {{-- <li>
@@ -522,7 +523,7 @@
 
     {{-- <!--  Edit Kegiatan Modal @e -->
     @foreach ($data_kegiatan as $kegiatan)
-        @include('admin/modalEditKegiatan', ['modalKegiatan' => 'editKegiatan' . $kegiatan->id_kegiatan, 'namaKegiatan' => $kegiatan->nama_kegiatan,'jenisKegiatan' => $kegiatan->jenis_kegiatan, 
+        @include('admin/modalEditKegiatan', ['modalKegiatan' => 'editKegiatan' . $kegiatan->id_kegiatan, 'namaKegiatan' => $kegiatan->nama_kegiatan,'jenisKegiatan' => $kegiatan->jenis_kegiatan,
                     'tglKegiatan' => $kegiatan->tanggal_kegiatan , 'mingguKegiatan' => $kegiatan->minggu_kegiatan
                     , 'detailKegiatan' => $kegiatan->detail_kegiatan])
     @endforeach --}}
@@ -551,8 +552,8 @@
                     }
                 });
         });
-        
-        
+
+
         $('body').on('click', '#detailKegiatan', function (event) {
                 event.preventDefault();
                 var token = $("input[name='_token']").val();
@@ -586,11 +587,11 @@
                         // $("input[name='tanggal_kegiatan_detail']").val(dateObjects.toString());
                         // dd($data);
                         // var_dump(data);
-                        
+
                     }
                 });
         });
-       
+
         </script>
 
     @endsection

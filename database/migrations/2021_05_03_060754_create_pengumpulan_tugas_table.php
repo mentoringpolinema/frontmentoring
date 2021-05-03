@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePanitiaTable extends Migration
+class CreatePengumpulanTugasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreatePanitiaTable extends Migration
      */
     public function up()
     {
-        Schema::create('panitia', function (Blueprint $table) {
-            $table->increments('id_panitia');
-            $table->unsignedBigInteger('user_id');
-            $table->string('nama_panitia');
+        Schema::create('pengumpulan_tugas', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -29,6 +26,6 @@ class CreatePanitiaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('panitia');
+        Schema::dropIfExists('pengumpulan_tugas');
     }
 }

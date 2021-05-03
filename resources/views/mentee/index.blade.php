@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="nk-content ">                    
+<div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
@@ -11,7 +11,7 @@
                                             <div class="nk-block-des text-soft">
                                                 <h5>Selamat Datang ! </h5>
                                             </div>
-                                        </div><!-- .nk-block-head-content -->                                        
+                                        </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
@@ -69,7 +69,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title text-white">Total Kegiatan</div>
-                                                                            <div class="count text-white">10</div>
+                                                                            <div class="count text-white">{{$total_kegiatan}}</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
                                                                     </li>
@@ -84,7 +84,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title text-white">Total Materi</div>
-                                                                            <div class="count text-white">20</div>
+                                                                            <div class="count text-white">{{$total_materi}}</div>
                                                                         </div>
                                                                         <em class="icon bg-danger-dim ni ni-book-read"></em>
                                                                     </li>
@@ -99,7 +99,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title text-white">Total Pertemuan</div>
-                                                                            <div class="count text-white">20</div>
+                                                                            <div class="count text-white">{{$total_pertemuan}}</div>
                                                                         </div>
                                                                         <em class="icon bg-warning-dim ni ni-link-group"></em>
                                                                     </li>
@@ -114,7 +114,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title text-white">Total Tugas</div>
-                                                                            <div class="count text-white">20</div>
+                                                                            <div class="count text-white">{{$total_tugas}}</div>
                                                                         </div>
                                                                         <em class="icon bg-success-dim ni ni-task"></em>
                                                                     </li>
@@ -128,7 +128,7 @@
                                                                 <div class="card-title-group">
                                                                     <div class="card-title">
                                                                         <h6 class="title"><span><em class="icon ni ni-clock-fill"></em></span>  Timeline Mentoring <?php echo date("Y");?></h6>
-                                                                    </div>                                                       
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="card-inner">
@@ -145,7 +145,7 @@
                                                                                     <strong><span class="time">Waktu : {{$kegiatan->jam_kegiatan}}</span></strong>
                                                                                 </div>
                                                                             </div>
-                                                                        </li>                                                                        
+                                                                        </li>
                                                                         @endforeach
                                                                     </ul>
                                                                 </div>
@@ -158,7 +158,7 @@
                                                                 <div class="card-title-group">
                                                                     <div class="card-title">
                                                                         <h6 class="title"><span><em class="icon ni ni-notify"></em></span>  Pengumuman</h6>
-                                                                    </div>                                                       
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                                 <ul class="nk-support">
@@ -196,18 +196,18 @@
                                                                             <span class="time">{{$pengumuman->created_at->format('d M Y')}}</span>
                                                                         </div>
                                                                     </li>
-                                                                    @endforeach                                                                    
+                                                                    @endforeach
                                                                 </ul>
                                                             </div>
                                                         </div><!-- .card -->
                                                     </div><!-- .col -->
                                                 </div>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        
+
 @stop
