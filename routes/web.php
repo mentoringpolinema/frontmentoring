@@ -171,6 +171,10 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         // Edit Pengumuman
         Route::post('/admin/{id}/edtPengumuman', '\App\Http\Controllers\AdminController@edtPengumuman');
 
+    // Cetak Bukti
+        // Get Bukti
+        Route::get('/admin/bukti', '\App\Http\Controllers\AdminController@cetak');
+
 });
 // MENTOR ROUTES =========================================================================================================>
 Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
@@ -233,7 +237,7 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
         Route::get('/mentee/pengganti','\App\Http\Controllers\MenteeController@pengganti');
     // Cetak
         // Get Cetak
-        Route::get('/mentee/cetak', '\App\Http\Controllers\MenteeController@cetak');
+        Route::get('/mentee/cetak/{id}', '\App\Http\Controllers\MenteeController@cetak');
         // Get Print
         Route::get('/mentee/print', '\App\Http\Controllers\MenteeController@print');
 });

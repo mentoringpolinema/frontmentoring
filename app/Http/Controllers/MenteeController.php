@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absensi;
+use App\Models\CetakBukti;
 use App\Models\Kegiatan;
 use App\Models\Kelas;
 use App\Models\Keluhan;
@@ -73,7 +74,7 @@ class MenteeController extends Controller
         {
             $data_absensi = Absensi::find($id_pertemuan);
             $data_pertemuan = Pertemuan::find($id_pertemuan);
-            return view('mentee.pertemuan.detail', compact(['data_pertemuan']));
+            return view('mentee.pertemuan.detail', compact(['data_pertemuan','data_absensi']));
         }
         // Absen Pertemuan
         public function absenPertemuan(Request $request){
@@ -133,10 +134,26 @@ class MenteeController extends Controller
         }
 
     // Cetak
-    Public function cetak()
+    Public function cetak(Request $request)
     {
-        $data_mentee = Mentee::all();
-        return view('mentee.cetak.index', ['data_mentee' => $data_mentee]);
+        $data_mentee = Mentee::where([
+            ['id_mentee', '=', auth()->user()->mentee->id_mentee]
+        ])->first();
+
+        $cetak = CetakBukti::where([
+            ['mentee_id', '=', auth()->user()->mentee->id_mentee]
+        ])->first();
+
+        if ($cetak) {
+            return view('mentee.cetak.index', compact('data_mentee','cetak'));
+        } else {
+            $addcetak = CetakBukti::create([
+                "mentee_id" => auth()->user()->mentee->id_mentee,
+                "kode_cetak" => "CB". auth()->user()->mentee->nim_mentee
+            ]);
+            return redirect()->back()->with('success','Bukti Telah tercetak !');
+        }
+
     }
     public function print()
     {

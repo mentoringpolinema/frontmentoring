@@ -33,6 +33,9 @@ class Mentee extends Model
     public function absensi(){
         return $this->hasMany(Keluhan::class);
     }
+    public function cetak(){
+        return $this->hasOne(CetakBukti::class); 
+    }
 
 
 

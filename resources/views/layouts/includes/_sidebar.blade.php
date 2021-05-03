@@ -78,6 +78,12 @@
                                         <span class="nk-menu-text">Keluhan</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->   
+                                <li class="nk-menu-item">
+                                    <a href="/admin/cetak" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-printer-fill"></em></span>
+                                        <span class="nk-menu-text">Cetak</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->   
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Website</h6>
                                 </li><!-- .nk-menu-heading -->

@@ -6,6 +6,7 @@ use App\Exports\JurusanExport;
 use App\Exports\MentorExport;
 use App\Imports\MentorImport;
 use App\Models\Angkatan;
+use App\Models\CetakBukti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -518,6 +519,14 @@ class AdminController extends Controller
         $data_pengumuman = Pengumuman::find($id_pengumuman);
         $data_pengumuman->update($request->all());
         return redirect('/admin/pengumuman')->with('success', 'Pengumuman Berhasil di Update !');
-
     }
+
+    //-------------------------------------------Cetak-------------------------------------------
+    // Get Bukti Cetak 
+    public function cetak(){
+        $data_cetak = CetakBukti::all();
+        // dd($data_cetak);
+        return view('admin.cetakBukti.index',compact('data_cetak'));
+    }
+
 }
