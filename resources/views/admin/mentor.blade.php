@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-                <div class="nk-content ">                    
+                <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
@@ -26,7 +26,7 @@
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalForm"><em class="icon ni ni-user-add"></em><span>Tambah Mentor</span></a></li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li>
                                                         {{-- <li class="nk-block-tools-opt"><a href="/admin/expMentor/" class="btn btn-info" ><em class="icon ni ni-file-pdf"></em><span>Export Excel</span></a></li> --}}
-                                                        <li class="preview-btn-item col-sm-6 col-lg-3">                                                        
+                                                        <li class="preview-btn-item col-sm-6 col-lg-3">
                                                         <div class="dropdown">
                                                             <a href="#" class="btn btn-warning" data-toggle="dropdown"><em class="icon ni ni-download-cloud"></em><span>Export</span><em class="icon ni ni-chevron-down"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-auto mt-1">
@@ -73,7 +73,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Kelompok</div>
-                                                                            <div class="count">20</div>
+                                                                            <div class="count">{{$total_kelompok}}</div>
                                                                         </div>
                                                                         <em class="icon bg-secondary-dim ni ni-link-group"></em>
                                                                     </li>
@@ -127,9 +127,9 @@
                                                                     @method('DELETE')
                                                                     <button class="btn btn-round btn-sm btn-danger" type="submit" class="fa fa-trash">Delete</button>
                                                                 </form>
-                                                                <a href="/admin/detailMentor/{{$mentor->slug}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>                                                            
+                                                                <a href="/admin/detailMentor/{{$mentor->slug}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
                                                             </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                       
+                                                        </tr><!-- .nk-tb-item  -->
                                                         @endforeach
                                                     </tbody>
                                                 </table>
@@ -140,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-                
+
     <!-- Sweet Alert-->
     @include('sweetalert::alert')
 
@@ -280,7 +280,7 @@
                         <div class="tab-pane active" id="personal">
                             <form action="/admin/impMentor" class="form-validate is-alter" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <div class="row gy-4">                              
+                            <div class="row gy-4">
                                 <div class="col-md-12">
                                     {{-- <label class="form-label" for="default-06">Default File Upload</label> --}}
                                         <div class="form-control-wrap">
@@ -318,7 +318,7 @@
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- .modal -->
-    
 
-    
+
+
 @stop

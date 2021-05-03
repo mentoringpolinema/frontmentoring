@@ -11,15 +11,15 @@ class Mentor extends Model{
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'id');
     }
     public function pertemuan()
     {
-        return $this->belongsTo(Pertemuan::class);
+        return $this->belongsTo(Pertemuan::class,'pertemuan_id');
     }
     public function kelompok()
     {
-        return $this->belongsTo(Kelompok::class);
+        return $this->belongsTo(Kelompok::class,'kelompok_id');
     }
-    
+
 }

@@ -21,7 +21,8 @@ class CreateMenteeTable extends Migration
             $table->integer('kelas_id')->unsigned();
             $table->integer('kelompok_id')->unsigned();
             $table->integer('angkatan_id')->unsigned();
-            $table->string('status_mentee');
+            $table->enum('status_mentee', ['lulus', 'tidak lulus']);
+            $table->string('slug');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('kelas_id')->references('id_kelas')->on('kelas');

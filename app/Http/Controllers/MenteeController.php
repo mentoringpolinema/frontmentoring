@@ -10,12 +10,13 @@ use App\Models\Materi;
 use App\Models\Mentee;
 use App\Models\Pengumuman;
 use App\Models\Pertemuan;
+use App\Models\Tugas;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class MenteeController extends Controller
 {
-    // Dashboard 
+    // Dashboard
     public function index(Request $request)
     {
         $data_mentee = Mentee::where([
@@ -24,10 +25,16 @@ class MenteeController extends Controller
 
         $data_kegiatan = Kegiatan::all();
         $data_pengumuman = Pengumuman::all();
-        return view('mentee.index',compact(['data_kegiatan','data_pengumuman','data_mentee']));
+
+        $total_kegiatan = Kegiatan::all()->count();
+        $total_materi = Materi::all()->count();
+        $total_pertemuan = Pertemuan::all()->count();
+        $total_tugas = Tugas::all()->count();
+
+        return view('mentee.index',compact(['data_kegiatan','data_pengumuman','data_mentee', 'total_kegiatan', 'total_materi', 'total_pertemuan', 'total_tugas']));
     }
     // Kelompok
-    
+
     public function kelompok($id_kelompok)
     {
         $data_mentee = Mentee::where([
@@ -37,7 +44,7 @@ class MenteeController extends Controller
     }
 
     // Materi dan Tugas
-        // Materi 
+        // Materi
         public function materi()
         {
             $data_materi = Materi::all();
@@ -53,17 +60,17 @@ class MenteeController extends Controller
         {
             return view('mentee.tugas.detail');
         }
-    
+
     // Pertemuan
         // Get Pertemuan
         public function pertemuan()
-        { 
+        {
             $data_pertemuan = Pertemuan::all();
             return view('mentee.pertemuan.index',compact(['data_pertemuan']));
         }
-        // Detail Pertemuan 
+        // Detail Pertemuan
         public function detPertemuan($id_pertemuan)
-        {   
+        {
             $data_absensi = Absensi::find($id_pertemuan);
             $data_pertemuan = Pertemuan::find($id_pertemuan);
             return view('mentee.pertemuan.detail', compact(['data_pertemuan']));
@@ -87,9 +94,9 @@ class MenteeController extends Controller
                 return redirect()->back()->with('success','Berhasil Absen');
             }
         }
-    
+
     // Pengganti
-    
+
     public function pengganti()
     {
         return view('mentee.pengganti.index');
@@ -107,7 +114,7 @@ class MenteeController extends Controller
                 return view('mentee.keluhan.index', compact('keluhan'));
             } else {
             // $request->request->add(['mentee_id' => auth()->user()->mentee->id_mentee]);
-                
+
                 $keluhan = Keluhan::create([
                     'mentee_id' => auth()->user()->mentee->id_mentee,
                     "panitia_id" => '1',
@@ -116,7 +123,7 @@ class MenteeController extends Controller
                 ]);
                 return view('mentee.keluhan.index', compact('keluhan'));
             }
-            
+
         }
         // Tanya Keluhan
         public function tanyaKel(Request $request, $id_keluhan){
@@ -126,7 +133,7 @@ class MenteeController extends Controller
         }
 
     // Cetak
-    
+
     Public function cetak()
     {
         $data_mentee = Mentee::all();
