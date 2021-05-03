@@ -203,6 +203,8 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     // Profile
         // Get Profile
         Route::get('/mentee/profile', '\App\Http\Controllers\MenteeController@profile');
+        // Edit Profile
+        Route::post('/mentee/profile/update/{id}', '\App\Http\Controllers\MenteeController@updProfile');
 
     // Materi dan Tugas
         // Get Materi dan Tugas

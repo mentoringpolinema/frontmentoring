@@ -81,6 +81,14 @@
     <script src="{{asset('template/dashboard/assets/js/libs/tagify.js?ver=2.4.0')}}"></script>
     <!-- Messages -->
     <script src="{{asset('template/dashboardassets/js/apps/messages.js?ver=2.4.0')}}"></script>
+    <script>
+    (function (NioApp, $){
+        $('.eg-swal-error').on("click", function (e) {
+            Swal.fire("Good job!", "You clicked the button!", "error");
+            e.preventDefault();
+        });
+    })(NioApp, jQuery);
+    </script>
     @yield('jsAdd')
 
 </body>
