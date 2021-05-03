@@ -19,8 +19,8 @@
                                                         <div class="nk-block-head-content">
                                                             <a href="/admin/mentor" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a>
                                                             <a href="/admin/mentor" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
-                                                        </div>  
-                                                    </div>                                                    
+                                                        </div>
+                                                    </div>
                                                 </div><!-- .nk-block-head -->
                                                 <div class="nk-block">
                                                     <div class="nk-data data-list">
@@ -33,7 +33,7 @@
                                                                 <span class="data-value">{{$data_mentor->nama_mentor}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
-                                                        </div><!-- data-item -->                                                        
+                                                        </div><!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
                                                                 <span class="data-label">Email</span>
@@ -47,7 +47,7 @@
                                                                 <span class="data-value text-soft">{{$data_mentor->notelp_mentor}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
-                                                        </div><!-- data-item -->                                                        
+                                                        </div><!-- data-item -->
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit" data-tab-target="#address">
                                                             <div class="data-col">
                                                                 <span class="data-label">Alamat</span>
@@ -105,8 +105,8 @@
                     </div>
                 </div>
 
-<!-- Modal Update Mentor -->
-<div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
+    <!-- Modal Update Mentor -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
@@ -153,7 +153,7 @@
                                 </div>
                             </div>
                         </form>
-                        </div><!-- .tab-pane -->                        
+                        </div><!-- .tab-pane -->
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->

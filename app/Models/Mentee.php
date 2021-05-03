@@ -11,8 +11,8 @@ class Mentee extends Model
 
     protected $table = 'mentee';
     protected $primaryKey = 'id_mentee';
-    protected $fillable = ['user_id', 'nama_mentee','nim_mentee','status_mentee'];
-    
+    protected $fillable = ['user_id', 'nim_mentee', 'nama_mentee','kelas_id', 'prodi_id', 'kelompok_id', 'angkatan_id', 'status_mentee',  'slug'];
+
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');
@@ -33,7 +33,7 @@ class Mentee extends Model
     public function absensi(){
         return $this->hasMany(Keluhan::class);
     }
-   
+
 
 
 }
