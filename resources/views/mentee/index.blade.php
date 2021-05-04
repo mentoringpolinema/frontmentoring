@@ -64,11 +64,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="actions">
+                                            @if ($data_mentee->status_mentee == 'lulus')
+                                                <div class="actions">
                                                 <a href="/mentee/cetak/{{auth()->user()->mentee->id_mentee}}" class="btn btn-round btn-success">
                                                     <em class="icon ni ni-printer-fill"></em><span>Cetak Bukti</span>
                                                 </a>
                                             </div>
+                                            @endif
+                                            
                                         </div><!-- .sp-pdl-item -->
                                     </div><!-- .col -->
                                     <div class="col-xxl-3 col-md-3">

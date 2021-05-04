@@ -48,13 +48,14 @@ class MenteeController extends Controller
         // Materi
         public function materi()
         {
-            $data_materi = Materi::all();
+            $data_materi = Materi::paginate(1);
             return view('mentee.materi',compact(['data_materi']));
         }
         // Detail Materi
-        public function detailMateri()
+        public function detailMateri($id_materi)
         {
-            return view('mentee.materi.detail');
+            $data_materi = Materi::find($id_materi);
+            return view('mentee.materi.detail',compact('data_materi'));
         }
         // Detail Materi
         public function detailTugas()
@@ -97,11 +98,16 @@ class MenteeController extends Controller
         }
 
     // Pengganti
+        // Get Pengganti
+        public function pengganti()
+        {
+            return view('mentee.pengganti.index');
+        }
+        // Detail Pengganti
+        public function detailPengganti(){
+            return view('mentee.pengganti.detail');
+        }
 
-    public function pengganti()
-    {
-        return view('mentee.pengganti.index');
-    }
 
     // Keluhan
         // Get Keluhan
@@ -149,7 +155,8 @@ class MenteeController extends Controller
         } else {
             $addcetak = CetakBukti::create([
                 "mentee_id" => auth()->user()->mentee->id_mentee,
-                "kode_cetak" => "CB". auth()->user()->mentee->nim_mentee
+                "kode_cetak" => "CB". auth()->user()->mentee->nim_mentee,
+                "status_cetak" => "Pending"
             ]);
             return redirect()->back()->with('success','Bukti Telah tercetak !');
         }

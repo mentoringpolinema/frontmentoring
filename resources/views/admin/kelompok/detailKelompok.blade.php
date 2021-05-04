@@ -38,7 +38,7 @@
                                                     <div class="data">
                                                         <div class="thumb"><img src="{{asset('template/dashboard/images/icons/profile.svg')}}" alt=""></div>
                                                         <div class="info">
-                                                            <h6 class="title"><span class="name">Mentor : {{$data_kelompok->mentor->nama_mentor}}</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
+                                                            <h6 class="title"><span class="name">Mentor : {{$data_kelompok->mentor->nama_mentor}}</span> <span class="badge badge-dim badge-success badge-pill">Mentor</span></h6>
                                                             <div class="meta">
                                                                 <span class="version">
                                                                     <span class="text-soft">Email: </span> <span>{{$data_kelompok->mentor->email_mentor}}</span>

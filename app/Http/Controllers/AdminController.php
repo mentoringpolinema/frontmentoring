@@ -25,6 +25,8 @@ use App\Models\Kelas;
 use App\Models\Keluhan;
 use App\Models\User;
 use App\Models\Pengumuman;
+use Barryvdh\DomPDF\Facade as PDF;
+use Dompdf\Dompdf;
 
 class AdminController extends Controller
 {
@@ -150,7 +152,7 @@ class AdminController extends Controller
             $dataUser->delete($dataUser);
             return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
         }else{
-            return redirect('/admin/mentor')->with('success', 'Mentor Gagal dihapus, karena masih ada relasi !');
+            return redirect('/admin/mentor')->with('warning', 'Mentor Gagal dihapus, karena masih ada relasi !');
         }
     }
 
@@ -166,22 +168,23 @@ class AdminController extends Controller
         $data_mentor = Mentor::where('slug', $slug)->get()->first();
         return view('admin.mentor.detailMentor',compact(['data_mentor']));
     }
-
     // Update Mentor
     public function updMentor(Request $request,$id_mentor){
         $data_mentor = Mentor::find($id_mentor);
         $data_mentor->update($request->all());
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
     }
-    // Export Mentor
+    // Export Mentor Excel
     public function exportMentorExcel()
     {
         return Excel::download(new MentorExport, 'Mentor.xlsx');
     }
-    // Export PDF
-    public function exportMentor()
+    // Export Mentor PDF
+    public function exportMentorPDF()
     {
         // Masih Gabisa :v hehe
+        $data_mentor = Mentor::all();
+        return view('admin.exportPDF.mentorpdf',compact('data_mentor'));
     }
 
     //-------------------------------------------Mentee-------------------------------------------
@@ -231,6 +234,7 @@ class AdminController extends Controller
         return redirect('/admin/mentee')->with('success', 'Mentee Berhasil ditambahkan !');
     }
 
+    // Get By Jurusan
     public function getProdiByIdJurusan($id){
         $prodi = Prodi::where('jurusan_id', $id)->get();
         return $prodi;
@@ -239,6 +243,7 @@ class AdminController extends Controller
     public function getKelasByIdProdi($id){
         $kelas = Kelas::where('prodi_id', $id)->get();
         return $kelas;
+    // Get By Kelas
     }
 
     // Get Mentor By ID
@@ -277,12 +282,12 @@ class AdminController extends Controller
         return Excel::download(new MentorExport, 'Mentor.xlsx');
     }
     // Export PDF
-    public function exportMentee()
+    public function exportMenteePDF()
     {
-        // Masih Gabisa :v hehe
+        $data_mentee = Mentee::all();
+        return view('admin.exportPDF.menteepdf', compact('data_mentee'));
+    
     }
-
-
     //-------------------------------------------Users-------------------------------------------
 
     // Users Function
@@ -527,6 +532,18 @@ class AdminController extends Controller
         $data_cetak = CetakBukti::all();
         // dd($data_cetak);
         return view('admin.cetakBukti.index',compact('data_cetak'));
+    }
+    // Detail Cetak
+    public function detailCetak($id_cetak){
+        $data_cetak = CetakBukti::find($id_cetak);
+        return view('admin.cetakBukti.detail',compact('data_cetak'));
+    }
+    public function accept(Request $request,$id_cetak){
+        $data_cetak = CetakBukti::find($id_cetak);
+        $data_cetak->update([
+            "status_cetak" => "Accept"
+        ]);
+        return redirect()->back()->with('success','Bukti telah disetujui');
     }
 
 }

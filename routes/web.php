@@ -42,7 +42,12 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Dashboard Routes ===================================================================================================>
     Route::get('/admin', '\App\Http\Controllers\AdminController@index');
     // Cetak ==============================================================================================================>
-    Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak');
+        //Get Cetak
+        Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak');
+        //Detail Cetak
+        Route::get('/admin/cetak/detail/{id}', '\App\Http\Controllers\AdminController@detailCetak');
+        //Accept Cetak
+        Route::post('/admin/cetak/acc/{id}', '\App\Http\Controllers\AdminController@accept');
     // Kegiatan ===========================================================================================================>
         //Get Kegiatan
         Route::get('/admin/kegiatan', '\App\Http\Controllers\AdminController@kegiatan');
@@ -74,6 +79,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::post('/admin/{id_mentor}/updMentor', '\App\Http\Controllers\AdminController@updMentor');
         //Export Excel
         Route::get('/admin/expMentor/', '\App\Http\Controllers\AdminController@exportMentorExcel');
+        //Export PDF
+        Route::get('/admin/expMentorP/', '\App\Http\Controllers\AdminController@exportMentorPDF');
 
     // Mentee ============================================================================================================>
         //Get Mentee
@@ -94,6 +101,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::post('/admin/{id_mentee}/updMentee', '\App\Http\Controllers\AdminController@updMentee');
         //Export Excel
         Route::get('/admin/expMentee/', '\App\Http\Controllers\AdminController@exportMenteeExcel');
+        //Export PDF
+        Route::get('/admin/expMenteeP/', '\App\Http\Controllers\AdminController@exportMenteePDF');
         // Get Prodi By Id Jurusan
         Route::get('/admin/getProdiByIdJurusan/{id}', '\App\Http\Controllers\AdminController@getProdiByIdJurusan')->name('getProdiByIdJurusan');
         // Get Kelas BY Id Prodi
@@ -214,9 +223,9 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
         // Get Materi dan Tugas
         Route::get('/mentee/materi', '\App\Http\Controllers\MenteeController@materi');
         // Detail Materi
-        Route::get('/mentee/materi/detailMateri', '\App\Http\Controllers\MenteeController@detailMateri');
+        Route::get('/mentee/materi/{id}', '\App\Http\Controllers\MenteeController@detailMateri');
         // Detail Tugas
-        Route::get('/mentee/materi/detailTugas', '\App\Http\Controllers\MenteeController@detailTugas');
+        Route::get('/mentee/tugas/detailTugas', '\App\Http\Controllers\MenteeController@detailTugas');
 
     // Pertemuan
         // Get Pertemuan
@@ -235,6 +244,9 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     // Pengganti
         // Get Pengganti
         Route::get('/mentee/pengganti','\App\Http\Controllers\MenteeController@pengganti');
+        // Detail Pengganti
+        Route::get('/mentee/detailPengganti', '\App\Http\Controllers\MenteeController@detailPengganti');
+
     // Cetak
         // Get Cetak
         Route::get('/mentee/cetak/{id}', '\App\Http\Controllers\MenteeController@cetak');

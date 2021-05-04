@@ -37,6 +37,17 @@
                                                         </li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#menteeModal"><em class="icon ni ni-user-add"></em><span>Tambah Mentee</span></a></li>
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li>
+                                                        <li class="preview-btn-item col-sm-6 col-lg-3">
+                                                            <div class="dropdown">
+                                                                <a href="#" class="btn btn-warning" data-toggle="dropdown"><em class="icon ni ni-download-cloud"></em><span>Export</span><em class="icon ni ni-chevron-down"></em></a>
+                                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-auto mt-1">
+                                                                    <ul class="link-list-plain">
+                                                                        <li><a href="/admin/expMenteeP/">Export PDF</a></li>
+                                                                        <li><a href="/admin/expMentee/">Export Excel</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>

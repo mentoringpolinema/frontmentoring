@@ -33,6 +33,8 @@
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Kode Cetak</span></th>
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text">Jurusan</span></th>
                                                             <th class="nk-tb-col tb-col-lg"><span class="sub-text">Tanggal</span></th>
+                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">Status</span></th>
+                                                            <th class="nk-tb-col tb-col-lg"><span class="sub-text">Action</span></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -56,6 +58,23 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-lg">
                                                                 <span>{{$cetak->created_at->format('d M Y')}}</span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-lg">
+                                                                @if ($cetak->status_cetak == 'Pending')
+                                                                    <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>Pending</span></span>
+                                                                @else
+                                                                    <span class="badge badge-dim badge-success"><em class="icon ni ni-check"></em><span>Accept</span></span>
+                                                                @endif
+                                                                
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-lg">
+                                                                <a href="/admin/cetak/detail/{{$cetak->id_cetak}}"><button class="btn btn-sm btn-primary"><em class="icon ni ni-eye"></em>Detail</button></a>
+                                                                @if ($cetak->status_cetak == 'Pending')
+                                                                    <form action="/admin/cetak/acc/{{$cetak->id_cetak}}" method="POST"> 
+                                                                    @csrf 
+                                                                    <button type="submit" class="btn btn-sm btn-success"><em class="icon ni ni-check"></em>Accept</button>
+                                                                </form>
+                                                                @endif
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->
                                                         @endforeach

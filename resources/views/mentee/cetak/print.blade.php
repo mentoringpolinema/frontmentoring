@@ -56,49 +56,49 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{auth()->user()->name}}</td>
+                                                                <td>{{$data_mentee->nama_mentee}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>NIM</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{auth()->user()->mentee->nim_mentee}}</td>
+                                                                <td>{{$data_mentee->nim_mentee}}</td>
                                                             </tr>                                                            
                                                             <tr>
                                                                 <td>Kelas </td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{auth()->user()->mentee->kelas->kelas}}</td>
+                                                                <td>{{$data_mentee->kelas->kelas}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Prodi</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{auth()->user()->mentee->kelas->prodi->nama_prodi}}</td>
+                                                                <td>{{$data_mentee->kelas->prodi->nama_prodi}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Jurusan</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{auth()->user()->mentee->kelas->prodi->jurusan->nama_jurusan}}</td>
+                                                                <td>{{$data_mentee->kelas->prodi->jurusan->nama_jurusan}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Mentor</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{auth()->user()->mentee->kelompok->mentor->nama_mentor}}</td>
+                                                                <td>{{$data_mentee->kelompok->mentor->nama_mentor}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Kelompok</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{auth()->user()->mentee->kelompok->nama_kelompok}}</td>
+                                                                <td>{{$data_mentee->kelompok->nama_kelompok}}</td>
                                                             </tr>                                                            
                                                         </tbody>
                                                          <tfoot>                                                       

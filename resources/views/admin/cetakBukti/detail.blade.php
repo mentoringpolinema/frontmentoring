@@ -10,13 +10,13 @@
                                             <h3 class="nk-block-title page-title">Bukti Lulus Mentoring<strong class="text-primary small">#Cetak</strong></h3>
                                             <div class="nk-block-des text-soft">
                                                 <ul class="list-inline">
-                                                    <li>Created At: <span class="text-base">{{$cetak->created_at->format('d M Y')}}</span></li>
+                                                    <li>Created At: <span class="text-base">{{$data_cetak->created_at->format('d M Y')}}</span></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="nk-block-head-content">
-                                            <a href="/mentee" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a>
-                                            <a href="/mentee" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                                            <a href="/admin/cetak" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a>
+                                            <a href="/admin/cetak" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
                                         </div>
                                     </div>
                                 </div><!-- .nk-block-head -->
@@ -39,8 +39,8 @@
                                                 </div>
                                                 <div class="invoice-desc">
                                                     <ul class="list-plain">
-                                                        <li class="invoice-id"><span>ID Cetak</span>:<span>{{$cetak->kode_cetak}}</span></li>
-                                                        <li class="invoice-date"><span>Tanggal</span>:<span><?php echo date("d M Y");?></span></li>
+                                                        <li class="invoice-id"><span>ID Cetak</span>:<span>{{$data_cetak->kode_cetak}}</span></li>
+                                                        <li class="invoice-date"><span>Tanggal</span>:<span>{{$data_cetak->created_at->format('d M Y')}}</span></li>
                                                     </ul>
                                                 </div>
                                             </div><!-- .invoice-head -->
@@ -62,49 +62,49 @@
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{$data_mentee->nama_mentee}}</td>
+                                                                <td>{{$data_cetak->mentee->nama_mentee}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>NIM</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{$data_mentee->nim_mentee}}</td>
+                                                                <td>{{$data_cetak->mentee->nim_mentee}}</td>
                                                             </tr>                                                            
                                                             <tr>
                                                                 <td>Kelas </td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{$data_mentee->kelas->kelas}}</td>
+                                                                <td>{{$data_cetak->mentee->kelas->kelas}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Prodi</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{$data_mentee->kelas->prodi->nama_prodi}}</td>
+                                                                <td>{{$data_cetak->mentee->kelas->prodi->nama_prodi}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Jurusan</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{$data_mentee->kelas->prodi->jurusan->nama_jurusan}}</td>
+                                                                <td>{{$data_cetak->mentee->kelas->prodi->jurusan->nama_jurusan}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Mentor</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{$data_mentee->kelompok->mentor->nama_mentor}}</td>
+                                                                <td>{{$data_cetak->mentee->kelompok->mentor->nama_mentor}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Kelompok</td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td>{{$data_mentee->kelompok->nama_kelompok}}</td>
+                                                                <td>{{$data_cetak->mentee->kelompok->nama_kelompok}}</td>
                                                             </tr>                                                            
                                                         </tbody>
                                                          <tfoot>                                                       
@@ -121,7 +121,7 @@
                                                             <tr>
                                                                 <td></td>
                                                                 <td></td>
-                                                                <td colspan="3" class="w-20px">{{auth()->user()->name}} - {{auth()->user()->mentee->nim_mentee}}</td>
+                                                                <td colspan="3" class="w-20px">{{$data_cetak->mentee->nama_mentee}} - {{$data_cetak->mentee->nim_mentee}}</td>
                                                             </tr>                                                            
                                                         </tfoot>
                                                     </table>

@@ -60,7 +60,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="actions">
-                                                    <a href="/mentee/materi/detailMateri" class="btn btn-sm btn-secondary">Detail</a>
+                                                    <a href="/mentee/materi/{{$materi->id_materi}}" class="btn btn-sm btn-secondary">Detail</a>
                                                 </div>
                                             </div><!-- .sp-pdl-item -->
                                         </div><!-- .col -->
@@ -92,7 +92,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="actions">
-                                                    <a href="/mentee/materi/detailTugas" class="btn btn-sm btn-warning">Detail</a>
+                                                    <a href="/mentee/tugas/detailTugas" class="btn btn-sm btn-warning">Detail</a>
                                                 </div>
                                             </div><!-- .sp-pdl-item -->
                                         </div><!-- .col -->
