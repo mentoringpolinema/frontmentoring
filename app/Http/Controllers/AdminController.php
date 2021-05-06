@@ -27,6 +27,7 @@ use App\Models\User;
 use App\Models\Pengumuman;
 use Barryvdh\DomPDF\Facade as PDF;
 use Dompdf\Dompdf;
+use Svg\Tag\Rect;
 
 class AdminController extends Controller
 {
@@ -417,8 +418,9 @@ class AdminController extends Controller
     // Get Kelompok
     public function kelompok()
     {
+        $data_mentor = Mentor::all();
         $data_kelompok = Kelompok::all();
-        return view('admin.kelompok', compact(['data_kelompok']));
+        return view('admin.kelompok', compact('data_kelompok','data_mentor'));
     }
     // Detail Kelompok
     public function detailKelompok($id_kelompok){
@@ -427,6 +429,20 @@ class AdminController extends Controller
             ['kelompok_id', '=', $id_kelompok]
             ])->get();
         return view('admin.kelompok.detailKelompok',compact(['data_kelompok', 'data_mentee']));
+    }
+    public function addKelompok(Request $request){
+
+        $kelompok = Kelompok::where([
+            ['mentor_id', '=', $request->mentor_id],
+            ['nama_kelompok', '=', $request->nama_kelompok]
+        ]);
+
+        if ($kelompok) {
+            return redirect()->back()->with('warning','Kelompok Sudah Ada !');
+        }else{
+            $addKelompok = Kelompok::create($request->all());
+            return redirect()->back()->with('success','Kelompok Berhasil Ditambahkan');
+        }
     }
 
     //-------------------------------------------Keluhan-------------------------------------------
@@ -525,7 +541,6 @@ class AdminController extends Controller
         $data_pengumuman->update($request->all());
         return redirect('/admin/pengumuman')->with('success', 'Pengumuman Berhasil di Update !');
     }
-
     //-------------------------------------------Cetak-------------------------------------------
     // Get Bukti Cetak 
     public function cetak(){

@@ -35,7 +35,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Mentee</div>
-                                                                            <div class="count">125</div>
+                                                                            <div class="count">{{$mentee}}</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
                                                                     </li>
@@ -49,8 +49,8 @@
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
-                                                                            <div class="title">Total Kelompok</div>
-                                                                            <div class="count">1</div>
+                                                                            <div class="title">Nama Kelompok</div>
+                                                                            <div class="count">{{$data_kelompok->nama_kelompok}}</div>
                                                                         </div>
                                                                         <em class="icon bg-secondary-dim ni ni-link-group"></em>
                                                                     </li>
@@ -170,71 +170,42 @@
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Jurusan</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Prodi</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelompok</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
+                                                            {{-- <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th> --}}
                                                             </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {{-- @foreach ($data_mentor as $mentor) --}}
+                                                        @foreach ($data_mentee as $mentee)
                                                         <tr class="nk-tb-item">
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">1831710190 <span class="dot dot-success d-md-none ml-1"></span></span>
+                                                                        <span class="tb-lead">{{$mentee->nim_mentee}} <span class="dot dot-success d-md-none ml-1"></span></span>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">A. Yahya Hudan Permana</span>
+                                                                <span class="tb-amount">{{$mentee->nama_mentee}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>1A</span>
+                                                                <span>{{$mentee->kelas->kelas}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>Teknologi Informasi</span>
+                                                                <span>{{$mentee->kelas->prodi->jurusan->nama_jurusan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>D3 MI</span>
+                                                                <span>{{$mentee->kelas->prodi->nama_prodi}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>3</span>
+                                                                <span>{{$mentee->kelompok->nama_kelompok}}</span>
                                                             </td>
-                                                            <td class="nk-tb-col tb-col-md">
+                                                            {{-- <td class="nk-tb-col tb-col-md">
                                                                 <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
                                                                 <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
                                                                 <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                       
-                                                        <tr class="nk-tb-item">
-                                                            <td class="nk-tb-col">
-                                                                <div class="user-card">
-                                                                    <div class="user-info">
-                                                                        <span class="tb-lead">1831710191 <span class="dot dot-success d-md-none ml-1"></span></span>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">Rijalus Sholihin</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>1A</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>Teknologi Informasi</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>D3 MI</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>3</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
-                                                                <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
-                                                            </td>
-                                                        </tr><!-- .nk-tb-item  -->                                                    
-                                                        {{-- @endforeach --}}
+                                                            </td> --}}
+                                                        </tr><!-- .nk-tb-item  -->
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

@@ -60,7 +60,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Anggota Kelompok</div>
-                                                                            <div class="count">20</div>
+                                                                            <div class="count">{{$total_mentee}}</div>
                                                                         </div>
                                                                         <em class="icon bg-secondary-dim ni ni-link-group"></em>
                                                                     </li>
@@ -129,7 +129,7 @@
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">{{$mentee->nim_mentee}}</span>
+                                                                <span class="tb-amount">{{$mentee->nama_mentee}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$mentee->kelas->kelas}}</span>

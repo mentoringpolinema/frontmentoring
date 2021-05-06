@@ -14,8 +14,8 @@
                                     <br>
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">                                            
-                                            <h4 class="nk-block-title page-title">Materi dan Tugas</h4>
-                                            <span>Beriku adalah Materi dan Tugas yang harus dikerjankan !</span>                                            
+                                            <h4 class="nk-block-title page-title">Materi</h4>
+                                            <span>Berikut adalah Materi yang harus dipelajari </span>                                            
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-between">
                                              <div class="toggle-wrap nk-block-tools-toggle">
@@ -65,6 +65,18 @@
                                             </div><!-- .sp-pdl-item -->
                                         </div><!-- .col -->
                                         @endforeach
+                                    </div><!-- .row -->
+                                </div><!-- .nk-block -->
+                                <div class="nk-block-head nk-block-head-sm">
+                                    <div class="nk-block-between">
+                                        <div class="nk-block-head-content">                                            
+                                            <h4 class="nk-block-title page-title">Tugas </h4>
+                                            <span>Berikut adalah Tugas yang harus dikerjankan !</span>                                           
+                                        </div><!-- .nk-block-head-content -->
+                                    </div><!-- .nk-block-between -->
+                                </div><!-- .nk-block-head -->
+                                <div class="nk-block">
+                                    <div class="row g-gs">                                       
                                         <div class="col-xxl-3 col-md-6">
                                             <div class="nk-download">
                                                 <div class="data">

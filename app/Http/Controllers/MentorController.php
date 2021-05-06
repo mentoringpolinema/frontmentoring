@@ -2,15 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mentee;
+use App\Models\Kegiatan;
+use App\Models\Kelompok;
+use App\Models\Materi;
 use Illuminate\Http\Request;
+use Svg\Tag\Rect;
 
 class MentorController extends Controller
 {
     // Dashboard Mentor
     public function index()
-    {
-        $data_kegiatan = \App\Models\Kegiatan::all();
-        return view('mentor.index', ['data_kegiatan' => $data_kegiatan]);
+    {   
+        $total_materi = Materi::count();
+        $data_kegiatan = Kegiatan::all();
+
+        $data_kelompok = Kelompok::where([
+            ['mentor_id', '=', auth()->user()->mentor->id_mentor]
+        ])->get()->first();
+
+        $data_mentee = Mentee::where([
+            ['kelompok_id', '=', $data_kelompok->id_kelompok]
+        ])->get();
+
+        $mentee = Mentee::where([
+            ['kelompok_id', '=', $data_kelompok->id_kelompok]
+        ])->count(); 
+        return view('mentor.index',compact('data_kegiatan','mentee','data_kelompok','total_materi'));
     }
 
     // Profile Mentor
@@ -21,13 +39,26 @@ class MentorController extends Controller
     // Kelompok Mentor
 
         // Get Kelompok
-        public function kelompok()
+        public function kelompok($id_mentor)
         {
-            return view('mentor.kelompok');
-        }
-    // Delete Kelompok
+            
+            $data_kelompok = Kelompok::where([
+                [   'mentor_id','=', $id_mentor]
+            ])->get()->first();
 
-    // Update Kelompok
+            $data_mentee = Mentee::where([
+                ['kelompok_id','=', $data_kelompok->id_kelompok]
+            ])->get();
+
+            $mentee = Mentee::where([
+                ['kelompok_id','=', $data_kelompok->id_kelompok]
+            ])->count();
+
+            return view('mentor.kelompok',compact('data_kelompok','data_mentee','mentee'));
+        }
+        // Delete Kelompok
+
+        // Update Kelompok
 
     // Materi Mentor
 

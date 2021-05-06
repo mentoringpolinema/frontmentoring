@@ -42,7 +42,7 @@
                                                         <li class="item">
                                                             <div class="info">
                                                                 <div class="title text-white">Data Mentee</div>
-                                                                <div class="count text-white">3,795</div>
+                                                                <div class="count text-white">{{$mentee}}</div>
                                                             </div>
                                                             <em class="icon bg-warning-dim ni ni-users"></em>
                                                         </li>                                                        
@@ -56,8 +56,8 @@
                                                     <ul class="nk-store-statistics">                                                        
                                                         <li class="item">
                                                             <div class="info">
-                                                                <div class="title text-white">Data Kelompok</div>
-                                                                <div class="count text-white">120</div>
+                                                                <div class="title text-white">Nama Kelompok</div>
+                                                                <div class="count text-white">{{$data_kelompok->nama_kelompok}}</div>
                                                             </div>
                                                             <em class="icon bg-info-dim ni ni-user"></em>
                                                         </li>                                                       
@@ -72,7 +72,7 @@
                                                         <li class="item">
                                                             <div class="info">
                                                                 <div class="title text-white">Data Materi</div>
-                                                                <div class="count text-white">5</div>
+                                                                <div class="count text-white">{{$total_materi}}</div>
                                                             </div>
                                                             <em class="icon bg-pink-dim ni ni-book"></em>
                                                         </li>

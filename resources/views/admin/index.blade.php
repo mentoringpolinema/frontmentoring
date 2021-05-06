@@ -180,19 +180,8 @@
                                                                         {!!$kegiatan->detail_kegiatan!!}
                                                                     </div>
                                                                 </div>
-                                                            </li>
+                                                            </li>                                                           
                                                             {{-- <li class="timeline-item">
-                                                                <div class="timeline-status bg-primary"></div>
-                                                                <div class="timeline-date">06 Jan <em class="icon ni ni-alarm-alt"></em></div>
-                                                                <div class="timeline-data">
-                                                                    <h6 class="timeline-title">Penyampaian Materi : Minggu 2</h6>
-                                                                    <div class="timeline-des">
-                                                                        <p>Materi berupa video dan Mengerjakan Kuis.</p>
-                                                                        <span class="time">09:30am</span>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="timeline-item">
                                                                 <div class="timeline-status bg-pink"></div>
                                                                 <div class="timeline-date">07 Jan <em class="icon ni ni-alarm-alt"></em></div>
                                                                 <div class="timeline-data">
@@ -203,7 +192,7 @@
                                                                     </div>
                                                                 </div>
                                                             </li> --}}
-                                                            @endforeach
+                                                            @endforeach                                                            
                                                         </ul>
                                                     </div>
                                                 </div>

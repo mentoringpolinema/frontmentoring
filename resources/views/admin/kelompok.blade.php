@@ -44,8 +44,8 @@
                                                             <li>
                                                                 <a href="#" class="search-toggle toggle-search btn btn-icon" data-target="search"><em class="icon ni ni-search"></em></a>
                                                             </li><!-- li -->
-                                                            <li class="btn-toolbar-sep"></li><!-- li -->
-                                                            <li>
+                                                            {{-- <li class="btn-toolbar-sep"></li><!-- li --> --}}
+                                                            {{-- <li>
                                                                 <div class="dropdown">
                                                                     <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
                                                                         <div class="badge badge-circle badge-primary">2</div>
@@ -93,8 +93,8 @@
                                                                         </div>
                                                                     </div><!-- .filter-wg -->
                                                                 </div><!-- .dropdown -->
-                                                            </li><!-- li -->
-                                                            <li>
+                                                            </li><!-- li --> --}}
+                                                            {{-- <li>
                                                                 <div class="dropdown">
                                                                     <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
                                                                         <em class="icon ni ni-setting"></em>
@@ -107,13 +107,13 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div><!-- .dropdown -->
-                                                            </li><!-- li -->
+                                                            </li><!-- li --> --}}
                                                         </ul><!-- .btn-toolbar -->
                                                     </div><!-- .card-tools -->
                                                     <div class="card-search search-wrap" data-search="search">
                                                         <div class="search-content">
                                                             <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                                                            <input type="text" class="form-control border-transparent form-focus-none" placeholder="Cari Data Mentee">
+                                                            <input type="text" class="form-control border-transparent form-focus-none" placeholder="Cari Kelompok">
                                                             <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
                                                         </div>
                                                     </div><!-- .card-search -->
@@ -221,6 +221,8 @@
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Tambah Kelompok</h5>
                     <div class="tab-content">
+                        <form action="/admin/kelompok/add" method="POST">
+                            @csrf
                         <div class="tab-pane active" id="data">
                             <div class="row gy-4">
                                 <div class="col-md-6">
@@ -231,41 +233,19 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="phone-no">Jurusan</label>
-                                        <select class="form-select" id="jurusan_prodi" name="jurusan_prodi" data-ui="lg" required>
-                                            <option value="Teknologi Informasi">Teknologi Informasi</option>
-                                            <option value="Teknik Elektro">Teknik Elektro</option>
-                                            <option value="Teknik Sipil">Teknik Sipil</option>
-                                            <option value="Teknik Mesin">Teknik Mesin</option>
-                                            <option value="Akuntansi">Akuntansi</option>
-                                            <option value="Bahasa Inggris">Bahasa Inggris</option>
-                                            <option value="Teknik Kimia">Teknik Kimia</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Prodi</label>
-                                        <select class="form-select" id="kelompok_prodi" name="kelompok_prodi" data-ui="lg" required>
-                                            <option value="A">D3 Manajemen Informatika</option>
-                                            <option value="B">D4 Teknik Informatika</option>
-                                            <option value="C">D4 Keuangan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label class="form-label" for="phone-no">Mentor</label>
-                                        <select class="form-select" id="kelompok_mentee" name="kelompok_mentee" data-ui="lg">
-                                            <option value="1">Faiz Shofi</option>
-                                            <option value="2">Yahya Hudan</option>
+                                        <select class="form-select" id="mentor_id" name="mentor_id" data-ui="lg">
+                                            @foreach ($data_mentor as $mentor)
+                                            <option value="{{$mentor->id_mentor}}">{{$mentor->nama_mentor}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            <a href="#" class="btn btn-lg btn-primary">Tambah Kelompok</a>
+                                            {{-- <a href="#" class="btn btn-lg btn-primary">Tambah Kelompok</a> --}}
+                                            <button type="submit" class="btn btn-lg btn-primary">Tambah Kelompok</button>
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
@@ -274,39 +254,7 @@
                                 </div>
                             </div>
                         </div><!-- .tab-pane -->
-                        {{-- <div class="tab-pane" id="kelompok">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Kelompok</label>
-                                        <input type="text" class="form-control form-control-lg" id="address-l1" value="2337 Kildeer Drive">
-                                    </div>
-                                </div>                            
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-county">Country</label>
-                                        <select class="form-select" id="address-county" data-ui="lg">
-                                            <option>Canada</option>
-                                            <option>United State</option>
-                                            <option>United Kindom</option>
-                                            <option>Australia</option>
-                                            <option>India</option>
-                                            <option>Bangladesh</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <a href="#" class="btn btn-lg btn-primary">Update Address</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- .tab-pane --> --}}
+                        </form>                        
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->

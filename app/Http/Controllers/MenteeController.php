@@ -41,14 +41,15 @@ class MenteeController extends Controller
         $data_mentee = Mentee::where([
             ['kelompok_id', '=', $id_kelompok]
         ])->get();
-        return view('mentee.kelompok',compact('data_mentee'));
+        $total_mentee = Mentee::where('kelompok_id','=',$id_kelompok)->count();
+        return view('mentee.kelompok',compact('data_mentee','total_mentee'));
     }
 
     // Materi dan Tugas
         // Materi
         public function materi()
         {
-            $data_materi = Materi::paginate(1);
+            $data_materi = Materi::all();
             return view('mentee.materi',compact(['data_materi']));
         }
         // Detail Materi
@@ -120,8 +121,6 @@ class MenteeController extends Controller
             if ($keluhan) {
                 return view('mentee.keluhan.index', compact('keluhan'));
             } else {
-            // $request->request->add(['mentee_id' => auth()->user()->mentee->id_mentee]);
-
                 $keluhan = Keluhan::create([
                     'mentee_id' => auth()->user()->mentee->id_mentee,
                     "panitia_id" => '1',

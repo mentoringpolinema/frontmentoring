@@ -115,7 +115,6 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Data Management ===================================================================================================>
         //Get Data
         Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
-
         //Add Data
             // Add Data Jurusan
             Route::post('/admin/addJurusan', '\App\Http\Controllers\AdminController@addJurusan');
@@ -145,6 +144,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::get('/admin/kelompok', '\App\Http\Controllers\AdminController@kelompok');
         // Detail Kelompok
         Route::get('/admin/kelompok/{id}', '\App\Http\Controllers\AdminController@detailKelompok');
+        // Add Kelompok
+        Route::post('/admin/kelompok/add', '\App\Http\Controllers\AdminController@addKelompok');
 
     // Keluhan ===========================================================================================================>
         // Get Keluhan
@@ -193,7 +194,7 @@ Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
         Route::get('/mentor/profile', '\App\Http\Controllers\MentorController@profile');
     // Kelompok
         // Get Kelompok
-        Route::get('/mentor/kelompok', '\App\Http\Controllers\MentorController@kelompok');
+        Route::get('/mentor/kelompok/{id}', '\App\Http\Controllers\MentorController@kelompok');
 
     // Materi
         // Get Materi
