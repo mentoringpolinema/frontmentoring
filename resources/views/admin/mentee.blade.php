@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-                <div class="nk-content ">                    
+                <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
@@ -73,7 +73,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Kelompok</div>
-                                                                            <div class="count">20</div>
+                                                                            <div class="count">{{$total_kelompok}}</div>
                                                                         </div>
                                                                         <em class="icon bg-secondary-dim ni ni-link-group"></em>
                                                                     </li>
@@ -88,7 +88,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Kelas</div>
-                                                                            <div class="count">120</div>
+                                                                            <div class="count">{{$total_kelas}}</div>
                                                                         </div>
                                                                         <em class="icon bg-success-dim ni ni-link-group"></em>
                                                                     </li>
@@ -107,7 +107,7 @@
                                             </div>
                                         </div>
                                         @endif
-                                        <div class="card card-preview">                                            
+                                        <div class="card card-preview">
                                             <div class="card-inner">
                                                 <div class="card-title-group">
                                                     <div class="card-title">
@@ -262,18 +262,22 @@
                                                                 {{-- <span>{{$mentee->angkatan_id}}</span> --}}
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                @if($mentee->status_mentee == 'Lulus')
+                                                                @if($mentee->status_mentee == 'lulus')
                                                                 <span class="dot bg-success d-mb-none"></span>
                                                                 <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">{{$mentee->status_mentee}}</span>
                                                                 @endif
-                                                                @if($mentee->status_mentee == 'Tidak Lulus')
+                                                                @if($mentee->status_mentee == 'tidak lulus')
                                                                 <span class="dot bg-success d-mb-none"></span>
                                                                 <span class="badge badge-sm badge-dot has-bg badge-danger d-none d-mb-inline-flex">{{$mentee->status_mentee}}</span>
                                                                 @endif
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="/admin/detailMentee/{{$mentee->id_mentee}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
+                                                                <form action="/admin/mentee/{{$mentee->slug}}" method="post" style="display: inline">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button class="btn btn-round btn-sm btn-danger" type="submit" class="fa fa-trash">Delete</button>
+                                                                </form>
+                                                                <a href="/admin/detailMentee/{{$mentee->slug}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
                                                                 {{-- <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->
@@ -287,7 +291,9 @@
                         </div>
                     </div>
                 </div>
-    
+
+                <!-- Sweet Alert-->
+                @include('sweetalert::alert')
     <!-- Added Mentor Mentee -->
     <div class="modal fade" tabindex="-1" role="dialog" id="menteeModal">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -297,85 +303,83 @@
                     <h5 class="title">Tambah Mentee</h5>
                     <div class="tab-content">
                         <div class="tab-pane active" id="data">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="full-name">Nama</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_mentee" name="nama_mentee" required>
+                            <form action="/admin/mentee/addMentee" class="form-validate is-alter" method="POST">
+                                @csrf
+                                <div class="row gy-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="nama_mentee">Nama</label>
+                                            <input type="text" class="form-control form-control-lg" id="nama_mentee" name="nama_mentee" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="nim_mentee">NIM</label>
+                                            <input type="text" class="form-control form-control-lg" id="nim_mentee" name="nim_mentee" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="phone-no">Jurusan</label>
+                                            <select class="form-select" id="jurusan_mentee" id="jurusan_mentee" name="jurusan_mentee" data-ui="lg" required>
+                                                <option>-Pilih Jurusan-</option>
+                                                @foreach ($data_jurusan as $jurusan)
+                                                    <option value="{{$jurusan->id_jurusan}}">{{$jurusan->nama_jurusan}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="phone-no">Program Studi</label>
+                                            <select class="form-select" id="prodi_mentee" id="prodi_mentee"  name="prodi_mentee" data-ui="lg" required>
+                                                <option>-Pilih Program Studi-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="kelas_id">Kelas</label>
+                                            <select class="form-select" id="kelas_id" name="kelas_id" data-ui="lg" required>
+                                                <option>-Pilih Kelas-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="kelompok_id">Kelompok</label>
+                                            <select class="form-select" id="kelompok_id" name="kelompok_id" data-ui="lg">
+                                                <option>-Pilih Kelompok-</option>
+                                                @foreach ($data_kelompok as $kelompok)
+                                                    <option value="{{$kelompok->id_kelompok}}">{{$kelompok->nama_kelompok}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="angkatan_id">Angkatan</label>
+                                            <select class="form-select" id="angkatan_id" name="angkatan_id" data-ui="lg">
+                                                <option>-Pilih Angkatan-</option>
+                                                @foreach ($data_angkatan as $angkatan)
+                                                    <option value="{{$angkatan->id_angkatan}}">{{$angkatan->angkatan}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                            <li>
+{{--                                                <a href="#" class="btn btn-lg btn-primary">Tambah Mentee</a>--}}
+                                                <button type="submit" class="btn btn-lg btn-primary">Tambah Mentee</button>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="display-name">NIM</label>
-                                        <input type="text" class="form-control form-control-lg" id="nim_mentee" name="nim_mentee" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Jurusan</label>
-                                        <select class="form-select" id="jurusan_mentee" name="jurusan_mentee" data-ui="lg" required>
-                                            <option value="">-Pilih Jurusan-</option>
-                                            @foreach ($data_jurusan as $jurusan)
-                                                <option value="{{$jurusan->id_jurusan}}">{{$jurusan->nama_jurusan}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Program Studi</label>
-                                        <select class="form-select" id="prodi_mentee" name="prodi_mentee" data-ui="lg" required>
-                                            <option value="">-Pilih Program Studi-</option>
-                                            @foreach ($data_prodi as $prodi)
-                                                <option value="{{$prodi->id_prodi}}">{{$prodi->nama_prodi}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Kelas</label>
-                                        <select class="form-select" id="kelas_mentee" name="kelas_mentee" data-ui="lg" required>
-                                            <option value="">-Pilih Kelas-</option>
-                                            @foreach ($data_kelas as $kelas)
-                                                <option value="{{$kelas->id_kelas}}">{{$kelas->nama_kelas}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Kelompok</label>
-                                        <select class="form-select" id="kelompok_mentee" name="kelompok_mentee" data-ui="lg">
-                                            <option value="">-Pilih Kelompok-</option>
-                                            @foreach ($data_kelompok as $kelompok)
-                                                <option value="{{$kelompok->id_kelompok}}">{{$kelompok->nama_kelompok}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Angkatan</label>
-                                        <select class="form-select" id="angkatan_mentee" name="angkatan_mentee" data-ui="lg">
-                                            <option value="">-Pilih Angkatan-</option>
-                                            @foreach ($data_angkatan as $angkatan)
-                                                <option value="{{$angkatan->id_angkatan}}">{{$angkatan->nama_angkatan}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <a href="#" class="btn btn-lg btn-primary">Tambah Mentee</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            </form>
                         </div><!-- .tab-pane -->
                         {{-- <div class="tab-pane" id="kelompok">
                             <div class="row gy-4">
@@ -384,7 +388,7 @@
                                         <label class="form-label" for="address-l1">Kelompok</label>
                                         <input type="text" class="form-control form-control-lg" id="address-l1" value="2337 Kildeer Drive">
                                     </div>
-                                </div>                            
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="address-county">Country</label>
@@ -464,14 +468,14 @@
                                     </ul>
                                 </div>
                             </div>
+                            </form>
                         </div>
-                    </form>
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- .modal -->
-    
+
     <!-- Import Excel Modal @e -->
     <div class="modal fade" tabindex="-1" role="dialog" id="importModal">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -484,38 +488,113 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="/admin/eddImpMentee" class="form-validate is-alter" method="POST">
-                            {{-- {{ csrf_field() }} --}}
-                            @csrf
-                            <div class="row gy-4">                              
-                                <div class="col-md-12">
-                                    <div class="upload-zone small bg-lighter my-2">
-                                        <div class="dz-message">
-                                            <span class="dz-message-text">Drag and drop file</span>
+                                {{-- {{ csrf_field() }} --}}
+                                @csrf
+                                <div class="row gy-4">
+                                    <div class="col-md-12">
+                                        <div class="upload-zone small bg-lighter my-2">
+                                            <div class="dz-message">
+                                                <span class="dz-message-text">Drag and drop file</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="form-label" for="full-name">File Extensi Harus berupa excel (csx dan xs),<br> Jika Belum ada dowload <a href="#">format excel</a></label>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="full-name">File Extensi Harus berupa excel (csx dan xs),<br> Jika Belum ada dowload <a href="#">format excel</a></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                            <li>
+                                                <button type="submit" class="btn btn-lg btn-primary">Upload</button>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Upload</button>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            </form>
                         </div>
-                    </form>
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- .modal -->
-    
+    @section('jsAdd')
+        <script>
+            $("select#jurusan_mentee").change(function(event){
+                event.preventDefault();
+                var id = $(this).children("option:selected").val();
+                $.ajax({
+                    url: "/admin/getProdiByIdJurusan/"+id,
+                    method: 'GET',
+                    success: function(data) {
+                        // console.log(data)
+                        var select = document.getElementById("prodi_mentee");
+                        var length = select.options.length;
+                        for (i = length-1; i >= 0; i--) {
+                            select.options[i] = null;
+                        }
+                        var select = document.getElementById("kelas_id");
+                        var length = select.options.length;
+                        for (i = length-1; i >= 0; i--) {
+                            select.options[i] = null;
+                        }
+                        $('select[name="kelas_id"]')
+                            .append($('<option />')  // Create new <option> element
+                                .text("-Pilih Kelas-")           // Set textContent as "Hello"
+                                .prop('selected', false)  // Mark it selected
+                            );
+                        $('select[name="prodi_mentee"]')
+                            .append($('<option />')  // Create new <option> element
+                                .text("-Pilih Program Studi-")           // Set textContent as "Hello"
+                                .prop('selected', false)  // Mark it selected
+                            );
+                        for (a = 0; a < data.length; a++){
+                            // console.log(data[a].id_prodi);
+                            $('select[name="prodi_mentee"]')
+                                .append($('<option />')  // Create new <option> element
+                                    .val(data[a].id_prodi)            // Set value as "Hello"
+                                    .text(data[a].nama_prodi)           // Set textContent as "Hello"
+                                    .prop('selected', false)  // Mark it selected
+                                );
+                        }
+                    }
+                });
+            });
+
+            $("select#prodi_mentee").change(function(event){
+                event.preventDefault();
+                var id = $(this).children("option:selected").val();
+                $.ajax({
+                    url: "/admin/getKelasByIdProdi/"+id,
+                    method: 'GET',
+                    success: function(data) {
+                        // console.log(data)
+                        var select = document.getElementById("kelas_id");
+                        var length = select.options.length;
+                        for (i = length-1; i >= 0; i--) {
+                            select.options[i] = null;
+                        }
+                        $('select[name="kelas_id"]')
+                            .append($('<option />')  // Create new <option> element
+                                .text("-Pilih Kelas-")           // Set textContent as "Hello"
+                                .prop('selected', false)  // Mark it selected
+                            );
+                        for (a = 0; a < data.length; a++){
+                            // console.log(data[a].id_prodi);
+                            $('select[name="kelas_id"]')
+                                .append($('<option />')  // Create new <option> element
+                                    .val(data[a].id_kelas)            // Set value as "Hello"
+                                    .text(data[a].kelas)           // Set textContent as "Hello"
+                                    .prop('selected', false)  // Mark it selected
+                                );
+                        }
+                    }
+                });
+            });
+        </script>
+
+    @endsection
 @stop

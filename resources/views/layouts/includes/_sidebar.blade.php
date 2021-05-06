@@ -16,7 +16,7 @@
                 </div><!-- .nk-sidebar-element -->
 
                 <!-- Role : Panitia -->
-                @if(auth()->user()->role == 'Panitia')                 
+                @if(auth()->user()->role == 'Panitia')
                 <div class="nk-sidebar-element">
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
@@ -46,7 +46,7 @@
                                         <span class="nk-menu-text">Mentee</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                                                
+
                                 <li class="nk-menu-item">
                                     <a href="/admin/kelompok" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-view-cols-fill"></em></span>
@@ -60,24 +60,30 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
+                                    <a href="/admin/tugas" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-folder"></em></span>
+                                        <span class="nk-menu-text">Tugas</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
                                     <a href="/admin/pertemuan" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-video-fill"></em></span>
                                         <span class="nk-menu-text">Pertemuan</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                
+
                                 <li class="nk-menu-item">
                                     <a href="/admin/kegiatan" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-clock"></em></span>
                                         <span class="nk-menu-text">Kegiatan</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->                                 
+                                </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="/admin/keluhan" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-chat-fill"></em></span>
                                         <span class="nk-menu-text">Keluhan</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->   
+                                </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Website</h6>
                                 </li><!-- .nk-menu-heading -->
@@ -110,7 +116,7 @@
                                         </li>
                                         <li class="nk-menu-item">
                                             <a href="#" class="nk-menu-link"><span class="nk-menu-text">Super Admin</span></a>
-                                        </li>                                        
+                                        </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->                                --}}
                                 <li class="nk-menu-item">
@@ -126,7 +132,7 @@
                 @endif
 
                 <!-- Role : Mentor-->
-                @if(auth()->user()->role == 'Mentor') 
+                @if(auth()->user()->role == 'Mentor')
                 <div class="nk-sidebar-element">
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
@@ -149,7 +155,7 @@
                                         <span class="nk-menu-icon"><em class="icon ni ni-todo-fill"></em></span>
                                         <span class="nk-menu-text">Materi</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->                                
+                                </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="/mentor/kelompok" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-view-col3"></em></span>
@@ -172,7 +178,7 @@
                 @endif
 
                 <!-- Role : Mentee-->
-                @if(auth()->user()->role == 'Mentee') 
+                @if(auth()->user()->role == 'Mentee')
                 <div class="nk-sidebar-element">
                     <div class="nk-sidebar-content">
                         <div class="nk-sidebar-menu" data-simplebar>
