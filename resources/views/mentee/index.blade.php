@@ -18,6 +18,18 @@
                                        data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                     <div class="toggle-expand-content" data-content="pageMenu">
                                         <ul class="nk-block-tools g-3">
+<<<<<<< HEAD
+                                            {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-round btn-warning eg-swal-warningMenteeStatus"><em class="icon ni ni-loader"></em><span>Status Mentoring : On Progress</span></a></li> --}}
+                                            <button type="button" class="btn btn-round btn-success"
+                                                    data-toggle="tooltip" data-placement="bottom"
+                                                    title="Mentoring Anda Sudah Lulus, Segera Cetak Bukti."><em
+                                                    class="icon ni ni-check-circle-fill"></em>
+                                                Status Mentoring : Lulus
+                                            </button>
+                                            {{-- <button type="button" class="btn btn-round btn-danger" data-toggle="tooltip" data-placement="bottom" title="Mentoring Anda Tidak Lulus, Segera Upload Kekurangan !"><em class="icon ni ni-cross-circle-fill"></em>
+                                            Status Mentoring : Tidak Lulus
+                                            </button> --}}
+=======
                                             @if ($data_mentee->status_mentee == 'lulus')
                                             <button type="button" class="btn btn-round btn-success"
                                                     data-toggle="tooltip" data-placement="bottom"
@@ -31,6 +43,7 @@
                                             </button>
                                             @endif
                                             {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-round btn-warning eg-swal-warningMenteeStatus"><em class="icon ni ni-loader"></em><span>Status Mentoring : On Progress</span></a></li> --}}
+>>>>>>> c6274f0930154502e08608cdd63949cd28d2d239
                                         </ul>
                                     </div>
                                 </div>
@@ -64,6 +77,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+<<<<<<< HEAD
+                                            <div class="actions">
+                                                {{-- <a href="#" class="btn btn-success">Cetak Bukti</a> --}}
+                                                <a href="/mentee/cetak" class="btn btn-round btn-success"><em
+                                                        class="icon ni ni-printer-fill"></em><span>Cetak Bukti</span>
+                                                </a>
+                                            </div>
+=======
                                             @if ($data_mentee->status_mentee == 'lulus')
                                                 <div class="actions">
                                                 <a href="/mentee/cetak/{{auth()->user()->mentee->id_mentee}}" class="btn btn-round btn-success">
@@ -72,6 +93,7 @@
                                             </div>
                                             @endif
                                             
+>>>>>>> c6274f0930154502e08608cdd63949cd28d2d239
                                         </div><!-- .sp-pdl-item -->
                                     </div><!-- .col -->
                                     <div class="col-xxl-3 col-md-3">
@@ -220,6 +242,10 @@
                                                     </li>
                                                 @endforeach
                                             </ul>
+<<<<<<< HEAD
+                                            {{ $data_pengumuman->links('vendor.pagination.bootstrap-4') }}
+=======
+>>>>>>> c6274f0930154502e08608cdd63949cd28d2d239
                                         </div>
                                     </div><!-- .card -->
                                 </div><!-- .col -->

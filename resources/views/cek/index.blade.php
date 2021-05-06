@@ -4,8 +4,8 @@
                     <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
                         <div class="brand-logo pb-4 text-center">
                             <a href="/homepage" class="logo-link">
-                                <img class="logo-light logo-img logo-img-lg" src="{{asset('template/dashboard/images/logoMentoring.png')}}" srcset="{{asset('template/dashboard/images/logoMentoring.png')}}" alt="logo">
-                                <img class="logo-dark logo-img logo-img-lg" src="{{asset('template/dashboard/images/logoMentoring.png')}}" srcset="{{asset('template/dashboard/images/logoMentoring.png')}}" alt="logo-dark">
+                                <img class="logo-light logo-img logo-img-lg" src="{{asset('template/dashboard/images/LogoMentoring.png')}}" srcset="{{asset('template/dashboard/images/LogoMentoring.png')}}" alt="logo">
+                                <img class="logo-dark logo-img logo-img-lg" src="{{asset('template/dashboard/images/LogoMentoring.png')}}" srcset="{{asset('template/dashboard/images/LogoMentoring.png')}}" alt="logo-dark">
                             </a>
                         </div>
                         <div class="card">

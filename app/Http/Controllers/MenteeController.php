@@ -25,7 +25,7 @@ class MenteeController extends Controller
         ])->first();
 
         $data_kegiatan = Kegiatan::all();
-        $data_pengumuman = Pengumuman::all();
+        $data_pengumuman = Pengumuman::orderBy('id_pengumuman', 'desc')->paginate(5);
 
         $total_kegiatan = Kegiatan::all()->count();
         $total_materi = Materi::all()->count();
@@ -98,16 +98,16 @@ class MenteeController extends Controller
         }
 
     // Pengganti
-        // Get Pengganti
-        public function pengganti()
-        {
-            return view('mentee.pengganti.index');
-        }
-        // Detail Pengganti
-        public function detailPengganti(){
-            return view('mentee.pengganti.detail');
-        }
 
+    // Get Pengganti
+    public function pengganti()
+    {
+        return view('mentee.pengganti.index');
+    }
+    // Detail Pengganti
+    public function detailPengganti(){
+        return view('mentee.pengganti.detail');
+    }
 
     // Keluhan
         // Get Keluhan
@@ -140,6 +140,7 @@ class MenteeController extends Controller
         }
 
     // Cetak
+
     Public function cetak(Request $request)
     {
         $data_mentee = Mentee::where([

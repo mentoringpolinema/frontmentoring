@@ -143,14 +143,14 @@
                                         <label class="form-label" for="materi-link">Link Materi</label>
                                         <input type="text" class="form-control form-control" id="link_materi" name="link_materi" required>
                                     </div>
-                                </div>                                
+                                </div>
                                 <div class="col-md-12">
                                     {{-- <div class="form-group"> --}}
                                         <label class="form-label" for="phone-no">Detail Materi</label>
                                         {{-- <textarea type="text" class="form-control form-control-lg" id="detail_materi" name="detail_materi" value="+880" placeholder="Materi Tentang dst..."></textarea>
                                     </div> --}}
                                     <textarea id="detail_materi" name="detail_materi">
-                                        
+
                                     </textarea>
                                 </div>
                                 <div class="col-12">
@@ -202,11 +202,11 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="form-label" for="minggu-materi">Minggu Ke-</label>
-                                        
+
                                         <select class="form-select" id="minggu_materi" name="minggu_materi_edit" >
                                             <option>Minggu Ke-</option>
                                             @foreach ($data_kegiatan as $kegiatan)
-                                            <option value="{{$kegiatan->minggu_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
+                                                <option value="{{$kegiatan->minggu_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -219,7 +219,7 @@
                                         </div>
                                         <input type="text" class="form-control form-control" id="link_materi" name="link_materi_edit" required>
                                     </div>
-                                </div>                                
+                                </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Detail Materi</label>
@@ -285,15 +285,15 @@
                                             <input type="text" class="form-control form-control" id="link_materi" name="link_materi_detail" value="" readonly>
                                         </div>
                                     </div>
-                                </div>                            
+                                </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Detail Materi</label>
                                         <textarea name="detail_materi_detail" id="detail_materi_detail" readonly>
-                                        
+
                                         </textarea>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -321,13 +321,14 @@
                         $("input[name='minggu_materi_edit']").val(data.options.minggu_materi);
                         $("iframe[name='link_materi_embed_edit']").attr('src', data.options.link_materi_embed);
                         $("textarea[name='detail_materi_edit']").val(data.options.detail_materi);
+                        $("select[name='minggu_materi_edit']").val(data.options.minggu_materi).change();
                         // initGetDataMateri();
                         $("textarea[name='detail_materi_edit']").ckeditor();
                     }
                 });
         });
-        
-        
+
+
         $('body').on('click', '#detailMateri', function (event) {
                 event.preventDefault();
                 console.log("Testt");
@@ -352,8 +353,8 @@
                     }
                 });
         });
-       
+
         </script>
     @endsection
- 
+
 @stop

@@ -27,6 +27,15 @@
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li>
                                                         {{-- <li class="nk-block-tools-opt"><a href="/admin/expMentor/" class="btn btn-info" ><em class="icon ni ni-file-pdf"></em><span>Export Excel</span></a></li> --}}
                                                         <li class="preview-btn-item col-sm-6 col-lg-3">
+<<<<<<< HEAD
+                                                        <div class="dropdown">
+                                                            <a href="#" class="btn btn-warning" data-toggle="dropdown"><em class="icon ni ni-download-cloud"></em><span>Export</span><em class="icon ni ni-chevron-down"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-auto mt-1">
+                                                                <ul class="link-list-plain">
+                                                                    <li><a href="#">Export PDF</a></li>
+                                                                    <li><a href="/admin/expMentor/">Export Excel</a></li>
+                                                                </ul>
+=======
                                                             <div class="dropdown">
                                                                 <a href="#" class="btn btn-warning" data-toggle="dropdown"><em class="icon ni ni-download-cloud"></em><span>Export</span><em class="icon ni ni-chevron-down"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-auto mt-1">
@@ -35,6 +44,7 @@
                                                                         <li><a href="/admin/expMentor/">Export Excel</a></li>
                                                                     </ul>
                                                                 </div>
+>>>>>>> c6274f0930154502e08608cdd63949cd28d2d239
                                                             </div>
                                                         </li>
                                                     </ul>
