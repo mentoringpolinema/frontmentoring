@@ -111,7 +111,7 @@
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
-                    <h5 class="title">Update Profile</h5>
+                    <h5 class="title">Edit Mentor</h5>
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
                             <form action="/admin/{{$data_mentor->id_mentor}}/updMentor" class="form-validate is-alter" method="POST">
@@ -144,7 +144,7 @@
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Update Mentor</button>
+                                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>

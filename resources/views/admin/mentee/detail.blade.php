@@ -93,7 +93,7 @@
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
-                    <h5 class="title">Tambah Mentee</h5>
+                    <h5 class="title">Edit Mentee</h5>
                     <div class="tab-content">
                         <div class="tab-pane active" id="data">
                             <form action="/admin/{{$data_mentee->id_mentee}}/updMentee" class="form-validate is-alter" method="POST">
@@ -164,7 +164,7 @@
                                         <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                             <li>
                                                 {{--                                                <a href="#" class="btn btn-lg btn-primary">Tambah Mentee</a>--}}
-                                                <button type="submit" class="btn btn-lg btn-primary">Tambah Mentee</button>
+                                                <button type="submit" class="btn btn-lg btn-primary">Update</button>
                                             </li>
                                             <li>
                                                 <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
