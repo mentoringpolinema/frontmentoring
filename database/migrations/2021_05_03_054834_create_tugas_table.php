@@ -22,7 +22,6 @@ class CreateTugasTable extends Migration
             $table->foreign('pertemuan_id')->references('id_pertemuan')->on('pertemuan');
         });
     }
-
     /**
      * Reverse the migrations.
      *

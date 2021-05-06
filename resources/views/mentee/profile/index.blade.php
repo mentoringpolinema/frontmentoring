@@ -21,8 +21,9 @@
                                 <div class="nk-block">
                                     <div class="card card-preview">
                                             <div class="card-inner">
-                                                <div class="preview-block">
-                                                    {{-- @foreach ($data_mentee as $mentee) --}}
+                                                <form action="/mentee/profile/update/{{$data_mentee->id_mentee}}" method="POST">
+                                                    @csrf
+                                                     <div class="preview-block">
                                                     <div class="row gy-4">
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
@@ -32,7 +33,7 @@
                                                                     <div class="form-icon form-icon-left">
                                                                         <em class="icon ni ni-user"></em>
                                                                     </div>
-                                                                    <input type="text" class="form-control" id="default-03" value="{{auth()->user()->mentee->nama_mentee}}">
+                                                                    <input type="text" class="form-control" id="nama_mentee" name="nama_mentee" value="{{$data_mentee->nama_mentee}}">
                                                                 </div>
                                                             </div>
                                                         </div>                                                        
@@ -52,7 +53,7 @@
                                                             <div class="form-group">
                                                                 <label class="form-label" for="default-03">NIM</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{auth()->user()->mentee->nim_mentee}}">
+                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{$data_mentee->nim_mentee}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -60,7 +61,7 @@
                                                             <div class="form-group">
                                                                 <label class="form-label" for="default-03">Jurusan</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{auth()->user()->mentee->kelas->prodi->jurusan->nama_jurusan}}">
+                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{$data_mentee->kelas->prodi->jurusan->nama_jurusan}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -69,7 +70,7 @@
                                                             <div class="form-group">
                                                                 <label class="form-label" for="default-03">Prodi</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{auth()->user()->mentee->kelas->prodi->nama_prodi}}">
+                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{$data_mentee->kelas->prodi->nama_prodi}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -78,23 +79,23 @@
                                                             <div class="form-group">
                                                                 <label class="form-label" for="default-03">Angkatan</label>
                                                                 <div class="form-control-wrap">
-                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{auth()->user()->mentee->angkatan->angkatan}}">
+                                                                    <input type="text" class="form-control" id="default-03" disabled value="{{$data_mentee->angkatan->angkatan}}">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {{-- @endforeach --}}
                                                     <br>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <div class="form-control-wrap">
                                                                 <ul>
-                                                                    <li><a href="#" class="btn btn-warning eg-swal-errorhayo">Update</a></li>
+                                                                    <button type="submit" class="btn btn-warning">Update</button>
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                     </div><!-- .card-preview -->
                                                 </div>
+                                                </form>
                                             </div>
                                         </div><!-- .card-preview -->
                                 </div><!-- .nk-block -->

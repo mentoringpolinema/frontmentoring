@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absensi;
+use App\Models\CetakBukti;
 use App\Models\Kegiatan;
 use App\Models\Kelas;
 use App\Models\Keluhan;
@@ -47,13 +48,14 @@ class MenteeController extends Controller
         // Materi
         public function materi()
         {
-            $data_materi = Materi::all();
+            $data_materi = Materi::paginate(1);
             return view('mentee.materi',compact(['data_materi']));
         }
         // Detail Materi
-        public function detailMateri()
+        public function detailMateri($id_materi)
         {
-            return view('mentee.materi.detail');
+            $data_materi = Materi::find($id_materi);
+            return view('mentee.materi.detail',compact('data_materi'));
         }
         // Detail Materi
         public function detailTugas()
@@ -73,7 +75,7 @@ class MenteeController extends Controller
         {
             $data_absensi = Absensi::find($id_pertemuan);
             $data_pertemuan = Pertemuan::find($id_pertemuan);
-            return view('mentee.pertemuan.detail', compact(['data_pertemuan']));
+            return view('mentee.pertemuan.detail', compact(['data_pertemuan','data_absensi']));
         }
         // Absen Pertemuan
         public function absenPertemuan(Request $request){
@@ -97,9 +99,14 @@ class MenteeController extends Controller
 
     // Pengganti
 
+    // Get Pengganti
     public function pengganti()
     {
         return view('mentee.pengganti.index');
+    }
+    // Detail Pengganti
+    public function detailPengganti(){
+        return view('mentee.pengganti.detail');
     }
 
     // Keluhan
@@ -134,10 +141,27 @@ class MenteeController extends Controller
 
     // Cetak
 
-    Public function cetak()
+    Public function cetak(Request $request)
     {
-        $data_mentee = Mentee::all();
-        return view('mentee.cetak.index', ['data_mentee' => $data_mentee]);
+        $data_mentee = Mentee::where([
+            ['id_mentee', '=', auth()->user()->mentee->id_mentee]
+        ])->first();
+
+        $cetak = CetakBukti::where([
+            ['mentee_id', '=', auth()->user()->mentee->id_mentee]
+        ])->first();
+
+        if ($cetak) {
+            return view('mentee.cetak.index', compact('data_mentee','cetak'));
+        } else {
+            $addcetak = CetakBukti::create([
+                "mentee_id" => auth()->user()->mentee->id_mentee,
+                "kode_cetak" => "CB". auth()->user()->mentee->nim_mentee,
+                "status_cetak" => "Pending"
+            ]);
+            return redirect()->back()->with('success','Bukti Telah tercetak !');
+        }
+
     }
     public function print()
     {
@@ -146,8 +170,16 @@ class MenteeController extends Controller
     // Profile
     public function profile()
     {
-        $data_mentee = Mentee::all();
+        $data_mentee = Mentee::where([
+            ['id_mentee', '=', auth()->user()->mentee->id_mentee]
+        ])->first();
         return view('mentee.profile.index',compact('data_mentee'));
+    }
+    // Update Profile
+    public function updProfile(Request $request, $id_mentee){
+        $data_mentee = Mentee::find($id_mentee);
+        $data_mentee->update($request->all());
+        return redirect()->back()->with('success','Profile Berhasil Diupdate');
     }
 
 }
