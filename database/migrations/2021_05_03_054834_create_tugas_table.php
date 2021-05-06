@@ -15,15 +15,13 @@ class CreateTugasTable extends Migration
     {
         Schema::create('tugas', function (Blueprint $table) {
             $table->increments('id_tugas');
-            $table->string('file_tugas');
+            $table->string('nama_tugas');
+            $table->string('detail_tugas');
             $table->integer('pertemuan_id')->unsigned();
-            $table->integer('mentee_id')->unsigned();
             $table->timestamps();
             $table->foreign('pertemuan_id')->references('id_pertemuan')->on('pertemuan');
-            $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
         });
     }
-
     /**
      * Reverse the migrations.
      *

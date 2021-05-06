@@ -139,6 +139,18 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         //Update Materi
         Route::put('/admin/materi', '\App\Http\Controllers\AdminController@editMateri');
 
+    // Tugas ============================================================================================================>
+    // Get Tugas
+    Route::get('/admin/tugas', '\App\Http\Controllers\AdminController@tugas');
+    // Add Tugas
+    Route::post('/admin/tugas/addTugas', '\App\Http\Controllers\AdminController@addTugas');
+    // Delete Tugas
+    Route::get('/admin/tugas/{id}', '\App\Http\Controllers\AdminController@delTugas');
+    //Get Data By Id Tugas
+    Route::post('/admin/tugas/getByIdTugas', '\App\Http\Controllers\AdminController@getByIdTugas')->name('getTugasByID');
+    //Update Tugas
+    Route::put('/admin/tugas', '\App\Http\Controllers\AdminController@editTugas');
+
     // Kelompok ==========================================================================================================>
         // Get Kelompok
         Route::get('/admin/kelompok', '\App\Http\Controllers\AdminController@kelompok');
@@ -247,7 +259,6 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
         Route::get('/mentee/pengganti','\App\Http\Controllers\MenteeController@pengganti');
         // Detail Pengganti
         Route::get('/mentee/detailPengganti', '\App\Http\Controllers\MenteeController@detailPengganti');
-
     // Cetak
         // Get Cetak
         Route::get('/mentee/cetak/{id}', '\App\Http\Controllers\MenteeController@cetak');

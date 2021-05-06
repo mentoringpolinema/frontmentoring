@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             KelompokSeeder::class,
             MenteeSeeder::class,
             PertemuanSeeder::class,
+            KegiatanSeeder::class,
         ]);
     }
 }

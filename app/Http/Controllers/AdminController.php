@@ -6,6 +6,7 @@ use App\Exports\JurusanExport;
 use App\Exports\MentorExport;
 use App\Imports\MentorImport;
 use App\Models\Angkatan;
+use App\Models\Tugas;
 use App\Models\CetakBukti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -235,7 +236,6 @@ class AdminController extends Controller
         return redirect('/admin/mentee')->with('success', 'Mentee Berhasil ditambahkan !');
     }
 
-    // Get By Jurusan
     public function getProdiByIdJurusan($id){
         $prodi = Prodi::where('jurusan_id', $id)->get();
         return $prodi;
@@ -244,7 +244,6 @@ class AdminController extends Controller
     public function getKelasByIdProdi($id){
         $kelas = Kelas::where('prodi_id', $id)->get();
         return $kelas;
-    // Get By Kelas
     }
 
     // Get Mentor By ID
@@ -283,12 +282,13 @@ class AdminController extends Controller
         return Excel::download(new MentorExport, 'Mentor.xlsx');
     }
     // Export PDF
-    public function exportMenteePDF()
+    public function exportMentee()
     {
         $data_mentee = Mentee::all();
         return view('admin.exportPDF.menteepdf', compact('data_mentee'));
-    
     }
+
+
     //-------------------------------------------Users-------------------------------------------
 
     // Users Function
@@ -412,6 +412,56 @@ class AdminController extends Controller
             // dd($materi);
             return redirect('/admin/materi')->with('success', 'Materi Berhasil diedit !');
         }
+
+    //-------------------------------------------Tugas-------------------------------------------
+
+    // Tugas Function
+
+    // Get Function
+    public function tugas()
+    {
+        $data_tugas = Tugas::with('pertemuan')->get();
+//        dd($data_tugas);
+        $data_pertemuan = Pertemuan::all();
+        return view('admin.tugas', compact(['data_tugas', 'data_pertemuan']));
+    }
+    // Add Materi
+    public function addTugas(Request $request)
+    {
+        $tugas = Tugas::create([
+            "nama_tugas" => $request->nama_tugas,
+            "detail_tugas" => $request->detail_tugas,
+            "pertemuan_id" => $request->pertemuan_id,
+        ]);
+        return redirect('/admin/tugas')->with('success', 'Tugas Berhasil ditambahkan !');
+    }
+    // Delete Tugas
+    public function delTugas($id_tugas)
+    {
+        $data_tugas = Tugas::find($id_tugas);
+        $data_tugas->delete($data_tugas);
+        return redirect('/admin/tugas')->with('success', 'Tugas Berhasil dihapus !');
+    }
+    // Get By Id Tugas
+    public function getByIdTugas(Request $request){
+        if($request->ajax()){
+            $data = Materi::findOrFail($request->id_materi);
+            return response()->json(['options'=>$data]);
+        }
+    }
+    // Edit Tugas
+    public function editTugas(Request $request)
+    {
+        $id = $request->id_tugas_edit;
+        $tugas = Tugas::findOrFail($id);
+
+        $tugas->update([
+            "nama_tugas" => $request->nama_tugas_edit,
+            "detail_tugas" => $request->detail_tugas_edit,
+            "pertemuan_id" => $request->pertemuan_id_edit,
+        ]);
+        return redirect('/admin/tugas')->with('success', 'Tugas Berhasil diedit !');
+    }
 
     //-------------------------------------------Kelompok-------------------------------------------
 

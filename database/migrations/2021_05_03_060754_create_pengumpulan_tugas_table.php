@@ -14,8 +14,13 @@ class CreatePengumpulanTugasTable extends Migration
     public function up()
     {
         Schema::create('pengumpulan_tugas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_pengumpulan_tugas');
+            $table->string('file_tugas');
+            $table->integer('tugas_id')->unsigned();
+            $table->integer('mentee_id')->unsigned();
             $table->timestamps();
+            $table->foreign('tugas_id')->references('id_tugas')->on('tugas');
+            $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
         });
     }
 

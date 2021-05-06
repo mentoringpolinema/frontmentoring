@@ -36,7 +36,4 @@ class Mentee extends Model
     public function cetak(){
         return $this->hasOne(CetakBukti::class); 
     }
-
-
-
 }
