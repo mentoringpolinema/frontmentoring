@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 use App\Models\Kegiatan;
 use App\Models\Kelompok;
@@ -28,6 +30,7 @@ use App\Models\User;
 use App\Models\Pengumuman;
 use Barryvdh\DomPDF\Facade as PDF;
 use Dompdf\Dompdf;
+use GrahamCampbell\ResultType\Success;
 use Svg\Tag\Rect;
 
 class AdminController extends Controller
@@ -470,31 +473,78 @@ class AdminController extends Controller
     {
         $data_mentor = Mentor::all();
         $data_kelompok = Kelompok::all();
-        return view('admin.kelompok', compact('data_kelompok','data_mentor'));
+        $total_kelompok = Kelompok::count();
+        return view('admin.kelompok', compact('data_kelompok','data_mentor','total_kelompok'));
     }
     // Detail Kelompok
     public function detailKelompok($id_kelompok){
         $data_kelompok = Kelompok::find($id_kelompok);
         $data_mentee = Mentee::where([
             ['kelompok_id', '=', $id_kelompok]
-            ])->get();
+            ])->get();       
         return view('admin.kelompok.detailKelompok',compact(['data_kelompok', 'data_mentee']));
     }
+    // Add Kelompok
     public function addKelompok(Request $request){
 
         $kelompok = Kelompok::where([
-            ['mentor_id', '=', $request->mentor_id],
-            ['nama_kelompok', '=', $request->nama_kelompok]
-        ]);
-
+            ['mentor_id', '=', $request->mentor_id]
+        ])->first();
+        
         if ($kelompok) {
-            return redirect()->back()->with('warning','Kelompok Sudah Ada !');
+            return redirect('/admin/kelompok')->with('warning','Kelompok Sudah Ada !');
         }else{
-            $addKelompok = Kelompok::create($request->all());
-            return redirect()->back()->with('success','Kelompok Berhasil Ditambahkan');
+            $id_kelompok = DB::getPdo()->lastInsertId();
+            $addKelompok = Kelompok::create([
+                "id_kelompok" => $id_kelompok,
+                "nama_kelompok" => $request->nama_kelompok,
+                "mentor_id" => $request->mentor_id,
+            ]);
+            Alert::success('Yeay','Kelompok Berhasil Ditambahkan !');
+            return redirect('/admin/kelompok');
         }
     }
+    // Delete Kelompok
+    public function delKelompok($id_kelompok){
+        $data_kelompok = Kelompok::find($id_kelompok);
 
+        $cek_mentee = Mentee::where([
+            "kelompok_id" => $id_kelompok
+        ]);
+        if ($cek_mentee) {
+            Alert::error('Kelompok Gagal dihapus', 'kosongkan data Mentee terlebih dahulu');
+            return redirect()->back();
+        } else {
+            $data_kelompok->delete($data_kelompok);
+        }
+        return redirect()->back()->with('success','kelompok berhasil dihapus');
+    }
+    // Delete Mentee Kelompok
+    public function delMentKelompok(Request $request,$id_mentee){
+        $data_mentee = Mentee::find($id_mentee);
+        $data_mentee->update([
+            "kelompok_id" => null
+        ]);
+        return redirect()->back()->with('success','Mentee berhasil dihapus');
+    }
+    // Add Mentee Kelompok
+    public function addMenteeKel(Request $request,$id_mentee){
+        $data_mentee = Mentee::find($id_mentee);
+        $data_mentee->update([
+            "kelompok_id" => $request->kelompok_id
+        ]);
+        // dd($data_mentee);
+        return redirect()->back()->with('success', 'Mentee berhasil ditambahkan');    
+    }
+    // Add Mentee Kelompok View
+    public function addMenKelompok($id_kelompok){
+        $data_kelompok = Kelompok::find($id_kelompok);
+        $data_mentee = Mentee::where([
+            ['kelompok_id', '=', null]
+        ])->get();
+        // dd($data_mentee);
+        return view('admin.kelompok.tambahMentee', compact(['data_kelompok', 'data_mentee']));
+    }
     //-------------------------------------------Keluhan-------------------------------------------
 
     // Get Function

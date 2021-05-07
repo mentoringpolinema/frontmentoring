@@ -22,7 +22,7 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">                                                       
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#menteeModal"><em class="icon ni ni-user-add"></em><span>Tambah Mentee</span></a></li>
+                                                        <li class="nk-block-tools-opt"><a href="/admin/kelompok/tambah/{{$data_kelompok->id_kelompok}}" class="btn btn-primary"><em class="icon ni ni-user-add"></em><span>Tambah Mentee</span></a></li>
                                                         {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li> --}}
                                                     </ul>
                                                 </div>
@@ -66,84 +66,6 @@
                                                         <ul class="btn-toolbar gx-1">
                                                             <li>
                                                                 <a href="#" class="search-toggle toggle-search btn btn-icon" data-target="search"><em class="icon ni ni-search"></em></a>
-                                                            </li><!-- li -->
-                                                            <li class="btn-toolbar-sep"></li><!-- li -->
-                                                            <li>
-                                                                <div class="dropdown">
-                                                                    <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <div class="badge badge-circle badge-primary">4</div>
-                                                                        <em class="icon ni ni-filter-alt"></em>
-                                                                    </a>
-                                                                    <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
-                                                                        <div class="dropdown-head">
-                                                                            <span class="sub-title dropdown-title">Filter By</span>
-                                                                            <div class="dropdown">
-                                                                                <a href="#" class="link link-light">
-                                                                                    <em class="icon ni ni-more-h"></em>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="dropdown-body dropdown-body-rg">
-                                                                            <div class="row gx-6 gy-4">
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Jurusan</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            <option value="any">Teknologi Informasi</option>
-                                                                                            <option value="deposit">Teknik Elektro</option>
-                                                                                            <option value="buy">Teknik Mesin</option>
-                                                                                            <option value="sell">Teknik Kimia</option>
-                                                                                            <option value="transfer">Akutansi</option>
-                                                                                            <option value="withdraw">Administrasi Niaga</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Prodi</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            <option value="any">D3 Manajemen Informatika</option>
-                                                                                            <option value="pending">D4 Teknik Informatika</option>
-                                                                                            <option value="cancel">D4 Akutansi Manajemen</option>
-                                                                                            <option value="process">D3 Akutansi</option>
-                                                                                            <option value="completed">D4 Keuangan</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Kelas</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            <option value="any">A</option>
-                                                                                            <option value="bitcoin">B</option>
-                                                                                            <option value="ethereum">C</option>
-                                                                                            <option value="litecoin">D</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <button type="button" class="btn btn-secondary">Filter</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div><!-- .filter-wg -->
-                                                                </div><!-- .dropdown -->
-                                                            </li><!-- li -->
-                                                            <li>
-                                                                <div class="dropdown">
-                                                                    <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <em class="icon ni ni-setting"></em>
-                                                                    </a>
-                                                                    <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
-                                                                        <ul class="link-check">
-                                                                            <li><span>Order</span></li>
-                                                                            <li class="active"><a href="#">DESC</a></li>
-                                                                            <li><a href="#">ASC</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div><!-- .dropdown -->
                                                             </li><!-- li -->
                                                         </ul><!-- .btn-toolbar -->
                                                     </div><!-- .card-tools -->
@@ -195,7 +117,7 @@
                                                                 <span>{{$mentee->angkatan->angkatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
+                                                                <a href="/admin/kelompok/delM/{{$mentee->id_mentee}}" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->
                                                         @endforeach
@@ -211,109 +133,7 @@
                 </div>
     
     <!-- Added  Mentee -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="menteeModal">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                <div class="modal-body modal-body-lg">
-                    <h5 class="title">Tambah Mentee</h5>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="data">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="full-name">Nama</label>
-                                        <input type="text" class="form-control form-control-lg" id="full-name" name="nama_mentee" value="A. Yahya Hudan Permana" placeholder="Enter Full name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="display-name">NIM</label>
-                                        <input type="text" class="form-control form-control-lg" id="display-name" name="nim_mentee" value="1831710190" placeholder="Enter display name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Jurusan</label>
-                                        <select class="form-select" id="jurusan_mentee" name="jurusan_mentee" data-ui="lg" required>
-                                            <option value="">-Pilih Jurusan-</option>
-                                            <option value="Teknologi Informasi">Teknologi Informasi</option>
-                                            <option value="Teknik Elektro">Teknik Elektro</option>
-                                            <option value="Teknik Sipil">Teknik Sipil</option>
-                                            <option value="Teknik Mesin">Teknik Mesin</option>
-                                            <option value="Akuntansi">Akuntansi</option>
-                                            <option value="Bahasa Inggris">Bahasa Inggris</option>
-                                            <option value="Teknik Kimia">Teknik Kimia</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Kelas</label>
-                                        <select class="form-select" id="kelas_mentee" name="kelas_mentee" data-ui="lg" required>
-                                            <option value="">-Pilih Kelas-</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                            <option value="F">F</option>
-                                            <option value="G">G</option>
-                                            <option value="H">H</option>
-                                            <option value="I">I</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <a href="#" class="btn btn-lg btn-primary">Tambah Mentee</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- .tab-pane -->
-                        {{-- <div class="tab-pane" id="kelompok">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Kelompok</label>
-                                        <input type="text" class="form-control form-control-lg" id="address-l1" value="2337 Kildeer Drive">
-                                    </div>
-                                </div>                            
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-county">Country</label>
-                                        <select class="form-select" id="address-county" data-ui="lg">
-                                            <option>Canada</option>
-                                            <option>United State</option>
-                                            <option>United Kindom</option>
-                                            <option>Australia</option>
-                                            <option>India</option>
-                                            <option>Bangladesh</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <a href="#" class="btn btn-lg btn-primary">Update Address</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- .tab-pane --> --}}
-                    </div><!-- .tab-content -->
-                </div><!-- .modal-body -->
-            </div><!-- .modal-content -->
-        </div><!-- .modal-dialog -->
-    </div><!-- .modal -->
+ 
     
     <!-- Import Excel Modal @e -->
     <div class="modal fade" tabindex="-1" role="dialog" id="importModal">

@@ -16,7 +16,7 @@
                                         <div class="nk-block-head-content">
                                             <h3 class="nk-block-title page-title">Kelompok Mentoring</h3>
                                             <div class="nk-block-des text-soft">
-                                                <p>Total Kelompok Tersedia : 26 Kelompok .</p>
+                                                <p>Total Kelompok Tersedia : {{$total_kelompok}} Kelompok .</p>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
@@ -133,8 +133,8 @@
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#"><em class="icon ni ni-trash"></em><span>Hapus Kelompok</span></a></li>
-                                                                        <li><a href="#"><em class="icon ni ni-eye"></em><span>Detail Kelompok</span></a></li>
+                                                                        <li><a href="/admin/kelompok/del/{{$kelompok->id_kelompok}}"><em class="icon ni ni-trash"></em><span>Hapus Kelompok</span></a></li>
+                                                                        <li><a href="/admin/kelompok/{{$kelompok->id_kelompok}}"><em class="icon ni ni-eye"></em><span>Detail Kelompok</span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>

@@ -19,7 +19,7 @@ class Mentor extends Model{
     }
     public function kelompok()
     {
-        return $this->belongsTo(Kelompok::class,'kelompok_id');
+        return $this->hasOne(Kelompok::class);
     }
 
 }

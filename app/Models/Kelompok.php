@@ -11,9 +11,9 @@ class Kelompok extends Model
     protected $fillable = ['nama_kelompok','mentor_id', 'materi_id'];
 
     public function mentee(){
-        return $this->hasOne(Mentee::class, 'id_mentee');
+        return $this->hasOne(Mentee::class);
     }
     public function mentor(){
-        return $this->hasOne(Mentor::class, 'id_mentor');
+        return $this->belongsTo(Mentor::class, 'mentor_id');
     }
 }

@@ -265,9 +265,16 @@
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$mentee->kelas->prodi->singkatan_prodi}}</span>
                                                             </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$mentee->kelompok->nama_kelompok}}</span>
-                                                            </td>
+                                                            @if ($mentee->kelompok == NULL)
+                                                                <td class="nk-tb-col tb-col-md">
+                                                                    <span>Belum ada Kelompok</span>
+                                                                </td>
+                                                            @else
+                                                                <td class="nk-tb-col tb-col-md">
+                                                                    <span>{{$mentee->kelompok->nama_kelompok}}</span>
+                                                                </td>
+                                                            @endif
+                                                           
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$mentee->angkatan->angkatan}}</span>
                                                                 {{-- <span>{{$mentee->angkatan_id}}</span> --}}

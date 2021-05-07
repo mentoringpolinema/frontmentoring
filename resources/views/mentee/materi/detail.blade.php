@@ -39,7 +39,7 @@
                                             <h2 class="nk-block-title fw-normal">Materi Minggu {{$data_materi->minggu_materi}}</h2>
                                             <div class="nk-block-des">
                                                 <p class="lead"> {{$data_materi->nama_materi}}, Oleh Ust. Rijalus Sholihin</p>
-                                                <p class="text-soft ff-italic">Last Update: {{$data_materi->created_at->format("d M Y")}}</p>
+                                                <p class="text-soft ff-italic">Last Update: {{$data_materi->created_at->format('d M Y')}}</p>
                                             </div>
                                         </div>
                                     </div><!-- .nk-block-head -->

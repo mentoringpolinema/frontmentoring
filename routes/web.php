@@ -140,16 +140,16 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::put('/admin/materi', '\App\Http\Controllers\AdminController@editMateri');
 
     // Tugas ============================================================================================================>
-    // Get Tugas
-    Route::get('/admin/tugas', '\App\Http\Controllers\AdminController@tugas');
-    // Add Tugas
-    Route::post('/admin/tugas/addTugas', '\App\Http\Controllers\AdminController@addTugas');
-    // Delete Tugas
-    Route::get('/admin/tugas/{id}', '\App\Http\Controllers\AdminController@delTugas');
-    //Get Data By Id Tugas
-    Route::post('/admin/tugas/getByIdTugas', '\App\Http\Controllers\AdminController@getByIdTugas')->name('getTugasByID');
-    //Update Tugas
-    Route::put('/admin/tugas', '\App\Http\Controllers\AdminController@editTugas');
+        // Get Tugas
+        Route::get('/admin/tugas', '\App\Http\Controllers\AdminController@tugas');
+        // Add Tugas
+        Route::post('/admin/tugas/addTugas', '\App\Http\Controllers\AdminController@addTugas');
+        // Delete Tugas
+        Route::get('/admin/tugas/{id}', '\App\Http\Controllers\AdminController@delTugas');
+        //Get Data By Id Tugas
+        Route::post('/admin/tugas/getByIdTugas', '\App\Http\Controllers\AdminController@getByIdTugas')->name('getTugasByID');
+        //Update Tugas
+        Route::put('/admin/tugas', '\App\Http\Controllers\AdminController@editTugas');
 
     // Kelompok ==========================================================================================================>
         // Get Kelompok
@@ -158,6 +158,14 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::get('/admin/kelompok/{id}', '\App\Http\Controllers\AdminController@detailKelompok');
         // Add Kelompok
         Route::post('/admin/kelompok/add', '\App\Http\Controllers\AdminController@addKelompok');
+        // Delete Kelompok
+        Route::get('/admin/kelompok/del/{id}', '\App\Http\Controllers\AdminController@delKelompok');
+        // Delete Kelompok Mentee
+        Route::get('/admin/kelompok/delM/{id}', '\App\Http\Controllers\AdminController@delMentKelompok');
+        // Add Kelompok Mentee
+        Route::post('/admin/kelompok/addM/{id}', '\App\Http\Controllers\AdminController@addMenteeKel');
+        // Add Mentee 
+        Route::get('/admin/kelompok/tambah/{id}', '\App\Http\Controllers\AdminController@addMenKelompok');
 
     // Keluhan ===========================================================================================================>
         // Get Keluhan
