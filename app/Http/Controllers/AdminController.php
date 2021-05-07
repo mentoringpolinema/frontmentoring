@@ -517,7 +517,8 @@ class AdminController extends Controller
         } else {
             $data_kelompok->delete($data_kelompok);
         }
-        return redirect()->back()->with('success','kelompok berhasil dihapus');
+        Alert::success('Yeay', 'Kelompok Berhasil dihapus !');
+        return redirect()->back();
     }
     // Delete Mentee Kelompok
     public function delMentKelompok(Request $request,$id_mentee){
@@ -534,7 +535,8 @@ class AdminController extends Controller
             "kelompok_id" => $request->kelompok_id
         ]);
         // dd($data_mentee);
-        return redirect()->back()->with('success', 'Mentee berhasil ditambahkan');    
+        Alert::success('Yeay', 'Kelompok Berhasil ditambahkan !');
+        return redirect()->back();    
     }
     // Add Mentee Kelompok View
     public function addMenKelompok($id_kelompok){
