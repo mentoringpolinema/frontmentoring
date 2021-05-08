@@ -374,15 +374,16 @@ class AdminController extends Controller
                 "link_materi" => $request->link_materi,
                 "minggu_materi" => $request->minggu_materi,
                 "link_materi_embed" => $embedLink,
-                "detail_materi" => $request->detail_materi
+                "detail_materi" => $request->detail_materi, 
+                "slug" => Str::slug($request->nama_materi, '-')
             ]);
             // $materi = Materi::create($request->all());
             return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
         }
         // Delete Materi
-        public function delMateri($id_materi)
+        public function delMateri($slug)
         {
-            $data_materi = Materi::find($id_materi);
+            $data_materi = Materi::where('slug', $slug)->get()->first();;
             $data_materi->delete($data_materi);
             return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
         }
