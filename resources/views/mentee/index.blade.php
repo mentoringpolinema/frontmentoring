@@ -156,8 +156,8 @@
                                                                     <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
                                                                     <div class="timeline-des">
                                                                         <p>{!!$kegiatan->detail_kegiatan!!}</p>
-                                                                        <strong><span
-                                                                                class="time">Waktu : {{$kegiatan->jam_kegiatan}}</span></strong>
+                                                                        {{-- <strong><span
+                                                                                class="time">Waktu : {{$kegiatan->jam_kegiatan}}</span></strong> --}}
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -212,7 +212,7 @@
                                                                         class="badge badge-dot badge-dot-xs badge-warning ml-1">Coming Soon</span>
                                                                 @endif
                                                             </div>
-                                                            <p>{{$pengumuman->detail_pengumuman}}</p>
+                                                            <p>{!!$pengumuman->detail_pengumuman!!}</p>
                                                             <span
                                                                 class="time">{{$pengumuman->created_at->format('d M Y')}}</span>
                                                         </div>
