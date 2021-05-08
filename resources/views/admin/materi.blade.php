@@ -62,10 +62,10 @@
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalDetailMateri" id="detailMateri" data-id="{{ $materi->id_materi }}"><em class="icon ni ni-eye"></em><span>Lihat Materi</span></a></li>
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditMateri" id="editMateri" data-id="{{ $materi->id_materi }}"><em class="icon ni ni-edit"></em><span>Edit Materi</span></a></li>
+                                                                        <li><a href="#" data-toggle="modal" data-target="#modalDetailMateri" id="detailMateri" data-id="{{$materi->id_materi}}"><em class="icon ni ni-eye"></em><span>Lihat Materi</span></a></li>
+                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditMateri" id="editMateri" data-id="{{$materi->id_materi}}"><em class="icon ni ni-edit"></em><span>Edit Materi</span></a></li>
                                                                         <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Tandai Materi</span></a></li>
-                                                                        <li><a href="/admin/materi/{{$materi->id_materi}}"><em class="icon ni ni-trash-alt"></em><span>Hapus Materi</span></a></li>
+                                                                        <li><a href="/admin/materi/{{$materi->slug}}"><em class="icon ni ni-trash-alt"></em><span>Hapus Materi</span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -341,7 +341,7 @@
                     method: 'POST',
                     data: {id_materi:id, _token:token},
                     success: function(data) {
-                        console.log("TEESR");
+                        // console.log("TEESR"); 
                         $("input[name='id_materi_detail']").val(data.options.id_materi);
                         $("input[name='nama_materi_detail']").val(data.options.nama_materi);
                         $("input[name='link_materi_detail']").val(data.options.link_materi);
