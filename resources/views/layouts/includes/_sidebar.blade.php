@@ -90,6 +90,12 @@
                                         <span class="nk-menu-text">Cetak</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->   
+                                <li class="nk-menu-item">
+                                    <a href="/admin/pengumpulan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                                        <span class="nk-menu-text">Pengumpulan Tugas</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->   
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Website</h6>
                                 </li><!-- .nk-menu-heading -->

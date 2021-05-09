@@ -26,6 +26,7 @@ use App\Models\Pertemuan;
 use App\Models\Prodi;
 use App\Models\Kelas;
 use App\Models\Keluhan;
+use App\Models\PengumpulanTugas;
 use App\Models\User;
 use App\Models\Pengumuman;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -425,7 +426,6 @@ class AdminController extends Controller
     public function tugas()
     {
         $data_tugas = Tugas::with('pertemuan')->get();
-//        dd($data_tugas);
         $data_pertemuan = Pertemuan::all();
         return view('admin.tugas', compact(['data_tugas', 'data_pertemuan']));
     }
@@ -436,6 +436,7 @@ class AdminController extends Controller
             "nama_tugas" => $request->nama_tugas,
             "detail_tugas" => $request->detail_tugas,
             "pertemuan_id" => $request->pertemuan_id,
+            "status_tugas" => $request->status_tugas
         ]);
         return redirect('/admin/tugas')->with('success', 'Tugas Berhasil ditambahkan !');
     }
@@ -465,6 +466,27 @@ class AdminController extends Controller
             "pertemuan_id" => $request->pertemuan_id_edit,
         ]);
         return redirect('/admin/tugas')->with('success', 'Tugas Berhasil diedit !');
+    }
+    // Closed Tugas 
+    public function closedTugas($id_tugas){
+        $tugas = Tugas::find($id_tugas);
+
+        $tugas->update([
+            "status_tugas" => "Closed"
+        ]);
+        Alert::success('Berhasil !','Tugas Berhasil ditutup');
+        return redirect('/admin/tugas/');
+    }
+    // Open Tugas 
+    public function openTugas($id_tugas){
+        $tugas = Tugas::find($id_tugas);
+
+        $tugas->update([
+            "status_tugas" => "Open"
+        ]);
+        Alert::success('Berhasil !','Tugas Berhasil dibuka');
+        return redirect('/admin/tugas/');
+
     }
 
     //-------------------------------------------Kelompok-------------------------------------------
@@ -548,12 +570,14 @@ class AdminController extends Controller
         // dd($data_mentee);
         return view('admin.kelompok.tambahMentee', compact(['data_kelompok', 'data_mentee']));
     }
+    
     //-------------------------------------------Keluhan-------------------------------------------
 
     // Get Function
     public function keluhan()
     {
-        $data_keluhan = Keluhan::all();
+        $data_keluhan = Keluhan::orderBy('created_at','desc')->get();
+        // dd($data_keluhan);
         return view('admin.keluhan.index',compact('data_keluhan'));
     }
     // Detail Keluhan
@@ -566,8 +590,13 @@ class AdminController extends Controller
     public function jawabKeluhan(Request $request, $id_keluhan)
     {
         $data_keluhan = Keluhan::find($id_keluhan);
-        $data_keluhan->update($request->all());
-        return redirect('/admin/keluhan/')->with('success', 'Keluhan Berhasil dijawab !');
+        $data_keluhan->update([
+            "jawab_keluhan" => $request->jawab_keluhan,
+            "status_keluhan" => "Selesai"
+        ]);
+        // dd($data_keluhan);
+        Alert::success('Yeay','Keluhan berhasil dijawab !');
+        return redirect()->back();
     }
 
     //-------------------------------------------Pertemuan-------------------------------------------
@@ -663,5 +692,12 @@ class AdminController extends Controller
         ]);
         return redirect()->back()->with('success','Bukti telah disetujui');
     }
+    //-------------------------------------Pengumpulan Tugas -------------------------------------
+    // Get Pengumpulan
+    public function pengumpulan(){
 
+        $pengumpulan_tugas = PengumpulanTugas::all();
+        $total_tugas = PengumpulanTugas::count();
+        return view('admin.pengumpulan.index',compact('pengumpulan_tugas','total_tugas'));
+    }
 }

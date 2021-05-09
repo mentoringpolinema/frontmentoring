@@ -83,9 +83,23 @@
                                                                        data-id="{{ $tugas->id_tugas }}"><em
                                                                             class="icon ni ni-edit"></em><span>Edit Tugas</span></a>
                                                                 </li>
-                                                                <li><a href="#"><em
-                                                                            class="icon ni ni-check-round-cut"></em><span>Tandai Tugas</span></a>
+                                                                @if ($tugas->status_tugas == "Open")
+                                                                <li>
+                                                                    <a href="/admin/tugas/close/{{$tugas->id_tugas}}">
+                                                                        <em class="icon ni ni-check-round-cut"></em>
+                                                                        <span>Tandai Tugas</span>
+                                                                    </a>
                                                                 </li>
+                                                               @endif
+                                                               @if($tugas->status_tugas == "Closed")
+                                                                <li>
+                                                                    <a href="/admin/tugas/open/{{$tugas->id_tugas}}">
+                                                                        <em class="icon ni ni-check-round-cut"></em>
+                                                                        <span>Tandai Tugas</span>
+                                                                    </a>
+                                                                </li>
+                                                                @endif
+                                                                
                                                                 <li><a href="/admin/tugas/{{$tugas->id_tugas}}"><em
                                                                             class="icon ni ni-trash-alt"></em><span>Hapus Tugas</span></a>
                                                                 </li>
@@ -114,8 +128,12 @@
                                                         </li>
                                                     </ul>
                                                     {{-- <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>4 Days Left</span></span> --}}
-                                                    <span class="badge badge-dim badge-success"><em
-                                                            class="icon ni ni-check-circle"></em><span>Selesai</span></span>
+                                                    @if ($tugas->status_tugas == 'Closed')
+                                                    <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>{!!$tugas->status_tugas!!}</span></span>
+                                                    @else
+                                                    <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>{!!$tugas->status_tugas!!}</span></span>
+                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>
@@ -147,14 +165,14 @@
                                 {{-- {{ csrf_field() }} --}}
                                 @csrf
                                 <div class="row gy-4">
-                                    <div class="col-md-9">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="form-label" for="nama_tugas">Nama Tugas</label>
                                             <input type="text" class="form-control form-control" id="nama_tugas"
                                                    name="nama_tugas" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label" for="pertemuan_id">Pertemuan</label>
                                             <select class="form-control" id="pertemuan_id" name="pertemuan_id" required>
@@ -164,6 +182,16 @@
                                                         value="{{$pertemuan->id_pertemuan}}">{{$pertemuan->nama_pertemuan}}</option>
                                                 @endforeach
                                             </select></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="nama_tugas">Status Tugas</label>
+                                            <select class="form-control" id="status_tugas" name="status_tugas" required>
+                                                <option>-Pilih Pertemuan-</option>
+                                                    <option value="Open">Open</option>
+                                                    <option value="Closed">Closed</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-md-12">
                                         <label class="form-label" for="detail_tugas">Detail Tugas</label>

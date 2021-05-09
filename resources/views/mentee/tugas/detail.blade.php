@@ -43,8 +43,8 @@
                                                         <div class="row gy-4">
                                                             <div class="col-sm-12">
                                                                 <div class="form-group">
-                                                                    <h4>Tugas Minggu - 1 </h4>
-                                                                    <p>Tugas untuk Minggu ke-1 Adalah mengerjakan soal-soal serta dijawab di word ! </p>
+                                                                    <h4>{{$data_tugas->nama_tugas}} </h4>
+                                                                    {{$data_tugas->detail_tugas}}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -56,20 +56,26 @@
                                             <div class="card card-preview">
                                                 <div class="card-inner">
                                                     <div class="preview-block">
-                                                        <div class="row gy-4">
+                                                        <div class="row gy-4">                                                            
                                                             <div class="col-sm-12">
-                                                                <div class="form-group">
-                                                                <label class="form-label" for="customMultipleFilesLabel">Silahkan Upload Tugas yang telah diberikan</label>
-                                                                <div class="form-control-wrap">
-                                                                    <div class="custom-file">
-                                                                        <input type="file" multiple class="custom-file-input" id="customMultipleFiles">
-                                                                        <label class="custom-file-label" for="customMultipleFiles">Choose files</label>
+                                                                <form action="/mentee/tugas/upload/" enctype="multipart/form-data" method="POST">
+                                                                    @csrf
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" id="id_tugas" name="id_tugas" value="{{$data_tugas->id_tugas}}" hidden>
+                                                                    </div>  
+                                                                    <div class="form-group">
+                                                                        <label class="form-label" for="customMultipleFilesLabel">Silahkan Upload Tugas yang telah diberikan</label>
+                                                                        <div class="form-control-wrap">
+                                                                            <div class="custom-file">
+                                                                                <input type="file" multiple class="custom-file-input" id="file_tugas" name="file_tugas" required>
+                                                                                <label class="custom-file-label" for="customMultipleFiles">Choose files</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>                                                                                                                       
+                                                                    <div class="form-group">
+                                                                        <button type="submit" class="btn btn-warning">Upload</button>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <button type="submit" class="btn btn-warning">Upload</button>
-                                                            </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -86,20 +92,34 @@
                                                     </div>
                                                 </div>
                                                 <ul class="nk-support">
-                                                    <li class="nk-support-item">
-                                                        <div class="user-avatar bg-purple-dim">
-                                                            <span>TG1</span>
-                                                        </div>
-                                                        <div class="nk-support-content">
-                                                            <div class="title">
-                                                                <span>Tugas Minggu 1</span>
+                                                    @foreach ($data_tugasku as $tugasku)
+                                                        <li class="nk-support-item">
+                                                            <div class="user-avatar bg-purple-dim">
+                                                                <span>TG1</span>
                                                             </div>
-                                                            <span class="time">2 Hours ago</span>
-                                                        </div>
-                                                    </li>
+                                                            <div class="nk-support-content">
+                                                                <div class="title">
+                                                                    <span>Tugas Minggu </span><a href="/mentee/tugas/delete/{{$tugasku->id_pengumpulan_tugas}}"><button class="btn btn-sm btn-danger"><em class="icon ni ni-trash"></em></button></a>
+                                                                </div>
+                                                                <span class="time">{{$tugasku->created_at->format('d M Y')}}</span>
+                                                            </div>
+                                                            {{-- <div class="nk-su">
+                                                                <button class="btn btn-sm btn-danger">Hapus</button>
+                                                            </div> --}}
+                                                        </li>
+                                                   @endforeach
                                                 </ul>
                                             </div><!-- .card -->
                                         </div>
+                                         @error('file_tugas')
+                                        <div class="col-lg-12 col-xxl-4">
+                                            <div class="example-alert">
+                                                <div class="alert alert-danger alert-icon">
+                                                    <em class="icon ni ni-cross-circle"></em> <strong>Upload File Gagal ! </strong>File Melebih Batas ketentuan, Silahkan di compress terlebih dahulu. 
+                                                </div>                                                       
+                                            </div>
+                                        </div>
+                                         @enderror  
                                     </div><!-- .card-preview -->
                                 </div><!-- .nk-block -->
                             </div>

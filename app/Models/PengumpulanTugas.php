@@ -15,9 +15,8 @@ class PengumpulanTugas extends Model
     public function tugas(){
         return $this->belongsTo(Tugas::class, 'tugas_id', 'id_tugas');
     }
-
     public function mentee()
     {
-        return $this->hasOne(Mentee::class);
+        return $this->belongsTo(Mentee::class,'mentee_id');
     }
 }
