@@ -51,7 +51,7 @@
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
-                                                            <a href="/admin/{{$pengumuman->id_pengumuman}}/detPengumuman" class="project-title">
+                                                            <a href="/admin/detPengumuman/{{$pengumuman->id_pengumuman}}" class="project-title">
                                                                 @if($pengumuman->tagline_pengumuman == 'Mentoring') 
                                                                 <div class="user-avatar sq bg-warning"><span>MT</span></div>
                                                                 @endif
@@ -73,8 +73,8 @@
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="/admin/{{$pengumuman->id_pengumuman}}/detPengumuman" data-toggle="modal" data-target="#modalDetailpengumuman"><em class="icon ni ni-eye"></em><span>Lihat pengumuman</span></a></li>
-                                                                        <li><a href="/admin/{{$pengumuman->id_pengumuman}}/detPengumuman" data-toggle="modal" data-target="#modalEditpengumuman"><em class="icon ni ni-edit"></em><span>Edit pengumuman</span></a></li>
+                                                                        <li><a href="/admin/{{$pengumuman->id_pengumuman}}/detPengumuman/"><em class="icon ni ni-eye"></em><span>Lihat pengumuman</span></a></li>
+                                                                        <li><a href="/admin/{{$pengumuman->id_pengumuman}}/detPengumuman/"><em class="icon ni ni-edit"></em><span>Edit pengumuman</span></a></li>
                                                                         <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Tandai pengumuman</span></a></li>
                                                                         <li><a href="/admin/{{$pengumuman->id_pengumuman}}/delPengumuman"><em class="icon ni ni-trash-alt"></em><span>Hapus pengumuman</span></a></li>
                                                                     </ul>
@@ -115,7 +115,7 @@
 
 
 
-                   <!--  Tambah Pengumuman Modal @e -->
+    <!--  Tambah Pengumuman Modal @e -->
     <div class="modal fade" tabindex="-1" role="dialog" id="modalAddPengumuman">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -169,8 +169,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="pengumuman-link" required>Detail Pengumuman</label>
-                                        <textarea id="detail_pengumuman" name="detail_pengumuman">
-                                        
+                                        <textarea id="detail_pengumuman" name="detail_pengumuman"> 
                                         </textarea>
                                     </div>
                                 </div>
@@ -192,4 +191,5 @@
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- .modal -->
+
 @stop

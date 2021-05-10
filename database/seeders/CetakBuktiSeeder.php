@@ -16,7 +16,7 @@ class CetakBuktiSeeder extends Seeder
     {
         $dataCetakBukti = [
             'kode_cetak' => 'CB853418217',
-            'mentee_id' => '1',
+            'mentee_id' => 1,
             'status_cetak' => 'Accept',
         ];
         DB::table('cetak_bukti')->insert($dataCetakBukti);

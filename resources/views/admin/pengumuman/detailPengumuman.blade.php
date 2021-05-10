@@ -7,7 +7,7 @@
                     <div class="nk-block-head nk-block-head-sm">
                         <div class="nk-block-between g-3">
                             <div class="nk-block-head-content">
-                                <h3 class="nk-block-title page-title">Detail / <strong class="text-primary small">Pengumuman</strong>
+                                <h3 class="nk-block-title page-title">Detail <strong class="text-primary small">Pengumuman</strong>
                                 </h3>
                                 <div class="nk-block-des text-soft">
                                     <ul class="list-inline">
@@ -47,11 +47,12 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="detail">
                                             <div class="card-inner">
-                                                <div class="nk-block">
-                                                    <div class="nk-block-head">
+                                                {{-- <div class="nk-block"> --}}
+                                                    {{-- <div class="nk-block-head"> --}}
                                                         <h4 class="title">Detail Pengumuman</h4>
                                                         {{-- <p>Berikut detaiil Pengumuman .</p> --}}
-                                                    </div><!-- .nk-block-head -->
+                                                    {{-- </div> --}}
+                                                    <!-- .nk-block-head -->
                                                     <div class="profile-ud-list">
                                                         <div class="profile-ud-item">
                                                             <div class="profile-ud wider">
@@ -75,35 +76,35 @@
                                                             </div>
                                                         </div>
                                                     </div><!-- .profile-ud-list -->
-                                                </div><!-- .nk-block -->
-                                                <div class="nk-block">
-                                                    <div class="nk-block-head nk-block-head-line">
-                                                        <h6 class="title overline-title text-base">Detail
-                                                            Pengumuman</h6>
-                                                    </div><!-- .nk-block-head -->
-                                                    <div class="profile-ud-list">
-                                                        <div class="profile-ud-item">
-                                                            <div class="profile-ud wider">
+                                                {{-- </div> --}}
+                                                <!-- .nk-block -->
+                                                {{-- <div class="nk-block"> --}}
+                                                    {{-- <div class="nk-block-head nk-block-head-line"> --}}
+                                                        {{-- <h6 class="title overline-title text-base">Detail
+                                                            Pengumuman</h6> --}}
+                                                    {{-- </div> --}}
+                                                    <!-- .nk-block-head -->
+                                                    {{-- <div class="profile-ud-list"> --}}
+                                                        {{-- <div class="profile-ud-item"> --}}
+                                                            {{-- <div class="profile-ud wider">
                                                                 <span
-                                                                    class="profile-ud-value">{{$data_pengumuman->detail_pengumuman}}</span>
-                                                                {{-- <span class="profile-ud-label">Detail</span> --}}
-                                                            </div>
-                                                        </div>
-                                                    </div><!-- .profile-ud-list -->
-                                                </div><!-- .nk-block -->
+                                                                    class="profile-ud-value">{!!$data_pengumuman->detail_pengumuman!!}</span>
+                                                            </div> --}}
+                                                        {{-- </div> --}}
+                                                    {{-- </div> --}}
+                                                    <!-- .profile-ud-list -->
+                                                {{-- </div> --}}
+                                                <!-- .nk-block -->
                                                 <div class="nk-divider divider md"></div>
                                                 <div class="nk-block">
                                                     <div class="nk-block-head nk-block-head-sm nk-block-between">
-                                                        <h5 class="title">Pengumuman Note</h5>
+                                                        <h5 class="title">Detail</h5>
                                                         {{-- <a href="#" class="link link-sm">+ Add Note</a> --}}
                                                     </div><!-- .nk-block-head -->
                                                     <div class="bq-note">
                                                         <div class="bq-note-item">
                                                             <div class="bq-note-text">
-                                                                <p>Aproin at metus et dolor tincidunt feugiat eu id
-                                                                    quam. Pellentesque habitant morbi tristique senectus
-                                                                    et netus et malesuada fames ac turpis egestas.
-                                                                    Aenean sollicitudin non nunc vel pharetra. </p>
+                                                                {!!$data_pengumuman->detail_pengumuman!!}
                                                             </div>
                                                             <div class="bq-note-meta">
                                                                 <span class="bq-note-added">Added on <span
@@ -132,7 +133,7 @@
                                                 </div><!-- .nk-block -->
                                                 <div class="nk-block">
                                                     <form
-                                                        action="/admin/{{$data_pengumuman->id_pengumuman}}/edtPengumuman"
+                                                        action="/admin/{{$data_pengumuman->id_pengumuman}}/editPengumuman"
                                                         class="form-validate is-alter" method="POST">
                                                         {{-- {{ csrf_field() }} --}}
                                                         @csrf
@@ -204,7 +205,7 @@
                                                                               id="detail_pengumuman"
                                                                               name="detail_pengumuman"
                                                                               placeholder="Enter Detail"
-                                                                              value="{{$data_pengumuman->detail_pengumuman}}"></textarea>
+                                                                              value="{!!$data_pengumuman->detail_pengumuman!!}">{!!$data_pengumuman->detail_pengumuman!!}</textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="col-12">

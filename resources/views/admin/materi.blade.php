@@ -36,7 +36,7 @@
                                                                 </div>
                                                             </div>
                                                         </li> --}}
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalMateri"><em class="icon ni ni-plus"></em><span>Tambah Materi</span></a></li>
+                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalAddMateri"><em class="icon ni ni-plus"></em><span>Tambah Materi</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div><!-- .toggle-wrap -->
@@ -105,7 +105,7 @@
                 </div>
 
     <!--  Tambah Materi Modal @e -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalMateri">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalAddMateri">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
