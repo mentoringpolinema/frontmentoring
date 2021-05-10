@@ -112,9 +112,11 @@
                                                     </div><!-- .card-tools -->
                                                     <div class="card-search search-wrap" data-search="search">
                                                         <div class="search-content">
-                                                            <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                                                            <input type="text" class="form-control border-transparent form-focus-none" placeholder="Cari Kelompok">
-                                                            <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
+                                                            <form action="/admin/kelompok" method="GET">
+                                                                <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                                                                <input type="text" name="cari" class="form-control border-transparent form-focus-none" placeholder="Cari Kelompok">
+                                                                <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
+                                                            </form>        
                                                         </div>
                                                     </div><!-- .card-search -->
                                                 </div><!-- .card-title-group -->

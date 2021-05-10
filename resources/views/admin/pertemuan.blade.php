@@ -199,7 +199,7 @@
                                                                 <span>{{$pertemuan->detail_pertemuan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span><a href="http://{{$pertemuan->link_pertemuan}}"><em class="icon ni ni-link"></em> Link</a></span>
+                                                                <span><a href="{{$pertemuan->link_pertemuan}}"><em class="icon ni ni-link"></em> Link</a></span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
 
@@ -225,7 +225,7 @@
                                                                                     <li><a href="/admin/pertemuan/dec/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-na"></em><span>Close</span></a></li>
                                                                                     {{-- <li><a href="#" data-toggle="modal" data-target="#tolakTugas"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li> --}}
                                                                                     <li class="divider"></li>
-                                                                                    <li><a href="/admin/detPertemuan/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-download-cloud"></em><span>Detail</span></a></li>
+                                                                                    <li><a href="/admin/detPertemuan/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-eye"></em><span>Detail</span></a></li>
                                                                                     <li><a href="/admin/delPertemuan/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
                                                                                 </ul>
                                                                             </div>

@@ -75,7 +75,7 @@
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="/admin/tugas" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-folder"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-folders-fill"></em></span>
                                         <span class="nk-menu-text">Tugas</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->                                                              
@@ -85,13 +85,19 @@
                                         <span class="nk-menu-text">Pengumpulan Tugas</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->   
+                                <li class="nk-menu-item">
+                                    <a href="/admin/absensi" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-list-thumb-fill"></em></span>
+                                        <span class="nk-menu-text">Absensi Pertemuan</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->   
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Lainnya</h6>
                                 </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item">
                                     <a href="/admin/cetak" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-printer-fill"></em></span>
-                                        <span class="nk-menu-text">Cetak</span>
+                                        <span class="nk-menu-text">Cetak Bukti</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->   
                                 <li class="nk-menu-item">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\JurusanExport;
 use App\Exports\MentorExport;
 use App\Imports\MentorImport;
+use App\Models\Absensi;
 use App\Models\Angkatan;
 use App\Models\Tugas;
 use App\Models\CetakBukti;
@@ -123,7 +124,6 @@ class AdminController extends Controller
     // Add Mentor
     public function addMentor(Request $request)
     {
-
         $user = User::create([
             "role" => "Mentor",
             "name" => $request->nama_mentor,
@@ -204,7 +204,15 @@ class AdminController extends Controller
         $data_angkatan = Angkatan::all();
         $data_jurusan = Jurusan::all();
         $data_kelompok = Kelompok::all();
-        return view('admin.mentee', compact(['data_mentee', 'data_jurusan', 'data_kelompok','data_angkatan','totalMentee', 'total_kelompok', 'total_kelas']));
+        return view('admin.mentee', compact([
+            'data_mentee', 
+            'data_jurusan', 
+            'data_kelompok',
+            'data_angkatan',
+            'totalMentee', 
+            'total_kelompok', 
+            'total_kelas'
+            ]));
     }
     // Detail Mentee
     public function detailMentee($slug){
@@ -250,14 +258,14 @@ class AdminController extends Controller
         return $kelas;
     }
 
-    // Get Mentor By ID
+    // Get Mentee By ID
     public function menteeById($id)
     {
         $data_mentor = Mentor::find($id);
         return view('admin.mentor', ['data_mentor' => $data_mentor]);
     }
 
-    // Delete Mentor
+    // Delete Mentee
     public function delMentee($slug)
     {
         $data_mentee = Mentee::where('slug', $slug)->get()->first();
@@ -267,31 +275,30 @@ class AdminController extends Controller
             return redirect('/admin/mentee')->with('success', 'Mentee Berhasil dihapus !');
     }
 
-    // Import Mentor
+    // Import Mentee
     public function impMentee(Request $request)
     {
         Excel::import(new MentorImport,$request->file('data_mentor'));
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Import !');
     }
 
-    // Update Mentor
+    // Update Mentee
     public function updMentee(Request $request,$id_mentee){
         $data_mentee = Mentee::find($id_mentee);
         $data_mentee->update($request->all());
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
     }
-    // Export Mentor
+    // Export Mentee
     public function exportMenteeExcel()
     {
         return Excel::download(new MentorExport, 'Mentor.xlsx');
     }
     // Export PDF
-    public function exportMentee()
+    public function exportMenteePDF()
     {
         $data_mentee = Mentee::all();
         return view('admin.exportPDF.menteepdf', compact('data_mentee'));
     }
-
 
     //-------------------------------------------Users-------------------------------------------
 
@@ -498,12 +505,20 @@ class AdminController extends Controller
     //-------------------------------------------Kelompok-------------------------------------------
 
     // Get Kelompok
-    public function kelompok()
+    public function kelompok(Request $request)
     {
-        $data_mentor = Mentor::all();
-        $data_kelompok = Kelompok::all();
-        $total_kelompok = Kelompok::count();
-        return view('admin.kelompok', compact('data_kelompok','data_mentor','total_kelompok'));
+        if ($request->has('cari')) {
+            $data_kelompok = Kelompok::where('nama_kelompok', 'LIKE', '%' . $request->cari . '%')->get();
+            $data_mentor = Mentor::all();
+            $total_kelompok = Kelompok::count();
+            return view('admin.kelompok', compact('data_kelompok', 'data_mentor', 'total_kelompok'));
+        } else {
+            $data_mentor = Mentor::all();
+            $data_kelompok = Kelompok::all();
+            $total_kelompok = Kelompok::count();
+            return view('admin.kelompok', compact('data_kelompok', 'data_mentor', 'total_kelompok'));
+        }
+
     }
     // Detail Kelompok
     public function detailKelompok($id_kelompok){
@@ -732,5 +747,22 @@ class AdminController extends Controller
         ]);
         Alert::warning('Yaah:(', 'Tugas telah ditolak');
         return redirect()->back();
+    }
+
+    //-------------------------------------------Absensi-------------------------------------------
+    public function absensi()
+    {
+        $total_mentee = Mentee::count();
+        $total_pertemuan = Pertemuan::count();
+        $data_pertemuan = Pertemuan::all();
+        $total_absensi = Absensi::count();
+        return view('admin.absensi.index', compact('total_absensi', 'data_pertemuan','total_mentee','total_pertemuan'));
+    }
+    public function detailAbsen($id_pertemuan){
+        $data_pertemuan = Pertemuan::find($id_pertemuan);
+        $absen = Absensi::where([
+            "pertemuan_id" => $id_pertemuan
+        ])->get();
+        return view('admin.absensi.detail',compact('data_pertemuan','absen'));
     }
 }

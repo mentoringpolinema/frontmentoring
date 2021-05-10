@@ -218,6 +218,11 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         // Decline Tugas
         Route::get('/admin/pengumpulan/dec/{id}', '\App\Http\Controllers\AdminController@decTugas');
 
+    // Absensi 
+        // Get Absensi
+        Route::get('/admin/absensi', '\App\Http\Controllers\AdminController@absensi');
+        // Detail Absensi
+        Route::get('/admin/absensi/detail/{id}', '\App\Http\Controllers\AdminController@detailAbsen');
 });
 // MENTOR ROUTES =========================================================================================================>
 Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
