@@ -196,10 +196,10 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::post('/admin/pengumuman/addPengumuman', '\App\Http\Controllers\AdminController@addPengumuman');
         // Del Pengumuman
         Route::get('/admin/{id}/delPengumuman', '\App\Http\Controllers\AdminController@delPengumuman');
-        // Det Pengumuman
-        Route::get('/admin/{id}/detPengumuman', '\App\Http\Controllers\AdminController@detPengumuman');
         // Edit Pengumuman
-        Route::post('/admin/{id}/edtPengumuman', '\App\Http\Controllers\AdminController@edtPengumuman');
+        Route::post('/admin/{id}/editPengumuman', '\App\Http\Controllers\AdminController@editPengumuman');
+        // Detail Pengumuman
+        Route::get('/admin/{id}/detPengumuman', '\App\Http\Controllers\AdminController@detPengumuman');
 
     // Cetak Bukti
         // Get Bukti

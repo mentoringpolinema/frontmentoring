@@ -500,6 +500,7 @@ class AdminController extends Controller
                 "id_kelompok" => $id_kelompok,
                 "nama_kelompok" => $request->nama_kelompok,
                 "mentor_id" => $request->mentor_id,
+                // "materi_id" => $request->materi_id,
             ]);
             Alert::success('Yeay','Kelompok Berhasil Ditambahkan !');
             return redirect('/admin/kelompok');
@@ -617,8 +618,9 @@ class AdminController extends Controller
     public function pengumuman()
     {
         $data_pengumuman = Pengumuman::all();
-        return view('admin.pengumuman', ['data_pengumuman' => $data_pengumuman]);
+        return view('admin.pengumuman', compact(['data_pengumuman']));
     }
+
     // Add Pengumuman
     public function addPengumuman(Request $request)
     {
@@ -639,7 +641,7 @@ class AdminController extends Controller
         return view('admin.pengumuman.detailPengumuman', compact(['data_pengumuman']));
     }
     // Edit Pengumuman
-    public function edtPengumuman(Request $request,$id_pengumuman){
+    public function editPengumuman(Request $request, $id_pengumuman){
         $data_pengumuman = Pengumuman::find($id_pengumuman);
         $data_pengumuman->update($request->all());
         return redirect('/admin/pengumuman')->with('success', 'Pengumuman Berhasil di Update !');
