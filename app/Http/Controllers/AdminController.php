@@ -427,7 +427,8 @@ class AdminController extends Controller
     {
         $data_tugas = Tugas::with('pertemuan')->get();
         $data_pertemuan = Pertemuan::all();
-        return view('admin.tugas', compact(['data_tugas', 'data_pertemuan']));
+        $total_tugas = Tugas::count();
+        return view('admin.tugas', compact(['data_tugas', 'data_pertemuan','total_tugas']));
     }
     // Add Materi
     public function addTugas(Request $request)
@@ -444,8 +445,13 @@ class AdminController extends Controller
     public function delTugas($id_tugas)
     {
         $data_tugas = Tugas::find($id_tugas);
-        $data_tugas->delete($data_tugas);
-        return redirect('/admin/tugas')->with('success', 'Tugas Berhasil dihapus !');
+        if ($data_tugas) {
+            Alert::error('Gagal !','Tugas Gagal dihapus');
+            return redirect()->back();
+        } else {
+            $data_tugas->delete($data_tugas);
+            return redirect('/admin/tugas')->with('success', 'Tugas Berhasil dihapus !');
+        }
     }
     // Get By Id Tugas
     public function getByIdTugas(Request $request){
@@ -607,19 +613,24 @@ class AdminController extends Controller
         {
             // Get By Mentor
             if($request->has('cari')){
-                $data_pertemuan = Pertemuan::where('mentor_pertemuan','LIKE','%'. $request->cari.'%')->get();
+                $data_pertemuan = Pertemuan::where('nama_pertemuan','LIKE','%'. $request->cari.'%')->get();
                 $total = Pertemuan::count();
+                $totalMentee = Mentee::count();
+                $totalKelompok = Kelompok::count();
             }else{
-                $data_pertemuan = Pertemuan::all();
+                $data_pertemuan = Pertemuan::orderBy('created_at','desc')->get();
                 $total = Pertemuan::count();
+                $totalMentee = Mentee::count();
+                $totalKelompok = Kelompok::count();
             }
-            return view('admin.pertemuan',compact(['data_pertemuan','total']));
+            return view('admin.pertemuan',compact(['data_pertemuan','total','totalMentee', 'totalKelompok']));
         }
         // Add Pertemuan
         public function addPertemuan(Request $request)
         {
             $pertemuan = Pertemuan::create($request->all());
-            return redirect('/admin/pertemuan')->with('success', 'Pertemuan Berhasil Ditambahkan !');
+            Alert::success('Yeay Berhasil !','Pertemuan Berhasil Ditambahkan !');
+            return redirect('/admin/pertemuan');
         }
         // Del Pertemuan
         public function delPertemuan($id_pertemuan)
@@ -699,5 +710,27 @@ class AdminController extends Controller
         $pengumpulan_tugas = PengumpulanTugas::all();
         $total_tugas = PengumpulanTugas::count();
         return view('admin.pengumpulan.index',compact('pengumpulan_tugas','total_tugas'));
+    }
+    // Download Tugas
+    public function downloadTugas($file){
+       return response()->download('file_tugas/' .$file);
+    }    
+    // Accept Tugas
+    public function accTugas($id_pengumpulan_tugas){
+        $data_pengumpulan = PengumpulanTugas::find($id_pengumpulan_tugas);
+        $data_pengumpulan->update([
+            "status_tugas" => "Diterima"
+        ]);
+        Alert::success('Berhasil !','Tugas telah diterima');
+        return redirect()->back();
+    }
+    // Decline Tugas
+    public function decTugas($id_pengumpulan_tugas){
+        $data_pengumpulan = PengumpulanTugas::find($id_pengumpulan_tugas);
+        $data_pengumpulan->update([
+            "status_tugas" => "Ditolak"
+        ]);
+        Alert::warning('Yaah:(', 'Tugas telah ditolak');
+        return redirect()->back();
     }
 }

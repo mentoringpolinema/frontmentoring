@@ -179,7 +179,6 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         // Jawab Keluhan
         Route::get('/admin/keluhan/{id}/update', '\App\Http\Controllers\AdminController@jawabKeluhan');
 
-
     // Pertemuan =========================================================================================================>
         // Get Pertemuan
         Route::get('/admin/pertemuan', '\App\Http\Controllers\AdminController@pertemuan');
@@ -212,6 +211,12 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Pengumpulan Tugas  =================================================================================================>
         // Get Kumpul
         Route::get('/admin/pengumpulan', '\App\Http\Controllers\AdminController@pengumpulan');
+        // Download Tugas
+        Route::get('/admin/download/{file}', '\App\Http\Controllers\AdminController@downloadTugas');
+        // Accept Tugas
+        Route::get('/admin/pengumpulan/acc/{id}', '\App\Http\Controllers\AdminController@accTugas');
+        // Decline Tugas
+        Route::get('/admin/pengumpulan/dec/{id}', '\App\Http\Controllers\AdminController@decTugas');
 
 });
 // MENTOR ROUTES =========================================================================================================>

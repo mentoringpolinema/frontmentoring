@@ -8,7 +8,7 @@
                                     <nav>
                                     <ul class="breadcrumb breadcrumb-arrow">
                                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item ">Pertemuan</li>
+                                        <li class="breadcrumb-item"><a href="/mentee/pertemuan">Pertemuan</a></li>
                                         <li class="breadcrumb-item active">Detail</li>
                                     </ul>
                                     </nav>
@@ -31,7 +31,7 @@
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                <div class="nk-block nk-block-lg">                                        
-                                        <div class="card card-preview">
+                                    <div class="card card-preview">
                                             <table class="table table-orders">
                                                 <thead class="tb-odr-head">
                                                     <tr class="tb-odr-item">
@@ -50,33 +50,39 @@
                                                     <tr class="tb-odr-item">
                                                         <td class="tb-odr-info">
                                                             <span class="tb-odr-id">{{$data_pertemuan->nama_pertemuan}}</span>
-                                                            <span class="tb-odr-date">{{$data_pertemuan->mentor_id}}</span>
+                                                            <span class="tb-odr-date">{{$data_pertemuan->mentor->nama_mentor}}</span>
                                                         </td>
                                                         <td class="tb-odr-amount">
                                                             <span class="tb-odr-total">
                                                                 <span class="amount"><a href="{{$data_pertemuan->link_pertemuan}}">Zoom Meeting</a></span>
                                                             </span>
+                                                            @if ($data_absensi == null)
+                                                            <span class="tb-odr-status">
+                                                                <span class="badge badge-dot badge-danger">Tidak Absen</span>
+                                                            </span>
+                                                            @else
                                                             <span class="tb-odr-status">
                                                                 <span class="badge badge-dot badge-success">Hadir</span>
                                                             </span>
-                                                            <span class="tb-odr-status">
-                                                                <span class="badge badge-dot badge-danger">Tidak </span>
-                                                            </span>
-                                                        </td>                                                        
+                                                            @endif 
+                                                        </td>
+                                                        @if ($data_pertemuan->status_pertemuan == 'Open')                                                 
                                                         <td class="tb-odr-action">
                                                             <div class="tb-odr-btns d-none d-md-inline">
                                                                 <form action="/mentee/pertemuan/absenPertemuan" method="POST">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-sm btn-warning"><span>Absen</span></button>
                                                                     <input type="hidden" name="id_pertemuan" id="id_pertemuan" value="{{$data_pertemuan->id_pertemuan}}">
-                                                                </form>                                                                
+                                                                </form>                                                        
                                                             </div>                                                            
                                                         </td>
+                                                         @endif
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </div><!-- .card -->
-                                    </div><!-- nk-block -->
+                                        </div><!-- .card -->                                        
+                                    </div><!-- .card-preview -->                                    
+                                </div>
                             </div>
                         </div>
                     </div>

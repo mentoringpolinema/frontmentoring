@@ -107,16 +107,10 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                @if ($tugas->status_tugas == 'Closed')
-                                                <div class="actions">
-                                                    <span>Closed</span>
-                                                </div>
-                                                @else
+                                                </div>                        
                                                 <div class="actions">
                                                     <a href="/mentee/tugas/{{$tugas->id_tugas}}" class="btn btn-sm btn-warning">Detail</a>
                                                 </div>
-                                                @endif
                                             </div><!-- .sp-pdl-item -->
                                         </div><!-- .col -->
                                         @endforeach

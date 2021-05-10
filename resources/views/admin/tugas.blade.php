@@ -16,7 +16,7 @@
                             <div class="nk-block-head-content">
                                 <h3 class="nk-block-title page-title">Tugas Mentoring </h3>
                                 <div class="nk-block-des text-soft">
-                                    <p>You have total 0 Tugas.</p>
+                                    <p>You have total {{$total_tugas}} Tugas.</p>
                                 </div>
                             </div><!-- .nk-block-head-content -->
                             <div class="nk-block-head-content">

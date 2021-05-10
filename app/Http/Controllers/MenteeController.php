@@ -83,20 +83,22 @@ class MenteeController extends Controller
             ])->first();
 
             if ($cek_tugas) {
+                dd($cek_tugas);
                 Alert::error('yaah','kamu sudah mengumpulkan !');
                 return redirect()->back();
-            } else {                
+            } else { 
                 if ($request->hasFile('file_tugas')) {
 
                     $request->validate([
-                        'file_tugas' => 'required|max:2048',
+                        'file_tugas' => 'required|max:2048|mimes:pdf',
                     ]);
                         
                     $request->file('file_tugas')->move('file_tugas/', $request->file('file_tugas')->getClientOriginalName());
                     $uploadTugas = PengumpulanTugas::create([
                         "mentee_id" => auth()->user()->mentee->id_mentee,
                         "file_tugas" => $request->file('file_tugas')->getClientOriginalName(),
-                        "tugas_id" => $request->id_tugas
+                        "tugas_id" => $request->id_tugas,
+                        "status_tugas" => "Pending"
                     ]);
                 }
                 Alert::success('Yeay', 'Tugas Berhasil dikumpulkan !');
@@ -121,13 +123,20 @@ class MenteeController extends Controller
         // Get Pertemuan
         public function pertemuan()
         {
-            $data_pertemuan = Pertemuan::all();
+            $data_pertemuan = Pertemuan::where([
+                "mentor_id" => auth()->user()->mentee->kelompok->mentor->id_mentor
+            ])->get();
+            // dd($data_pertemuan);
             return view('mentee.pertemuan.index',compact(['data_pertemuan']));
         }
         // Detail Pertemuan
         public function detPertemuan($id_pertemuan)
         {
-            $data_absensi = Absensi::find($id_pertemuan);
+            $data_absensi = Absensi::where([
+                "mentee_id" => auth()->user()->mentee->id_mentee,
+                "pertemuan_id" => $id_pertemuan
+                ])->first();
+            // dd($data_absensi);
             $data_pertemuan = Pertemuan::find($id_pertemuan);
             return view('mentee.pertemuan.detail', compact(['data_pertemuan','data_absensi']));
         }
@@ -155,7 +164,8 @@ class MenteeController extends Controller
         // Get Pengganti
         public function pengganti()
         {
-            return view('mentee.pengganti.index');
+            $tugas = Tugas::all();
+            return view('mentee.pengganti.index',compact('tugas'));
         }
         // Detail Pengganti
         public function detailPengganti(){

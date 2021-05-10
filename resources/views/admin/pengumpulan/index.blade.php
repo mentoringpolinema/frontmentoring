@@ -18,14 +18,14 @@
                                             <div class="nk-block-des text-soft">
                                             </div>
                                         </div><!-- .nk-block-head-content -->
-                                        <div class="nk-block-head-content">
+                                        {{-- <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalForm"><em class="icon ni ni-user-add"></em><span>Tambah Mentor</span></a></li>
                                                         {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li> --}}
-                                                        {{-- <li class="nk-block-tools-opt"><a href="/admin/expMentor/" class="btn btn-info" ><em class="icon ni ni-file-pdf"></em><span>Export Excel</span></a></li> --}}
+                                                        {{-- <li class="nk-block-tools-opt"><a href="/admin/expMentor/" class="btn btn-info" ><em class="icon ni ni-file-pdf"></em><span>Export Excel</span></a></li> 
                                                         <li class="preview-btn-item col-sm-6 col-lg-3">
                                                             <div class="dropdown">
                                                                 <a href="#" class="btn btn-warning" data-toggle="dropdown"><em class="icon ni ni-download-cloud"></em><span>Export</span><em class="icon ni ni-chevron-down"></em></a>
@@ -40,7 +40,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </div><!-- .nk-block-head-content -->
+                                        </div><!-- .nk-block-head-content --> --}}
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block nk-block-lg">
@@ -201,9 +201,9 @@
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelas</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Prodi</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Jurusan</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelompok</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">File</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Tugas</span></th>
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Waktu</span></th>
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
@@ -226,20 +226,41 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$tugas->mentee->kelas->prodi->jurusan->nama_jurusan}}</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$tugas->mentee->kelompok->nama_kelompok}}</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$tugas->file_tugas}}</span>
-                                                            </td>                                                            
+                                                            </td>                                                
                                                             <td class="nk-tb-col tb-col-md">
                                                             <span>{{$tugas->tugas->nama_tugas}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <button class="btn btn-sm btn-danger" >Delete</button>
-                                                                <button class="btn btn-sm btn-warning">Detail</button>
-                                                                <button class="btn btn-sm btn-success">Accept</button>
+                                                                <span>{{$tugas->created_at->format('d M Y')}}</span>
+                                                            </td>      
+                                                            <td class="nk-tb-col tb-col-md">
+                                                                 @if ($tugas->status_tugas == 'Diterima')
+                                                                <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Diterima</span></span>
+                                                                @endif
+                                                                @if($tugas->status_tugas == 'Ditolak')
+                                                                    <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>Ditolak</span></span>
+                                                                @endif
+                                                                @if($tugas->status_tugas == 'Pending')
+                                                                    <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock-fill"></em><span>Pending</span></span>
+                                                                @endif
+                                                            </td>
+                                                            <td class="nk-tb-col nk-tb-col-tools">
+                                                                <ul class="nk-tb-actions gx-1">                                                                    
+                                                                    <li>
+                                                                        <div class="drodown">
+                                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                                <ul class="link-list-opt no-bdr">
+                                                                                    <li><a href="/admin/pengumpulan/acc/{{$tugas->id_pengumpulan_tugas}}"><em class="icon ni ni-check"></em><span>Diterima</span></a></li>
+                                                                                    <li><a href="/admin/pengumpulan/dec/{{$tugas->id_pengumpulan_tugas}}"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li>
+                                                                                    {{-- <li><a href="#" data-toggle="modal" data-target="#tolakTugas"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li> --}}
+                                                                                    <li class="divider"></li>
+                                                                                    <li><a href="/admin/download/{{$tugas->file_tugas}}"><em class="icon ni ni-download-cloud"></em><span>Download</span></a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->
                                                         @endforeach
@@ -249,6 +270,35 @@
                                         </div><!-- .card-preview -->
                                     </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Penolakan Tugas  -->
+                <div class="modal fade" tabindex="-1" id="tolakTugas">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body modal-body-lg text-center">
+                                <div class="nk-modal">
+                                    <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+                                    <h4 class="nk-modal-title">Yakin Ditolak ?</h4>
+                                    <div class="nk-modal-text">
+                                        <p class="lead">Tinggalkan Pesan alasan kenapa Tugas yang ditolak. Terimakasih :)</p>
+                                    </div>
+                                    <form action="#" class="form-validate is-alter">
+                                        <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                    <textarea class="form-control form-control-sm" id="cf-default-textarea" placeholder="Write your message"></textarea>
+                                                </div>
+                                        </div>                                                
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-warning">Kirim</button>
+                                        </div>
+                                    </form>
+                                    {{-- <div class="nk-modal-action mt-5">
+                                        <a href="#" class="btn btn-lg btn-mw btn-light" data-dismiss="modal">Return</a>
+                                    </div> --}}
+                                </div>
+                            </div><!-- .modal-body -->
                         </div>
                     </div>
                 </div>

@@ -57,8 +57,8 @@
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
-                                                                            <div class="title">Total Pertemuan</div>
-                                                                            <div class="count">{{$total}}</div>
+                                                                            <div class="title">Total Mentee</div>
+                                                                            <div class="count">{{$totalMentee}}</div>
                                                                         </div>
                                                                         <em class="icon bg-primary-dim ni ni-users"></em>
                                                                     </li>
@@ -72,8 +72,8 @@
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
-                                                                            <div class="title">Minggu Ke-</div>
-                                                                            <div class="count">20</div>
+                                                                            <div class="title">Total Kelompok</div>
+                                                                            <div class="count">{{$totalKelompok}}</div>
                                                                         </div>
                                                                         <em class="icon bg-secondary-dim ni ni-link-group"></em>
                                                                     </li>
@@ -87,10 +87,10 @@
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
-                                                                            <div class="title">Total Kelas</div>
-                                                                            <div class="count">120</div>
+                                                                            <div class="title">Total Pertemuan</div>
+                                                                            <div class="count">{{$totalMentee}}</div>
                                                                         </div>
-                                                                        <em class="icon bg-success-dim ni ni-link-group"></em>
+                                                                        <em class="icon bg-success-dim ni ni-video-fill"></em>
                                                                     </li>
                                                                 </ul>
                                                             </div><!-- .card-inner -->
@@ -114,7 +114,7 @@
                                                             <li>
                                                                 <div class="dropdown">
                                                                     <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <div class="badge badge-circle badge-primary">2</div>
+                                                                        <div class="badge badge-circle badge-primary">{{$total}}</div>
                                                                         <em class="icon ni ni-filter-alt"></em>
                                                                     </a>
                                                                     <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
@@ -130,29 +130,14 @@
                                                                             <div class="row gx-6 gy-4">
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Jurusan</label>
+                                                                                        <label class="overline-title overline-title-alt">Pertemuan</label>
                                                                                         <select class="form-select form-select-sm">
-                                                                                            <option value="any">Teknologi Informasi</option>
-                                                                                            <option value="deposit">Teknik Elektro</option>
-                                                                                            <option value="buy">Teknik Mesin</option>
-                                                                                            <option value="sell">Teknik Kimia</option>
-                                                                                            <option value="transfer">Akutansi</option>
-                                                                                            <option value="withdraw">Administrasi Niaga</option>
+                                                                                            @foreach ($data_pertemuan as $pertemuan)
+                                                                                                <option value="{{$pertemuan->nama_pertemuan}}">{{$pertemuan->nama_pertemuan}}</option>
+                                                                                            @endforeach
                                                                                         </select>
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Prodi</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            <option value="any">D3 Manajemen Informatika</option>
-                                                                                            <option value="pending">D4 Teknik Informatika</option>
-                                                                                            <option value="cancel">D4 Akutansi Manajemen</option>
-                                                                                            <option value="process">D3 Akutansi</option>
-                                                                                            <option value="completed">D4 Keuangan</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
+                                                                                </div>                                                                                
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
                                                                                         <button type="button" class="btn btn-secondary">Filter</button>
@@ -163,27 +148,14 @@
                                                                     </div><!-- .filter-wg -->
                                                                 </div><!-- .dropdown -->
                                                             </li><!-- li -->
-                                                            <li>
-                                                                <div class="dropdown">
-                                                                    <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <em class="icon ni ni-setting"></em>
-                                                                    </a>
-                                                                    <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
-                                                                        <ul class="link-check">
-                                                                            <li><span>Order</span></li>
-                                                                            <li class="active"><a href="#">DESC</a></li>
-                                                                            <li><a href="#">ASC</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div><!-- .dropdown -->
-                                                            </li><!-- li -->
+                                                            
                                                         </ul><!-- .btn-toolbar -->
                                                     </div><!-- .card-tools -->
                                                     <div class="card-search search-wrap" data-search="search">
                                                         <div class="search-content">
                                                             <form action="/admin/pertemuan" method="GET">
                                                                 <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                                                                <input name="cari" type="text" class="form-control border-transparent form-focus-none" placeholder="Cari Data Mentee">
+                                                                <input name="cari" type="text" class="form-control border-transparent form-focus-none" placeholder="Cari Data Pertemuan">
                                                                 <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
                                                             </form>
                                                         </div>
@@ -198,7 +170,6 @@
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Minggu Ke-</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Tanggal</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Detail</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelompok</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Link</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
@@ -216,7 +187,7 @@
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">{{$pertemuan->mentor_id}}</span>
+                                                                <span class="tb-amount">{{$pertemuan->mentor->nama_mentor}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$pertemuan->minggu_pertemuan}}</span>
@@ -228,27 +199,39 @@
                                                                 <span>{{$pertemuan->detail_pertemuan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$pertemuan->kelompok_pertemuan}}</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span><a href="http://{{$pertemuan->link_pertemuan}}">link Zoom</a></span>
+                                                                <span><a href="http://{{$pertemuan->link_pertemuan}}"><em class="icon ni ni-link"></em> Link</a></span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
 
-                                                            @if($pertemuan->status_pertemuan == 'Aktif') 
+                                                            @if($pertemuan->status_pertemuan == 'Closed') 
                                                                 <span class="dot bg-warning d-mb-none"></span>
-                                                                <span class="badge badge-sm badge-dot has-bg badge-warning d-none d-mb-inline-flex" >On Going</span>
+                                                                <span class="badge badge-sm badge-dot has-bg badge-danger d-none d-mb-inline-flex" >Closed</span>
                                                             @endif
 
-                                                            @if($pertemuan->status_pertemuan == 'Selesai')
+                                                            @if($pertemuan->status_pertemuan == 'Open')
                                                                 <span class="dot bg-warning d-mb-none"></span>
-                                                                <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Selesai</span>
+                                                                <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Open</span>
                                                             @endif
 
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <a href="/admin/delPertemuan/{{$pertemuan->id_pertemuan}}" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
-                                                                <a href="/admin/detPertemuan/{{$pertemuan->id_pertemuan}}" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a>
+                                                            </td>                                                           
+                                                            <td class="nk-tb-col nk-tb-col-tools">
+                                                                <ul class="nk-tb-actions gx-1">                                                                    
+                                                                    <li>
+                                                                        <div class="drodown">
+                                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                                <ul class="link-list-opt no-bdr">
+                                                                                    <li><a href="/admin/pertemuan/acc/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-check"></em><span>Open</span></a></li>
+                                                                                    <li><a href="/admin/pertemuan/dec/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-na"></em><span>Close</span></a></li>
+                                                                                    {{-- <li><a href="#" data-toggle="modal" data-target="#tolakTugas"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li> --}}
+                                                                                    <li class="divider"></li>
+                                                                                    <li><a href="/admin/detPertemuan/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-download-cloud"></em><span>Detail</span></a></li>
+                                                                                    <li><a href="/admin/delPertemuan/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                 
                                                         @endforeach
@@ -282,10 +265,10 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Mentor</label>
-                                        <select class="form-select" id="mentor_pertemuan" name="mentor_pertemuan" data-ui="lg" required>
+                                        <select class="form-select" id="mentor_id" name="mentor_id" data-ui="lg" required>
                                             <option value="#">-Pilih Mentor-</option>
                                             @foreach ($data_pertemuan as $pertemuan)                                            
-                                            <option value="Ust Yahya">Ust Yahya</option>
+                                            <option value="{{$pertemuan->mentor->id_mentor}}">{{$pertemuan->mentor->nama_mentor}}</option>
                                             @endforeach
                                         </select>
                                      </div>
@@ -293,61 +276,33 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Minggu Ke-</label>
-                                        <select class="form-select" id="minggu_pertemuan" name="minggu_pertemuan" data-ui="lg" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="4">4</option>
-                                        </select>
+                                        <input type="text" class="form-control form-control-lg" id="minggu_pertemuan" name="minggu_pertemuan" placeholder="Enter Minggu" required>                                        
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Tanggal</label>
                                             <div class="form-control-wrap">
                                                 <div class="form-icon form-icon-right">
                                                      <em class="icon ni ni-calendar-alt"></em>
                                                 </div>
-                                                 <input type="text" class="form-control date-picker" id="tanggal_pertemuan" name="tanggal_pertemuan" data-ui="lg" required>
+                                                 <input type="text" class="form-control date-picker" id="tanggal_pertemuan" name="tanggal_pertemuan" data-date-format="yyyy-mm-dd" required>
                                             </div>
                                      </div>
-                                </div>                  
-                                <div class="col-md-4">
+                                </div> 
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="phone-no">Kelompok</label>
-                                        <select class="form-select" id="kelompok_pertemuan" name="kelompok_pertemuan" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
+                                        <label class="form-label" for="phone-no">Status</label>
+                                        <select class="form-select" id="status_pertemuan" name="status_pertemuan" required>
+                                            <option value="Open">Open</option>
+                                            <option value="Closed">Closed</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Sesi</label>
-                                        <select class="form-select" id="sesi_pertemuan" name="sesi_pertemuan" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="link_pertemuan">Link Pertemuan</label>
                                         <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Status</label>
-                                        <select class="form-select" id="status_pertemuan" name="status_pertemuan" data-ui="lg" required>
-                                            <option value="Aktif">Aktif</option>
-                                            <option value="Selesai">Selesai</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

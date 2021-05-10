@@ -15,7 +15,7 @@ class Mentor extends Model{
     }
     public function pertemuan()
     {
-        return $this->belongsTo(Pertemuan::class,'pertemuan_id');
+        return $this->hasMany(Pertemuan::class);
     }
     public function kelompok()
     {
