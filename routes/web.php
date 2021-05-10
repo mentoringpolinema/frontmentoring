@@ -150,6 +150,10 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::post('/admin/tugas/getByIdTugas', '\App\Http\Controllers\AdminController@getByIdTugas')->name('getTugasByID');
         //Update Tugas
         Route::put('/admin/tugas', '\App\Http\Controllers\AdminController@editTugas');
+        // Open Tugas
+        Route::get('/admin/tugas/open/{id}', '\App\Http\Controllers\AdminController@openTugas');
+        // Close Tugas
+        Route::get('/admin/tugas/close/{id}', '\App\Http\Controllers\AdminController@closedTugas');
 
     // Kelompok ==========================================================================================================>
         // Get Kelompok
@@ -174,7 +178,6 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::get('/admin/keluhan/{id}', '\App\Http\Controllers\AdminController@detailKeluhan');
         // Jawab Keluhan
         Route::get('/admin/keluhan/{id}/update', '\App\Http\Controllers\AdminController@jawabKeluhan');
-
 
     // Pertemuan =========================================================================================================>
         // Get Pertemuan
@@ -201,9 +204,19 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         // Detail Pengumuman
         Route::get('/admin/{id}/detPengumuman', '\App\Http\Controllers\AdminController@detPengumuman');
 
-    // Cetak Bukti
+    // Cetak Bukti ========================================================================================================>
         // Get Bukti
         Route::get('/admin/bukti', '\App\Http\Controllers\AdminController@cetak');
+
+    // Pengumpulan Tugas  =================================================================================================>
+        // Get Kumpul
+        Route::get('/admin/pengumpulan', '\App\Http\Controllers\AdminController@pengumpulan');
+        // Download Tugas
+        Route::get('/admin/download/{file}', '\App\Http\Controllers\AdminController@downloadTugas');
+        // Accept Tugas
+        Route::get('/admin/pengumpulan/acc/{id}', '\App\Http\Controllers\AdminController@accTugas');
+        // Decline Tugas
+        Route::get('/admin/pengumpulan/dec/{id}', '\App\Http\Controllers\AdminController@decTugas');
 
 });
 // MENTOR ROUTES =========================================================================================================>
@@ -246,7 +259,11 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
         // Detail Materi
         Route::get('/mentee/materi/{id}', '\App\Http\Controllers\MenteeController@detailMateri');
         // Detail Tugas
-        Route::get('/mentee/tugas/detailTugas', '\App\Http\Controllers\MenteeController@detailTugas');
+        Route::get('/mentee/tugas/{id}', '\App\Http\Controllers\MenteeController@detailTugas');
+        // Upload Tugas
+        Route::post('/mentee/tugas/upload/', '\App\Http\Controllers\MenteeController@uploadTugas');
+        // Delete Tugas
+        Route::get('/mentee/tugas/delete/{id}', '\App\Http\Controllers\MenteeController@deleteTugas');
 
     // Pertemuan
         // Get Pertemuan
@@ -260,7 +277,13 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
         // Get Keluhan
         Route::get('/mentee/keluhan','\App\Http\Controllers\MenteeController@keluhan');
         // Tanya Keluhan
-        Route::get('/mentee/keluhan/{id}/update','\App\Http\Controllers\MenteeController@tanyaKel');
+        Route::get('/mentee/keluhan/kirim','\App\Http\Controllers\MenteeController@kirimKeluhan');
+        // Detail keluhan
+        Route::get('/mentee/keluhan/detail/{id}','\App\Http\Controllers\MenteeController@detailKeluhan');
+        // Hapus keluhan
+        Route::get('/mentee/keluhan/hapus/{id}','\App\Http\Controllers\MenteeController@hapusKeluhan');
+        // Form Keluhan
+        Route::get('/mentee/keluhan/form', '\App\Http\Controllers\MenteeController@keluhanForm');
 
     // Pengganti
         // Get Pengganti

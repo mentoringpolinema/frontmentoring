@@ -26,6 +26,7 @@ use App\Models\Pertemuan;
 use App\Models\Prodi;
 use App\Models\Kelas;
 use App\Models\Keluhan;
+use App\Models\PengumpulanTugas;
 use App\Models\User;
 use App\Models\Pengumuman;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -425,9 +426,9 @@ class AdminController extends Controller
     public function tugas()
     {
         $data_tugas = Tugas::with('pertemuan')->get();
-//        dd($data_tugas);
         $data_pertemuan = Pertemuan::all();
-        return view('admin.tugas', compact(['data_tugas', 'data_pertemuan']));
+        $total_tugas = Tugas::count();
+        return view('admin.tugas', compact(['data_tugas', 'data_pertemuan','total_tugas']));
     }
     // Add Materi
     public function addTugas(Request $request)
@@ -436,6 +437,7 @@ class AdminController extends Controller
             "nama_tugas" => $request->nama_tugas,
             "detail_tugas" => $request->detail_tugas,
             "pertemuan_id" => $request->pertemuan_id,
+            "status_tugas" => $request->status_tugas
         ]);
         return redirect('/admin/tugas')->with('success', 'Tugas Berhasil ditambahkan !');
     }
@@ -443,8 +445,13 @@ class AdminController extends Controller
     public function delTugas($id_tugas)
     {
         $data_tugas = Tugas::find($id_tugas);
-        $data_tugas->delete($data_tugas);
-        return redirect('/admin/tugas')->with('success', 'Tugas Berhasil dihapus !');
+        if ($data_tugas) {
+            Alert::error('Gagal !','Tugas Gagal dihapus');
+            return redirect()->back();
+        } else {
+            $data_tugas->delete($data_tugas);
+            return redirect('/admin/tugas')->with('success', 'Tugas Berhasil dihapus !');
+        }
     }
     // Get By Id Tugas
     public function getByIdTugas(Request $request){
@@ -465,6 +472,27 @@ class AdminController extends Controller
             "pertemuan_id" => $request->pertemuan_id_edit,
         ]);
         return redirect('/admin/tugas')->with('success', 'Tugas Berhasil diedit !');
+    }
+    // Closed Tugas 
+    public function closedTugas($id_tugas){
+        $tugas = Tugas::find($id_tugas);
+
+        $tugas->update([
+            "status_tugas" => "Closed"
+        ]);
+        Alert::success('Berhasil !','Tugas Berhasil ditutup');
+        return redirect('/admin/tugas/');
+    }
+    // Open Tugas 
+    public function openTugas($id_tugas){
+        $tugas = Tugas::find($id_tugas);
+
+        $tugas->update([
+            "status_tugas" => "Open"
+        ]);
+        Alert::success('Berhasil !','Tugas Berhasil dibuka');
+        return redirect('/admin/tugas/');
+
     }
 
     //-------------------------------------------Kelompok-------------------------------------------
@@ -549,12 +577,14 @@ class AdminController extends Controller
         // dd($data_mentee);
         return view('admin.kelompok.tambahMentee', compact(['data_kelompok', 'data_mentee']));
     }
+    
     //-------------------------------------------Keluhan-------------------------------------------
 
     // Get Function
     public function keluhan()
     {
-        $data_keluhan = Keluhan::all();
+        $data_keluhan = Keluhan::orderBy('created_at','desc')->get();
+        // dd($data_keluhan);
         return view('admin.keluhan.index',compact('data_keluhan'));
     }
     // Detail Keluhan
@@ -567,8 +597,13 @@ class AdminController extends Controller
     public function jawabKeluhan(Request $request, $id_keluhan)
     {
         $data_keluhan = Keluhan::find($id_keluhan);
-        $data_keluhan->update($request->all());
-        return redirect('/admin/keluhan/')->with('success', 'Keluhan Berhasil dijawab !');
+        $data_keluhan->update([
+            "jawab_keluhan" => $request->jawab_keluhan,
+            "status_keluhan" => "Selesai"
+        ]);
+        // dd($data_keluhan);
+        Alert::success('Yeay','Keluhan berhasil dijawab !');
+        return redirect()->back();
     }
 
     //-------------------------------------------Pertemuan-------------------------------------------
@@ -579,19 +614,24 @@ class AdminController extends Controller
         {
             // Get By Mentor
             if($request->has('cari')){
-                $data_pertemuan = Pertemuan::where('mentor_pertemuan','LIKE','%'. $request->cari.'%')->get();
+                $data_pertemuan = Pertemuan::where('nama_pertemuan','LIKE','%'. $request->cari.'%')->get();
                 $total = Pertemuan::count();
+                $totalMentee = Mentee::count();
+                $totalKelompok = Kelompok::count();
             }else{
-                $data_pertemuan = Pertemuan::all();
+                $data_pertemuan = Pertemuan::orderBy('created_at','desc')->get();
                 $total = Pertemuan::count();
+                $totalMentee = Mentee::count();
+                $totalKelompok = Kelompok::count();
             }
-            return view('admin.pertemuan',compact(['data_pertemuan','total']));
+            return view('admin.pertemuan',compact(['data_pertemuan','total','totalMentee', 'totalKelompok']));
         }
         // Add Pertemuan
         public function addPertemuan(Request $request)
         {
             $pertemuan = Pertemuan::create($request->all());
-            return redirect('/admin/pertemuan')->with('success', 'Pertemuan Berhasil Ditambahkan !');
+            Alert::success('Yeay Berhasil !','Pertemuan Berhasil Ditambahkan !');
+            return redirect('/admin/pertemuan');
         }
         // Del Pertemuan
         public function delPertemuan($id_pertemuan)
@@ -665,5 +705,34 @@ class AdminController extends Controller
         ]);
         return redirect()->back()->with('success','Bukti telah disetujui');
     }
+    //-------------------------------------Pengumpulan Tugas -------------------------------------
+    // Get Pengumpulan
+    public function pengumpulan(){
 
+        $pengumpulan_tugas = PengumpulanTugas::all();
+        $total_tugas = PengumpulanTugas::count();
+        return view('admin.pengumpulan.index',compact('pengumpulan_tugas','total_tugas'));
+    }
+    // Download Tugas
+    public function downloadTugas($file){
+       return response()->download('file_tugas/' .$file);
+    }    
+    // Accept Tugas
+    public function accTugas($id_pengumpulan_tugas){
+        $data_pengumpulan = PengumpulanTugas::find($id_pengumpulan_tugas);
+        $data_pengumpulan->update([
+            "status_tugas" => "Diterima"
+        ]);
+        Alert::success('Berhasil !','Tugas telah diterima');
+        return redirect()->back();
+    }
+    // Decline Tugas
+    public function decTugas($id_pengumpulan_tugas){
+        $data_pengumpulan = PengumpulanTugas::find($id_pengumpulan_tugas);
+        $data_pengumpulan->update([
+            "status_tugas" => "Ditolak"
+        ]);
+        Alert::warning('Yaah:(', 'Tugas telah ditolak');
+        return redirect()->back();
+    }
 }

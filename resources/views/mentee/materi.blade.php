@@ -76,7 +76,8 @@
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
-                                    <div class="row g-gs">                                       
+                                    <div class="row g-gs">
+                                        @foreach ($data_tugas as $tugas)
                                         <div class="col-xxl-3 col-md-6">
                                             <div class="nk-download">
                                                 <div class="data">
@@ -92,22 +93,27 @@
                                                             </g>
                                                         </svg></div>
                                                     <div class="info">
-                                                        <h6 class="title"><span class="name">Tugas Minggu 1</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
+                                                        <h6 class="title"><span class="name">{{$tugas->nama_tugas}}</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
                                                         <div class="meta">
                                                             <span class="version">
-                                                                <span class="text-soft">Tugas: </span> <span>Makhorijul Huruf</span>
+                                                                <span class="text-soft">Tugas: </span> <span>{{$tugas->nama_tugas}}</span>
                                                             </span>
                                                             <span class="release">
-                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-success">Selesai</span>
+                                                                @if ($tugas->status_tugas == 'Closed')
+                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-danger">{{$tugas->status_tugas}}</span>    
+                                                                @else
+                                                                    <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-success">{{$tugas->status_tugas}}</span>
+                                                                @endif
                                                             </span>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>                        
                                                 <div class="actions">
-                                                    <a href="/mentee/tugas/detailTugas" class="btn btn-sm btn-warning">Detail</a>
+                                                    <a href="/mentee/tugas/{{$tugas->id_tugas}}" class="btn btn-sm btn-warning">Detail</a>
                                                 </div>
                                             </div><!-- .sp-pdl-item -->
                                         </div><!-- .col -->
+                                        @endforeach
                                     </div><!-- .row -->
                                 </div><!-- .nk-block -->
                             </div>

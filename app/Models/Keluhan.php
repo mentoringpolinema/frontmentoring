@@ -9,7 +9,7 @@ class Keluhan extends Model
 {
     protected $table = 'keluhan';
     protected $primaryKey = 'id_keluhan';
-    protected $fillable = ['isi_keluhan','jawab_keluhan','mentee_id','panitia_id'];
+    protected $fillable = ['isi_keluhan','jawab_keluhan','mentee_id','panitia_id','keterangan_keluhan','status_keluhan'];
 
     public function mentee()
     {

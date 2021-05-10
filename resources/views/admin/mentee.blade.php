@@ -109,15 +109,7 @@
                                                     </div><!-- .col -->
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Alert -->
-                                        @if ((session('sukses')))
-                                        <div class="alert alert-success alert-icon alert-dismissible">
-                                            <div>
-                                                <em class="icon ni ni-check-circle"></em> {{session('sukses')}} <button class="close" data-dismiss="alert"></button>
-                                            </div>
-                                        </div>
-                                        @endif
+                                        </div>                                        
                                         <div class="card card-preview">
                                             <div class="card-inner">
                                                 <div class="card-title-group">

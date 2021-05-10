@@ -9,11 +9,14 @@ use App\Models\Kelas;
 use App\Models\Keluhan;
 use App\Models\Materi;
 use App\Models\Mentee;
+use App\Models\PengumpulanTugas;
 use App\Models\Pengumuman;
 use App\Models\Pertemuan;
 use App\Models\Tugas;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\File;
 
 class MenteeController extends Controller
 {
@@ -50,7 +53,8 @@ class MenteeController extends Controller
         public function materi()
         {
             $data_materi = Materi::all();
-            return view('mentee.materi',compact(['data_materi']));
+            $data_tugas = Tugas::all();
+            return view('mentee.materi',compact(['data_materi'],['data_tugas']));
         }
         // Detail Materi
         public function detailMateri($id_materi)
@@ -58,23 +62,81 @@ class MenteeController extends Controller
             $data_materi = Materi::find($id_materi);
             return view('mentee.materi.detail',compact('data_materi'));
         }
-        // Detail Materi
-        public function detailTugas()
+        // Detail Tugas
+        public function detailTugas($id_tugas)
         {
-            return view('mentee.tugas.detail');
+            $data_tugasku = PengumpulanTugas::where([
+                ['mentee_id', '=', auth()->user()->mentee->id_mentee],
+                ['tugas_id', '=', $id_tugas],
+            ])->get();
+
+            $data_tugas = Tugas::find($id_tugas);
+
+            return view('mentee.tugas.detail',compact('data_tugas','data_tugasku'));
+        }
+        // Upload Tugas
+        public function uploadTugas(Request $request)
+        {
+            $cek_tugas = PengumpulanTugas::where([
+                ['mentee_id', '=', auth()->user()->mentee->id_mentee],
+                ['tugas_id', "=" ,$request->tugas_id]
+            ])->first();
+
+            if ($cek_tugas) {
+                dd($cek_tugas);
+                Alert::error('yaah','kamu sudah mengumpulkan !');
+                return redirect()->back();
+            } else { 
+                if ($request->hasFile('file_tugas')) {
+
+                    $request->validate([
+                        'file_tugas' => 'required|max:2048|mimes:pdf',
+                    ]);
+                        
+                    $request->file('file_tugas')->move('file_tugas/', $request->file('file_tugas')->getClientOriginalName());
+                    $uploadTugas = PengumpulanTugas::create([
+                        "mentee_id" => auth()->user()->mentee->id_mentee,
+                        "file_tugas" => $request->file('file_tugas')->getClientOriginalName(),
+                        "tugas_id" => $request->id_tugas,
+                        "status_tugas" => "Pending"
+                    ]);
+                }
+                Alert::success('Yeay', 'Tugas Berhasil dikumpulkan !');
+                return redirect()->back(); 
+            }
+        }
+        // Delete Tugas
+        public function deleteTugas($id_pengumpulan_tugas){
+            $tugas = PengumpulanTugas::find($id_pengumpulan_tugas);
+
+            $file_name = $tugas->file_tugas;
+            $file_path = public_path('file_tugas/' . $file_name);
+            unlink($file_path);
+
+            $tugas->delete();
+
+            Alert::success('Tugas berhasil dihapus !', 'Segera upload lagi ya ! ');
+            return redirect()->back();
         }
 
     // Pertemuan
         // Get Pertemuan
         public function pertemuan()
         {
-            $data_pertemuan = Pertemuan::all();
+            $data_pertemuan = Pertemuan::where([
+                "mentor_id" => auth()->user()->mentee->kelompok->mentor->id_mentor
+            ])->get();
+            // dd($data_pertemuan);
             return view('mentee.pertemuan.index',compact(['data_pertemuan']));
         }
         // Detail Pertemuan
         public function detPertemuan($id_pertemuan)
         {
-            $data_absensi = Absensi::find($id_pertemuan);
+            $data_absensi = Absensi::where([
+                "mentee_id" => auth()->user()->mentee->id_mentee,
+                "pertemuan_id" => $id_pertemuan
+                ])->first();
+            // dd($data_absensi);
             $data_pertemuan = Pertemuan::find($id_pertemuan);
             return view('mentee.pertemuan.detail', compact(['data_pertemuan','data_absensi']));
         }
@@ -99,45 +161,79 @@ class MenteeController extends Controller
         }
 
     // Pengganti
-
-    // Get Pengganti
-    public function pengganti()
-    {
-        return view('mentee.pengganti.index');
-    }
-    // Detail Pengganti
-    public function detailPengganti(){
-        return view('mentee.pengganti.detail');
-    }
+        // Get Pengganti
+        public function pengganti()
+        {
+            $tugas = Tugas::all();
+            return view('mentee.pengganti.index',compact('tugas'));
+        }
+        // Detail Pengganti
+        public function detailPengganti(){
+            return view('mentee.pengganti.detail');
+        }
 
     // Keluhan
         // Get Keluhan
         public function keluhan(Request $request)
         {
-            $keluhan = Keluhan::where([
-                ['mentee_id', '=', auth()->user()->mentee->id_mentee]
+            $data_mentee = Mentee::where([
+                ['id_mentee', '=', auth()->user()->mentee->id_mentee]
             ])->first();
 
+            $keluhan = Keluhan::where([
+                ['mentee_id', '=', auth()->user()->mentee->id_mentee]
+            ])->get();
+
             if ($keluhan) {
+                // dd($keluhan);
                 return view('mentee.keluhan.index', compact('keluhan'));
             } else {
-                $keluhan = Keluhan::create([
-                    'mentee_id' => auth()->user()->mentee->id_mentee,
-                    "panitia_id" => '1',
-                    "isi_keluhan" => 'Belum Ada Pesan !',
-                    "jawab_keluhan" => 'Assalamualaikum, Silahkan kirim kan keluhan anda. Terimakasih',
-                ]);
-                return view('mentee.keluhan.index', compact('keluhan'));
+                return view('mentee.keluhan.form',compact('data_mentee'));
             }
-
         }
-        // Tanya Keluhan
-        public function tanyaKel(Request $request, $id_keluhan){
+        // Kirim Keluhan
+        public function kirimKeluhan(Request $request){
+            $cekKeluhan = Keluhan::where([
+                ['mentee_id', '=', auth()->user()->mentee->id_mentee],
+                ['keterangan_keluhan','=',$request->keterangan_keluhan]
+            ])->first();
+
+            if ($cekKeluhan) {
+                Alert::error('waah :(', 'Maaf ya, keluhan hanya Satu Kali saja');
+                return redirect()->back();
+            } else {
+                $keluhan = Keluhan::create([
+                    "mentee_id" => auth()->user()->mentee->id_mentee,
+                    "keterangan_keluhan" => $request->keterangan_keluhan,
+                    "isi_keluhan" => $request->isi_keluhan,
+                    "status_keluhan" => "Pending"
+                ]);
+                // dd($keluhan);
+                Alert::success('Yeay', 'Keluhan Berhasil dikirim !');
+                return redirect('/mentee/keluhan/');
+            }
+        }
+        // Detail Keluhan
+        public function detailKeluhan($id_keluhan){
             $data_keluhan = Keluhan::find($id_keluhan);
-            $data_keluhan->update($request->all());
-            return redirect('/mentee/keluhan/')->with('success', 'Keluhan Berhasil !');
+            return view('mentee.keluhan.detail',compact('data_keluhan'));
         }
+        // Keluhan Form
+        public function keluhanForm(){
+            $data_mentee = Mentee::where([
+                ['id_mentee', '=', auth()->user()->mentee->id_mentee]
+            ])->first();
 
+            return view('mentee.keluhan.form', compact('data_mentee'));
+        }
+        // Hapus Keluhan
+        public function hapusKeluhan($id_keluhan)
+        {
+            $data_keluhan = Keluhan::find($id_keluhan);
+            $data_keluhan->delete($id_keluhan);
+            Alert::success('Berhasil !','Keluhan Berhasil di hapus !');
+            return redirect()->back();
+        }
     // Cetak
 
     Public function cetak(Request $request)

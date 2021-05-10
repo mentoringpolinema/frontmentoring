@@ -48,7 +48,7 @@
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#" ><em class="icon ni ni-eye"></em><span>Lihat Pertemuan</span></a></li>
+                                                                        <li><a href="/mentee/pertemuan/detail/{{$pertemuan->id_pertemuan}}" ><em class="icon ni ni-eye"></em><span>Lihat Pertemuan</span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -62,8 +62,11 @@
                                                                     <div class="user-avatar sm bg-primary"><span>A</span></div>
                                                                 </li>
                                                             </ul>
-                                                            {{-- <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>4 Days Left</span></span> --}}
-                                                            <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle" data-toggle="modal" data-target="#pertemuanModal"></em><span>Selesai</span></span>
+                                                            @if ($pertemuan->status_pertemuan == 'Open')
+                                                                <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Open</span></span>
+                                                            @else
+                                                                <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>Closed</span></span>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
