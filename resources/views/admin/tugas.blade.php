@@ -62,7 +62,7 @@
                                                         <div class="project-info">
                                                             <h6 class="title">{{$tugas->nama_tugas}}</h6>
                                                             <span
-                                                                class="sub-text">Pertemuan - {{$tugas->pertemuan->nama_pertemuan}}</span>
+                                                                class="sub-text">{{$tugas->pertemuan->nama_pertemuan}}</span>
                                                         </div>
                                                     </a>
                                                     <div class="drodown">
@@ -110,7 +110,7 @@
                                                 <div class="project-details">
                                                     <p>{!!$tugas->detail_tugas!!}</p>
                                                 </div>
-                                                <div class="project-progress">
+                                                {{-- <div class="project-progress">
                                                     <div class="project-progress-details">
                                                         <div class="project-progress-task"><em
                                                                 class="icon ni ni-check-round-cut"></em><span>1 Tugas</span>
@@ -120,18 +120,18 @@
                                                     <div class="progress progress-pill progress-md bg-success">
                                                         <div class="progress-bar" data-progress="100"></div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <div class="project-meta">
-                                                    <ul class="project-users g-1">
+                                                    {{-- <ul class="project-users g-1">
                                                         <li>
                                                             <div class="user-avatar sm bg-primary"><span>A</span></div>
                                                         </li>
-                                                    </ul>
+                                                    </ul> --}}
                                                     {{-- <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>4 Days Left</span></span> --}}
                                                     @if ($tugas->status_tugas == 'Closed')
-                                                    <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>{!!$tugas->status_tugas!!}</span></span>
+                                                    <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>Status : {!!$tugas->status_tugas!!}</span></span>
                                                     @else
-                                                    <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>{!!$tugas->status_tugas!!}</span></span>
+                                                    <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Status : {!!$tugas->status_tugas!!}</span></span>
                                                     @endif
 
                                                 </div>

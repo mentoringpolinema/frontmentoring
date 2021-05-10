@@ -22,7 +22,7 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-info btn-round eg-swal-infoMateriMentee"><em class="icon ni ni-video-fill"></em><span>Status Pertemuan : Minggu Ke-2</span></a></li>
+                                                        {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-info btn-round eg-swal-infoMateriMentee"><em class="icon ni ni-video-fill"></em><span>Status Pertemuan : Minggu Ke-2</span></a></li> --}}
                                                     </ul>
                                                 </div>
                                             </div>

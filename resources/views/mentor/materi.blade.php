@@ -71,10 +71,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="project-details">
-                                                            <p>{!!$materi->detail_materi!!} ...</p>
+                                                            <p>{!!$materi->detail_materi!!}</p>
                                                             {{-- <p>{{$materi->link_materi}}</p> --}}
                                                         </div>
-                                                        <div class="project-progress">
+                                                        {{-- <div class="project-progress">
                                                             <div class="project-progress-details">
                                                                 <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>1 Materi</span></div>
                                                                 <div class="project-progress-percent">100%</div>
@@ -82,15 +82,14 @@
                                                             <div class="progress progress-pill progress-md bg-success">
                                                                 <div class="progress-bar" data-progress="100"></div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="project-meta">
                                                             <ul class="project-users g-1">
                                                                 <li>
-                                                                    <div class="user-avatar sm bg-primary"><span>A</span></div>
+                                                                    <span class="badge badge-pill badge-outline-secondary"><em class="icon ni ni-clock"></em><span>Upload : {{$materi->created_at->format('d M Y')}}</span></span>
                                                                 </li>
                                                             </ul>
-                                                            {{-- <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>4 Days Left</span></span> --}}
-                                                            <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Selesai</span></span>
+                                                            {{-- <span class="badge badge-dim badge-success"><em class="icon ni ni-clock"></em><span>Upload : {{$materi->created_at->format('d M Y')}}</span></span> --}}
                                                         </div>
                                                     </div>
                                                 </div>
