@@ -681,7 +681,8 @@ class AdminController extends Controller
     public function pengumuman()
     {
         $data_pengumuman = Pengumuman::all();
-        return view('admin.pengumuman', compact(['data_pengumuman']));
+        $total_pengumuman = Pengumuman::count();
+        return view('admin.pengumuman', compact(['data_pengumuman', 'total_pengumuman']));
     }
 
     // Add Pengumuman
