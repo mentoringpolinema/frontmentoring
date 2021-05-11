@@ -23,7 +23,7 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-success btn-round"><em class="icon ni ni-check-round-fill"></em><span>Status Pertemuan : Hadir</span></a></li> --}}
+                                                        <li class="nk-block-tools-opt"><a href="/mentee/pertemuan" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>

@@ -22,13 +22,7 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-info btn-round eg-swal-infoMateriMentee"><em class="icon ni ni-list"></em><span>Status Mentoring : Minggu Ke-2</span></a></li>
-                                                        {{-- <button type="button" class="btn btn-round btn-success" data-toggle="tooltip" data-placement="bottom" title="Mentoring Anda Sudah Lulus, Segera Cetak Bukti."><em class="icon ni ni-check-circle-fill"></em>
-                                                        Status Mentoring : Lulus
-                                                        </button> --}}
-                                                        {{-- <button type="button" class="btn btn-round btn-danger" data-toggle="tooltip" data-placement="bottom" title="Mentoring Anda Tidak Lulus, Segera Upload Kekurangan !"><em class="icon ni ni-cross-circle-fill"></em>
-                                                        Status Mentoring : Tidak Lulus
-                                                        </button> --}}
+                                                        {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-info btn-round eg-swal-infoMateriMentee"><em class="icon ni ni-list"></em><span>Status Mentoring : Minggu Ke-2</span></a></li>                                                         --}}
                                                     </ul>
                                                 </div>
                                             </div>
