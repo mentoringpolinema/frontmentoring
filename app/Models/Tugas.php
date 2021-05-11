@@ -10,11 +10,11 @@ class Tugas extends Model
     use HasFactory;
     protected $table = 'tugas';
     protected $primaryKey = 'id_tugas';
-    protected $fillable = ['nama_tugas','detail_tugas', 'pertemuan_id','status_tugas'];
+    protected $fillable = ['nama_tugas','detail_tugas', 'materi_id','status_tugas'];
 
-    public function pertemuan()
+    public function materi()
     {
-        return $this->belongsTo(Pertemuan::class,'pertemuan_id');
+        return $this->belongsTo(Materi::class,'materi_id');
     }
 
     public function pengumpulanTugas()

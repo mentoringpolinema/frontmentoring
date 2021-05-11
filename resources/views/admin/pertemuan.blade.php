@@ -190,7 +190,7 @@
                                                                 <span class="tb-amount">{{$pertemuan->mentor->nama_mentor}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$pertemuan->minggu_pertemuan}}</span>
+                                                                <span>{{$pertemuan->kegiatan->minggu_kegiatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$pertemuan->tanggal_pertemuan}}</span>
@@ -262,7 +262,7 @@
                                         <input type="text" class="form-control form-control-lg" id="nama_pertemuan" name="nama_pertemuan" placeholder="Enter Nama Pertemuan">
                                     </div>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Mentor</label>
                                         <select class="form-select" id="mentor_id" name="mentor_id" data-ui="lg" required>
@@ -272,13 +272,7 @@
                                             @endforeach
                                         </select>
                                      </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Minggu Ke-</label>
-                                        <input type="text" class="form-control form-control-lg" id="minggu_pertemuan" name="minggu_pertemuan" placeholder="Enter Minggu" required>                                        
-                                    </div>
-                                </div>
+                                </div>                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Tanggal</label>

@@ -223,6 +223,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::get('/admin/absensi', '\App\Http\Controllers\AdminController@absensi');
         // Detail Absensi
         Route::get('/admin/absensi/detail/{id}', '\App\Http\Controllers\AdminController@detailAbsen');
+        // Get Absensi Kegiatan
+        Route::get('/admin/absen/kegiatan', '\App\Http\Controllers\AdminController@absensiKegiatan');
 });
 // MENTOR ROUTES =========================================================================================================>
 Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {

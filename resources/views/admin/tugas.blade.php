@@ -61,8 +61,7 @@
                                                         <div class="user-avatar sq bg-warning"><span>MM</span></div>
                                                         <div class="project-info">
                                                             <h6 class="title">{{$tugas->nama_tugas}}</h6>
-                                                            <span
-                                                                class="sub-text">{{$tugas->pertemuan->nama_pertemuan}}</span>
+                                                            <span class="sub-text">{{$tugas->materi->nama_materi}}</span>
                                                         </div>
                                                     </a>
                                                     <div class="drodown">
@@ -174,12 +173,12 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label" for="pertemuan_id">Pertemuan</label>
-                                            <select class="form-control" id="pertemuan_id" name="pertemuan_id" required>
-                                                <option>-Pilih Pertemuan-</option>
-                                                @foreach ($data_pertemuan as $pertemuan)
+                                            <label class="form-label" for="materi_id">Materi</label>
+                                            <select class="form-control" id="materi_id" name="materi_id" required>
+                                                <option>-Pilih Materi-</option>
+                                                @foreach ($data_materi as $Materi)
                                                     <option
-                                                        value="{{$pertemuan->id_pertemuan}}">{{$pertemuan->nama_pertemuan}}</option>
+                                                        value="{{$Materi->id_materi}}">{{$Materi->nama_materi}}</option>
                                                 @endforeach
                                             </select></div>
                                     </div>
@@ -187,7 +186,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="nama_tugas">Status Tugas</label>
                                             <select class="form-control" id="status_tugas" name="status_tugas" required>
-                                                <option>-Pilih Pertemuan-</option>
+                                                <option>-Pilih Status-</option>
                                                     <option value="Open">Open</option>
                                                     <option value="Closed">Closed</option>
                                             </select>
@@ -249,13 +248,13 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label class="form-label" for="pertemuan_id">Pertemuan</label>
-                                                <select class="form-control" id="pertemuan_id" name="pertemuan_id"
+                                                <label class="form-label" for="materi_id">Materi</label>
+                                                <select class="form-control" id="materi_id" name="materi_id"
                                                         required>
-                                                    <option>-Pilih Pertemuan-</option>
-                                                    @foreach ($data_pertemuan as $pertemuan)
+                                                    <option>-Pilih Materi-</option>
+                                                    @foreach ($data_materi as $materi)
                                                         <option
-                                                            value="{{$pertemuan->id_pertemuan}}">{{$pertemuan->nama_pertemuan}}</option>
+                                                            value="{{$materi->id_materi}}">{{$materi->nama_materi}}</option>
                                                     @endforeach
                                                 </select></div>
                                         </div>
@@ -314,13 +313,13 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label class="form-label" for="pertemuan_id">Pertemuan</label>
-                                            <select class="form-control" id="pertemuan_id" name="pertemuan_id"
+                                            <label class="form-label" for="materi_id">Materi</label>
+                                            <select class="form-control" id="materi_id" name="materi_id"
                                                     required>
-                                                <option>-Pilih Pertemuan-</option>
-                                                @foreach ($data_pertemuan as $pertemuan)
+                                                <option>-Pilih Materi-</option>
+                                                @foreach ($data_materi as $materi)
                                                     <option
-                                                        value="{{$pertemuan->id_pertemuan}}">{{$pertemuan->nama_pertemuan}}</option>
+                                                        value="{{$materi->id_materi}}">{{$materi->nama_materi}}</option>
                                                 @endforeach
                                             </select></div>
                                     </div>

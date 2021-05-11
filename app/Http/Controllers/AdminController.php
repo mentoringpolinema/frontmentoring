@@ -357,7 +357,7 @@ class AdminController extends Controller
         public function materi()
         {
             $data_materi = Materi::all();
-            $data_kegiatan = Kegiatan::all('minggu_kegiatan');
+            $data_kegiatan = Kegiatan::all();
             $totalMateri = Materi::count();
             return view('admin.materi', compact(['data_materi', 'data_kegiatan','totalMateri']));
         }
@@ -380,7 +380,7 @@ class AdminController extends Controller
             $materi = Materi::create([
                 "nama_materi" => $request->nama_materi,
                 "link_materi" => $request->link_materi,
-                "minggu_materi" => $request->minggu_materi,
+                "kegiatan_id" => $request->kegiatan_id,
                 "link_materi_embed" => $embedLink,
                 "detail_materi" => $request->detail_materi, 
                 "slug" => Str::slug($request->nama_materi, '-')
@@ -427,26 +427,34 @@ class AdminController extends Controller
 
     //-------------------------------------------Tugas-------------------------------------------
 
-    // Tugas Function
-
     // Get Function
     public function tugas()
     {
-        $data_tugas = Tugas::with('pertemuan')->get();
-        $data_pertemuan = Pertemuan::all();
+        $data_tugas = Tugas::all();
+        $data_materi = Materi::all();
         $total_tugas = Tugas::count();
-        return view('admin.tugas', compact(['data_tugas', 'data_pertemuan','total_tugas']));
+        return view('admin.tugas', compact(['data_tugas', 'data_materi','total_tugas']));
     }
-    // Add Materi
+    // Add Tugas
     public function addTugas(Request $request)
     {
-        $tugas = Tugas::create([
-            "nama_tugas" => $request->nama_tugas,
-            "detail_tugas" => $request->detail_tugas,
-            "pertemuan_id" => $request->pertemuan_id,
-            "status_tugas" => $request->status_tugas
-        ]);
-        return redirect('/admin/tugas')->with('success', 'Tugas Berhasil ditambahkan !');
+        $cekTugas = Tugas::where([
+            "materi_id" => $request->materi_id
+        ])->first();
+
+        if ($cekTugas) {
+            Alert::error('Gagal Menambah Tugas','Tugas Telah Tersedia');
+            return redirect()->back();
+        } else {
+            $tugas = Tugas::create([
+                "nama_tugas" => $request->nama_tugas,
+                "detail_tugas" => $request->detail_tugas,
+                "materi_id" => $request->materi_id,
+                "status_tugas" => $request->status_tugas
+            ]);
+            Alert::success('Yeay Berhasil !','Tugas Berhasil ditambahkan !');
+            return redirect()->back();
+        }
     }
     // Delete Tugas
     public function delTugas($id_tugas)
@@ -752,6 +760,7 @@ class AdminController extends Controller
     }
 
     //-------------------------------------------Absensi-------------------------------------------
+    // Get Absensi
     public function absensi()
     {
         $total_mentee = Mentee::count();
@@ -760,11 +769,19 @@ class AdminController extends Controller
         $total_absensi = Absensi::count();
         return view('admin.absensi.index', compact('total_absensi', 'data_pertemuan','total_mentee','total_pertemuan'));
     }
+    // Detail Absensi
     public function detailAbsen($id_pertemuan){
         $data_pertemuan = Pertemuan::find($id_pertemuan);
         $absen = Absensi::where([
             "pertemuan_id" => $id_pertemuan
         ])->get();
         return view('admin.absensi.detail',compact('data_pertemuan','absen'));
+    }
+    // Absensi Kegiatan
+    public function absensiKegiatan()
+    {
+        $data_kegiatan = Kegiatan::all();
+        $totalKegiatan = Kegiatan::count();
+        return view('admin.absensi.kegiatan', compact(['data_kegiatan', 'totalKegiatan']));
     }
 }

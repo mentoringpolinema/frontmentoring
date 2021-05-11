@@ -169,7 +169,7 @@
                                                                 <span class="tb-amount">{{$pertemuan->mentor->nama_mentor}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$pertemuan->minggu_pertemuan}}</span>
+                                                                <span>{{$pertemuan->kegiatan->minggu_kegiatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$pertemuan->tanggal_pertemuan}}</span>

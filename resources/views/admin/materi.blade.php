@@ -55,7 +55,7 @@
                                                                 <div class="user-avatar sq bg-warning"><span>MM</span></div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{$materi->nama_materi}}</h6>
-                                                                    <span class="sub-text">Minggu Ke-{{$materi->minggu_materi}}</span>
+                                                                    <span class="sub-text">Minggu Ke-{{$materi->kegiatan->minggu_kegiatan}}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
@@ -131,12 +131,13 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="form-label" for="minggu-materi">Minggu Ke-</label>
-                                        <select class="form-control" id="minggu_materi" name="minggu_materi" required>
+                                        <select class="form-control" id="kegiatan_id" name="kegiatan_id" required>
                                             <option>Minggu Ke-</option>
                                             @foreach ($data_kegiatan as $kegiatan)
-                                            <option value="{{$kegiatan->minggu_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
+                                                <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
                                             @endforeach
-                                        </select></div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
