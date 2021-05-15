@@ -243,12 +243,14 @@ class AdminController extends Controller
         $data_jurusan = Jurusan::all();
         $data_kelompok = Kelompok::all();
         $tugas = PengumpulanTugas::where([
-            "mentee_id" => $data_mentee->id_mentee
+            "mentee_id" => $data_mentee->id_mentee,
+            "status_tugas" => "Diterima"
         ])->count();
         $pertemuan = Absensi::where([
             "mentee_id" => $data_mentee->id_mentee
         ])->count();
-        return view('admin.mentee.detail',compact(['data_mentee', 'data_jurusan', 'data_kelompok','data_angkatan','tugas','pertemuan']));
+        $status = $tugas+$pertemuan;
+        return view('admin.mentee.detail',compact(['data_mentee', 'data_jurusan', 'data_kelompok','data_angkatan','tugas','pertemuan','status']));
     }
     //Add Mentee
     public function addMentee(Request $request)

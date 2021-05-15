@@ -201,7 +201,11 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="address-st">Status Mentoring</label>
-                                        <input type="text" class="form-control form-control-lg" id="status_mentee" value="{{$data_mentee->status_mentee}}" disabled>
+                                        @if ($status == '7')
+                                        <input type="text" class="form-control form-control-lg" id="status_mentee" value="{{$status}} - Lulus" disabled>
+                                        @else
+                                        <input type="text" class="form-control form-control-lg" id="status_mentee" value="{{$status}} - Tidak Lulus" disabled>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

@@ -24,10 +24,22 @@ class MenteeController extends Controller
     // Dashboard
     public function index(Request $request)
     {
+        // Get Data Mentee
         $data_mentee = Mentee::where([
             ['id_mentee', '=', auth()->user()->mentee->id_mentee]
         ])->first();
 
+        // Cek Kelulusan
+        $tugas = PengumpulanTugas::where([
+            "mentee_id" => $data_mentee->id_mentee,
+            "status_tugas" => "Diterima"
+        ])->count();
+        $pertemuan = Absensi::where([
+            "mentee_id" => $data_mentee->id_mentee
+        ])->count();
+        $status = $tugas + $pertemuan;
+        
+        // Get Another Data
         $data_kegiatan = Kegiatan::all();
         $data_pengumuman = Pengumuman::orderBy('id_pengumuman', 'desc')->paginate(5);
 
@@ -36,7 +48,7 @@ class MenteeController extends Controller
         $total_pertemuan = Pertemuan::all()->count();
         $total_tugas = Tugas::all()->count();
 
-        return view('mentee.index',compact(['data_kegiatan','data_pengumuman','data_mentee', 'total_kegiatan', 'total_materi', 'total_pertemuan', 'total_tugas']));
+        return view('mentee.index',compact(['data_kegiatan','data_pengumuman','data_mentee', 'total_kegiatan', 'total_materi', 'total_pertemuan', 'total_tugas','status']));
     }
     // Kelompok
 
