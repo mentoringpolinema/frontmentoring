@@ -8,14 +8,14 @@
                                     <nav>
                                     <ul class="breadcrumb breadcrumb-arrow">
                                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item active">Pertemuan</li>
+                                        <li class="breadcrumb-item active">Kegiatan</li>
                                     </ul>
                                     </nav>
                                     <br>
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">                                            
-                                            <h4 class="nk-block-title page-title">Pertemuan</h4>
-                                            <span>Pertemuan Rutin Mentoring antara Mente dengan Mentor, <br>yang dilaksanakan seraca Online Melaui Media Zoom Meeting</span>                                            
+                                            <h4 class="nk-block-title page-title">Kegiatan</h4>
+                                            <span>Kegiatan Wajib yang harus diikuti oleh seluruh Mentee, yaitu kegiatan Opening Mentoring dan Closing Mentoring</span>                                            
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-between">
                                              <div class="toggle-wrap nk-block-tools-toggle">
@@ -31,30 +31,30 @@
                                 </div><!-- .nk-block-head -->
                                <div class="nk-block">
                                     <div class="row g-gs">
-                                        @foreach ($data_pertemuan as $pertemuan)
-                                        <div class="col-sm-6 col-lg-4 col-xxl-3">
+                                        @foreach ($data_kegiatan as $kegiatan)
+                                        <div class="col-sm-6 col-lg-6 col-xxl-3">
                                             <div class="card h-100">
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
-                                                            <a href="/mentee/pertemuan/detail/{{$pertemuan->id_pertemuan}}" class="project-title">
+                                                            <a href="/mentee/kegiatan/{{$kegiatan->id_kegiatan}}" class="project-title">
                                                                 <div class="user-avatar sq bg-warning"><span>PM</span></div>
                                                                 <div class="project-info">
-                                                                    <h6 class="title">{{$pertemuan->nama_pertemuan}}</h6>
-                                                                    <span class="sub-text">Minggu Ke : {{$pertemuan->minggu_pertemuan}}</span>
+                                                                    <h6 class="title">{{$kegiatan->nama_kegiatan}}</h6>
+                                                                    <span class="sub-text">Minggu Ke : {{$kegiatan->minggu_kegiatan}}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="/mentee/pertemuan/detail/{{$pertemuan->id_pertemuan}}" ><em class="icon ni ni-eye"></em><span>Lihat Pertemuan</span></a></li>
+                                                                        <li><a href="/mentee/kegiatan/{{$kegiatan->id_kegiatan}}" ><em class="icon ni ni-eye"></em><span>Lihat Pertemuan</span></a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="project-details">
-                                                            <p>{{$pertemuan->detail_pertemuan}}</p>
+                                                            {{$kegiatan->detail_kegiatan}}
                                                         </div>
                                                         <div class="project-meta">
                                                             <ul class="project-users g-1">
@@ -62,10 +62,10 @@
                                                                     <div class="user-avatar sm bg-primary"><span>A</span></div>
                                                                 </li>
                                                             </ul>
-                                                            @if ($pertemuan->status_pertemuan == 'Open')
-                                                                <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Open</span></span>
+                                                            @if ($kegiatan->status_kegiatan == 'Open')
+                                                                <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Status Kegiatan : Open</span></span>
                                                             @else
-                                                                <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>Closed</span></span>
+                                                                <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>Status Kegiatan : Closed</span></span>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -79,4 +79,4 @@
                         </div>
                     </div>
 </div>
-     @stop
+@stop

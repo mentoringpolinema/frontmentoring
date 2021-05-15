@@ -103,6 +103,7 @@
                                                             {{-- <th class="nk-tb-col tb-col-mb"><span class="sub-text">Jam</span></th> --}}
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Minggu Ke-</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Detail</span></th>
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
@@ -136,13 +137,43 @@
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{!!$kegiatan->detail_kegiatan!!}</span>
                                                             </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-trash-alt lg"></em></a> --}}
+                                                            {{-- <td class="nk-tb-col tb-col-md">
                                                                 <a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan" class="btn btn-round btn-icon btn-sm btn-daaanger" data-toggle="tooltip" data-placement="right" title="Hapus Kegiatan"><em class="icon ni ni-trash-alt"></em></a>
                                                                 <a href="#" class="btn btn-round btn-icon btn-sm btn-saecondary" data-toggle="modal" data-target="#modalDetailKegiatan" id="detailKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-eye-fill"></em></a>
                                                                 <a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" class="btn btn-round btn-icon btn-sm btn-waraning" data-toggle="modal" data-target="#modalEditKegiatan" id="editKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-edit"></em></a>
-                                                                {{-- <a href="#" class="btn btn-round btn-sm btn-secondary" ><span>Detail</span></a> --}}
-                                                                {{-- <a href="/admin/{{$kegiatan->id_kegiatan}}/kegiatan" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a> --}}
+                                                            </td> --}}
+                                                            <td class="nk-tb-col tb-col-md">
+
+                                                            @if($kegiatan->status_kegiatan == 'Close') 
+                                                                <span class="dot bg-warning d-mb-none"></span>
+                                                                <span class="badge badge-sm badge-dot has-bg badge-danger d-none d-mb-inline-flex" >Closed</span>
+                                                            @endif
+
+                                                            @if($kegiatan->status_kegiatan == 'Open')
+                                                                <span class="dot bg-warning d-mb-none"></span>
+                                                                <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Open</span>
+                                                            @endif
+
+                                                            </td>
+                                                            <td class="nk-tb-col nk-tb-col-tools">
+                                                                <ul class="nk-tb-actions gx-1">                                                                    
+                                                                    <li>
+                                                                        <div class="drodown">
+                                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                                <ul class="link-list-opt no-bdr">
+                                                                                    <li><a href="/admin/kegiatan/open/{{$kegiatan->id_kegiatan}}"><em class="icon ni ni-check"></em><span>Open</span></a></li>
+                                                                                    <li><a href="/admin/kegiatan/close/{{$kegiatan->id_kegiatan}}"><em class="icon ni ni-na"></em><span>Close</span></a></li>
+                                                                                    {{-- <li><a href="#" data-toggle="modal" data-target="#tolakTugas"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li> --}}
+                                                                                    <li class="divider"></li>
+                                                                                    <li><a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" data-toggle="modal" data-target="#modalEditKegiatan" id="editKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-edit"></em><span>Edit</span></a></li>
+                                                                                    <li><a href="/admin/detPertemuan/{{$kegiatan->id_kegiatan}}"><em class="icon ni ni-eye"></em><span>Detail</span></a></li>
+                                                                                    <li><a href="/admin/delPertemuan/{{$kegiatan->id_kegiatan}}"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->
                                                         @endforeach
@@ -183,8 +214,7 @@
                                             <option>- Jenis Kegiatan -</option>
                                             <option value="Pertemuan">Pertemuan</option>
                                             <option value="Materi">Materi</option>
-                                            <option value="Opening Mentoring">Opening Mentoring</option>
-                                            <option value="Closing Mentoring">Closing Mentoring</option>
+                                            <option value="Kegiatan Wajib">Kegiatan Wajib</option>
                                             {{-- @endforeach --}}
                                         </select>
                                     </div>
@@ -307,8 +337,7 @@
                                             <option>- Jenis Kegiatan -</option>
                                             <option value="Pertemuan">Pertemuan</option>
                                             <option value="Materi">Materi</option>
-                                            <option value="Opening Mentoring">Opening Mentoring</option>
-                                            <option value="Closing Mentoring">Closing Mentoring</option>
+                                            <option value="Kegiatan Wajib">Kegiatan Wajib</option>
                                             {{-- @endforeach --}}
                                             {{-- @foreach ($data_kegiatan as $kegiatan)
                                                 <option>{{$kegiatan->minggu_kegiatan}}</option>

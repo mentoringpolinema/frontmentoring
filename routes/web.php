@@ -59,6 +59,10 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::put('/admin/kegiatan', '\App\Http\Controllers\AdminController@editKegiatan');
         //Delete Kegiatan
         Route::get('/admin/{id_kegiatan}/delKegiatan', '\App\Http\Controllers\AdminController@delKegiatan');
+        // Open Kegiatan
+        Route::get('/admin/kegiatan/open/{id}', '\App\Http\Controllers\AdminController@openKegiatan');
+        // Close Kegiatan
+        Route::get('/admin/kegiatan/close/{id}', '\App\Http\Controllers\AdminController@closeKegiatan');
 
     // Mentor ============================================================================================================>
         //Get Mentor
@@ -302,6 +306,13 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
         Route::get('/mentee/cetak/{id}', '\App\Http\Controllers\MenteeController@cetak');
         // Get Print
         Route::get('/mentee/print', '\App\Http\Controllers\MenteeController@print');
+    // Kegiatan
+        // Get Kegiatan
+        Route::get('/mentee/kegiatan', '\App\Http\Controllers\MenteeController@kegiatan');
+        // Detail Kegiatan
+        Route::get('/mentee/kegiatan/{id}', '\App\Http\Controllers\MenteeController@detailKegiatan');
+        // Absen Kegiatan
+        Route::post('/mentee/kegiatan/absen', '\App\Http\Controllers\MenteeController@absenKegiatan');
 });
 
 Auth::routes();

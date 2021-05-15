@@ -88,7 +88,7 @@
                                             <div class="card-inner">
                                                 <div class="card-title-group">
                                                     <div class="card-title">
-                                                        <h5 class="title">Cari Data Pertemuan</h5>
+                                                        <h5 class="title">Cari Data Absensi</h5>
                                                     </div>
                                                     <div class="card-tools mr-n1">
                                                         <ul class="btn-toolbar gx-1">
@@ -99,7 +99,7 @@
                                                             <li>
                                                                 <div class="dropdown">
                                                                     <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <div class="badge badge-circle badge-primary">{{$total_pertemuan}}</div>
+                                                                        {{-- <div class="badge badge-circle badge-primary">{{$total_kegiatan}}</div> --}}
                                                                         <em class="icon ni ni-filter-alt"></em>
                                                                     </a>
                                                                     <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
@@ -115,10 +115,10 @@
                                                                             <div class="row gx-6 gy-4">
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Pertemuan</label>
+                                                                                        <label class="overline-title overline-title-alt">Kegiatan</label>
                                                                                         <select class="form-select form-select-sm">
-                                                                                            @foreach ($data_pertemuan as $pertemuan)
-                                                                                                <option value="{{$pertemuan->id_pertemuan}}">{{$pertemuan->nama_pertemuan}}</option>
+                                                                                            @foreach ($data_absensi as $absensi)
+                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->nama_kegiatan}}</option>
                                                                                             @endforeach
                                                                                         </select>
                                                                                     </div>
@@ -147,8 +147,8 @@
                                                 <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
                                                     <thead>
                                                         <tr class="nk-tb-item nk-tb-head">
-                                                            <th class="nk-tb-col"><span class="sub-text">Pertemuan </span></th>
-                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Mentor</span></th>
+                                                            <th class="nk-tb-col"><span class="sub-text">Nama </span></th>
+                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Minggu Ke-</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Tanggal</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
@@ -156,26 +156,26 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($data_pertemuan as $pertemuan)
+                                                        @foreach ($data_absensi as $absensi)
                                                         <tr class="nk-tb-item">
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">{{$pertemuan->nama_pertemuan}}</span>
+                                                                        <span class="tb-lead">{{$absensi->mentee->nama_mentee}}</span>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">{{$pertemuan->mentor->nama_mentor}}</span>
+                                                                <span class="tb-amount">{{$absensi->kegiatan->nama_kegiatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$pertemuan->kegiatan->minggu_kegiatan}}</span>
+                                                                <span>{{$absensi->kegiatan->minggu_kegiatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$pertemuan->tanggal_pertemuan}}</span>
+                                                                <span>{{$absensi->kegiatan->tanggal_kegiatan->format('d M Y')}}</span>
                                                             </td>
                                                             <td class="nk-tb-col nk-tb-col-tools">
-                                                                <a href="/admin/absensi/detail/{{$pertemuan->id_pertemuan}}" class="btn btn-sm btn-success"><em class="icon ni ni-eye"></em><span>Detail</span></a>
+                                                                <a href="/admin/absensi/detail/{{$absensi->id_pertemuan}}" class="btn btn-sm btn-success"><em class="icon ni ni-eye"></em><span>Detail</span></a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                 
                                                         @endforeach

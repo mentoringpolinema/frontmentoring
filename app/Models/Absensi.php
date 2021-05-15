@@ -10,7 +10,7 @@ class Absensi extends Model
     use HasFactory;
     protected $table = 'absensi';
     protected $primaryKey = 'id_absensi';
-    protected $fillable = ['pertemuan_id','mentee_id'];
+    protected $fillable = ['pertemuan_id','mentee_id','kegiatan_id'];
 
     public function mentee()
     {
@@ -19,5 +19,9 @@ class Absensi extends Model
     public function pertemuan()
     {
         return $this->belongsTo(Pertemuan::class,'pertemuan_id');
+    }
+    public function kegiatan()
+    {
+        return $this->belongsTo(Kegiatan::class, 'kegiatan_id');
     }
 }

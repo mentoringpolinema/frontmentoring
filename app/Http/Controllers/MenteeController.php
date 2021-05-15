@@ -17,6 +17,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\File;
+use Svg\Tag\Rect;
 
 class MenteeController extends Controller
 {
@@ -132,12 +133,12 @@ class MenteeController extends Controller
         // Detail Pertemuan
         public function detPertemuan($id_pertemuan)
         {
+            $data_pertemuan = Pertemuan::find($id_pertemuan);
             $data_absensi = Absensi::where([
                 "mentee_id" => auth()->user()->mentee->id_mentee,
-                "pertemuan_id" => $id_pertemuan
+                "kegiatan_id" => $data_pertemuan->kegiatan_id
                 ])->first();
             // dd($data_absensi);
-            $data_pertemuan = Pertemuan::find($id_pertemuan);
             return view('mentee.pertemuan.detail', compact(['data_pertemuan','data_absensi']));
         }
         // Absen Pertemuan
@@ -145,15 +146,15 @@ class MenteeController extends Controller
 
             $absen = Absensi::where([
                 ['mentee_id', '=', auth()->user()->mentee->id_mentee],
-                ['pertemuan_id', '=',$request->id_pertemuan]
+                ['kegiatan_id', '=',$request->kegiatan_id]
             ])->first();
 
             if($absen){
                 return redirect()->back()->with('warning', 'Anda Sudah Absen');
-            }else{
+            }else{  
                 $request->request->add([
                 'mentee_id' => auth()->user()->mentee->id_mentee,
-                'pertemuan_id' => $request->id_pertemuan
+                'kegiatan_id' => $request->kegiatan_id
                 ]);
                 $absensi = Absensi::create($request->all());
                 return redirect()->back()->with('success','Berhasil Absen');
@@ -276,5 +277,43 @@ class MenteeController extends Controller
         $data_mentee->update($request->all());
         return redirect()->back()->with('success','Profile Berhasil Diupdate');
     }
+
+    // Kegiatan
+        // Get Kegiatan
+        public function kegiatan(){
+            $data_kegiatan = Kegiatan::where([
+                "jenis_kegiatan" => "Kegiatan Wajib",
+            ])->get();
+            return view('mentee.kegiatan.index',compact('data_kegiatan'));
+        }
+        // Detail Kegiatan
+        public function detailKegiatan($id_kegiatan){
+            $data_kegiatan = Kegiatan::find($id_kegiatan);
+            $data_absensi = Absensi::where([
+                "mentee_id" => auth()->user()->mentee->id_mentee,
+                "kegiatan_id" => $data_kegiatan->id_kegiatan
+            ])->first();
+
+            // dd($data_absensi);
+            return view('mentee.kegiatan.detail',compact('data_kegiatan','data_absensi'));
+        }
+        // Absen Kegiatan
+        public function absenKegiatan(Request $request){
+            $absen = Absensi::where([
+                ['mentee_id', '=', auth()->user()->mentee->id_mentee],
+                ['kegiatan_id', '=', $request->kegiatan_id]
+            ])->first();
+
+            if ($absen) {
+                return redirect()->back()->with('warning', 'Anda Sudah Absen');
+            } else {
+                $request->request->add([
+                    'mentee_id' => auth()->user()->mentee->id_mentee,
+                    'kegiatan_id' => $request->kegiatan_id
+                ]);
+                $absensi = Absensi::create($request->all());
+                return redirect()->back()->with('success', 'Berhasil Absen');
+            }
+        }
 
 }
