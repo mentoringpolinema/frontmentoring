@@ -167,8 +167,8 @@
                                                                                     {{-- <li><a href="#" data-toggle="modal" data-target="#tolakTugas"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li> --}}
                                                                                     <li class="divider"></li>
                                                                                     <li><a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" data-toggle="modal" data-target="#modalEditKegiatan" id="editKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-edit"></em><span>Edit</span></a></li>
-                                                                                    <li><a href="/admin/detPertemuan/{{$kegiatan->id_kegiatan}}"><em class="icon ni ni-eye"></em><span>Detail</span></a></li>
-                                                                                    <li><a href="/admin/delPertemuan/{{$kegiatan->id_kegiatan}}"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
+                                                                                    <li><a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-eye"></em><span>Detail</span></a></li>
+                                                                                    <li><a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
@@ -271,36 +271,7 @@
                             </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="materi">
-                            <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{-- {{ csrf_field() }} --}}
-                            @csrf
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Nama Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_prodi" name="nama_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l2">Singkatan Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="singkatan_prodi" name="singkatan_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Tambah Prodi</button>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            </form>
-                        </div><!-- .tab-pane -->
+                    </form>
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
@@ -315,8 +286,6 @@
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Edit Kegiatan</h5>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="personal">
                             <form action="/admin/kegiatan" class="form-validate is-alter" method="POST">
                             @csrf
                             @method('PUT')
@@ -397,37 +366,6 @@
                             </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="materi">
-                            <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{-- {{ csrf_field() }} --}}
-                            @csrf
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Nama Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_prodi" name="nama_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l2">Singkatan Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="singkatan_prodi" name="singkatan_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Tambah Prodi</button>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            </form>
-                        </div><!-- .tab-pane -->
-                    </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
@@ -513,36 +451,7 @@
                             </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="materi">
-                            <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{-- {{ csrf_field() }} --}}
-                            @csrf
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Nama Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_prodi" name="nama_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l2">Singkatan Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="singkatan_prodi" name="singkatan_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Tambah Prodi</button>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            </form>
-                        </div><!-- .tab-pane -->
+                    </form>
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->

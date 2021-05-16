@@ -55,7 +55,7 @@
                                                                 <div class="user-avatar sq bg-warning"><span>MM</span></div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{$materi->nama_materi}}</h6>
-                                                                    <span class="sub-text">Minggu Ke-{{$materi->kegiatan->minggu_kegiatan}}</span>
+                                                                    <span class="sub-text">Minggu Ke-{{$materi->minggu_materi}}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
