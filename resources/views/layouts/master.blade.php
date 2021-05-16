@@ -11,10 +11,12 @@
     <!-- Page Title  -->
     <title> Dashboard | Mentoring Polinema <?php echo date("Y");?> </title>
     <!-- StyleSheets  -->
-
+    
 	<link rel="stylesheet" href="{{asset('ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css')}}">
     <link rel="stylesheet" href="{{asset('template/dashboard/assets/css/dashlite.css?ver=2.2.0')}}">
     <link id="skin-default" rel="stylesheet" href="{{asset('template/dashboard/assets/css/theme.css?ver=2.2.0')}}">
+    <!-- File Pond -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
     <!-- Email -->
     <link rel="stylesheet" href="{{asset('template/dashboard//assets/css/style-email.css')}}">
 
@@ -84,6 +86,9 @@
     <script src="{{asset('template/dashboard/assets/js/libs/tagify.js?ver=2.4.0')}}"></script>
     <!-- Messages -->
     <script src="{{asset('template/dashboardassets/js/apps/messages.js?ver=2.4.0')}}"></script>
+    <!-- File Pond -->
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script> 
+    @yield('script-filepond')
     <script>
     (function (NioApp, $){
         $('.eg-swal-galulus').on("click", function (e) {
@@ -93,7 +98,7 @@
     })(NioApp, jQuery);
     </script>
     @yield('jsAdd')
-
+    
 </body>
 
 </html>

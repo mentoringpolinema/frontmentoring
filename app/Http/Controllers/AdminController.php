@@ -386,39 +386,44 @@ class AdminController extends Controller
         // Get Function
         public function materi()
         {
-            $data_materi = Materi::all();
-            $data_kegiatan = Kegiatan::where([
-                "jenis_kegiatan" => "Materi"
-            ])->get();
+            $data_materi = Materi::where('id_materi','!=',7)->get();
+            // $data_kegiatan = Kegiatan::where("jenis_kegiatan", "=", "Materi")->orWhere("jenis_kegiatan", "=", "Pengganti")->orWhere("jenis_kegiatan", "=", "Kegiatan Wajib")->get();
+            $data_kegiatan = Kegiatan::where('jenis_kegiatan','!=','Pertemuan')->get();
             $totalMateri = Materi::count();
             return view('admin.materi', compact(['data_materi', 'data_kegiatan','totalMateri']));
         }
     // Add Materi
         public function addMateri(Request $request)
         {
-            // $materi = Materi::create($request->all());
+            $cekMateri = Materi::where('kegiatan_id','=', $request->kegiatan_id)->first();
 
+            if ($cekMateri) {
+                Alert::warning('Materi Gagal Ditambahkan','Materi Sudah Tersedia');
+                return redirect()->back();
+            } else {
             // Convert link materi untuk ditampilkan di embed
 
             // Dari input link youtube, dipecah berdasarkan /
             //explode itu string ke array
-            $last = explode("/",$request->link_materi);
+            $last = explode("/", $request->link_materi);
 
             //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
             //0 dan 8 panjang dari watch?v=
-            $convertedLast = substr_replace($last[3],"embed/",0,8);
+            $convertedLast = substr_replace($last[3], "embed/", 0, 8);
 
-            $embedLink = "https://youtube.com/".$convertedLast;
+            $embedLink = "https://youtube.com/" . $convertedLast;
             $materi = Materi::create([
                 "nama_materi" => $request->nama_materi,
                 "link_materi" => $request->link_materi,
                 "kegiatan_id" => $request->kegiatan_id,
                 "link_materi_embed" => $embedLink,
-                "detail_materi" => $request->detail_materi, 
+                "detail_materi" => $request->detail_materi,
                 "slug" => Str::slug($request->nama_materi, '-')
             ]);
             // $materi = Materi::create($request->all());
-            return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
+            Alert::success('Yeay','Materi Berhasil Ditambahkan !');
+            return redirect('/admin/materi');
+            }
         }
         // Delete Materi
         public function delMateri($slug)

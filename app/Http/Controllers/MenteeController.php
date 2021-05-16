@@ -40,13 +40,13 @@ class MenteeController extends Controller
         $status = $tugas + $pertemuan;
         
         // Get Another Data
-        $data_kegiatan = Kegiatan::all();
+        $data_kegiatan = Kegiatan::where('jenis_kegiatan','!=','Pengganti')->paginate(5);
         $data_pengumuman = Pengumuman::orderBy('id_pengumuman', 'desc')->paginate(5);
 
         $total_kegiatan = Kegiatan::all()->count();
         $total_materi = Materi::all()->count();
         $total_pertemuan = Pertemuan::all()->count();
-        $total_tugas = Tugas::all()->count();
+        $total_tugas = PengumpulanTugas::where('mentee_id','=',auth()->user()->mentee->id_mentee)->count();
 
         return view('mentee.index',compact(['data_kegiatan','data_pengumuman','data_mentee', 'total_kegiatan', 'total_materi', 'total_pertemuan', 'total_tugas','status']));
     }
@@ -65,8 +65,9 @@ class MenteeController extends Controller
         // Materi
         public function materi()
         {
-            $data_materi = Materi::all();
+            $data_materi = Materi::where('id_materi','!=','7')->get();
             $data_tugas = Tugas::all();
+            // dd($data_materi);
             return view('mentee.materi',compact(['data_materi'],['data_tugas']));
         }
         // Detail Materi
@@ -82,13 +83,13 @@ class MenteeController extends Controller
                 ['mentee_id', '=', auth()->user()->mentee->id_mentee],
                 ['tugas_id', '=', $id_tugas],
             ])->get();
-
+            // dd($tugasku);
             $data_tugas = Tugas::find($id_tugas);
 
             return view('mentee.tugas.detail',compact('data_tugas','data_tugasku'));
         }
         // Upload Tugas
-        public function uploadTugas(Request $request)
+        public function uploadTugas(Request $request,$id_tugas)
         {
             $cek_tugas = PengumpulanTugas::where([
                 ['mentee_id', '=', auth()->user()->mentee->id_mentee],
@@ -96,7 +97,6 @@ class MenteeController extends Controller
             ])->first();
 
             if ($cek_tugas) {
-                dd($cek_tugas);
                 Alert::error('yaah','kamu sudah mengumpulkan !');
                 return redirect()->back();
             } else { 
@@ -110,11 +110,12 @@ class MenteeController extends Controller
                     $uploadTugas = PengumpulanTugas::create([
                         "mentee_id" => auth()->user()->mentee->id_mentee,
                         "file_tugas" => $request->file('file_tugas')->getClientOriginalName(),
-                        "tugas_id" => $request->id_tugas,
+                        "tugas_id" => $id_tugas,
                         "status_tugas" => "Pending"
-                    ]);
-                }
-                Alert::success('Yeay', 'Tugas Berhasil dikumpulkan !');
+                        ]);
+
+                        Alert::success('Yeay', 'Tugas Berhasil dikumpulkan !');
+                    }
                 return redirect()->back(); 
             }
         }

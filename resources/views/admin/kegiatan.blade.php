@@ -167,8 +167,8 @@
                                                                                     {{-- <li><a href="#" data-toggle="modal" data-target="#tolakTugas"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li> --}}
                                                                                     <li class="divider"></li>
                                                                                     <li><a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" data-toggle="modal" data-target="#modalEditKegiatan" id="editKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-edit"></em><span>Edit</span></a></li>
-                                                                                    <li><a href="/admin/detPertemuan/{{$kegiatan->id_kegiatan}}"><em class="icon ni ni-eye"></em><span>Detail</span></a></li>
-                                                                                    <li><a href="/admin/delPertemuan/{{$kegiatan->id_kegiatan}}"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
+                                                                                    <li><a href="/admin/detKegiatan/{{$kegiatan->id_kegiatan}}"><em class="icon ni ni-eye"></em><span>Detail</span></a></li>
+                                                                                    <li><a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
@@ -215,6 +215,7 @@
                                             <option value="Pertemuan">Pertemuan</option>
                                             <option value="Materi">Materi</option>
                                             <option value="Kegiatan Wajib">Kegiatan Wajib</option>
+                                            <option value="Pengganti">Pengganti</option>
                                             {{-- @endforeach --}}
                                         </select>
                                     </div>
@@ -337,7 +338,8 @@
                                             <option>- Jenis Kegiatan -</option>
                                             <option value="Pertemuan">Pertemuan</option>
                                             <option value="Materi">Materi</option>
-                                            <option value="Kegiatan Wajib">Kegiatan Wajib</option>
+                                            <option value="Kegiatan Wajib">Kegiatan Wajib</option>                                            
+                                            <option value="Pengganti">Pengganti</option>
                                             {{-- @endforeach --}}
                                             {{-- @foreach ($data_kegiatan as $kegiatan)
                                                 <option>{{$kegiatan->minggu_kegiatan}}</option>

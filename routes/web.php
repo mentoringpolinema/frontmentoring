@@ -63,6 +63,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::get('/admin/kegiatan/open/{id}', '\App\Http\Controllers\AdminController@openKegiatan');
         // Close Kegiatan
         Route::get('/admin/kegiatan/close/{id}', '\App\Http\Controllers\AdminController@closeKegiatan');
+        
+});
 
     // Mentor ============================================================================================================>
         //Get Mentor
@@ -229,7 +231,9 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::get('/admin/absensi/detail/{id}', '\App\Http\Controllers\AdminController@detailAbsen');
         // Get Absensi Kegiatan
         Route::get('/admin/absen/kegiatan', '\App\Http\Controllers\AdminController@absensiKegiatan');
-});
+        // Filter Kegiatan
+        Route::get('/admin/absensi/filter','\App\Http\Controllers\AdminController@filterKegiatan');
+
 // MENTOR ROUTES =========================================================================================================>
 Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
     // Dashboard
@@ -272,7 +276,7 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
         // Detail Tugas
         Route::get('/mentee/tugas/{id}', '\App\Http\Controllers\MenteeController@detailTugas');
         // Upload Tugas
-        Route::post('/mentee/tugas/upload/', '\App\Http\Controllers\MenteeController@uploadTugas');
+        Route::post('/mentee/tugas/upload/{id}', '\App\Http\Controllers\MenteeController@uploadTugas');
         // Delete Tugas
         Route::get('/mentee/tugas/delete/{id}', '\App\Http\Controllers\MenteeController@deleteTugas');
 
