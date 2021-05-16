@@ -166,12 +166,11 @@
                                                     <thead>
                                                         <tr class="nk-tb-item nk-tb-head">
                                                             <th class="nk-tb-col"><span class="sub-text">Pertemuan </span></th>
+                                                            <th class="nk-tb-col tb-col-mb"><span class="sub-text">Kelompok</span></th>
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Mentor</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Minggu Ke-</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Tanggal</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Detail</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Link</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
@@ -187,6 +186,9 @@
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
+                                                                <span class="tb-amount">{{$pertemuan->mentor->kelompok_id}}</span>
+                                                            </td>
+                                                            <td class="nk-tb-col tb-col-mb">
                                                                 <span class="tb-amount">{{$pertemuan->mentor->nama_mentor}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
@@ -196,24 +198,8 @@
                                                                 <span>{{$pertemuan->tanggal_pertemuan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$pertemuan->detail_pertemuan}}</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
                                                                 <span><a href="{{$pertemuan->link_pertemuan}}"><em class="icon ni ni-link"></em> Link</a></span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-
-                                                            @if($pertemuan->status_pertemuan == 'Closed') 
-                                                                <span class="dot bg-warning d-mb-none"></span>
-                                                                <span class="badge badge-sm badge-dot has-bg badge-danger d-none d-mb-inline-flex" >Closed</span>
-                                                            @endif
-
-                                                            @if($pertemuan->status_pertemuan == 'Open')
-                                                                <span class="dot bg-warning d-mb-none"></span>
-                                                                <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">Open</span>
-                                                            @endif
-
-                                                            </td>                                                           
+                                                            </td>                                                                                                               
                                                             <td class="nk-tb-col nk-tb-col-tools">
                                                                 <ul class="nk-tb-actions gx-1">                                                                    
                                                                     <li>
@@ -221,8 +207,8 @@
                                                                             <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                             <div class="dropdown-menu dropdown-menu-right">
                                                                                 <ul class="link-list-opt no-bdr">
-                                                                                    <li><a href="/admin/pertemuan/acc/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-check"></em><span>Open</span></a></li>
-                                                                                    <li><a href="/admin/pertemuan/dec/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-na"></em><span>Close</span></a></li>
+                                                                                    {{-- <li><a href="/admin/pertemuan/acc/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-check"></em><span>Open</span></a></li> --}}
+                                                                                    {{-- <li><a href="/admin/pertemuan/dec/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-na"></em><span>Close</span></a></li> --}}
                                                                                     {{-- <li><a href="#" data-toggle="modal" data-target="#tolakTugas"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li> --}}
                                                                                     <li class="divider"></li>
                                                                                     <li><a href="/admin/detPertemuan/{{$pertemuan->id_pertemuan}}"><em class="icon ni ni-eye"></em><span>Detail</span></a></li>
@@ -286,10 +272,11 @@
                                 </div> 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="phone-no">Status</label>
-                                        <select class="form-select" id="status_pertemuan" name="status_pertemuan" required>
-                                            <option value="Open">Open</option>
-                                            <option value="Closed">Closed</option>
+                                        <label class="form-label" for="phone-no">Kegiatan</label>
+                                        <select class="form-select" id="kegiatan_id" name="kegiatan_id" required>
+                                            @foreach ($data_kegiatan as $kegiatan)
+                                            <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->nama_kegiatan}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

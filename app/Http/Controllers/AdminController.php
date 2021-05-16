@@ -103,6 +103,28 @@ class AdminController extends Controller
          return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
      }
 
+    // Open Kegiatan 
+    public function openKegiatan($id_kegiatan){
+        $kegiatan = Kegiatan::find($id_kegiatan);
+
+        $kegiatan->update([
+            "status_kegiatan" => "Open"
+        ]);
+        Alert::success('Berhasil','Kegiatan Berhasil Dibuka');
+        return redirect()->back();
+    }
+
+    // Close Kegiatan
+    public function closeKegiatan($id_kegiatan){
+        $kegiatan = Kegiatan::find($id_kegiatan);
+
+        $kegiatan->update([
+            "status_kegiatan" => "Close"
+        ]);
+        Alert::success('Berhasil', 'Kegiatan Berhasil Ditutup');
+        return redirect()->back();
+    }
+
     //-------------------------------------------Mentor-------------------------------------------
 
     // Mentor Function
@@ -220,7 +242,15 @@ class AdminController extends Controller
         $data_angkatan = Angkatan::all();
         $data_jurusan = Jurusan::all();
         $data_kelompok = Kelompok::all();
-        return view('admin.mentee.detail',compact(['data_mentee', 'data_jurusan', 'data_kelompok','data_angkatan']));
+        $tugas = PengumpulanTugas::where([
+            "mentee_id" => $data_mentee->id_mentee,
+            "status_tugas" => "Diterima"
+        ])->count();
+        $pertemuan = Absensi::where([
+            "mentee_id" => $data_mentee->id_mentee
+        ])->count();
+        $status = $tugas+$pertemuan;
+        return view('admin.mentee.detail',compact(['data_mentee', 'data_jurusan', 'data_kelompok','data_angkatan','tugas','pertemuan','status']));
     }
     //Add Mentee
     public function addMentee(Request $request)
@@ -357,11 +387,13 @@ class AdminController extends Controller
         public function materi()
         {
             $data_materi = Materi::all();
-            $data_kegiatan = Kegiatan::all();
+            $data_kegiatan = Kegiatan::where([
+                "jenis_kegiatan" => "Materi"
+            ])->get();
             $totalMateri = Materi::count();
             return view('admin.materi', compact(['data_materi', 'data_kegiatan','totalMateri']));
         }
-        // Add Materi
+    // Add Materi
         public function addMateri(Request $request)
         {
             // $materi = Materi::create($request->all());
@@ -637,17 +669,23 @@ class AdminController extends Controller
         {
             // Get By Mentor
             if($request->has('cari')){
+                $data_kegiatan = Kegiatan::where([
+                    "jenis_kegiatan" => "Pertemuan"
+                ])->get();
                 $data_pertemuan = Pertemuan::where('nama_pertemuan','LIKE','%'. $request->cari.'%')->get();
                 $total = Pertemuan::count();
                 $totalMentee = Mentee::count();
                 $totalKelompok = Kelompok::count();
             }else{
                 $data_pertemuan = Pertemuan::orderBy('created_at','desc')->get();
+                $data_kegiatan = Kegiatan::where([
+                    "jenis_kegiatan" => "Pertemuan"
+                ])->get();
                 $total = Pertemuan::count();
                 $totalMentee = Mentee::count();
                 $totalKelompok = Kelompok::count();
             }
-            return view('admin.pertemuan',compact(['data_pertemuan','total','totalMentee', 'totalKelompok']));
+            return view('admin.pertemuan',compact(['data_pertemuan','total','totalMentee', 'totalKelompok','data_kegiatan']));
         }
         // Add Pertemuan
         public function addPertemuan(Request $request)
@@ -766,9 +804,11 @@ class AdminController extends Controller
     {
         $total_mentee = Mentee::count();
         $total_pertemuan = Pertemuan::count();
+        $data_absensi = Absensi::all();
         $data_pertemuan = Pertemuan::all();
         $total_absensi = Absensi::count();
-        return view('admin.absensi.index', compact('total_absensi', 'data_pertemuan','total_mentee','total_pertemuan'));
+        $total_kegiatan = Kegiatan::count();
+        return view('admin.absensi.index', compact('total_absensi', 'data_absensi','total_mentee','total_pertemuan','data_pertemuan','total_kegiatan'));
     }
     // Detail Absensi
     public function detailAbsen($id_pertemuan){

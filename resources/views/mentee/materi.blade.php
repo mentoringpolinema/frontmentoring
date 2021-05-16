@@ -45,7 +45,7 @@
                                                         <h6 class="title"><span class="name">{{$materi->nama_materi}}</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
                                                         <div class="meta">
                                                             <span class="version">
-                                                                <span class="text-soft">Minggu Ke : </span> <span>{{$materi->minggu_materi}}</span>
+                                                                <span class="text-soft">Minggu Ke : </span> <span>{{$materi->kegiatan->minggu_kegiatan}}</span>
                                                             </span>
                                                             <span class="release">
                                                                 <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-success">Selesai</span>
@@ -93,10 +93,10 @@
                                                                 <span class="text-soft">Tugas: </span> <span>{{$tugas->nama_tugas}}</span>
                                                             </span>
                                                             <span class="release">
-                                                                @if ($tugas->status_tugas == 'Closed')
-                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-danger">{{$tugas->status_tugas}}</span>    
+                                                                @if ($tugas->materi->kegiatan->status_kegiatan == 'Close')
+                                                                <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-danger">{{$tugas->materi->kegiatan->status_kegiatan}}</span>    
                                                                 @else
-                                                                    <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-success">{{$tugas->status_tugas}}</span>
+                                                                    <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-success">{{$tugas->materi->kegiatan->status_kegiatan}}</span>
                                                                 @endif
                                                             </span>
                                                         </div>

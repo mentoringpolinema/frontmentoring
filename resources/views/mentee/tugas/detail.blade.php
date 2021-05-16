@@ -120,6 +120,17 @@
                                                         </div>
                                                     </li>
                                                    @endif
+                                                   {{-- @if($tugasku->status_tugas == 'Pending')
+                                                    <li class="nk-support-item">                                                      
+                                                        <div class="col-lg-12 col-xxl-4">
+                                                            <div class="example-alert">
+                                                                <div class="alert alert-warning alert-icon">
+                                                                    <em class="icon ni ni-clock"></em> <strong>Tugas anda sedang di koreksi, Mohon Bersabar !<span> - Panitia Mentoring 2021.</span> 
+                                                                </div>                                                       
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                   @endif --}}
                                                    @endforeach
                                                 </ul>
                                             </div><!-- .card -->
@@ -133,7 +144,7 @@
                                             </div>
                                         </div>
                                          @enderror
-                                         @if ($data_tugas->status_tugas == 'Open')
+                                         @if ($data_tugas->materi->kegiatan->status_kegiatan == 'Open')
                                          <div class="col-xxl-3 col-md-12">
                                             <div class="card card-preview">
                                                 <div class="card-inner">

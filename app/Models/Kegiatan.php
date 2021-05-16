@@ -9,7 +9,7 @@ class Kegiatan extends Model
     protected $table = 'kegiatan';
     protected $primaryKey = 'id_kegiatan';
     protected $dates = ['created_at', 'updated_at', 'tanggal_kegiatan'];
-    protected $fillable = ['nama_kegiatan','jenis_kegiatan','tanggal_kegiatan', 'detail_kegiatan','minggu_kegiatan'];
+    protected $fillable = ['nama_kegiatan','jenis_kegiatan','tanggal_kegiatan', 'detail_kegiatan','minggu_kegiatan','status_kegiatan'];
 
     public function Pertemuan()
     {
@@ -18,5 +18,9 @@ class Kegiatan extends Model
     public function Materi()
     {
         return $this->belongsTo(Kegiatan::class);
+    }
+    public function Absensi()
+    {
+        return $this->belongsTo(Absensi::class);
     }
 }

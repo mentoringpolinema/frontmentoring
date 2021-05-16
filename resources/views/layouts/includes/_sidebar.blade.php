@@ -88,15 +88,15 @@
                                 <li class="nk-menu-item">
                                     <a href="/admin/absensi" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-list-thumb-fill"></em></span>
-                                        <span class="nk-menu-text">Absensi Pertemuan</span>
+                                        <span class="nk-menu-text">Absensi </span>
                                     </a>
                                 </li><!-- .nk-menu-item -->   
-                                <li class="nk-menu-item">
+                                {{-- <li class="nk-menu-item">
                                     <a href="/admin/absen/kegiatan" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-list-thumb"></em></span>
                                         <span class="nk-menu-text">Absensi Kegiatan</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->   
+                                </li><!-- .nk-menu-item -->    --}}
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Lainnya</h6>
                                 </li><!-- .nk-menu-heading -->
@@ -237,6 +237,12 @@
                                     <a href="/mentee/pertemuan" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-video"></em></span>
                                         <span class="nk-menu-text">Pertemuan</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/mentee/kegiatan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-list-thumb"></em></span>
+                                        <span class="nk-menu-text">Kegiatan</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                  {{-- <li class="nk-menu-heading">

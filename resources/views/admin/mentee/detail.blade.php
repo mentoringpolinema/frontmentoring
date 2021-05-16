@@ -69,16 +69,17 @@
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more disable"><em class="icon ni ni-lock-alt"></em></span></div>
                                                         </div><!-- data-item -->
-                                                        <div class="data-item">
+                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit" data-tab-target="#address">
                                                             <div class="data-col">
                                                                 <span class="data-label">Status</span>
                                                                 <span class="data-value">{{$data_mentee->status_mentee}}</span>
                                                             </div>
-                                                            <div class="data-col data-col-end"><span class="data-more disable"><em class="icon ni ni-lock-alt"></em></span></div>
+                                                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
                                                     </div><!-- data-list -->
                                                 </div><!-- .nk-block -->
                                             </div>
+                                            
                                         </div><!-- .card-aside-wrap -->
                                     </div><!-- .card -->
                                 </div><!-- .nk-block -->
@@ -93,7 +94,15 @@
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
-                    <h5 class="title">Edit Mentee</h5>
+                    <h5 class="title">Detail Mentee</h5>
+                    <ul class="nk-nav nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#data">Personal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#mentoring">Mentoring</a>
+                        </li>
+                    </ul><!-- .nav-tabs -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="data">
                             <form action="/admin/{{$data_mentee->id_mentee}}/updMentee" class="form-validate is-alter" method="POST">
@@ -173,6 +182,33 @@
                                     </div>
                                 </div>
                             </form>
+                        </div><!-- .tab-pane -->
+                         <div class="tab-pane" id="mentoring">
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-l1">Total Pertemuan</label>
+                                        <input type="text" class="form-control form-control-lg" id="address-l1" value="{{$pertemuan}}" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-l2">Total Tugas</label>
+                                        <input type="text" class="form-control form-control-lg" id="address-l2" value="{{$tugas}}" disabled>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-st">Status Mentoring</label>
+                                        @if ($status == '7')
+                                        <input type="text" class="form-control form-control-lg" id="status_mentee" value="{{$status}} - Lulus" disabled>
+                                        @else
+                                        <input type="text" class="form-control form-control-lg" id="status_mentee" value="{{$status}} - Tidak Lulus" disabled>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         </div><!-- .tab-pane -->
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
