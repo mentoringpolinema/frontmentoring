@@ -18,7 +18,9 @@ class CreateCetakBukti extends Migration
             $table->string('kode_cetak');
             $table->integer('mentee_id')->unsigned();
             $table->string('status_cetak');
-            $table->timestamps();
+            // $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
         });
     }

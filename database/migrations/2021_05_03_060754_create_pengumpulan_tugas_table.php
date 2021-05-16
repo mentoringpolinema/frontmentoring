@@ -18,6 +18,7 @@ class CreatePengumpulanTugasTable extends Migration
             $table->string('file_tugas');
             $table->integer('tugas_id')->unsigned();
             $table->integer('mentee_id')->unsigned();
+            $table->enum('status_tugas', ['Diterima', 'Ditolak', 'Pending']);
             $table->timestamps();
             $table->foreign('tugas_id')->references('id_tugas')->on('tugas');
             $table->foreign('mentee_id')->references('id_mentee')->on('mentee');

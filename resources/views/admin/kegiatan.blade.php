@@ -24,7 +24,7 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        {{-- <li>
+                                                        <li>
                                                             <div class="drodown">
                                                                 <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
@@ -35,8 +35,8 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </li> --}}
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-warning" data-toggle="modal" data-target="#modalAddKegiatan"><em class="icon ni ni-user-add"></em><span>Tambah kegiatan</span></a></li>
+                                                        </li>
+                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalAddKegiatan"><em class="icon ni ni-user-add"></em><span>Tambah kegiatan</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -272,36 +272,7 @@
                             </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="materi">
-                            <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{-- {{ csrf_field() }} --}}
-                            @csrf
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Nama Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_prodi" name="nama_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l2">Singkatan Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="singkatan_prodi" name="singkatan_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Tambah Prodi</button>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            </form>
-                        </div><!-- .tab-pane -->
+                    </form>
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
@@ -316,8 +287,6 @@
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Edit Kegiatan</h5>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="personal">
                             <form action="/admin/kegiatan" class="form-validate is-alter" method="POST">
                             @csrf
                             @method('PUT')
@@ -399,37 +368,6 @@
                             </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="materi">
-                            <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{-- {{ csrf_field() }} --}}
-                            @csrf
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Nama Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_prodi" name="nama_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l2">Singkatan Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="singkatan_prodi" name="singkatan_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Tambah Prodi</button>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            </form>
-                        </div><!-- .tab-pane -->
-                    </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
@@ -515,36 +453,7 @@
                             </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="materi">
-                            <form action="/admin/addProdi" class="form-validate is-alter" method="POST">
-                            {{-- {{ csrf_field() }} --}}
-                            @csrf
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Nama Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_prodi" name="nama_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l2">Singkatan Prodi</label>
-                                        <input type="text" class="form-control form-control-lg" id="singkatan_prodi" name="singkatan_prodi" value="">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Tambah Prodi</button>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            </form>
-                        </div><!-- .tab-pane -->
+                    </form>
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
@@ -569,6 +478,7 @@
                     url: "<?php echo route('getKegiatanByID') ?>",
                     method: 'POST',
                     data: {id_kegiatan:id, _token:token},
+                    // dd($data);
                     success: function(data) {
                         var d = new Date(data.options.tanggal_kegiatan);
                         const dateDB =d.getFullYear()+"-"+ ("0" + (d.getMonth() + 1)).slice(-2) +"-"+ ("0" + d.getDate()).slice(-2);
