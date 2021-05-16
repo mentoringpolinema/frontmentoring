@@ -21,6 +21,7 @@ class CreatePertemuanTable extends Migration
             $table->date('tanggal_pertemuan');
             $table->string('detail_pertemuan');
             $table->string('link_pertemuan');
+            $table->enum('status_pertemuan', ['Closed', 'Open']);
             $table->timestamps();
             $table->foreign('mentor_id')->references('id_mentor')->on('mentor');
         });

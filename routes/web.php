@@ -9,6 +9,7 @@ use App\Http\Controllers\MentorController;
 use Illuminate\Support\Facades\Auth;
 
 /*
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -59,6 +60,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::put('/admin/kegiatan', '\App\Http\Controllers\AdminController@editKegiatan');
         //Delete Kegiatan
         Route::get('/admin/{id_kegiatan}/delKegiatan', '\App\Http\Controllers\AdminController@delKegiatan');
+
 
     // Mentor ============================================================================================================>
         //Get Mentor
@@ -168,7 +170,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         Route::get('/admin/kelompok/delM/{id}', '\App\Http\Controllers\AdminController@delMentKelompok');
         // Add Kelompok Mentee
         Route::post('/admin/kelompok/addM/{id}', '\App\Http\Controllers\AdminController@addMenteeKel');
-        // Add Mentee 
+        // Add Mentee
         Route::get('/admin/kelompok/tambah/{id}', '\App\Http\Controllers\AdminController@addMenKelompok');
 
     // Keluhan ===========================================================================================================>
@@ -218,7 +220,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
         // Decline Tugas
         Route::get('/admin/pengumpulan/dec/{id}', '\App\Http\Controllers\AdminController@decTugas');
 
-    // Absensi 
+    // Absensi
         // Get Absensi
         Route::get('/admin/absensi', '\App\Http\Controllers\AdminController@absensi');
         // Detail Absensi
