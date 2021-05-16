@@ -17,8 +17,10 @@ class CreateKeluhanTable extends Migration
             $table->increments('id_keluhan');
             $table->integer('mentee_id')->unsigned();
             $table->integer('panitia_id')->unsigned()->nullable();
+            $table->text('keterangan_keluhan');
             $table->text('isi_keluhan');
             $table->text('jawab_keluhan')->nullable();
+            $table->enum('status_keluhan', ['Selesai', 'Pending', 'Terjawab', 'Belum']);
             $table->timestamps();
             $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
             $table->foreign('panitia_id')->references('id_panitia')->on('panitia');

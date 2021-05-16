@@ -109,7 +109,7 @@
                                                     </div><!-- .col -->
                                                 </div>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                         <div class="card card-preview">
                                             <div class="card-inner">
                                                 <div class="card-title-group">
@@ -266,7 +266,7 @@
                                                                     <span>{{$mentee->kelompok->nama_kelompok}}</span>
                                                                 </td>
                                                             @endif
-                                                           
+
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$mentee->angkatan->angkatan}}</span>
                                                                 {{-- <span>{{$mentee->angkatan_id}}</span> --}}

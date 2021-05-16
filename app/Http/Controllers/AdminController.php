@@ -63,45 +63,45 @@ class AdminController extends Controller
 
     //-------------------------------------------Kegiatan-------------------------------------------
 
-    //Function Kegiatan
-    public function kegiatan()
-    {
-        $data_kegiatan = Kegiatan::all();
-        $totalKegiatan = Kegiatan::count();
-        return view('admin.kegiatan', compact(['data_kegiatan','totalKegiatan']));
-    }
-
-    // Add Kegiatan
-    public function addKegiatan(Request $request)
-    {
-        $kegiatan = Kegiatan::create($request->all());
-        return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil ditambahkan !');
-    }
-
-    // Delete Kegiatan
-    public function delKegiatan($id_kegiatan)
-    {
-        $data_kegiatan = Kegiatan::find($id_kegiatan);
-        $data_kegiatan->delete($data_kegiatan);
-        return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil dihapus !');
-    }
-
-    // Get By Id Kegiatan
-    public function getByIdKegiatan(Request $request){
-        if($request->ajax()){
-            $data = Kegiatan::findOrFail($request->id_kegiatan);
-            return response()->json(['options'=>$data]);
-        }
-    }
-
-    // Edit Kegiatan
-    public function editKegiatan(Request $request)
-    {
-        $id = $request->id_kegiatan_edit;
-        $kegiatan = Kegiatan::findOrFail($id);
-        $kegiatan->update($request->all());
-        return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
-    }
+     //Function Kegiatan
+     public function kegiatan()
+     {
+         $data_kegiatan = Kegiatan::all();
+         $totalKegiatan = Kegiatan::count();
+         return view('admin.kegiatan', compact(['data_kegiatan','totalKegiatan']));
+     }
+ 
+     // Add Kegiatan
+     public function addKegiatan(Request $request)
+     {
+         $kegiatan = Kegiatan::create($request->all());
+         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil ditambahkan !');
+     }
+ 
+     // Delete Kegiatan
+     public function delKegiatan($id_kegiatan)
+     {
+         $data_kegiatan = Kegiatan::find($id_kegiatan);
+         $data_kegiatan->delete($data_kegiatan);
+         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil dihapus !');
+     }
+ 
+     // Get By Id Kegiatan
+     public function getByIdKegiatan(Request $request){
+         if($request->ajax()){
+             $data = Kegiatan::findOrFail($request->id_kegiatan);
+             return response()->json(['options'=>$data]);
+         }
+     }
+ 
+     // Edit Kegiatan
+     public function editKegiatan(Request $request)
+     {
+         $id = $request->id_kegiatan_edit;
+         $kegiatan = Kegiatan::findOrFail($id);
+         $kegiatan->update($request->all());
+         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
+     }
 
     // Open Kegiatan 
     public function openKegiatan($id_kegiatan){

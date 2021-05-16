@@ -24,7 +24,7 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        {{-- <li>
+                                                        <li>
                                                             <div class="drodown">
                                                                 <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-calender-date"></em><span><span class="d-none d-md-inline">Last</span> 30 Days</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
@@ -35,8 +35,8 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </li> --}}
-                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-warning" data-toggle="modal" data-target="#modalAddKegiatan"><em class="icon ni ni-user-add"></em><span>Tambah kegiatan</span></a></li>
+                                                        </li>
+                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalAddKegiatan"><em class="icon ni ni-user-add"></em><span>Tambah kegiatan</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -567,6 +567,7 @@
                     url: "<?php echo route('getKegiatanByID') ?>",
                     method: 'POST',
                     data: {id_kegiatan:id, _token:token},
+                    // dd($data);
                     success: function(data) {
                         var d = new Date(data.options.tanggal_kegiatan);
                         const dateDB =d.getFullYear()+"-"+ ("0" + (d.getMonth() + 1)).slice(-2) +"-"+ ("0" + d.getDate()).slice(-2);

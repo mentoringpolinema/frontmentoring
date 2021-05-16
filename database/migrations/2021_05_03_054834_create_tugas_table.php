@@ -18,6 +18,7 @@ class CreateTugasTable extends Migration
             $table->string('nama_tugas');
             $table->string('detail_tugas');
             $table->integer('pertemuan_id')->unsigned();
+            $table->enum('status_tugas', ['Open', 'Closed']);
             $table->timestamps();
             $table->foreign('pertemuan_id')->references('id_pertemuan')->on('pertemuan');
         });
