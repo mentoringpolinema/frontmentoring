@@ -98,7 +98,7 @@ class AdminController extends Controller
      public function editKegiatan(Request $request)
      {
          $id = $request->id_kegiatan_edit;
-         $kegiatan = Kegiatan::findOrFail($id);
+         $kegiatan = Kegiatan::find($id);
          $kegiatan->update($request->all());
          return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
      }
@@ -309,19 +309,19 @@ class AdminController extends Controller
     public function impMentee(Request $request)
     {
         Excel::import(new MentorImport,$request->file('data_mentor'));
-        return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Import !');
+        return redirect('/admin/mentee')->with('success', 'Mentee Berhasil di Import !');
     }
 
     // Update Mentee
     public function updMentee(Request $request,$id_mentee){
         $data_mentee = Mentee::find($id_mentee);
         $data_mentee->update($request->all());
-        return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
+        return redirect('/admin/mentee')->with('success', 'Mentee Berhasil di Update !');;
     }
     // Export Mentee
     public function exportMenteeExcel()
     {
-        return Excel::download(new MentorExport, 'Mentor.xlsx');
+        return Excel::download(new MentorExport, 'Mentee.xlsx');
     }
     // Export PDF
     public function exportMenteePDF()

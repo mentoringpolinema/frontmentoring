@@ -192,7 +192,7 @@
                                                                 <span class="tb-amount">{{$pertemuan->mentor->nama_mentor}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$pertemuan->kegiatan->minggu_kegiatan}}</span>
+                                                                <span>{{$pertemuan->minggu_pertemuan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$pertemuan->tanggal_pertemuan}}</span>
@@ -274,6 +274,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kegiatan</label>
                                         <select class="form-select" id="kegiatan_id" name="kegiatan_id" required>
+                                            <option value="#">-Pilih Kegiatan-</option>
                                             @foreach ($data_kegiatan as $kegiatan)
                                             <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->nama_kegiatan}}</option>
                                             @endforeach
@@ -286,6 +287,19 @@
                                         <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link" required>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="display-name">Status Pertemuan</label>
+                                        <select class="form-select" id="status_pertemuan" name="status_pertemuan" data-ui="lg" required>
+                                            <option value="#">-Pilih Status-</option>
+                                            {{-- @foreach ($data_pertemuan as $pertemuan)                                            
+                                            <option value="{{$pertemuan->status_pertemuan}}">{{$pertemuan->mentor->nama_mentor}}</option>
+                                            @endforeach --}}
+                                            <option value="Open">Open</option>
+                                            <option value="Closed">Closed</option>
+                                        </select>
+                                     </div>
+                                </div>     
                                 <div class="col-md-12">
                                     <label class="form-label" for="link_pertemuan">Detail Pertemuan</label>
                                         <textarea type="textarea" class="form-control form-control-lg" id="detail_pertemuan" name="detail_pertemuan" required></textarea>      
