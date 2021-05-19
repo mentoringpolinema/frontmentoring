@@ -15,10 +15,10 @@ class CreateAbsensiTable extends Migration
     {
         Schema::create('absensi', function (Blueprint $table) {
             $table->increments('id_absensi');
-            $table->integer('pertemuan_id')->unsigned();
+            $table->integer('kegiatan_id')->unsigned();
             $table->integer('mentee_id')->unsigned();
             $table->timestamps();
-            $table->foreign('pertemuan_id')->references('id_pertemuan')->on('pertemuan');
+            $table->foreign('kegiatan_id')->references('id_kegiatan')->on('kegiatan');
             $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
         });
     }

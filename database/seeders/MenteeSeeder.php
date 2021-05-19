@@ -20,14 +20,27 @@ class MenteeSeeder extends Seeder
         $faker = Faker::create('id_ID');
         $namaMentee = $faker->name;
         $dataMentee = [
-            'user_id' => 3,
-            'nim_mentee' => $faker->numerify('##########'),
-            'nama_mentee' => $namaMentee,
-            'kelas_id' => 1,
-            'kelompok_id' => 1,
-            'angkatan_id' => 1,
-            'status_mentee' => 'lulus',
-            'slug' => Str::slug($namaMentee),
+            [
+                'user_id' => 3,
+                'nim_mentee' => $faker->numerify('##########'),
+                'nama_mentee' => $namaMentee,
+                'kelas_id' => 1,
+                'kelompok_id' => 1,
+                'angkatan_id' => 1,
+                'status_mentee' => 'lulus',
+                'slug' => Str::slug($namaMentee),
+            ],
+            [
+                'user_id' => 6,
+                'nim_mentee' => $faker->numerify('##########'),
+                'nama_mentee' => $namaMentee,
+                'kelas_id' => 2,
+                'kelompok_id' => 2,
+                'angkatan_id' => 1,
+                'status_mentee' => 'lulus',
+                'slug' => Str::slug($namaMentee),
+            ]
+           
         ];
 
         DB::table('mentee')->insert($dataMentee);

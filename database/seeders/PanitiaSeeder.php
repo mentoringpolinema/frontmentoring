@@ -17,8 +17,17 @@ class PanitiaSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
         $dataPanitia = [
-            'user_id' => 1,
-            'nama_panitia' => $faker->name,
+            [
+                'user_id' => 1,
+                'nama_panitia' => $faker->name,
+                'status_panitia' => 'aktif'
+            ],
+            [
+                'user_id' => 4,
+                'nama_panitia' => $faker->name,
+                'status_panitia' => 'aktif'
+            ]
+            
         ];
 
         DB::table('panitia')->insert($dataPanitia);

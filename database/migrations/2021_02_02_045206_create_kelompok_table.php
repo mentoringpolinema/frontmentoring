@@ -17,10 +17,10 @@ class CreateKelompokTable extends Migration
             $table->increments('id_kelompok');
             $table->string('nama_kelompok');
             $table->integer('mentor_id')->unsigned();
-            $table->integer('materi_id')->unsigned();
+            // $table->integer('materi_id')->unsigned();
             $table->timestamps();
             $table->foreign('mentor_id')->references('id_mentor')->on('mentor');
-            $table->foreign('materi_id')->references('id_materi')->on('materi');
+            // $table->foreign('materi_id')->references('id_materi')->on('materi');
 
         });
     }

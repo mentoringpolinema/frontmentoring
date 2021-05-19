@@ -115,10 +115,10 @@
                                                                             <div class="row gx-6 gy-4">
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Kegiatan</label>
+                                                                                        <label class="overline-title overline-title-alt">Minggu Kegiatan</label>
                                                                                         <select class="form-select form-select-sm">
                                                                                             @foreach ($data_absensi as $absensi)
-                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->nama_kegiatan}}</option>
+                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
                                                                                             @endforeach
                                                                                         </select>
                                                                                     </div>

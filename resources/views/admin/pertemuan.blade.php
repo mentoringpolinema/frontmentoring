@@ -114,7 +114,7 @@
                                                             <li>
                                                                 <div class="dropdown">
                                                                     <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <div class="badge badge-circle badge-primary">{{$total}}</div>
+                                                                        {{-- <div class="badge badge-circle badge-primary">{{$total}}</div> --}}
                                                                         <em class="icon ni ni-filter-alt"></em>
                                                                     </a>
                                                                     <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
@@ -130,11 +130,11 @@
                                                                             <div class="row gx-6 gy-4">
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Pertemuan</label>
+                                                                                        <label class="overline-title overline-title-alt">Minggu Pertemuan</label>
                                                                                         <select class="form-select form-select-sm">
-                                                                                            @foreach ($data_pertemuan as $pertemuan)
-                                                                                                <option value="{{$pertemuan->nama_pertemuan}}">{{$pertemuan->nama_pertemuan}}</option>
-                                                                                            @endforeach
+                                                                                            {{-- @foreach ($data_absensi as $absensi)
+                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
+                                                                                            @endforeach --}}
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>                                                                                
@@ -191,9 +191,9 @@
                                                             <td class="nk-tb-col tb-col-mb">
                                                                 <span class="tb-amount">{{$pertemuan->mentor->nama_mentor}}</span>
                                                             </td>
-                                                            <td class="nk-tb-col tb-col-md">
+                                                            {{-- <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$pertemuan->minggu_pertemuan}}</span>
-                                                            </td>
+                                                            </td> --}}
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$pertemuan->tanggal_pertemuan}}</span>
                                                             </td>

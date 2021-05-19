@@ -18,10 +18,13 @@ class CreateMateriTable extends Migration
             $table->string('nama_materi');
             $table->string('link_materi');
             $table->string('link_materi_embed');
-            $table->integer('minggu_materi');
             $table->string('detail_materi');
             $table->string('slug');
-            $table->timestamps();
+            $table->integer('kegiatan_id')->unsigned();
+            $table->foreign('kegiatan_id')->references('id_kegiatan')->on('kegiatan');
+            // $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

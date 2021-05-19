@@ -17,13 +17,16 @@ class CreatePertemuanTable extends Migration
             $table->increments('id_pertemuan');
             $table->string('nama_pertemuan');
             $table->integer('mentor_id')->unsigned();
-            $table->string('minggu_pertemuan');
             $table->date('tanggal_pertemuan');
             $table->string('detail_pertemuan');
             $table->string('link_pertemuan');
             $table->enum('status_pertemuan', ['Closed', 'Open']);
-            $table->timestamps();
+            $table->integer('kegiatan_id')->unsigned();
+            // $table->timestamps();
             $table->foreign('mentor_id')->references('id_mentor')->on('mentor');
+            $table->foreign('kegiatan_id')->references('id_kegiatan')->on('kegiatan');
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

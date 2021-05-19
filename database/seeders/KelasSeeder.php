@@ -16,12 +16,20 @@ class KelasSeeder extends Seeder
     {
         $dataKelas = [
             [
-                'kelas' => '1A',
+                'kelas' => 'MI-1A',
                 'prodi_id' => 1,
             ],
             [
-                'kelas' => '1A',
+                'kelas' => 'TI-1A',
                 'prodi_id' => 2,
+            ],
+            [
+                'kelas' => 'TS-1A',
+                'prodi_id' => 3,
+            ],
+            [
+                'kelas' => 'MRK-1A',
+                'prodi_id' => 4,
             ],
         ];
 
