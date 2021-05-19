@@ -215,6 +215,7 @@
                                             <option value="Pertemuan">Pertemuan</option>
                                             <option value="Materi">Materi</option>
                                             <option value="Kegiatan Wajib">Kegiatan Wajib</option>
+                                            <option value="Pengganti">Pengganti</option>
                                             {{-- @endforeach --}}
                                         </select>
                                     </div>
@@ -319,7 +320,8 @@
                                             <option>- Pilih Kegiatan -</option>
                                             <option value="Pertemuan">Pertemuan</option>
                                             <option value="Materi">Materi</option>
-                                            <option value="Kegiatan Wajib">Kegiatan Wajib</option>
+                                            <option value="Kegiatan Wajib">Kegiatan Wajib</option>                                            
+                                            <option value="Pengganti">Pengganti</option>
                                             {{-- @endforeach --}}
                                             {{-- @foreach ($data_kegiatan as $kegiatan)
                                                 <option>{{$kegiatan->minggu_kegiatan}}</option>

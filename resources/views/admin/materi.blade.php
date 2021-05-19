@@ -122,20 +122,20 @@
                             {{-- {{ csrf_field() }} --}}
                             @csrf
                             <div class="row gy-4">
-                                <div class="col-md-9">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="materi-name">Nama Materi</label>
                                         <input type="text" class="form-control form-control" id="nama_materi" name="nama_materi" required>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="minggu-materi">Minggu Ke-</label>
                                         <select class="form-control" id="kegiatan_id" name="kegiatan_id" required>
-                                            <option>Minggu Ke-</option>
                                             @foreach ($data_kegiatan as $kegiatan)
-                                                <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
+                                                <option value="{{$kegiatan->id_kegiatan}}">Minggu - {{$kegiatan->minggu_kegiatan == 0? "Pengganti":$kegiatan->minggu_kegiatan}} : {{$kegiatan->nama_kegiatan}}</option>
                                             @endforeach
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -203,11 +203,10 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="form-label" for="minggu-materi">Minggu Ke-</label>
-
                                         <select class="form-select" id="minggu_materi" name="minggu_materi_edit" >
                                             <option>Minggu Ke-</option>
                                             @foreach ($data_kegiatan as $kegiatan)
-                                                <option value="{{$kegiatan->minggu_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
+                                                <option value="{{$kegiatan->minggu_kegiatan}}">{{$kegiatan->minggu_kegiatan}} - {{$kegiatan->_kegiatan}}</option>
                                             @endforeach
                                         </select>
                                     </div>

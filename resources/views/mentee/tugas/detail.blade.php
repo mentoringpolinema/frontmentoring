@@ -87,50 +87,28 @@
                                                                 <button class="btn btn-sm btn-danger">Hapus</button>
                                                             </div> --}}
                                                         </li>                                                   
-                                                   {{-- @if ($tugasku->pesan_tugas == NULL)
-                                                    <li class="nk-support-item">                                                      
-                                                        <div class="col-lg-12 col-xxl-4">
-                                                            <div class="example-alert">
-                                                                <div class="alert alert-suucess alert-icon">
-                                                                    <em class="icon ni ni-check"></em> <strong>Selamat ! </strong> Tugas anda telah terupload <span>-Panitia Mentoring 2021.</span> 
-                                                                </div>                                                       
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                   @endif --}}
-                                                   @if($tugasku->status_tugas == 'Ditolak')
-                                                    <li class="nk-support-item">                                                      
-                                                        <div class="col-lg-12 col-xxl-4">
-                                                            <div class="example-alert">
-                                                                <div class="alert alert-danger alert-icon">
-                                                                    <em class="icon ni ni-cross-circle"></em> <strong>Mohon Maaf ! </strong> Tugas anda ditolak <span>-Panitia Mentoring 2021.</span> 
-                                                                </div>                                                       
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                   @endif
-                                                   @if($tugasku->status_tugas == 'Diterima')
-                                                    <li class="nk-support-item">                                                      
-                                                        <div class="col-lg-12 col-xxl-4">
-                                                            <div class="example-alert">
-                                                                <div class="alert alert-success alert-icon">
-                                                                    <em class="icon ni ni-check"></em> <strong>Selamat ! </strong> Tugas anda diterima <span>-Panitia Mentoring 2021.</span> 
-                                                                </div>                                                       
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                   @endif
-                                                   {{-- @if($tugasku->status_tugas == 'Pending')
-                                                    <li class="nk-support-item">                                                      
-                                                        <div class="col-lg-12 col-xxl-4">
-                                                            <div class="example-alert">
-                                                                <div class="alert alert-warning alert-icon">
-                                                                    <em class="icon ni ni-clock"></em> <strong>Tugas anda sedang di koreksi, Mohon Bersabar !<span> - Panitia Mentoring 2021.</span> 
-                                                                </div>                                                       
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                   @endif --}}
+                                                        @if($tugasku->status_tugas == 'Ditolak')
+                                                                <li class="nk-support-item">                                                      
+                                                                    <div class="col-lg-12 col-xxl-4">
+                                                                        <div class="example-alert">
+                                                                            <div class="alert alert-danger alert-icon">
+                                                                                <em class="icon ni ni-cross-circle"></em> <strong>Mohon Maaf ! </strong> Tugas anda ditolak <span>-Panitia Mentoring 2021.</span> 
+                                                                            </div>                                                       
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                        @endif
+                                                        @if($tugasku->status_tugas == 'Diterima')
+                                                                <li class="nk-support-item">                                                      
+                                                                    <div class="col-lg-12 col-xxl-4">
+                                                                        <div class="example-alert">
+                                                                            <div class="alert alert-success alert-icon">
+                                                                                <em class="icon ni ni-check"></em> <strong>Selamat ! </strong> Tugas anda diterima <span>-Panitia Mentoring 2021.</span> 
+                                                                            </div>                                                       
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                        @endif
                                                    @endforeach
                                                 </ul>
                                             </div><!-- .card -->
@@ -145,13 +123,14 @@
                                         </div>
                                          @enderror
                                          @if ($data_tugas->materi->kegiatan->status_kegiatan == 'Open')
+                                         {{-- @if($data_tugasku = "") --}}
                                          <div class="col-xxl-3 col-md-12">
                                             <div class="card card-preview">
                                                 <div class="card-inner">
                                                     <div class="preview-block">
                                                         <div class="row gy-4">                                                            
                                                             <div class="col-sm-12">
-                                                                <form action="/mentee/tugas/upload/" enctype="multipart/form-data" method="POST">
+                                                                <form action="/mentee/tugas/upload/{{$data_tugas->id_tugas}}" enctype="multipart/form-data" method="POST">
                                                                     @csrf
                                                                     <div class="form-group">
                                                                         <input type="text" class="form-control" id="id_tugas" name="id_tugas" value="{{$data_tugas->id_tugas}}" hidden>
@@ -160,11 +139,12 @@
                                                                         <label class="form-label" for="customMultipleFilesLabel">Silahkan Upload Tugas yang telah diberikan</label>
                                                                         <div class="form-control-wrap">
                                                                             <div class="custom-file">
-                                                                                <input type="file" multiple class="custom-file-input" id="file_tugas" name="file_tugas" required>
-                                                                                <label class="custom-file-label" for="customMultipleFiles">Choose files</label>
+                                                                                <input type="file" id="file_tugas" name="file_tugas" required>
+                                                                                {{-- <label class="custom-file-label" for="customMultipleFiles">Choose files</label> --}}
                                                                             </div>
                                                                         </div>
-                                                                    </div>                                                                                                                       
+                                                                    </div>
+                                                                    <br>                                                                                                                       
                                                                     <div class="form-group">
                                                                         <button type="submit" class="btn btn-warning">Upload</button>
                                                                     </div>
@@ -182,4 +162,21 @@
                         </div>
                     </div>
                 </div>
+@section('script-filepond')
+<script>
+    const inputElement = document.querySelector('input[id="file_tugas"]');
+    const pond = FilePond.create( inputElement );
+
+    FilePond.setOptions({
+        server: {
+            process : '/mentee/tugas/upload/{{$data_tugas->id_tugas}}',
+            revert : '/mentee/tugas/delete/{{$data_tugas->id_tugas}}',
+            headers : {
+                'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+            }
+        }
+    });
+</script>
+@endsection
+
 @stop

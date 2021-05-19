@@ -87,10 +87,10 @@
                                                             </g>
                                                         </svg></div>
                                                     <div class="info">
-                                                        <h6 class="title"><span class="name">{{$tugas->nama_tugas}}</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
+                                                        <h6 class="title"><span class="name">{{$tugas->nama_tugas}}</span></h6>
                                                         <div class="meta">
                                                             <span class="version">
-                                                                <span class="text-soft">Tugas: </span> <span>{{$tugas->nama_tugas}}</span>
+                                                                <span class="text-soft">Minggu Ke: </span> <span>{{$tugas->materi->kegiatan->minggu_kegiatan}}</span>
                                                             </span>
                                                             <span class="release">
                                                                 @if ($tugas->materi->kegiatan->status_kegiatan == 'Close')

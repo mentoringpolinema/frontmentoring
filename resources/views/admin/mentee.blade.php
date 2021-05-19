@@ -230,7 +230,7 @@
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Prodi</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelompok</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Angkatan</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
+                                                            {{-- <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th> --}}
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
@@ -271,7 +271,7 @@
                                                                 <span>{{$mentee->angkatan->angkatan}}</span>
                                                                 {{-- <span>{{$mentee->angkatan_id}}</span> --}}
                                                             </td>
-                                                            <td class="nk-tb-col tb-col-md">
+                                                            {{-- <td class="nk-tb-col tb-col-md">
                                                                 @if($mentee->status_mentee == 'lulus')
                                                                 <span class="dot bg-success d-mb-none"></span>
                                                                 <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">{{$mentee->status_mentee}}</span>
@@ -280,7 +280,7 @@
                                                                 <span class="dot bg-success d-mb-none"></span>
                                                                 <span class="badge badge-sm badge-dot has-bg badge-danger d-none d-mb-inline-flex">{{$mentee->status_mentee}}</span>
                                                                 @endif
-                                                            </td>
+                                                            </td> --}}
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <form action="/admin/mentee/{{$mentee->slug}}" method="post" style="display: inline">
                                                                     @csrf

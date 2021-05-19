@@ -81,23 +81,7 @@
                                                                        data-target="#modalEditTugas" id="editTugas"
                                                                        data-id="{{ $tugas->id_tugas }}"><em
                                                                             class="icon ni ni-edit"></em><span>Edit Tugas</span></a>
-                                                                </li>
-                                                                @if ($tugas->status_tugas == "Open")
-                                                                <li>
-                                                                    <a href="/admin/tugas/close/{{$tugas->id_tugas}}">
-                                                                        <em class="icon ni ni-check-round-cut"></em>
-                                                                        <span>Tandai Tugas</span>
-                                                                    </a>
-                                                                </li>
-                                                               @endif
-                                                               @if($tugas->status_tugas == "Closed")
-                                                                <li>
-                                                                    <a href="/admin/tugas/open/{{$tugas->id_tugas}}">
-                                                                        <em class="icon ni ni-check-round-cut"></em>
-                                                                        <span>Tandai Tugas</span>
-                                                                    </a>
-                                                                </li>
-                                                                @endif
+                                                                </li>                                                               
                                                                 
                                                                 <li><a href="/admin/tugas/{{$tugas->id_tugas}}"><em
                                                                             class="icon ni ni-trash-alt"></em><span>Hapus Tugas</span></a>
@@ -127,10 +111,10 @@
                                                         </li>
                                                     </ul> --}}
                                                     {{-- <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>4 Days Left</span></span> --}}
-                                                    @if ($tugas->status_tugas == 'Closed')
-                                                    <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>Status : {!!$tugas->status_tugas!!}</span></span>
+                                                    @if ($tugas->materi->kegiatan->status_kegiatan == 'Close')
+                                                    <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>Status : {!!$tugas->materi->kegiatan->status_kegiatan!!}</span></span>
                                                     @else
-                                                    <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Status : {!!$tugas->status_tugas!!}</span></span>
+                                                    <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Status : {!!$tugas->materi->kegiatan->status_kegiatan!!}</span></span>
                                                     @endif
 
                                                 </div>
@@ -177,8 +161,7 @@
                                             <select class="form-control" id="materi_id" name="materi_id" required>
                                                 <option>-Pilih Materi-</option>
                                                 @foreach ($data_materi as $Materi)
-                                                    <option
-                                                        value="{{$Materi->id_materi}}">{{$Materi->nama_materi}}</option>
+                                                    <option value="{{$Materi->id_materi}}">{{$Materi->nama_materi}}</option>
                                                 @endforeach
                                             </select></div>
                                     </div>
