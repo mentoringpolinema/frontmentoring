@@ -353,8 +353,9 @@ class AdminController extends Controller
     //Function User
     public function user()
     {
-        $data_user_panitia = User::where('role', 'Panitia')->get();
-        $totalUserPanitia = count($data_user_panitia);
+        // $data_user_panitia = User::where('role', 'Panitia')->get();
+        $data_user_panitia = Panitia::all();
+        $totalUserPanitia = Panitia::count();
         // dd($data_user_panitia);
         return view('admin.user', compact(['totalUserPanitia', 'data_user_panitia']));
     }
@@ -377,18 +378,22 @@ class AdminController extends Controller
 
         $panitia = Panitia::create([
             "user_id" => $userID,
-            "nama_panitia" => $request->nama_panitia
+            "nama_panitia" => $request->nama_panitia,
+            "status_panitia" => $request->status_panitia
         ]);
+        // dd($panitia);
         return redirect('/admin/user')->with('success', 'Panitia Berhasil ditambahkan !');
     }
     // Delete User
     public function delUserPanitia($id_panitia)
     {
-        dd($id_panitia);
+        // dd($id_panitia);
         $data_user_panitia = Panitia::where('id_panitia', $id_panitia)->get()->first();
         $dataUserPanitia = User::where('id', $data_user_panitia->user_id)->get()->first();
 
+        $data_user_panitia->delete($data_user_panitia);
         $dataUserPanitia->delete($dataUserPanitia);
+        
         // dd($dataUserPanitia);
         return redirect('/admin/user')->with('success', 'Panitia Berhasil dihapus !');
     }

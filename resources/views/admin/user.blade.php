@@ -119,7 +119,7 @@
                                                             <td class="nk-tb-col">
                                                                 <div class="user-card">
                                                                     <div class="user-info">
-                                                                        <span class="tb-lead">{{$panitia->name}}<span class="dot dot-success d-md-none ml-1"></span></span>
+                                                                        <span class="tb-lead">{{$panitia->user->name}}<span class="dot dot-success d-md-none ml-1"></span></span>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -127,19 +127,22 @@
                                                                 <span class="tb-amount">yahyahudan19</span>
                                                             </td> --}}
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$panitia->email}}</span>
+                                                                <span>{{$panitia->user->email}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
+                                                                <span class="tb-status text-success">{{$panitia->status_panitia}}</span>
+                                                            </td>
+                                                            {{-- <td class="nk-tb-col tb-col-md">
                                                                 <span class="dot bg-success d-mb-none"></span>
                                                             <span class="badge badge-sm badge-dot has-bg badge-success d-none d-mb-inline-flex">{{$panitia->status}}</span>
-                                                            </td>
+                                                            </td> --}}
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <form action="/admin/user/{{$panitia->id_panitia}}" method="post" style="display: inline">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button class="btn btn-round btn-sm btn-danger" type="submit" class="fa fa-trash">Delete</button>
                                                                 </form>
-                                                                {{-- <a href="/admin/{{$panitia->id_user}}/delUserPanitia" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a> --}}
+                                                                {{-- <a href="/admin/delUserPanitia/{{$panitia->id_panitia}}" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a> --}}
                                                                 <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                                                                         
@@ -184,8 +187,8 @@
                                         <select class="form-control" id="status" name="status_panitia" required>
                                             {{-- @foreach ($data_prodi as $prodi) --}}
                                             <option>- Pilih Status -</option>
-                                            <option value="Aktif">Aktif</option>
-                                            <option value="Tidak Aktif">Tidak Aktif</option>
+                                            <option value="aktif">Aktif</option>
+                                            <option value="tidak aktif">Tidak Aktif</option>
                                             {{-- @endforeach --}}
                                         </select>
                                     </div>
