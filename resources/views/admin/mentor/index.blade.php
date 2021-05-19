@@ -77,7 +77,7 @@
                                                                 <div class="timeline-data">
                                                                     <h6 class="timeline-title">{{$kegiatan->nama_kegiatan}}</h6>
                                                                     <div class="timeline-des">
-                                                                        <p>{{$kegiatan->detail_kegiatan}}</p>
+                                                                        <p>{!!$kegiatan->detail_kegiatan!!}</p>
                                                                         <strong><span class="time">Waktu : {{$kegiatan->jam_kegiatan}}</span></strong>
                                                                     </div>
                                                                 </div>
