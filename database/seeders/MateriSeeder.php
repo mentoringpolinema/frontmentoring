@@ -15,12 +15,23 @@ class MateriSeeder extends Seeder
     public function run()
     {
         $dataMateri = [
-            'nama_materi' => 'Belajar Mengaji',
-            'link_materi' => 'https://www.youtube.com/watch?v=_jEkvAHLbp0',
-            'link_materi_embed' => 'https://youtube.com/embed/_jEkvAHLbp0',
-            'minggu_materi' => 1,
-            'detail_materi' => 'Jam 08:00 sampai selesai yaaaa....',
-            'slug' => 'belajar-mengaji'
+            [
+                'nama_materi' => 'Belajar Makhorijul Huruf',
+                'link_materi' => 'https://www.youtube.com/watch?v=K57BYZbwcr8',
+                'link_materi_embed' => 'https://www.youtube.com/embed/K57BYZbwcr8',
+                'detail_materi' => 'Dilaksanakan Pukul 09.00 WIB',
+                'slug' => 'belajar-makhorijul-huruf',
+                'kegiatan_id' => 2
+            ],
+            [
+                'nama_materi' => 'Belajar Membaca Surat Pendek',
+                'link_materi' => 'https://www.youtube.com/watch?v=obAfYylyXAM',
+                'link_materi_embed' => 'https://www.youtube.com/embed/obAfYylyXAM',
+                'detail_materi' => 'Batas Pengumpulan Tugas Pukul 15.00 WIB',
+                'slug' => 'belajar-membaca-surat-pendek',
+                'kegiatan_id' => 4
+            ]
+            
         ];
         DB::table('materi')->insert($dataMateri);
     }

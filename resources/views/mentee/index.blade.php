@@ -186,6 +186,11 @@
                                                                 <span>MT</span>
                                                             </div>
                                                         @endif
+                                                        @if($pengumuman->tagline_pengumuman == 'Opening Mentoring')
+                                                            <div class="user-avatar bg-danger">
+                                                                <span>OM</span>
+                                                            </div>
+                                                        @endif
                                                         @if($pengumuman->tagline_pengumuman == 'Closing Mentoring')
                                                             <div class="user-avatar bg-danger">
                                                                 <span>CM</span>

@@ -144,7 +144,7 @@
                                                             </td> --}}
                                                             <td class="nk-tb-col tb-col-md">
 
-                                                            @if($kegiatan->status_kegiatan == 'Close') 
+                                                            @if($kegiatan->status_kegiatan == 'Closed') 
                                                                 <span class="dot bg-warning d-mb-none"></span>
                                                                 <span class="badge badge-sm badge-dot has-bg badge-danger d-none d-mb-inline-flex" >Closed</span>
                                                             @endif
@@ -167,7 +167,7 @@
                                                                                     {{-- <li><a href="#" data-toggle="modal" data-target="#tolakTugas"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li> --}}
                                                                                     <li class="divider"></li>
                                                                                     <li><a href="/admin/{{$kegiatan->id_kegiatan}}/editKegiatan" data-toggle="modal" data-target="#modalEditKegiatan" id="editKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-edit"></em><span>Edit</span></a></li>
-                                                                                    <li><a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-eye"></em><span>Detail</span></a></li>
+                                                                                    <li><a href="" data-toggle="modal" data-target="#modalDetailKegiatan" id="detailKegiatan" data-id="{{ $kegiatan->id_kegiatan }}"><em class="icon ni ni-eye"></em><span>Detail</span></a></li>
                                                                                     <li><a href="/admin/{{$kegiatan->id_kegiatan}}/delKegiatan"><em class="icon ni ni-trash"></em><span>Delete</span></a></li>
                                                                                 </ul>
                                                                             </div>
@@ -211,7 +211,7 @@
                                         <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
                                          <select class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" required>
                                             {{-- @foreach ($data_prodi as $prodi) --}}
-                                            <option>- Jenis Kegiatan -</option>
+                                            <option>- Pilih Kegiatan -</option>
                                             <option value="Pertemuan">Pertemuan</option>
                                             <option value="Materi">Materi</option>
                                             <option value="Kegiatan Wajib">Kegiatan Wajib</option>
@@ -243,12 +243,25 @@
                                 </div> --}}
                                 <div class="col-md-5">
                                     <div class="form-group">
+                                        <label class="form-label" for="jenis-name">Status Kegiatan</label>
+                                         <select class="form-control" id="status_kegiatan" name="status_kegiatan" required>
+                                            {{-- @foreach ($data_prodi as $prodi) --}}
+                                            <option>- Pilih Status -</option>
+                                            <option value="Open">Open</option>
+                                            <option value="Closed">Closed</option>
+                                            {{-- @endforeach --}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
                                         <label class="form-label" for="kegiatan-minggu">Minggu Ke-</label>
                                         <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan" required>
                                         <small>Contoh : 1</small>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
+                                    <label class="form-label" for="jenis-name">Detail Kegiatan</label>
                                     {{-- <div class="form-group">
                                         <label class="form-label" for="phone-no">Detail Kegiatan</label>
                                         <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
@@ -290,7 +303,7 @@
                             @csrf
                             @method('PUT')
                             <div class="row gy-4">
-                                <input type="hidden" class="form-control form-control" id="id_kegiatan" name="id_kegiatan_edit" value="" required>
+                                <input type="hidden" class="form-control form-control" id="id_kegiatan" name="id_kegiatan_edit" value="id_kegiatan_edit" required>
 
                                 <div class="col-md-7">
                                     <div class="form-group">
@@ -303,7 +316,7 @@
                                         <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
                                         <select class="form-control" id="jenis_kegiatan" name="jenis_kegiatan_edit" required>
                                             {{-- @foreach ($data_prodi as $prodi) --}}
-                                            <option>- Jenis Kegiatan -</option>
+                                            <option>- Pilih Kegiatan -</option>
                                             <option value="Pertemuan">Pertemuan</option>
                                             <option value="Materi">Materi</option>
                                             <option value="Kegiatan Wajib">Kegiatan Wajib</option>
@@ -338,6 +351,18 @@
                                 </div> --}}
                                 <div class="col-md-5">
                                     <div class="form-group">
+                                        <label class="form-label" for="jenis-name">Status Kegiatan</label>
+                                         <select class="form-control" id="status_kegiatan_edit" name="status_kegiatan_edit" required>
+                                            {{-- @foreach ($data_prodi as $prodi) --}}
+                                            <option>- Pilih Status -</option>
+                                            <option value="Open">Open</option>
+                                            <option value="Closed">Closed</option>
+                                            {{-- @endforeach --}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
                                         <label class="form-label" for="kegiatan-minggu">Minggu Ke-</label>
                                         <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan_edit" value="" required>
                                         <small>Contoh : 1</small>
@@ -348,11 +373,11 @@
                                         <label class="form-label" for="phone-no">Detail Kegiatan</label>
                                         <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
                                     </div> --}}
+                                    <label class="form-label" for="detail-kegiatan">Detail Kegiatan</label>
                                     <textarea name="detail_kegiatan_edit" id="detail_kegiatan_edit" required>
 
                                     </textarea>
                                 </div>
-
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
@@ -422,6 +447,18 @@
                                 </div> --}}
                                 <div class="col-md-5">
                                     <div class="form-group">
+                                        <label class="form-label" for="jenis-name">Status Kegiatan</label>
+                                         <input class="form-control" id="status_kegiatan_detail" name="status_kegiatan_detail" readonly>
+                                            {{-- @foreach ($data_prodi as $prodi) --}}
+                                            {{-- <option>- Pilih Status -</option>
+                                            <option value="Open">Open</option>
+                                            <option value="Closed">Closed</option> --}}
+                                            {{-- @endforeach --}}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
                                         <label class="form-label" for="kegiatan-minggu">Minggu Ke-</label>
                                         <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan_detail" value="" readonly>
                                         <small>Contoh : 1</small>
@@ -434,7 +471,6 @@
                                     </div> --}}
                                     <label class="form-label" for="detail_kegiatan">Detail Kegiatan</label>
                                     <textarea name="detail_kegiatan_detail" id="detail_kegiatan_detail" readonly>
-
                                     </textarea>
                                 </div>
 
@@ -483,6 +519,7 @@
                         $("input[name='id_kegiatan_edit']").val(data.options.id_kegiatan);
                         $("input[name='nama_kegiatan_edit']").val(data.options.nama_kegiatan);
                         $("select[name='jenis_kegiatan_edit']").val(data.options.jenis_kegiatan);
+                        $("select[name='status_kegiatan_edit']").val(data.options.status_kegiatan);
                         $("input[name='tanggal_kegiatan_edit']").val(dateDB);
                         $("input[name='minggu_kegiatan_edit']").val(data.options.minggu_kegiatan);
                         $("textarea[name='detail_kegiatan_edit']").val(data.options.detail_kegiatan);
@@ -509,6 +546,7 @@
                         $("input[name='id_kegiatan_detail']").val(data.options.id_kegiatan);
                         $("input[name='nama_kegiatan_detail']").val(data.options.nama_kegiatan);
                         $("input[name='jenis_kegiatan_detail']").val(data.options.jenis_kegiatan);
+                        $("input[name='status_kegiatan_detail']").val(data.options.status_kegiatan);
                         $("input[name='minggu_kegiatan_detail']").val(data.options.minggu_kegiatan);
                         $("input[name='tanggal_kegiatan_detail']").val(dateDB);
                         $("textarea[name='detail_kegiatan_detail']").val(data.options.detail_kegiatan);

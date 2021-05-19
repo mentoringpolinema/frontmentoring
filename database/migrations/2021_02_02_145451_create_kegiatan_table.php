@@ -20,6 +20,7 @@ class CreateKegiatanTable extends Migration
             $table->integer('minggu_kegiatan');
             $table->date('tanggal_kegiatan');
             $table->string('detail_kegiatan');
+            $table->enum('status_kegiatan', ['Open', 'Closed']);
             $table->timestamps();
         });
     }

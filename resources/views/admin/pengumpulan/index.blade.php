@@ -99,7 +99,7 @@
                                                             <li>
                                                                 <div class="dropdown">
                                                                     <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <div class="badge badge-circle badge-primary">4</div>
+                                                                        {{-- <div class="badge badge-circle badge-primary">4</div> --}}
                                                                         <em class="icon ni ni-filter-alt"></em>
                                                                     </a>
                                                                     <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
@@ -113,7 +113,7 @@
                                                                         </div>
                                                                         <div class="dropdown-body dropdown-body-rg">
                                                                             <div class="row gx-6 gy-4">
-                                                                                <div class="col-12">
+                                                                                {{-- <div class="col-12">
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Jurusan</label>
                                                                                         <select class="form-select form-select-sm">
@@ -125,8 +125,8 @@
                                                                                             <option value="withdraw">Administrasi Niaga</option>
                                                                                         </select>
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="col-12">
+                                                                                </div> --}}
+                                                                                {{-- <div class="col-12">
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Prodi</label>
                                                                                         <select class="form-select form-select-sm">
@@ -137,19 +137,18 @@
                                                                                             <option value="completed">D4 Keuangan</option>
                                                                                         </select>
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="col-6">
+                                                                                </div> --}}
+                                                                                <div class="col-12">
                                                                                     <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Kelas</label>
+                                                                                        <label class="overline-title overline-title-alt">Minggu Kegiatan</label>
                                                                                         <select class="form-select form-select-sm">
-                                                                                            <option value="any">A</option>
-                                                                                            <option value="bitcoin">B</option>
-                                                                                            <option value="ethereum">C</option>
-                                                                                            <option value="litecoin">D</option>
+                                                                                            {{-- @foreach ($data_absensi as $absensi)
+                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
+                                                                                            @endforeach --}}
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-6">
+                                                                                {{-- <div class="col-6">
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Kelompok</label>
                                                                                         <select class="form-select form-select-sm">
@@ -158,7 +157,7 @@
                                                                                             <option value="bank">3</option>
                                                                                         </select>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div> --}}
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
                                                                                         <button type="button" class="btn btn-secondary">Filter</button>

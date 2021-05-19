@@ -19,7 +19,9 @@ class CreatePengumumanTable extends Migration
             $table->string('tagline_pengumuman');
             $table->string('status_pengumuman');
             $table->string('detail_pengumuman');
-            $table->timestamps();
+            // $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

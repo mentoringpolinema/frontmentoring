@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\JurusanExport;
 use App\Exports\MentorExport;
-use App\Imports\MentorImport;
+use App\Imports\MentorImport; 
 use App\Models\Absensi;
 use App\Models\Angkatan;
 use App\Models\Tugas;
@@ -18,6 +18,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 
 use App\Models\Kegiatan;
+use App\Models\Panitia;
 use App\Models\Kelompok;
 use App\Models\Mentee;
 use App\Models\Mentor;
@@ -49,7 +50,7 @@ class AdminController extends Controller
         $totalJurusan = Jurusan::count();
         $totalProdi = Prodi::count();
         $totalKelas = Kelas::count();
-        return view('admin.index',compact([
+        return view('admin.index', compact([
             'totalMentee',
             'data_kegiatan',
             'data_pengumuman',
@@ -58,64 +59,75 @@ class AdminController extends Controller
             'totalMateri',
             'totalJurusan',
             'totalProdi',
-            'totalKelas']));
+            'totalKelas'
+        ]));
     }
 
     //-------------------------------------------Kegiatan-------------------------------------------
 
-     //Function Kegiatan
-     public function kegiatan()
-     {
-         $data_kegiatan = Kegiatan::all();
-         $totalKegiatan = Kegiatan::count();
-         return view('admin.kegiatan', compact(['data_kegiatan','totalKegiatan']));
-     }
- 
-     // Add Kegiatan
-     public function addKegiatan(Request $request)
-     {
-         $kegiatan = Kegiatan::create($request->all());
-         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil ditambahkan !');
-     }
- 
-     // Delete Kegiatan
-     public function delKegiatan($id_kegiatan)
-     {
-         $data_kegiatan = Kegiatan::find($id_kegiatan);
-         $data_kegiatan->delete($data_kegiatan);
-         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil dihapus !');
-     }
- 
-     // Get By Id Kegiatan
-     public function getByIdKegiatan(Request $request){
-         if($request->ajax()){
-             $data = Kegiatan::findOrFail($request->id_kegiatan);
-             return response()->json(['options'=>$data]);
-         }
-     }
- 
-     // Edit Kegiatan
-     public function editKegiatan(Request $request)
-     {
-         $id = $request->id_kegiatan_edit;
-         $kegiatan = Kegiatan::find($id);
-         $kegiatan->update($request->all());
-         return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
-     }
+    //Function Kegiatan
+    public function kegiatan()
+    {
+        $data_kegiatan = Kegiatan::all();
+        $totalKegiatan = Kegiatan::count();
+        return view('admin.kegiatan', compact(['data_kegiatan', 'totalKegiatan']));
+    }
+
+    // Add Kegiatan
+    public function addKegiatan(Request $request)
+    {
+        $kegiatan = Kegiatan::create($request->all());
+        return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil ditambahkan !');
+    }
+
+    // Delete Kegiatan
+    public function delKegiatan($id_kegiatan)
+    {
+        $data_kegiatan = Kegiatan::find($id_kegiatan);
+        $data_kegiatan->delete($data_kegiatan);
+        return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil dihapus !');
+    }
+
+    // Get By Id Kegiatan
+    public function getByIdKegiatan(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Kegiatan::findOrFail($request->id_kegiatan);
+            return response()->json(['options' => $data]);
+        }
+    }
+
+    // Edit Kegiatan
+    public function editKegiatan(Request $request)
+    {
+        $id = $request->id_kegiatan_edit;
+        $kegiatan = Kegiatan::find($id);
+        $kegiatan->update([
+            'nama_kegiatan' => $request->nama_kegiatan_edit,
+            'jenis_kegiatan' => $request->jenis_kegiatan_edit,
+            'tanggal_kegiatan' => $request->tanggal_kegiatan_edit,
+            'detail_kegiatan' => $request->detail_kegiatan_edit,
+            'status_kegiatan' => $request->status_kegiatan_edit,
+            'minggu_kegiatan' => $request->minggu_kegiatan_edit,
+        ]);
+        return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
+    }
 
     // Open Kegiatan 
-    public function openKegiatan($id_kegiatan){
+    public function openKegiatan($id_kegiatan)
+    {
         $kegiatan = Kegiatan::find($id_kegiatan);
 
         $kegiatan->update([
             "status_kegiatan" => "Open"
         ]);
-        Alert::success('Berhasil','Kegiatan Berhasil Dibuka');
+        Alert::success('Berhasil', 'Kegiatan Berhasil Dibuka');
         return redirect()->back();
     }
 
     // Close Kegiatan
-    public function closeKegiatan($id_kegiatan){
+    public function closeKegiatan($id_kegiatan)
+    {
         $kegiatan = Kegiatan::find($id_kegiatan);
 
         $kegiatan->update([
@@ -162,7 +174,7 @@ class AdminController extends Controller
             "alamat_mentor" => $request->alamat_mentor,
             "notelp_mentor" => $request->notelp_mentor,
             "status_mentor" => $request->status_mentor,
-            "slug" => Str::slug($userID.'-'.$request->nama_mentor, '-')
+            "slug" => Str::slug($userID . '-' . $request->nama_mentor, '-')
         ]);
 
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil ditambahkan !');
@@ -176,10 +188,10 @@ class AdminController extends Controller
         $data_kelompok = Kelompok::where('mentor_id', $data_mentor->id)->get()->first();
         $data_pertemuan = Pertemuan::where('mentor_id', $data_mentor->id)->get()->first();
 
-        if($data_kelompok != null && $data_pertemuan != null){
+        if ($data_kelompok != null && $data_pertemuan != null) {
             $dataUser->delete($dataUser);
             return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
-        }else{
+        } else {
             return redirect('/admin/mentor')->with('warning', 'Mentor Gagal dihapus, karena masih ada relasi !');
         }
     }
@@ -187,17 +199,19 @@ class AdminController extends Controller
     // Import Mentor
     public function impMentor(Request $request)
     {
-        Excel::import(new MentorImport,$request->file('data_mentor'));
+        Excel::import(new MentorImport, $request->file('data_mentor'));
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Import !');
     }
 
     // Detail Mentor
-    public function detailMentor($slug){
+    public function detailMentor($slug)
+    {
         $data_mentor = Mentor::where('slug', $slug)->get()->first();
-        return view('admin.mentor.detailMentor',compact(['data_mentor']));
+        return view('admin.mentor.detailMentor', compact(['data_mentor']));
     }
     // Update Mentor
-    public function updMentor(Request $request,$id_mentor){
+    public function updMentor(Request $request, $id_mentor)
+    {
         $data_mentor = Mentor::find($id_mentor);
         $data_mentor->update($request->all());
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
@@ -212,7 +226,7 @@ class AdminController extends Controller
     {
         // Masih Gabisa :v hehe
         $data_mentor = Mentor::all();
-        return view('admin.exportPDF.mentorpdf',compact('data_mentor'));
+        return view('admin.exportPDF.mentorpdf', compact('data_mentor'));
     }
 
     //-------------------------------------------Mentee-------------------------------------------
@@ -227,17 +241,18 @@ class AdminController extends Controller
         $data_jurusan = Jurusan::all();
         $data_kelompok = Kelompok::all();
         return view('admin.mentee', compact([
-            'data_mentee', 
-            'data_jurusan', 
+            'data_mentee',
+            'data_jurusan',
             'data_kelompok',
             'data_angkatan',
-            'totalMentee', 
-            'total_kelompok', 
+            'totalMentee',
+            'total_kelompok',
             'total_kelas'
-            ]));
+        ]));
     }
     // Detail Mentee
-    public function detailMentee($slug){
+    public function detailMentee($slug)
+    {
         $data_mentee = Mentee::where('slug', $slug)->get()->first();
         $data_angkatan = Angkatan::all();
         $data_jurusan = Jurusan::all();
@@ -249,8 +264,8 @@ class AdminController extends Controller
         $pertemuan = Absensi::where([
             "mentee_id" => $data_mentee->id_mentee
         ])->count();
-        $status = $tugas+$pertemuan;
-        return view('admin.mentee.detail',compact(['data_mentee', 'data_jurusan', 'data_kelompok','data_angkatan','tugas','pertemuan','status']));
+        $status = $tugas + $pertemuan;
+        return view('admin.mentee.detail', compact(['data_mentee', 'data_jurusan', 'data_kelompok', 'data_angkatan', 'tugas', 'pertemuan', 'status']));
     }
     //Add Mentee
     public function addMentee(Request $request)
@@ -258,7 +273,7 @@ class AdminController extends Controller
         $user = User::create([
             "role" => "Mentee",
             "name" => $request->nama_mentee,
-            "email" => $request->nim_mentee."@student.polinema.ac.id",
+            "email" => $request->nim_mentee . "@student.polinema.ac.id",
             "password" => Hash::make($request->nim_mentee),
         ]);
 
@@ -272,18 +287,20 @@ class AdminController extends Controller
             "kelompok_id" => $request->kelompok_id,
             "angkatan_id" => $request->angkatan_id,
             "status_mentee" => "tidak lulus",
-            "slug" => Str::slug($userID.'-'.$request->nama_mentee, '-')
+            "slug" => Str::slug($userID . '-' . $request->nama_mentee, '-')
         ]);
 
         return redirect('/admin/mentee')->with('success', 'Mentee Berhasil ditambahkan !');
     }
 
-    public function getProdiByIdJurusan($id){
+    public function getProdiByIdJurusan($id)
+    {
         $prodi = Prodi::where('jurusan_id', $id)->get();
         return $prodi;
     }
 
-    public function getKelasByIdProdi($id){
+    public function getKelasByIdProdi($id)
+    {
         $kelas = Kelas::where('prodi_id', $id)->get();
         return $kelas;
     }
@@ -301,19 +318,20 @@ class AdminController extends Controller
         $data_mentee = Mentee::where('slug', $slug)->get()->first();
         $dataUser = User::where('id', $data_mentee->user_id)->get()->first();
 
-            $dataUser->delete($dataUser);
-            return redirect('/admin/mentee')->with('success', 'Mentee Berhasil dihapus !');
+        $dataUser->delete($dataUser);
+        return redirect('/admin/mentee')->with('success', 'Mentee Berhasil dihapus !');
     }
 
     // Import Mentee
     public function impMentee(Request $request)
     {
-        Excel::import(new MentorImport,$request->file('data_mentor'));
+        Excel::import(new MentorImport, $request->file('data_mentor'));
         return redirect('/admin/mentee')->with('success', 'Mentee Berhasil di Import !');
     }
 
     // Update Mentee
-    public function updMentee(Request $request,$id_mentee){
+    public function updMentee(Request $request, $id_mentee)
+    {
         $data_mentee = Mentee::find($id_mentee);
         $data_mentee->update($request->all());
         return redirect('/admin/mentee')->with('success', 'Mentee Berhasil di Update !');;
@@ -332,11 +350,67 @@ class AdminController extends Controller
 
     //-------------------------------------------Users-------------------------------------------
 
-    // Users Function
+    //Function User
     public function user()
     {
-        return view('admin.user');
+        $data_user_panitia = User::where('role', 'Panitia')->get();
+        $totalUserPanitia = count($data_user_panitia);
+        // dd($data_user_panitia);
+        return view('admin.user', compact(['totalUserPanitia', 'data_user_panitia']));
     }
+
+    // Add User Panitia
+    public function addUserPanitia(Request $request)
+    {
+        // dd($request);
+        $getPass = explode("@", $request->email_panitia);
+        $generate_password = $getPass[0];
+
+        $user = User::create([
+            "role" => "Panitia",
+            "name" => $request->nama_panitia,
+            "email" => $request->email_panitia,
+            "password" => Hash::make($generate_password),
+        ]);
+
+        $userID = DB::getPdo()->lastInsertId();
+
+        $panitia = Panitia::create([
+            "user_id" => $userID,
+            "nama_panitia" => $request->nama_panitia
+        ]);
+        return redirect('/admin/user')->with('success', 'Panitia Berhasil ditambahkan !');
+    }
+    // Delete User
+    public function delUserPanitia($id_panitia)
+    {
+        dd($id_panitia);
+        $data_user_panitia = Panitia::where('id_panitia', $id_panitia)->get()->first();
+        $dataUserPanitia = User::where('id', $data_user_panitia->user_id)->get()->first();
+
+        $dataUserPanitia->delete($dataUserPanitia);
+        // dd($dataUserPanitia);
+        return redirect('/admin/user')->with('success', 'Panitia Berhasil dihapus !');
+    }
+
+    // Get By Id Kegiatan
+    // public function getByIdKegiatan(Request $request){
+    //     if($request->ajax()){
+    //         $data = Kegiatan::findOrFail($request->id_kegiatan);
+    //         return response()->json(['options'=>$data]);
+    //     }
+    // }
+
+    // Edit Kegiatan
+    // public function editKegiatan(Request $request)
+    // {
+    //     $id = $request->id_kegiatan_edit;
+    //     $kegiatan = Kegiatan::findOrFail($id);
+    //     $kegiatan->update($request->all());
+    //     return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
+    // }
+
+    //-------------------------------------------Data-------------------------------------------
 
     // Data Function
 
@@ -349,7 +423,7 @@ class AdminController extends Controller
         $data_jurusan = Jurusan::all();
         $data_prodi = Prodi::all();
         $data_kelas = Kelas::with('prodi', 'prodi.jurusan')->get();
-        return view('admin.data', compact(['data_jurusan', 'data_prodi', 'data_kelas','totalProdi','totalJurusan', 'totalKelas']));
+        return view('admin.data', compact(['data_jurusan', 'data_prodi', 'data_kelas', 'totalProdi', 'totalJurusan', 'totalKelas']));
     }
     // Add Data
 
@@ -375,87 +449,88 @@ class AdminController extends Controller
     }
     // Delete Data
 
-        // Delete Jurusan
+    // Delete Jurusan
 
-        // Delete Prodi
+    // Delete Prodi
 
     //-------------------------------------------Materi-------------------------------------------
 
     // Materi Function
 
-        // Get Function
-        public function materi()
-        {
-            $data_materi = Materi::all();
-            $data_kegiatan = Kegiatan::where([
-                "jenis_kegiatan" => "Materi"
-            ])->get();
-            $totalMateri = Materi::count();
-            return view('admin.materi', compact(['data_materi', 'data_kegiatan','totalMateri']));
-        }
+    // Get Function
+    public function materi()
+    {
+        $data_materi = Materi::all();
+        $data_kegiatan = Kegiatan::where([
+            "jenis_kegiatan" => "Materi"
+        ])->get();
+        $totalMateri = Materi::count();
+        return view('admin.materi', compact(['data_materi', 'data_kegiatan', 'totalMateri']));
+    }
     // Add Materi
-        public function addMateri(Request $request)
-        {
-            // $materi = Materi::create($request->all());
+    public function addMateri(Request $request)
+    {
+        // $materi = Materi::create($request->all());
 
-            // Convert link materi untuk ditampilkan di embed
+        // Convert link materi untuk ditampilkan di embed
 
-            // Dari input link youtube, dipecah berdasarkan /
-            //explode itu string ke array
-            $last = explode("/",$request->link_materi);
+        // Dari input link youtube, dipecah berdasarkan /
+        //explode itu string ke array
+        $last = explode("/", $request->link_materi);
 
-            //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
-            //0 dan 8 panjang dari watch?v=
-            $convertedLast = substr_replace($last[3],"embed/",0,8);
+        //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
+        //0 dan 8 panjang dari watch?v=
+        $convertedLast = substr_replace($last[3], "embed/", 0, 8);
 
-            $embedLink = "https://youtube.com/".$convertedLast;
-            $materi = Materi::create([
-                "nama_materi" => $request->nama_materi,
-                "link_materi" => $request->link_materi,
-                "kegiatan_id" => $request->kegiatan_id,
-                "link_materi_embed" => $embedLink,
-                "detail_materi" => $request->detail_materi, 
-                "slug" => Str::slug($request->nama_materi, '-')
-            ]);
-            // $materi = Materi::create($request->all());
-            return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
+        $embedLink = "https://youtube.com/" . $convertedLast;
+        $materi = Materi::create([
+            "nama_materi" => $request->nama_materi,
+            "link_materi" => $request->link_materi,
+            "kegiatan_id" => $request->kegiatan_id,
+            "link_materi_embed" => $embedLink,
+            "detail_materi" => $request->detail_materi,
+            "slug" => Str::slug($request->nama_materi, '-')
+        ]);
+        // $materi = Materi::create($request->all());
+        return redirect('/admin/materi')->with('success', 'Materi Berhasil ditambahkan !');
+    }
+    // Delete Materi
+    public function delMateri($slug)
+    {
+        $data_materi = Materi::where('slug', $slug)->get()->first();;
+        $data_materi->delete($data_materi);
+        return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
+    }
+    // Get By Id Materi
+    public function getByIdMateri(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Materi::findOrFail($request->id_materi);
+            return response()->json(['options' => $data]);
         }
-        // Delete Materi
-        public function delMateri($slug)
-        {
-            $data_materi = Materi::where('slug', $slug)->get()->first();;
-            $data_materi->delete($data_materi);
-            return redirect('/admin/materi')->with('success', 'Materi Berhasil dihapus !');
-        }
-        // Get By Id Materi
-        public function getByIdMateri(Request $request){
-            if($request->ajax()){
-                $data = Materi::findOrFail($request->id_materi);
-                return response()->json(['options'=>$data]);
-            }
-        }
-        // Edit Materi
-        public function editMateri(Request $request)
-        {
-            $id = $request->id_materi_edit;
-            $materi = Materi::findOrFail($id);
-            $last = explode("/",$request->link_materi_edit);
+    }
+    // Edit Materi
+    public function editMateri(Request $request)
+    {
+        $id = $request->id_materi_edit;
+        $materi = Materi::findOrFail($id);
+        $last = explode("/", $request->link_materi_edit);
 
-            //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
-            //0 dan 8 panjang dari watch?v=
-            $convertedLast = substr_replace($last[3],"embed/",0,8);
+        //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
+        //0 dan 8 panjang dari watch?v=
+        $convertedLast = substr_replace($last[3], "embed/", 0, 8);
 
-            $embedLink = "https://youtube.com/".$convertedLast;
-            $materi->update([
-                "nama_materi" => $request->nama_materi_edit,
-                "link_materi" => $request->link_materi_edit,
-                "minggu_materi" => $request->minggu_materi_edit,
-                "link_materi_embed" => $embedLink,
-                "detail_materi" => $request->detail_materi_edit
-            ]);
-            // dd($materi);
-            return redirect('/admin/materi')->with('success', 'Materi Berhasil diedit !');
-        }
+        $embedLink = "https://youtube.com/" . $convertedLast;
+        $materi->update([
+            "nama_materi" => $request->nama_materi_edit,
+            "link_materi" => $request->link_materi_edit,
+            "minggu_materi" => $request->minggu_materi_edit,
+            "link_materi_embed" => $embedLink,
+            "detail_materi" => $request->detail_materi_edit
+        ]);
+        // dd($materi);
+        return redirect('/admin/materi')->with('success', 'Materi Berhasil diedit !');
+    }
 
     //-------------------------------------------Tugas-------------------------------------------
 
@@ -465,7 +540,7 @@ class AdminController extends Controller
         $data_tugas = Tugas::all();
         $data_materi = Materi::all();
         $total_tugas = Tugas::count();
-        return view('admin.tugas', compact(['data_tugas', 'data_materi','total_tugas']));
+        return view('admin.tugas', compact(['data_tugas', 'data_materi', 'total_tugas']));
     }
     // Add Tugas
     public function addTugas(Request $request)
@@ -475,7 +550,7 @@ class AdminController extends Controller
         ])->first();
 
         if ($cekTugas) {
-            Alert::error('Gagal Menambah Tugas','Tugas Telah Tersedia');
+            Alert::error('Gagal Menambah Tugas', 'Tugas Telah Tersedia');
             return redirect()->back();
         } else {
             $tugas = Tugas::create([
@@ -484,7 +559,7 @@ class AdminController extends Controller
                 "materi_id" => $request->materi_id,
                 "status_tugas" => $request->status_tugas
             ]);
-            Alert::success('Yeay Berhasil !','Tugas Berhasil ditambahkan !');
+            Alert::success('Yeay Berhasil !', 'Tugas Berhasil ditambahkan !');
             return redirect()->back();
         }
     }
@@ -493,7 +568,7 @@ class AdminController extends Controller
     {
         $data_tugas = Tugas::find($id_tugas);
         if ($data_tugas) {
-            Alert::error('Gagal !','Tugas Gagal dihapus');
+            Alert::error('Gagal !', 'Tugas Gagal dihapus');
             return redirect()->back();
         } else {
             $data_tugas->delete($data_tugas);
@@ -501,10 +576,11 @@ class AdminController extends Controller
         }
     }
     // Get By Id Tugas
-    public function getByIdTugas(Request $request){
-        if($request->ajax()){
+    public function getByIdTugas(Request $request)
+    {
+        if ($request->ajax()) {
             $data = Materi::findOrFail($request->id_materi);
-            return response()->json(['options'=>$data]);
+            return response()->json(['options' => $data]);
         }
     }
     // Edit Tugas
@@ -521,25 +597,26 @@ class AdminController extends Controller
         return redirect('/admin/tugas')->with('success', 'Tugas Berhasil diedit !');
     }
     // Closed Tugas 
-    public function closedTugas($id_tugas){
+    public function closedTugas($id_tugas)
+    {
         $tugas = Tugas::find($id_tugas);
 
         $tugas->update([
             "status_tugas" => "Closed"
         ]);
-        Alert::success('Berhasil !','Tugas Berhasil ditutup');
+        Alert::success('Berhasil !', 'Tugas Berhasil ditutup');
         return redirect('/admin/tugas/');
     }
     // Open Tugas 
-    public function openTugas($id_tugas){
+    public function openTugas($id_tugas)
+    {
         $tugas = Tugas::find($id_tugas);
 
         $tugas->update([
             "status_tugas" => "Open"
         ]);
-        Alert::success('Berhasil !','Tugas Berhasil dibuka');
+        Alert::success('Berhasil !', 'Tugas Berhasil dibuka');
         return redirect('/admin/tugas/');
-
     }
 
     //-------------------------------------------Kelompok-------------------------------------------
@@ -558,26 +635,27 @@ class AdminController extends Controller
             $total_kelompok = Kelompok::count();
             return view('admin.kelompok', compact('data_kelompok', 'data_mentor', 'total_kelompok'));
         }
-
     }
     // Detail Kelompok
-    public function detailKelompok($id_kelompok){
+    public function detailKelompok($id_kelompok)
+    {
         $data_kelompok = Kelompok::find($id_kelompok);
         $data_mentee = Mentee::where([
             ['kelompok_id', '=', $id_kelompok]
-            ])->get();       
-        return view('admin.kelompok.detailKelompok',compact(['data_kelompok', 'data_mentee']));
+        ])->get();
+        return view('admin.kelompok.detailKelompok', compact(['data_kelompok', 'data_mentee']));
     }
     // Add Kelompok
-    public function addKelompok(Request $request){
+    public function addKelompok(Request $request)
+    {
 
         $kelompok = Kelompok::where([
             ['mentor_id', '=', $request->mentor_id]
         ])->first();
-        
+
         if ($kelompok) {
-            return redirect('/admin/kelompok')->with('warning','Kelompok Sudah Ada !');
-        }else{
+            return redirect('/admin/kelompok')->with('warning', 'Kelompok Sudah Ada !');
+        } else {
             $id_kelompok = DB::getPdo()->lastInsertId();
             $addKelompok = Kelompok::create([
                 "id_kelompok" => $id_kelompok,
@@ -585,12 +663,13 @@ class AdminController extends Controller
                 "mentor_id" => $request->mentor_id,
                 // "materi_id" => $request->materi_id,
             ]);
-            Alert::success('Yeay','Kelompok Berhasil Ditambahkan !');
+            Alert::success('Yeay', 'Kelompok Berhasil Ditambahkan !');
             return redirect('/admin/kelompok');
         }
     }
     // Delete Kelompok
-    public function delKelompok($id_kelompok){
+    public function delKelompok($id_kelompok)
+    {
         $data_kelompok = Kelompok::find($id_kelompok);
 
         $cek_mentee = Mentee::where([
@@ -606,25 +685,28 @@ class AdminController extends Controller
         return redirect()->back();
     }
     // Delete Mentee Kelompok
-    public function delMentKelompok(Request $request,$id_mentee){
+    public function delMentKelompok(Request $request, $id_mentee)
+    {
         $data_mentee = Mentee::find($id_mentee);
         $data_mentee->update([
             "kelompok_id" => null
         ]);
-        return redirect()->back()->with('success','Mentee berhasil dihapus');
+        return redirect()->back()->with('success', 'Mentee berhasil dihapus');
     }
     // Add Mentee Kelompok
-    public function addMenteeKel(Request $request,$id_mentee){
+    public function addMenteeKel(Request $request, $id_mentee)
+    {
         $data_mentee = Mentee::find($id_mentee);
         $data_mentee->update([
             "kelompok_id" => $request->kelompok_id
         ]);
         // dd($data_mentee);
         Alert::success('Yeay', 'Kelompok Berhasil ditambahkan !');
-        return redirect()->back();    
+        return redirect()->back();
     }
     // Add Mentee Kelompok View
-    public function addMenKelompok($id_kelompok){
+    public function addMenKelompok($id_kelompok)
+    {
         $data_kelompok = Kelompok::find($id_kelompok);
         $data_mentee = Mentee::where([
             ['kelompok_id', '=', null]
@@ -632,15 +714,15 @@ class AdminController extends Controller
         // dd($data_mentee);
         return view('admin.kelompok.tambahMentee', compact(['data_kelompok', 'data_mentee']));
     }
-    
+
     //-------------------------------------------Keluhan-------------------------------------------
 
     // Get Function
     public function keluhan()
     {
-        $data_keluhan = Keluhan::orderBy('created_at','desc')->get();
+        $data_keluhan = Keluhan::orderBy('created_at', 'desc')->get();
         // dd($data_keluhan);
-        return view('admin.keluhan.index',compact('data_keluhan'));
+        return view('admin.keluhan.index', compact('data_keluhan'));
     }
     // Detail Keluhan
     public function detailKeluhan($id_keluhan)
@@ -657,61 +739,62 @@ class AdminController extends Controller
             "status_keluhan" => "Selesai"
         ]);
         // dd($data_keluhan);
-        Alert::success('Yeay','Keluhan berhasil dijawab !');
+        Alert::success('Yeay', 'Keluhan berhasil dijawab !');
         return redirect()->back();
     }
 
     //-------------------------------------------Pertemuan-------------------------------------------
 
     // Pertemuan Function
-        // Get Pertemuan
-        public function pertemuan(Request $request)
-        {
-            // Get By Mentor
-            if($request->has('cari')){
-                $data_kegiatan = Kegiatan::where([
-                    "jenis_kegiatan" => "Pertemuan"
-                ])->get();
-                $data_pertemuan = Pertemuan::where('nama_pertemuan','LIKE','%'. $request->cari.'%')->get();
-                $total = Pertemuan::count();
-                $totalMentee = Mentee::count();
-                $totalKelompok = Kelompok::count();
-            }else{
-                $data_pertemuan = Pertemuan::orderBy('created_at','desc')->get();
-                $data_kegiatan = Kegiatan::where([
-                    "jenis_kegiatan" => "Pertemuan"
-                ])->get();
-                $total = Pertemuan::count();
-                $totalMentee = Mentee::count();
-                $totalKelompok = Kelompok::count();
-            }
-            return view('admin.pertemuan',compact(['data_pertemuan','total','totalMentee', 'totalKelompok','data_kegiatan']));
+    // Get Pertemuan
+    public function pertemuan(Request $request)
+    {
+        // Get By Mentor
+        if ($request->has('cari')) {
+            $data_kegiatan = Kegiatan::where([
+                "jenis_kegiatan" => "Pertemuan"
+            ])->get();
+            $data_pertemuan = Pertemuan::where('nama_pertemuan', 'LIKE', '%' . $request->cari . '%')->get();
+            $total = Pertemuan::count();
+            $totalMentee = Mentee::count();
+            $totalKelompok = Kelompok::count();
+        } else {
+            $data_pertemuan = Pertemuan::orderBy('created_at', 'desc')->get();
+            $data_kegiatan = Kegiatan::where([
+                "jenis_kegiatan" => "Pertemuan"
+            ])->get();
+            $total = Pertemuan::count();
+            $totalMentee = Mentee::count();
+            $totalKelompok = Kelompok::count();
         }
-        // Add Pertemuan
-        public function addPertemuan(Request $request)
-        {
-            $pertemuan = Pertemuan::create($request->all());
-            Alert::success('Yeay Berhasil !','Pertemuan Berhasil Ditambahkan !');
-            return redirect('/admin/pertemuan');
-        }
-        // Del Pertemuan
-        public function delPertemuan($id_pertemuan)
-        {
-            $data_pertemuan = Pertemuan::find($id_pertemuan);
-            $data_pertemuan->delete($data_pertemuan);
-            return redirect('/admin/pertemuan')->with('success', 'Pertemuan Berhasil dihapus !');
-        }
-        // Search Pertemuan
-        public function cariPertemuan($id_pertemuan)
-        {
-            $data_pertemuan = Pertemuan::find($id_pertemuan);
-            return view('admin.mentor',compact(['data_pertemuan']));
-        }
-        // Detail Pertemuan
-        public function detPertemuan($id_pertemuan){
-            $data_pertemuan = Pertemuan::find   ($id_pertemuan);
-            return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan']));
-        }
+        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan']));
+    }
+    // Add Pertemuan
+    public function addPertemuan(Request $request)
+    {
+        $pertemuan = Pertemuan::create($request->all());
+        Alert::success('Yeay Berhasil !', 'Pertemuan Berhasil Ditambahkan !');
+        return redirect('/admin/pertemuan');
+    }
+    // Del Pertemuan
+    public function delPertemuan($id_pertemuan)
+    {
+        $data_pertemuan = Pertemuan::find($id_pertemuan);
+        $data_pertemuan->delete($data_pertemuan);
+        return redirect('/admin/pertemuan')->with('success', 'Pertemuan Berhasil dihapus !');
+    }
+    // Search Pertemuan
+    public function cariPertemuan($id_pertemuan)
+    {
+        $data_pertemuan = Pertemuan::find($id_pertemuan);
+        return view('admin.mentor', compact(['data_pertemuan']));
+    }
+    // Detail Pertemuan
+    public function detPertemuan($id_pertemuan)
+    {
+        $data_pertemuan = Pertemuan::find($id_pertemuan);
+        return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan']));
+    }
 
     //-------------------------------------------Pengumuman-------------------------------------------
 
@@ -743,53 +826,61 @@ class AdminController extends Controller
         return view('admin.pengumuman.detailPengumuman', compact(['data_pengumuman']));
     }
     // Edit Pengumuman
-    public function editPengumuman(Request $request, $id_pengumuman){
+    public function editPengumuman(Request $request, $id_pengumuman)
+    {
         $data_pengumuman = Pengumuman::find($id_pengumuman);
         $data_pengumuman->update($request->all());
         return redirect('/admin/pengumuman')->with('success', 'Pengumuman Berhasil di Update !');
     }
     //-------------------------------------------Cetak-------------------------------------------
     // Get Bukti Cetak 
-    public function cetak(){
+    public function cetak()
+    {
         $data_cetak = CetakBukti::all();
         // dd($data_cetak);
-        return view('admin.cetakBukti.index',compact('data_cetak'));
+        return view('admin.cetakBukti.index', compact('data_cetak'));
     }
     // Detail Cetak
-    public function detailCetak($id_cetak){
+    public function detailCetak($id_cetak)
+    {
         $data_cetak = CetakBukti::find($id_cetak);
-        return view('admin.cetakBukti.detail',compact('data_cetak'));
+        return view('admin.cetakBukti.detail', compact('data_cetak'));
     }
-    public function accept(Request $request,$id_cetak){
+    public function accept(Request $request, $id_cetak)
+    {
         $data_cetak = CetakBukti::find($id_cetak);
         $data_cetak->update([
             "status_cetak" => "Accept"
         ]);
-        return redirect()->back()->with('success','Bukti telah disetujui');
+        return redirect()->back()->with('success', 'Bukti telah disetujui');
     }
     //-------------------------------------Pengumpulan Tugas -------------------------------------
     // Get Pengumpulan
-    public function pengumpulan(){
-
+    public function pengumpulan()
+    {
+        
         $pengumpulan_tugas = PengumpulanTugas::all();
         $total_tugas = PengumpulanTugas::count();
-        return view('admin.pengumpulan.index',compact('pengumpulan_tugas','total_tugas'));
+        return view('admin.pengumpulan.index', compact('pengumpulan_tugas', 'total_tugas'));
     }
     // Download Tugas
-    public function downloadTugas($file){
-       return response()->download('file_tugas/' .$file);
-    }    
+    public function downloadTugas($file)
+    {
+        return response()->download('file_tugas/' . $file);
+    }
     // Accept Tugas
-    public function accTugas($id_pengumpulan_tugas){
+    public function accTugas($id_pengumpulan_tugas)
+    {
         $data_pengumpulan = PengumpulanTugas::find($id_pengumpulan_tugas);
         $data_pengumpulan->update([
             "status_tugas" => "Diterima"
         ]);
-        Alert::success('Berhasil !','Tugas telah diterima');
+        Alert::success('Berhasil !', 'Tugas telah diterima');
         return redirect()->back();
     }
     // Decline Tugas
-    public function decTugas($id_pengumpulan_tugas){
+    public function decTugas($id_pengumpulan_tugas)
+    {
         $data_pengumpulan = PengumpulanTugas::find($id_pengumpulan_tugas);
         $data_pengumpulan->update([
             "status_tugas" => "Ditolak"
@@ -808,15 +899,16 @@ class AdminController extends Controller
         $data_pertemuan = Pertemuan::all();
         $total_absensi = Absensi::count();
         $total_kegiatan = Kegiatan::count();
-        return view('admin.absensi.index', compact('total_absensi', 'data_absensi','total_mentee','total_pertemuan','data_pertemuan','total_kegiatan'));
+        return view('admin.absensi.index', compact('total_absensi', 'data_absensi', 'total_mentee', 'total_pertemuan', 'data_pertemuan', 'total_kegiatan'));
     }
     // Detail Absensi
-    public function detailAbsen($id_pertemuan){
+    public function detailAbsen($id_pertemuan)
+    {
         $data_pertemuan = Pertemuan::find($id_pertemuan);
         $absen = Absensi::where([
             "pertemuan_id" => $id_pertemuan
         ])->get();
-        return view('admin.absensi.detail',compact('data_pertemuan','absen'));
+        return view('admin.absensi.detail', compact('data_pertemuan', 'absen'));
     }
     // Absensi Kegiatan
     public function absensiKegiatan()

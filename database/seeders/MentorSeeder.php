@@ -19,13 +19,25 @@ class MentorSeeder extends Seeder
         $faker = Faker::create('id_ID');
         $namaMentor = $faker->name;
         $dataMentor = [
-            'user_id' => 2,
-            'nama_mentor' => $namaMentor,
-            'email_mentor' => $faker->unique()->safeEmail,
-            'alamat_mentor' => $faker->country,
-            'notelp_mentor' => $faker->phoneNumber,
-            'status_mentor' => 'aktif',
-            'slug' => Str::slug($namaMentor),
+            [
+                'user_id' => 2,
+                'nama_mentor' => $namaMentor,
+                'email_mentor' => $faker->unique()->safeEmail,
+                'alamat_mentor' => $faker->country,
+                'notelp_mentor' => $faker->phoneNumber,
+                'status_mentor' => 'aktif',
+                'slug' => Str::slug($namaMentor),
+            ],
+            [
+                'user_id' => 5,
+                'nama_mentor' => $namaMentor,
+                'email_mentor' => $faker->unique()->safeEmail,
+                'alamat_mentor' => $faker->country,
+                'notelp_mentor' => $faker->phoneNumber,
+                'status_mentor' => 'aktif',
+                'slug' => Str::slug($namaMentor),
+            ]
+            
         ];
 
         DB::table('mentor')->insert($dataMentor);

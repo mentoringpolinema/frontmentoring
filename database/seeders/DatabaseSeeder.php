@@ -17,21 +17,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        Angkatan::factory(1)->create();
-        Pengumuman::factory(100)->create();
+        Angkatan::factory(3)->create();
+        // Pengumuman::factory(100)->create();
 
         $this->call([
+            UserSeeder::class,
+            MentorSeeder::class,
             JurusanSeeder::class,
             ProdiSeeder::class,
-            KelasSeeder::class,
-            UserSeeder::class,
-            PanitiaSeeder::class,
-            MentorSeeder::class,
-            MateriSeeder::class,
             KelompokSeeder::class,
+            PanitiaSeeder::class,
+            KelasSeeder::class,
             MenteeSeeder::class,
-            PertemuanSeeder::class,
             KegiatanSeeder::class,
+            MateriSeeder::class,
+            PertemuanSeeder::class,
+            PengumumanSeeder::class,
             CetakBuktiSeeder::class,
         ]);
     }

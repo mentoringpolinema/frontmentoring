@@ -15,9 +15,17 @@ class KelompokSeeder extends Seeder
     public function run()
     {
         $dataKelompok = [
-            'nama_kelompok' => 2,
-            'mentor_id' => 1,
-            'materi_id' => 1,
+            [
+                'nama_kelompok' => 'Adam',
+                'mentor_id' => 1
+                // 'materi_id' => 1,
+            ],
+            [
+                'nama_kelompok' => 'Ayub',
+                'mentor_id' => 2
+                // 'materi_id' => 1,
+            ]
+            
         ];
 
         DB::table('kelompok')->insert($dataKelompok);

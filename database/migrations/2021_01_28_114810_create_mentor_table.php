@@ -20,7 +20,7 @@ class CreateMentorTable extends Migration
             $table->string('email_mentor');
             $table->string('alamat_mentor');
             $table->string('notelp_mentor');
-            $table->string('status_mentor');
+            $table->enum('status_mentor', ['aktif', 'tidak aktif']);
             $table->string('slug');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

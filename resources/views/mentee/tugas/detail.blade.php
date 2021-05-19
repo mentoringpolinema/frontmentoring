@@ -44,7 +44,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="form-group">
                                                                     <h4>{{$data_tugas->nama_tugas}} </h4>
-                                                                    {{$data_tugas->detail_tugas}}
+                                                                    {!!$data_tugas->detail_tugas!!}
                                                                 </div>
                                                             </div>
                                                         </div>
