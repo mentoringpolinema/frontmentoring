@@ -125,7 +125,7 @@
                                                             <li>
                                                                 <div class="dropdown">
                                                                     <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <div class="badge badge-circle badge-primary">4</div>
+                                                                        {{-- <div class="badge badge-circle badge-primary">4</div> --}}
                                                                         <em class="icon ni ni-filter-alt"></em>
                                                                     </a>
                                                                     <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
@@ -143,12 +143,10 @@
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Jurusan</label>
                                                                                         <select class="form-select form-select-sm">
-                                                                                            <option value="any">Teknologi Informasi</option>
-                                                                                            <option value="deposit">Teknik Elektro</option>
-                                                                                            <option value="buy">Teknik Mesin</option>
-                                                                                            <option value="sell">Teknik Kimia</option>
-                                                                                            <option value="transfer">Akutansi</option>
-                                                                                            <option value="withdraw">Administrasi Niaga</option>
+                                                                                            <option>-Pilih Jurusan-</option>
+                                                                                            {{-- @foreach ($data_absensi as $absensi)
+                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
+                                                                                            @endforeach --}}
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -156,32 +154,21 @@
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Prodi</label>
                                                                                         <select class="form-select form-select-sm">
-                                                                                            <option value="any">D3 Manajemen Informatika</option>
-                                                                                            <option value="pending">D4 Teknik Informatika</option>
-                                                                                            <option value="cancel">D4 Akutansi Manajemen</option>
-                                                                                            <option value="process">D3 Akutansi</option>
-                                                                                            <option value="completed">D4 Keuangan</option>
+                                                                                            <option>-Pilih Prodi-</option>
+                                                                                            {{-- @foreach ($data_absensi as $absensi)
+                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
+                                                                                            @endforeach --}}
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-6">
+                                                                                <div class="col-12">
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Kelas</label>
                                                                                         <select class="form-select form-select-sm">
-                                                                                            <option value="any">A</option>
-                                                                                            <option value="bitcoin">B</option>
-                                                                                            <option value="ethereum">C</option>
-                                                                                            <option value="litecoin">D</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Kelompok</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            <option value="any">1</option>
-                                                                                            <option value="paypal">2</option>
-                                                                                            <option value="bank">3</option>
+                                                                                            <option>-Pilih Kelas-</option>
+                                                                                            {{-- @foreach ($data_absensi as $absensi)
+                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
+                                                                                            @endforeach --}}
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>

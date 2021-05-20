@@ -345,102 +345,9 @@
     </div>
     <!-- .modal -->
 
-    {{-- Fitur detail kegiatan --}}
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalDetailKegiatan">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                <div class="modal-body modal-body-lg">
-                    <h5 class="title">Detail Kegiatan</h5>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="personal">
-                            <form action="" class="form-validate is-alter" method="">
-                            @csrf
-                            <div class="row gy-4">
-                                <input type="hidden" class="form-control form-control" id="id_kegiatan" name="id_kegiatan_detail" value="" readonly>
-
-                                <div class="col-md-7">
-                                    <div class="form-group">
-                                        <label class="form-label" for="kegiatan-name">Nama Kegiatan</label>
-                                        <input type="text" class="form-control form-control" id="nama_kegiatan" name="nama_kegiatan_detail" value="" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
-                                        <input type="text" class="form-control" id="jenis_kegiatan" name="jenis_kegiatan_detail" value="" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="form-group">
-                                        <label class="form-label" for="kegiatan-date">Tanggal Kegiatan</label>
-                                        <div class="form-control-wrap">
-                                            {{-- <div class="form-icon form-icon-right">
-                                                <em class="icon ni ni-calendar-alt"></em>
-                                            </div> --}}
-                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_detail" readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label class="form-label" for="kegiatan-date">Jam Kegiatan</label>
-                                        <div class="form-control-wrap">
-                                            <div class="form-icon form-icon-right">
-                                                <em class="icon ni ni-clock"></em>
-                                            </div>
-                                            <input type="text" class="form-control time-picker" id="jam_kegiatan" name="jam_kegiatan" required>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label class="form-label" for="kegiatan-minggu">Minggu Ke-</label>
-                                        <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan_detail" value="" readonly>
-                                        <small>Contoh : 1</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    {{-- <div class="form-group">
-                                        <label class="form-label" for="phone-no">Detail Kegiatan</label>
-                                        <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
-                                    </div> --}}
-                                    <label class="form-label" for="detail_kegiatan">Detail Kegiatan</label>
-                                    <textarea name="detail_kegiatan_detail" id="detail_kegiatan_detail" readonly>
-
-                                    </textarea>
-                                </div>
-
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        {{-- <li>
-                                            <button type="submit" class="btn btn-lg btn-primary">Update</button>
-                                        </li> --}}
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="btn btn-lg btn-primary">Kembali</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            </form>
-                        </div>
-                    </form>
-                    </div><!-- .tab-content -->
-                </div><!-- .modal-body -->
-            </div><!-- .modal-content -->
-        </div><!-- .modal-dialog -->
-    </div>
-    <!-- .modal -->
-
-    {{-- <!--  Edit Kegiatan Modal @e -->
-    @foreach ($data_kegiatan as $kegiatan)
-        @include('admin/modalEditKegiatan', ['modalKegiatan' => 'editKegiatan' . $kegiatan->id_kegiatan, 'namaKegiatan' => $kegiatan->nama_kegiatan,'jenisKegiatan' => $kegiatan->jenis_kegiatan,
-                    'tglKegiatan' => $kegiatan->tanggal_kegiatan , 'mingguKegiatan' => $kegiatan->minggu_kegiatan
-                    , 'detailKegiatan' => $kegiatan->detail_kegiatan])
-    @endforeach --}}
     @section('jsAdd')
         <script>
-        $('body').on('click', '#editKegiatan', function (event) {
+        $('body').on('click', '#editUserPanitia', function (event) {
                 event.preventDefault();
                 var token = $("input[name='_token']").val();
                 var id = $(this).data('id');
@@ -464,46 +371,6 @@
                     }
                 });
         });
-
-
-        $('body').on('click', '#detailKegiatan', function (event) {
-                event.preventDefault();
-                var token = $("input[name='_token']").val();
-                var id = $(this).data('id');
-                console.log("Testt");
-                // console.log(data)
-                $.ajax({
-                    url: "<?php echo route('getKegiatanByID') ?>",
-                    method: 'POST',
-                    data: {id_kegiatan:id, _token:token},
-                    success: function(data) {
-                        var d = new Date(data.options.tanggal_kegiatan);
-                        const dateDB =d.getFullYear()+"-"+ ("0" + (d.getMonth() + 1)).slice(-2) +"-"+ ("0" + d.getDate()).slice(-2);
-                        $("input[name='id_kegiatan_detail']").val(data.options.id_kegiatan);
-                        $("input[name='nama_kegiatan_detail']").val(data.options.nama_kegiatan);
-                        $("input[name='jenis_kegiatan_detail']").val(data.options.jenis_kegiatan);
-                        $("input[name='minggu_kegiatan_detail']").val(data.options.minggu_kegiatan);
-                        $("input[name='tanggal_kegiatan_detail']").val(dateDB);
-                        $("textarea[name='detail_kegiatan_detail']").val(data.options.detail_kegiatan);
-                        // initGetDataKegiatan();
-                        $("textarea[name='detail_kegiatan_detail']").ckeditor();
-                        // $("input[name='tanggal_kegiatan_detail']").datepicker({ dateFormat: 'dd-mm-yy' }).val(data.options.tanggal_kegiatan);
-                        console.log(data);
-                        // console.log(new Date(data.options.tanggal_kegiatan))
-
-                        // let dateString = data.options.tanggal_kegiatan
-                        // let dateParts = dateString.split("/")
-
-                        // let dateObjects = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0])
-                        // console.log(dateObjects.toString())
-                        // $("input[name='tanggal_kegiatan_detail']").val(dateObjects.toString());
-                        // dd($data);
-                        // var_dump(data);
-
-                    }
-                });
-        });
-
         </script>
 
     @endsection
