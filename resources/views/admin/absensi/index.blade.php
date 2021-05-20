@@ -117,6 +117,7 @@
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Minggu Kegiatan</label>
                                                                                         <select class="form-select form-select-sm">
+                                                                                            <option>-Pilih Minggu Kegiatan-</option>
                                                                                             @foreach ($data_absensi as $absensi)
                                                                                                 <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
                                                                                             @endforeach

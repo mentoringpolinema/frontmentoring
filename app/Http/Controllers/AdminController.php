@@ -158,11 +158,14 @@ class AdminController extends Controller
     // Add Mentor
     public function addMentor(Request $request)
     {
+        $getPass = explode("@", $request->email_mentor);
+        $generate_password = $getPass[0];
+
         $user = User::create([
             "role" => "Mentor",
             "name" => $request->nama_mentor,
             "email" => $request->email_mentor,
-            "password" => Hash::make('mentor123'),
+            "password" => Hash::make($generate_password),
         ]);
 
         $userID = DB::getPdo()->lastInsertId();
@@ -406,14 +409,39 @@ class AdminController extends Controller
     //     }
     // }
 
-    // Edit Kegiatan
-    // public function editKegiatan(Request $request)
-    // {
-    //     $id = $request->id_kegiatan_edit;
-    //     $kegiatan = Kegiatan::findOrFail($id);
-    //     $kegiatan->update($request->all());
-    //     return redirect('/admin/kegiatan')->with('success', 'Kegiatan Berhasil diedit !');
-    // }
+    //Edit Kegiatan
+    public function editUserPanitia(Request $request)
+    {
+        // $id = $request->id_user_panitia_edit;
+        // $user_panitia = Panitia::findOrFail($id);
+        // $data_user_panitia = Panitia::where('id_panitia', $id_user_panitia_edit)->get()->first();
+        // $dataUserPanitia = User::where('id', $data_user_panitia->user_id)->get()->first();
+        // $user = User::update([
+        //     "role" => "Panitia",
+        //     "name" => $request->nama_panitia_edit,
+        //     "email" => $request->email_panitia_edit,
+        //     "password" => Hash::make('mentor123'),
+        // ]);
+
+        // $userID = DB::getPdo()->lastInsertId();
+
+        // $panitia = Panitia::update([
+        //     "user_id" => $userID,
+        //     "nama_panitia" => $request->nama_panitia_edit,
+        //     "status_panitia" => $request->status_panitia_edit
+
+        // $id = $request->id_panitia_edit;
+        // $panitia = Panitia::find($id);
+        // $panitia->update([
+        //     "user_id" => $userID,
+        //     "nama_panitia" => $request->nama_panitia_edit,
+        //     "status_panitia" => $request->status_panitia_edit
+        // ]);
+
+        
+        // $panitia->update($request->all());
+        // return redirect('/admin/user')->with('success', 'Panitia Berhasil diedit !');
+    }
 
     //-------------------------------------------Data-------------------------------------------
 
