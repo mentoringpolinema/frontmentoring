@@ -15,16 +15,16 @@ class PanitiaSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
+        // $faker = Faker::create('id_ID');
         $dataPanitia = [
             [
                 'user_id' => 1,
-                'nama_panitia' => $faker->name,
+                'nama_panitia' => 'A. Yahya Hudan Permana',
                 'status_panitia' => 'aktif'
             ],
             [
                 'user_id' => 4,
-                'nama_panitia' => $faker->name,
+                'nama_panitia' => 'Irfak Wahyudi',
                 'status_panitia' => 'aktif'
             ]
             

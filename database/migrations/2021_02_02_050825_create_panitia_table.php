@@ -18,7 +18,8 @@ class CreatePanitiaTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('nama_panitia');
             $table->enum('status_panitia', ['aktif', 'tidak aktif']);
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

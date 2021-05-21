@@ -132,8 +132,9 @@
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Minggu Pertemuan</label>
                                                                                         <select class="form-select form-select-sm">
-                                                                                            {{-- @foreach ($data_absensi as $absensi)
-                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
+                                                                                            <option>-Pilih Minggu Pertemuan-</option>
+                                                                                            {{-- @foreach ($pertemuan)
+                                                                                                <option value="{{$pertemuan->kegiatan_id}}">{{$pertemuan->kegiatan->minggu_kegiatan}}</option>
                                                                                             @endforeach --}}
                                                                                         </select>
                                                                                     </div>
@@ -248,7 +249,7 @@
                                         <input type="text" class="form-control form-control-lg" id="nama_pertemuan" name="nama_pertemuan" placeholder="Enter Nama Pertemuan">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Mentor</label>
                                         <select class="form-select" id="mentor_id" name="mentor_id" data-ui="lg" required>
@@ -258,8 +259,30 @@
                                             @endforeach
                                         </select>
                                      </div>
+<<<<<<< HEAD
                                 </div>
                                 <div class="col-md-12">
+=======
+                                </div> 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="link_pertemuan">Link Pertemuan</label>
+                                        <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link" required>
+                                    </div>
+                                </div>                               
+                                {{-- <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Tanggal</label>
+                                            <div class="form-control-wrap">
+                                                <div class="form-icon form-icon-right">
+                                                     <em class="icon ni ni-calendar-alt"></em>
+                                                </div>
+                                                 <input type="text" class="form-control date-picker" id="tanggal_pertemuan" name="tanggal_pertemuan" data-date-format="yyyy-mm-dd" required>
+                                            </div>
+                                     </div>
+                                </div>  --}}
+                                <div class="col-md-6">
+>>>>>>> 2235ca657d9ecbc79de3e61d6b07ad33f7153118
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kegiatan</label>
                                         <select class="form-select" id="kegiatan_id" name="kegiatan_id" required>
@@ -270,12 +293,29 @@
                                         </select>
                                     </div>
                                 </div>
+<<<<<<< HEAD
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="link_pertemuan">Link Pertemuan</label>
                                         <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link" required>
                                     </div>
                                 </div>                               
+=======
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="display-name">Status Pertemuan</label>
+                                        <select class="form-select" id="status_pertemuan" name="status_pertemuan" data-ui="lg" required>
+                                            <option value="#">-Pilih Status-</option>
+                                            {{-- @foreach ($data_pertemuan as $pertemuan)                                            
+                                            <option value="{{$pertemuan->status_pertemuan}}">{{$pertemuan->mentor->nama_mentor}}</option>
+                                            @endforeach --}}
+                                            <option value="Open">Open</option>
+                                            <option value="Closed">Closed</option>
+                                        </select>
+                                     </div>
+                                </div>  
+                                   
+>>>>>>> 2235ca657d9ecbc79de3e61d6b07ad33f7153118
                                 <div class="col-md-12">
                                     <label class="form-label" for="link_pertemuan">Detail Pertemuan</label>
                                         <textarea type="textarea" class="form-control form-control-lg" id="detail_pertemuan" name="detail_pertemuan" required></textarea>      

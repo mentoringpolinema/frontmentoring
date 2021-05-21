@@ -17,7 +17,8 @@ class CreateKelasTable extends Migration
             $table->increments('id_kelas');
             $table->string('kelas');
             $table->integer('prodi_id')->unsigned();
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->foreign('prodi_id')->references('id_prodi')->on('prodi');
         });
     }

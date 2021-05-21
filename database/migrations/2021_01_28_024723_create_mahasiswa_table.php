@@ -19,7 +19,8 @@ class CreateMahasiswaTable extends Migration
             $table->string('nama');
             $table->string('kelas');
             $table->string('jurusan');
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

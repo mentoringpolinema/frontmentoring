@@ -17,52 +17,52 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
+        // $faker = Faker::create('id_ID');
         $dataUser = [
             [
                 'role' => 'Panitia',
-                'name' => $faker->name,
-                'email' => $faker->unique()->safeEmail,
+                'name' => 'A. Yahya Hudan Permana',
+                'email' => 'yahyahudan8@gmail.com',
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ],
             [
                 'role' => 'Mentor',
-                'name' => $faker->name,
-                'email' => $faker->unique()->safeEmail,
+                'name' => 'Rasyed Renaldi',
+                'email' => 'rasyedrenaldi7@gmail.com',
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ],
             [
                 'role' => 'Mentee',
-                'name' => $faker->name,
-                'email' => $faker->unique()->safeEmail,
+                'name' => 'Ismail Bin Mail',
+                'email' => '1831710116@student.polinema.ac.id',
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ],
             [
                 'role' => 'Panitia',
-                'name' => $faker->name,
-                'email' => $faker->unique()->safeEmail,
+                'name' => 'Irfak Wahyudi',
+                'email' => 'irfakwahyudi77@gmail.com',
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ],
             [
                 'role' => 'Mentor',
-                'name' => $faker->name,
-                'email' => $faker->unique()->safeEmail,
+                'name' => 'Rijalus Sholihin',
+                'email' => 'rijalusholihin4@gmail.com',
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
             ],
             [
                 'role' => 'Mentee',
-                'name' => $faker->name,
-                'email' => $faker->unique()->safeEmail,
+                'name' => 'Wahyuning Setyaningsih',
+                'email' => '1831710056@student.polinema.ac.id',
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),

@@ -16,7 +16,8 @@ class CreateAngkatanTable extends Migration
         Schema::create('angkatan', function (Blueprint $table) {
             $table->increments('id_angkatan');
             $table->string('angkatan');
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

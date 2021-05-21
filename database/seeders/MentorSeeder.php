@@ -16,26 +16,31 @@ class MentorSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
-        $namaMentor = $faker->name;
+        // $faker = Faker::create('id_ID');
+        // $namaMentor = $faker->name;
         $dataMentor = [
             [
                 'user_id' => 2,
-                'nama_mentor' => $namaMentor,
-                'email_mentor' => $faker->unique()->safeEmail,
-                'alamat_mentor' => $faker->country,
-                'notelp_mentor' => $faker->phoneNumber,
+                // 'kelompok_id' => 1,
+                'nama_mentor' => 'Rasyed Renaldi',
+                // 'email_mentor' => $faker->unique()->safeEmail,
+                // 'alamat_mentor' => $faker->country,
+                // 'notelp_mentor' => $faker->phoneNumber,
+                'email_mentor' => 'rasyedrenaldi7@gmail.com',
+                'alamat_mentor' => 'Jl. Indrokilo Utara Malang',
+                'notelp_mentor' => '081935844758',
                 'status_mentor' => 'aktif',
-                'slug' => Str::slug($namaMentor),
+                'slug' => Str::slug('rasyed-renaldi'),
             ],
             [
                 'user_id' => 5,
-                'nama_mentor' => $namaMentor,
-                'email_mentor' => $faker->unique()->safeEmail,
-                'alamat_mentor' => $faker->country,
-                'notelp_mentor' => $faker->phoneNumber,
+                // 'kelompok_id' => 2,
+                'nama_mentor' => 'Rijalus Sholihin',
+                'email_mentor' => 'rijalusholihin4@gmail.com',
+                'alamat_mentor' => 'Jl. Puspa Indah Malang',
+                'notelp_mentor' => '081845833746',
                 'status_mentor' => 'aktif',
-                'slug' => Str::slug($namaMentor),
+                'slug' => Str::slug('rijalus-sholihin'),
             ]
             
         ];

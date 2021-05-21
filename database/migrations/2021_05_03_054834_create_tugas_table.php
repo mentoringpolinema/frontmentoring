@@ -19,7 +19,8 @@ class CreateTugasTable extends Migration
             $table->string('detail_tugas');
             $table->integer('materi_id')->unsigned();
             $table->enum('status_tugas', ['Open', 'Closed']);
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->foreign('materi_id')->references('id_materi')->on('materi');
         });
     }
