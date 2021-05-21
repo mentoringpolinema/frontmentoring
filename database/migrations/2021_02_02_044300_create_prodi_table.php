@@ -18,7 +18,8 @@ class CreateProdiTable extends Migration
             $table->string('nama_prodi');
             $table->string('singkatan_prodi');
             $table->integer('jurusan_id')->unsigned();
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->foreign('jurusan_id')->references('id_jurusan')->on('jurusan');
         });
     }

@@ -791,6 +791,7 @@ class AdminController extends Controller
             $total = Pertemuan::count();
             $totalMentee = Mentee::count();
             $totalKelompok = Kelompok::count();
+            
         } else {
             $data_pertemuan = Pertemuan::orderBy('created_at', 'desc')->get();
             $data_kegiatan = Kegiatan::where([

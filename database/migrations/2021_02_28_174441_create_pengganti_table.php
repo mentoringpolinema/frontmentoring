@@ -18,7 +18,8 @@ class CreatePenggantiTable extends Migration
             $table->integer('mentee_id')->unsigned();
             $table->string('file_pengganti');
             $table->integer('pertemuan_id')->unsigned();
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
             $table->foreign('pertemuan_id')->references('id_pertemuan')->on('pertemuan');
         });

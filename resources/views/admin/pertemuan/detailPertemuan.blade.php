@@ -37,21 +37,21 @@
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
                                                                 <span class="data-label">Nama Mentor</span>
-                                                                <span class="data-value">{{$data_pertemuan->mentor_pertemuan}}</span>
+                                                                <span class="data-value">{{$data_pertemuan->mentor->nama_mentor}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more "><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
                                                                 <span class="data-label">Minggu Ke-</span>
-                                                                <span class="data-value text-soft">{{$data_pertemuan->minggu_pertemuan}}</span>
+                                                                <span class="data-value text-soft">{{$data_pertemuan->kegiatan->minggu_kegiatan}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->                                                        
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
                                                                 <span class="data-label">Tanggal</span>
-                                                                <span class="data-value">{{$data_pertemuan->tanggal_pertemuan}}</span>
+                                                                <span class="data-value">{{$data_pertemuan->kegiatan->tanggal_kegiatan}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
@@ -72,7 +72,7 @@
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
                                                                 <span class="data-label">Status</span>
-                                                                <span class="data-value">{{$data_pertemuan->status_pertemuan}}</span>
+                                                                <span class="data-value">{{$data_pertemuan->kegiatan->status_kegiatan}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->

@@ -8,7 +8,7 @@ class Pertemuan extends Model
 {
     protected $table = 'pertemuan';
     protected $primaryKey = 'id_pertemuan';
-    protected $fillable = ['nama_pertemuan', 'mentor_id', 'tanggal_pertemuan', 'link_pertemuan', 'detail_pertemuan','kegiatan_id', 'status_pertemuan'];
+    protected $fillable = ['nama_pertemuan', 'mentor_id', 'link_pertemuan', 'detail_pertemuan','kegiatan_id'];
 
     public function absensi(){
         return $this->hasMany(Absensi::class);
