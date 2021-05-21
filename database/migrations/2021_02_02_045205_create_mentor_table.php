@@ -22,8 +22,11 @@ class CreateMentorTable extends Migration
             $table->string('notelp_mentor');
             $table->enum('status_mentor', ['aktif', 'tidak aktif']);
             $table->string('slug');
+            // $table->integer('kelompok_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
+            // $table->foreign('kelompok_id')->references('id_kelompok')->on('kelompok');
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

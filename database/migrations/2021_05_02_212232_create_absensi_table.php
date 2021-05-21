@@ -17,7 +17,8 @@ class CreateAbsensiTable extends Migration
             $table->increments('id_absensi');
             $table->integer('kegiatan_id')->unsigned();
             $table->integer('mentee_id')->unsigned();
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->foreign('kegiatan_id')->references('id_kegiatan')->on('kegiatan');
             $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
         });

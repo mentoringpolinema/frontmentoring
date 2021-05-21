@@ -17,7 +17,8 @@ class CreateJurusanTable extends Migration
             $table->increments('id_jurusan');
             $table->string('nama_jurusan');
             $table->string('singkatan_jurusan');
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

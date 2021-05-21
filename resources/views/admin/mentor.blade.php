@@ -93,7 +93,6 @@
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Alamat</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">No.telp</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Kelompok</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
@@ -117,9 +116,6 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span class="tb-status text-success">{{$mentor->status_mentor}}</span>
-                                                            </td>
-                                                            <td class="nk-tb-col tb-col-md">
-                                                                <span class="tb-status text-danger">2</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <form action="/admin/mentor/{{$mentor->slug}}" method="post" style="display: inline">

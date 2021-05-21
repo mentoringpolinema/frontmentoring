@@ -21,7 +21,8 @@ class CreateKeluhanTable extends Migration
             $table->text('isi_keluhan');
             $table->text('jawab_keluhan')->nullable();
             $table->enum('status_keluhan', ['Selesai', 'Pending', 'Terjawab', 'Belum']);
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
             $table->foreign('mentee_id')->references('id_mentee')->on('mentee');
             $table->foreign('panitia_id')->references('id_panitia')->on('panitia');
         });

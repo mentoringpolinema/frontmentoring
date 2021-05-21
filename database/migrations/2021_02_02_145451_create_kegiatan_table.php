@@ -21,7 +21,8 @@ class CreateKegiatanTable extends Migration
             $table->date('tanggal_kegiatan');
             $table->string('detail_kegiatan');
             $table->enum('status_kegiatan', ['Open', 'Closed']);
-            $table->timestamps();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

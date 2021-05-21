@@ -21,6 +21,7 @@ class KegiatanSeeder extends Seeder
                 'jenis_kegiatan' => 'Opening Mentoring',
                 'minggu_kegiatan' => 1,
                 'tanggal_kegiatan' => '2020-03-21',
+                'status_kegiatan' => 'Open',
                 "detail_kegiatan" => 'Dimulai Pukul 08.00 WIB'
             ],
             [
@@ -29,6 +30,7 @@ class KegiatanSeeder extends Seeder
                 'jenis_kegiatan' => 'Materi',
                 'minggu_kegiatan' => 2,
                 'tanggal_kegiatan' => '2020-03-28',
+                'status_kegiatan' => 'Closed',
                 "detail_kegiatan" => 'Pahami video yang disajikan'
             ],
             [
@@ -37,6 +39,7 @@ class KegiatanSeeder extends Seeder
                 'jenis_kegiatan' => 'Pertemuan',
                 'minggu_kegiatan' => 3,
                 'tanggal_kegiatan' => '2020-05-21',
+                'status_kegiatan' => 'Open',
                 "detail_kegiatan" => 'Dilaksanakan pada pukul 08.00 WIB'
             ],
             [
@@ -45,6 +48,7 @@ class KegiatanSeeder extends Seeder
                 'jenis_kegiatan' => 'Materi',
                 'minggu_kegiatan' => 4,
                 'tanggal_kegiatan' => '2020-05-21',
+                'status_kegiatan' => 'Closed',
                 "detail_kegiatan" => 'Pahami dan praktekkan dengan membuka Al Quran'
             ],
             [
@@ -53,6 +57,7 @@ class KegiatanSeeder extends Seeder
                 'jenis_kegiatan' => 'Pertemuan',
                 'minggu_kegiatan' => 5,
                 'tanggal_kegiatan' => '2020-05-21',
+                'status_kegiatan' => 'Open',
                 "detail_kegiatan" => 'Dilaksanakan pada pukul 09.00 WIB'
             ],
         ];
