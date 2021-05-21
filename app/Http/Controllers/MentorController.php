@@ -65,9 +65,10 @@ class MentorController extends Controller
         // Get Materi
         public function materi()
         {
-            $data_materi = \App\Models\Materi::all();
-            $data_kegiatan = \App\Models\Kegiatan::all();
-            return view('mentor.materi', ['data_materi' => $data_materi], ['data_kegiatan' => $data_kegiatan]);
+            $data_materi = Materi::all();
+            $totalMateri = Materi::count();
+            $data_kegiatan = Kegiatan::all();
+            return view('mentor.materi',compact('data_materi','data_kegiatan','totalMateri'));
         }
         // Add Materi
         public function addMateri(Request $request)

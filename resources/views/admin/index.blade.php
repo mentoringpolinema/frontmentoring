@@ -47,7 +47,7 @@
                                                     </div>
                                                 </div><!-- .sp-pdl-item -->
                                             </div><!-- .col -->
-                                    <div class="col-xxl-3 col-md-4">
+                                    <div class="col-xxl-3 col-md-6">
                                             <div class="card h-100">
                                                 <div class="card-inner">
                                                     <div class="card-title-group mb-2">
@@ -88,7 +88,7 @@
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-xxl-3 col-md-4">
+                                        <div class="col-xxl-3 col-md-6">
                                             <div class="card h-100 ">
                                                 <div class="card-inner">
                                                     <div class="card-title-group mb-2">
@@ -122,7 +122,7 @@
                                                 </div><!-- .card-inner -->
                                             </div><!-- .card -->
                                         </div><!-- .col -->
-                                        <div class="col-xxl-3 col-md-4">
+                                        {{-- <div class="col-xxl-3 col-md-4">
                                             <div class="card card-full overflow-hidden">
                                                 <div class="nk-ecwg nk-ecwg7 h-100">
                                                     <div class="card-inner flex-grow-1">
@@ -157,7 +157,7 @@
                                                     </div><!-- .card-inner -->
                                                 </div>
                                             </div><!-- .card -->
-                                        </div><!-- .col -->
+                                        </div><!-- .col --> --}}
                                         <div class="col-lg-12 col-xxl-4">
                                             <div class="card h-100 bg-dark text-white">
                                                 <div class="card-inner border-bottom">

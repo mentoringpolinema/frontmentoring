@@ -66,7 +66,7 @@
                                                             </span>
                                                             @endif 
                                                         </td>
-                                                        @if ($data_pertemuan->status_pertemuan == 'Open')                                                 
+                                                        @if ($data_pertemuan->kegiatan->status_kegiatan == 'Open')                                                 
                                                         <td class="tb-odr-action">
                                                             <div class="tb-odr-btns d-none d-md-inline">
                                                                 <form action="/mentee/pertemuan/absenPertemuan" method="POST">

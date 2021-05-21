@@ -763,6 +763,7 @@ class AdminController extends Controller
             $total = Pertemuan::count();
             $totalMentee = Mentee::count();
             $totalKelompok = Kelompok::count();
+            $data_mentor = Mentor::all();
         } else {
             $data_pertemuan = Pertemuan::orderBy('created_at', 'desc')->get();
             $data_kegiatan = Kegiatan::where([
@@ -771,8 +772,9 @@ class AdminController extends Controller
             $total = Pertemuan::count();
             $totalMentee = Mentee::count();
             $totalKelompok = Kelompok::count();
+            $data_mentor = Mentor::all();
         }
-        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan']));
+        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan','data_mentor']));
     }
     // Add Pertemuan
     public function addPertemuan(Request $request)
@@ -865,8 +867,10 @@ class AdminController extends Controller
     {
         
         $pengumpulan_tugas = PengumpulanTugas::all();
-        $total_tugas = PengumpulanTugas::count();
-        return view('admin.pengumpulan.index', compact('pengumpulan_tugas', 'total_tugas'));
+        $total_pengumpulan = PengumpulanTugas::count();
+        $total_tugas = Tugas::count();
+        $data_materi = Materi::all();
+        return view('admin.pengumpulan.index', compact('pengumpulan_tugas', 'total_tugas','total_pengumpulan','data_materi'));
     }
     // Download Tugas
     public function downloadTugas($file)

@@ -16,7 +16,7 @@
                                         <div class="nk-block-head-content">
                                             <h3 class="nk-block-title page-title">Materi Mentoring </h3>
                                             <div class="nk-block-des text-soft">
-                                                <p>You have total 1 Materi.</p>
+                                                <p>You have total {{$totalMateri}} Materi.</p>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
@@ -86,7 +86,7 @@
                                                         <div class="project-meta">
                                                             <ul class="project-users g-1">
                                                                 <li>
-                                                                    <span class="badge badge-pill badge-outline-secondary"><em class="icon ni ni-clock"></em><span>Upload : {{$materi->created_at->format('d M Y')}}</span></span>
+                                                                    <span class="badge badge-pill badge-secondary"><em class="icon ni ni-clock"></em><span>Upload : {{$materi->created_at->format('d M Y')}}</span></span>
                                                                 </li>
                                                             </ul>
                                                             {{-- <span class="badge badge-dim badge-success"><em class="icon ni ni-clock"></em><span>Upload : {{$materi->created_at->format('d M Y')}}</span></span> --}}

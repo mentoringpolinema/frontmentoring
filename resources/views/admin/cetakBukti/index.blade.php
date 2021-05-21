@@ -60,7 +60,7 @@
                                                                 <span>{{$cetak->created_at->format('d M Y')}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-lg">
-                                                                @if ($cetak->statsus_cetak == 'Pending')
+                                                                @if ($cetak->status_cetak == 'Pending')
                                                                 <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>Pending</span></span>
                                                                 @else
                                                                     <span class="badge badge-dim badge-success"><em class="icon ni ni-check"></em><span>Accept</span></span>
