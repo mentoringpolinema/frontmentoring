@@ -188,15 +188,16 @@ class AdminController extends Controller
     {
         $data_mentor = Mentor::where('slug', $slug)->get()->first();
         $dataUser = User::where('id', $data_mentor->user_id)->get()->first();
-        $data_kelompok = Kelompok::where('mentor_id', $data_mentor->id)->get()->first();
-        $data_pertemuan = Pertemuan::where('mentor_id', $data_mentor->id)->get()->first();
+        $data_kelompok = Kelompok::where('mentor_id', $data_mentor->id_mentor)->get()->first();
+        $data_pertemuan = Pertemuan::where('mentor_id', $data_mentor->id_mentor)->get()->first();
 
-        if ($data_kelompok != null && $data_pertemuan != null) {
+        if ($data_kelompok == null && $data_pertemuan == null) {
             $dataUser->delete($dataUser);
             return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
         } else {
-            return redirect('/admin/mentor')->with('warning', 'Mentor Gagal dihapus, karena masih ada relasi !');
+            return redirect('/admin/mentor')->with('warning', 'Mentor Gagal dihapus, karena berelasi dengan Data Kelompok dan Pertemuan !');
         }
+    
     }
 
     // Import Mentor
