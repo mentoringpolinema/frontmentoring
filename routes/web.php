@@ -142,6 +142,14 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
              Route::post('/admin/addKelas', '\App\Http\Controllers\AdminController@addKelas');
             //Delete Data
             Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
+        //Delete Data
+            // Add Data Jurusan
+            Route::get('/admin/{id_jurusan}/delJurusan', '\App\Http\Controllers\AdminController@delJurusan');
+            // Add Data Prodi
+            Route::get('/admin/{id_prodi}/delProdi', '\App\Http\Controllers\AdminController@delProdi');
+            // Add Data Kelas
+            Route::get('/admin/{id_kelas}/delKelas', '\App\Http\Controllers\AdminController@delKelas');
+        
         // Export Data Jurusan
             //Export Excel
             Route::get('/admin/jurusan/extJur/', '\App\Http\Controllers\AdminController@extJur');

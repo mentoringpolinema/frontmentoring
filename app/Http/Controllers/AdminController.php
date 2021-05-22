@@ -460,7 +460,7 @@ class AdminController extends Controller
     }
     // Add Data
 
-    //-------------------------------------------Jurusan-------------------------------------------
+    //-------------------------------------------Jurusan
 
     // Add Jurusan
     public function addJurusan(Request $request)
@@ -468,23 +468,74 @@ class AdminController extends Controller
         Jurusan::create($request->all());
         return redirect('/admin/data')->with('success', 'Data Jurusan Berhasil ditambahkan !');
     }
+
+    // Delete Jurusan
+    public function delJurusan($id_jurusan)
+    {
+        $data_jurusan = Jurusan::find($id_jurusan);
+
+        $data_prodi = Prodi::where('jurusan_id', $data_jurusan->id_jurusan)->get()->first();
+        // dd($data_prodi);
+        if ($data_prodi==null) {
+            $data_jurusan->delete($data_jurusan);
+            return redirect('/admin/data')->with('success', 'Data Jurusan Berhasil dihapus !');
+            
+        } else {
+            return redirect('/admin/data')->with('warning', 'Data Jurusan Gagal dihapus, karena berelasi dengan Data Prodi !');
+        }
+        
+    }
+
+    //-------------------------------------------Prodi
+
     // Add Prodi
     public function addProdi(Request $request)
     {
         Prodi::create($request->all());
         return redirect('/admin/data')->with('success', 'Data Prodi Berhasil ditambahkan !');
     }
+
+    // Delete Prodi
+    public function delProdi($id_prodi)
+    {
+        $data_prodi = Prodi::find($id_prodi);
+
+        $data_kelas = Kelas::where('prodi_id', $data_prodi->id_prodi)->get()->first();
+        // dd($data_prodi);
+        if ($data_kelas==null) {
+            $data_prodi->delete($data_prodi);
+            return redirect('/admin/data')->with('success', 'Data Prodi Berhasil dihapus !');
+            
+        } else {
+            return redirect('/admin/data')->with('warning', 'Data Prodi Gagal dihapus, karena berelasi dengan Data Kelas !');
+        }
+    }
+
+    //-------------------------------------------Kelas
+
     // Add Kelas
     public function addKelas(Request $request)
     {
         Kelas::create($request->all());
         return redirect('/admin/data')->with('success', 'Data Kelas Berhasil ditambahkan !');
     }
-    // Delete Data
 
-    // Delete Jurusan
+    // Delete Kelas
+    public function delKelas($id_kelas)
+    {
+        $data_kelas = Kelas::find($id_kelas);
 
-    // Delete Prodi
+        $data_mentee = Mentee::where('kelas_id', $data_kelas->id_kelas)->get()->first();
+        // dd($data_prodi);
+        if ($data_mentee==null) {
+            $data_kelas->delete($data_kelas);
+            return redirect('/admin/data')->with('success', 'Data Kelas Berhasil dihapus !');
+            
+        } else {
+            return redirect('/admin/data')->with('warning', 'Data Kelas Gagal dihapus, karena berelasi dengan Data Mentee !');
+        }
+        
+    }
 
     //-------------------------------------------Materi-------------------------------------------
 

@@ -140,7 +140,7 @@
                                                                 <span class="tb-amount">{{$jurusan->singkatan_jurusan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
+                                                                <a href="/admin/{{$jurusan->id_jurusan}}/delJurusan" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
                                                                 <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                    
@@ -199,7 +199,7 @@
                                                                 <span>{{$prodi->jurusan->nama_jurusan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
+                                                                <a href="/admin/{{$prodi->id_prodi}}/delProdi" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
                                                                 <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->
@@ -254,7 +254,7 @@
                                                                 <span>{{ $kelas->prodi->jurusan->nama_jurusan }}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <a href="#" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
+                                                                <a href="/admin/{{$kelas->id_kelas}}/delKelas" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a>
                                                                 <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item -->                                                    
@@ -327,6 +327,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="jurusan_id">Jurusan</label>
                                         <select class="form-select" id="jurusan_id" name="jurusan_id" data-ui="lg">
+                                            <option>- Pilih Jurusan -</option>
                                             @foreach ($data_jurusan as $jurusan)
                                             <option value="{{$jurusan->id_jurusan}}">{{$jurusan->nama_jurusan}}</option>
                                             @endforeach
@@ -372,6 +373,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="prodi_id">Prodi</label>
                                             <select class="form-select" id="prodi_id" name="prodi_id" data-ui="lg">
+                                                <option>- Pilih Prodi -</option>
                                                 @foreach ($data_prodi as $prodi)
                                                 <option value="{{ $prodi->id_prodi }}">{{$prodi->nama_prodi}}</option>
                                                 @endforeach
