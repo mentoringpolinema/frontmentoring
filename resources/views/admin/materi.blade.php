@@ -55,7 +55,7 @@
                                                                 <div class="user-avatar sq bg-warning"><span>MM</span></div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{$materi->nama_materi}}</h6>
-                                                                    <span class="sub-text">Minggu Ke-{{$materi->minggu_materi}}</span>
+                                                                    <span class="sub-text">Minggu Ke-{{$materi->kegiatan->minggu_kegiatan}}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
@@ -77,11 +77,11 @@
                                                         <div class="project-progress">
                                                             <div class="project-progress-details">
                                                                 <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>1 Materi</span></div>
-                                                                <div class="project-progress-percent">100%</div>
+                                                                {{-- <div class="project-progress-percent">100%</div> --}}
                                                             </div>
-                                                            <div class="progress progress-pill progress-md bg-success">
+                                                            {{-- <div class="progress progress-pill progress-md bg-success">
                                                                 <div class="progress-bar" data-progress="100"></div>
-                                                            </div>
+                                                            </div> --}}
                                                         </div>
                                                         <div class="project-meta">
                                                             <ul class="project-users g-1">

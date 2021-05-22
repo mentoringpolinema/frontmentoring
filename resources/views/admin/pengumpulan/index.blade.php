@@ -72,8 +72,8 @@
                                                                 <ul class="nk-store-statistics">
                                                                     <li class="item">
                                                                         <div class="info">
-                                                                            <div class="title">Total Kelompok</div>
-                                                                            {{-- <div class="count">{{$total_kelompok}}</div> --}}
+                                                                            <div class="title">Total Pengumpulan</div>
+                                                                            <div class="count">{{$total_pengumpulan}}</div>
                                                                         </div>
                                                                         <em class="icon bg-secondary-dim ni ni-link-group"></em>
                                                                     </li>
@@ -140,12 +140,11 @@
                                                                                 </div> --}}
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Minggu Kegiatan</label>
+                                                                                        <label class="overline-title overline-title-alt">Minggu Tugas</label>
                                                                                         <select class="form-select form-select-sm">
-                                                                                            <option>-Pilih Minggu Kegiatan-</option>
-                                                                                            {{-- @foreach ($data_absensi as $absensi)
-                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
-                                                                                            @endforeach --}}
+                                                                                            @foreach ($data_materi as $materi)
+                                                                                                <option value="{{$materi->kegiatan->minggu_kegiatan}}">{{$materi->kegiatan->minggu_kegiatan}}</option>
+                                                                                            @endforeach
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>

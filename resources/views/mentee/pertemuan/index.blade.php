@@ -41,7 +41,7 @@
                                                                 <div class="user-avatar sq bg-warning"><span>PM</span></div>
                                                                 <div class="project-info">
                                                                     <h6 class="title">{{$pertemuan->nama_pertemuan}}</h6>
-                                                                    <span class="sub-text">Minggu Ke : {{$pertemuan->minggu_pertemuan}}</span>
+                                                                    <span class="sub-text">Minggu Ke : {{$pertemuan->kegiatan->minggu_kegiatan}}</span>
                                                                 </div>
                                                             </a>
                                                             <div class="drodown">
@@ -62,7 +62,7 @@
                                                                     <div class="user-avatar sm bg-primary"><span>A</span></div>
                                                                 </li>
                                                             </ul>
-                                                            @if ($pertemuan->status_pertemuan == 'Open')
+                                                            @if ($pertemuan->kegiatan->status_kegiatan == 'Open')
                                                                 <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Open</span></span>
                                                             @else
                                                                 <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>Closed</span></span>

@@ -117,6 +117,12 @@
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span class="tb-status text-success">{{$mentor->status_mentor}}</span>
                                                             </td>
+<<<<<<< HEAD
+                                                            {{-- <td class="nk-tb-col tb-col-md">
+                                                                <span class="tb-status text-danger">{{$mentor->kelompok->nama_kelompok}}</span>
+                                                            </td> --}}
+=======
+>>>>>>> 2235ca657d9ecbc79de3e61d6b07ad33f7153118
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <form action="/admin/mentor/{{$mentor->slug}}" method="post" style="display: inline">
                                                                     @csrf

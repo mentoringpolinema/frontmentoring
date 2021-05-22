@@ -187,7 +187,7 @@
                                                                 </div>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
-                                                                <span class="tb-amount">{{$pertemuan->mentor->kelompok_id}}</span>
+                                                                <span class="tb-amount">{{$pertemuan->mentor->id_mentor}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-mb">
                                                                 <span class="tb-amount">{{$pertemuan->mentor->nama_mentor}}</span>
@@ -196,7 +196,7 @@
                                                                 <span>{{$pertemuan->kegiatan->minggu_kegiatan}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
-                                                                <span>{{$pertemuan->kegiatan->tanggal_kegiatan}}</span>
+                                                                <span>{{$pertemuan->kegiatan->tanggal_kegiatan->format('d M Y')}}</span>
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span><a href="{{$pertemuan->link_pertemuan}}"><em class="icon ni ni-link"></em> Link</a></span>
@@ -254,11 +254,15 @@
                                         <label class="form-label" for="display-name">Mentor</label>
                                         <select class="form-select" id="mentor_id" name="mentor_id" data-ui="lg" required>
                                             <option value="#">-Pilih Mentor-</option>
-                                            @foreach ($data_pertemuan as $pertemuan)                                            
-                                            <option value="{{$pertemuan->mentor->id_mentor}}">{{$pertemuan->mentor->nama_mentor}}</option>
+                                            @foreach ($data_mentor as $mentor)                                            
+                                            <option value="{{$mentor->id_mentor}}">{{$mentor->nama_mentor}}</option>
                                             @endforeach
                                         </select>
                                      </div>
+<<<<<<< HEAD
+                                </div>
+                                <div class="col-md-12">
+=======
                                 </div> 
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -278,16 +282,25 @@
                                      </div>
                                 </div>  --}}
                                 <div class="col-md-6">
+>>>>>>> 2235ca657d9ecbc79de3e61d6b07ad33f7153118
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kegiatan</label>
                                         <select class="form-select" id="kegiatan_id" name="kegiatan_id" required>
                                             <option value="#">-Pilih Kegiatan-</option>
                                             @foreach ($data_kegiatan as $kegiatan)
-                                            <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->nama_kegiatan}}</option>
+                                            <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->nama_kegiatan}} : Minggu Ke - {{$kegiatan->minggu_kegiatan}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+<<<<<<< HEAD
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="link_pertemuan">Link Pertemuan</label>
+                                        <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link" required>
+                                    </div>
+                                </div>                               
+=======
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Status Pertemuan</label>
@@ -302,6 +315,7 @@
                                      </div>
                                 </div>  
                                    
+>>>>>>> 2235ca657d9ecbc79de3e61d6b07ad33f7153118
                                 <div class="col-md-12">
                                     <label class="form-label" for="link_pertemuan">Detail Pertemuan</label>
                                         <textarea type="textarea" class="form-control form-control-lg" id="detail_pertemuan" name="detail_pertemuan" required></textarea>      

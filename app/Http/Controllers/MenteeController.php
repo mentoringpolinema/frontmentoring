@@ -38,7 +38,8 @@ class MenteeController extends Controller
             "mentee_id" => $data_mentee->id_mentee
         ])->count();
         $status = $tugas + $pertemuan;
-        
+        // Tes Status Count
+        // dd($status);
         // Get Another Data
         $data_kegiatan = Kegiatan::where('jenis_kegiatan','!=','Pengganti')->paginate(5);
         $data_pengumuman = Pengumuman::orderBy('id_pengumuman', 'desc')->paginate(5);
