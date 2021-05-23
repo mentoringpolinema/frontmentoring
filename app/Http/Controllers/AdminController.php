@@ -402,46 +402,29 @@ class AdminController extends Controller
         return redirect('/admin/user')->with('success', 'Panitia Berhasil dihapus !');
     }
 
-    // Get By Id Kegiatan
-    // public function getByIdKegiatan(Request $request){
-    //     if($request->ajax()){
-    //         $data = Kegiatan::findOrFail($request->id_kegiatan);
-    //         return response()->json(['options'=>$data]);
-    //     }
-    // }
+    //Get By Id User Panitia
+    public function getByIdUserPanitia(Request $request){
+        if($request->ajax()){
+            $data = Panitia::findOrFail($request->id_panitia);
+            return response()->json(['options'=>$data]);
+        }
+    }
 
     //Edit Kegiatan
     public function editUserPanitia(Request $request)
     {
-        // $id = $request->id_user_panitia_edit;
-        // $user_panitia = Panitia::findOrFail($id);
-        // $data_user_panitia = Panitia::where('id_panitia', $id_user_panitia_edit)->get()->first();
-        // $dataUserPanitia = User::where('id', $data_user_panitia->user_id)->get()->first();
-        // $user = User::update([
-        //     "role" => "Panitia",
-        //     "name" => $request->nama_panitia_edit,
-        //     "email" => $request->email_panitia_edit,
-        //     "password" => Hash::make('mentor123'),
-        // ]);
-
-        // $userID = DB::getPdo()->lastInsertId();
-
-        // $panitia = Panitia::update([
-        //     "user_id" => $userID,
-        //     "nama_panitia" => $request->nama_panitia_edit,
-        //     "status_panitia" => $request->status_panitia_edit
-
-        // $id = $request->id_panitia_edit;
-        // $panitia = Panitia::find($id);
-        // $panitia->update([
-        //     "user_id" => $userID,
-        //     "nama_panitia" => $request->nama_panitia_edit,
-        //     "status_panitia" => $request->status_panitia_edit
-        // ]);
+        $id = $request->id_panitia_edit;
+        $panitia = Panitia::find($id);
+        $panitia->update([
+            "nama_panitia" => $request->nama_panitia_edit,
+            "email_panitia" => $request->email_panitia_edit,
+            "status_panitia" => $request->status_panitia_edit,
+            "password_panitia" => $request->password_panitia_edit,
+        ]);
 
         
-        // $panitia->update($request->all());
-        // return redirect('/admin/user')->with('success', 'Panitia Berhasil diedit !');
+        $panitia->update($request->all());
+        return redirect('/admin/user')->with('success', 'Panitia Berhasil diedit !');
     }
 
     //-------------------------------------------Data-------------------------------------------
@@ -459,7 +442,6 @@ class AdminController extends Controller
         $data_kelas = Kelas::with('prodi', 'prodi.jurusan')->get();
         return view('admin.data', compact(['data_jurusan', 'data_prodi', 'data_kelas', 'totalProdi', 'totalJurusan', 'totalKelas']));
     }
-    // Add Data
 
     //-------------------------------------------Jurusan
 
@@ -487,6 +469,28 @@ class AdminController extends Controller
         
     }
 
+    // Edit Jurusan
+    public function editJurusan(Request $request)
+    {
+        $id = $request->id_jurusan_edit;
+        $jurusan = Jurusan::findOrFail($id);
+        $jurusan->update([
+            "nama_jurusan" => $request->nama_jurusan_edit,
+            "singkatan_jurusan" => $request->singkatan_jurusan_edit
+        ]);
+        // dd($jurusan);
+        return redirect('/admin/data')->with('success', 'Jurusan Berhasil diedit !');
+    }
+
+    // Get By Id Jurusan
+    public function getByIdJurusan(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Jurusan::findOrFail($request->id_jurusan);
+            return response()->json(['options' => $data]);
+        }
+    }
+
     //-------------------------------------------Prodi
 
     // Add Prodi
@@ -512,6 +516,31 @@ class AdminController extends Controller
         }
     }
 
+    // Edit Prodi
+    public function editProdi(Request $request)
+    {
+        $id = $request->id_prodi_edit;
+        $prodi = Prodi::findOrFail($id);
+        $prodi->update([
+            "nama_prodi" => $request->nama_prodi_edit,
+            "singkatan_prodi" => $request->singkatan_prodi_edit,
+            "jurusan_id" => $request->nama_jurusan_edit
+        ]);
+        return redirect('/admin/data')->with('success', 'Prodi Berhasil diedit !');
+    }
+
+    // Get By Id Prodi
+    public function getByIdProdi(Request $request)
+    {
+        // dd($request);
+        if ($request->ajax()) {
+            $data_prodi = Prodi::findOrFail($request->id_prodi);
+            $data_jurusan = Jurusan::findOrFail($data_prodi->jurusan_id);
+            return response()->json(['prodi' => $data_prodi, 'jurusan' => $data_jurusan]);
+        }
+    }
+    
+
     //-------------------------------------------Kelas
 
     // Add Kelas
@@ -534,8 +563,31 @@ class AdminController extends Controller
             
         } else {
             return redirect('/admin/data')->with('warning', 'Data Kelas Gagal dihapus, karena berelasi dengan Data Mentee !');
-        }
+        } 
+    }
+
+    // Edit Kelas
+    public function editKelas(Request $request)
+    {
+        $id = $request->id_kelas_edit;
+        $kelas = Kelas::findOrFail($id);
         
+        $kelas->update([
+            "prodi_id" => $request->nama_prodi_edit,
+            "kelas" => $request->kelas_edit
+        ]);
+
+        return redirect('/admin/data')->with('success', 'Kelas Berhasil diedit !');
+    }
+
+    // Get By Id Kelas
+    public function getByIdKelas(Request $request)
+    {
+        if ($request->ajax()) {
+            $data_kelas = Kelas::findOrFail($request->id_kelas);
+            $data_prodi = Prodi::findOrFail($data_kelas->prodi_id);
+            return response()->json(['kelas' => $data_kelas, 'prodi' => $data_prodi]);
+        }
     }
 
     //-------------------------------------------Materi-------------------------------------------
