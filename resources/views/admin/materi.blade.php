@@ -203,10 +203,10 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="form-label" for="minggu-materi">Minggu Ke-</label>
-                                        <select class="form-select" id="minggu_materi" name="minggu_materi_edit" >
+                                        <select class="form-select" id="minggu_materi" name="minggu_materi_edit" required>
                                             <option>Minggu Ke-</option>
                                             @foreach ($data_kegiatan as $kegiatan)
-                                                <option value="{{$kegiatan->minggu_kegiatan}}">{{$kegiatan->minggu_kegiatan}} - {{$kegiatan->_kegiatan}}</option>
+                                                <option value="{{$kegiatan->minggu_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
                                             @endforeach
                                         </select>
                                     </div>

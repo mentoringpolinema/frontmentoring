@@ -143,7 +143,7 @@
                                                                     <button class="btn btn-round btn-sm btn-danger" type="submit" class="fa fa-trash">Delete</button>
                                                                 </form>
                                                                 {{-- <a href="/admin/delUserPanitia/{{$panitia->id_panitia}}" class="btn btn-round btn-sm btn-danger"><span>Delete</span></a> --}}
-                                                                <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#profile-edit"><span>Edit</span> </a>
+                                                                <a href="#" class="btn btn-round btn-sm btn-primary" data-toggle="modal" data-target="#modalEditPanitia" id="editUserPanitia" data-id="{{$panitia->id_panitia}}"><span>Edit</span> </a>
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->                                                                                                         
                                                         @endforeach
@@ -212,40 +212,7 @@
                             </div>
                         </div>
                     </form>
-                        <!-- .tab-pane -->
-                        {{-- <div class="tab-pane" id="kelompok">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-l1">Kelompok</label>
-                                        <input type="text" class="form-control form-control-lg" id="address-l1" value="2337 Kildeer Drive">
-                                    </div>
-                                </div>                            
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-county">Country</label>
-                                        <select class="form-select" id="address-county" data-ui="lg">
-                                            <option>Canada</option>
-                                            <option>United State</option>
-                                            <option>United Kindom</option>
-                                            <option>Australia</option>
-                                            <option>India</option>
-                                            <option>Bangladesh</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li>
-                                            <a href="#" class="btn btn-lg btn-primary">Update Address</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- .tab-pane --> --}}
+                        
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
@@ -263,69 +230,38 @@
                             @csrf
                             @method('PUT')
                             <div class="row gy-4">
-                                <input type="hidden" class="form-control form-control" id="id_kegiatan" name="id_kegiatan_edit" value="" required>
+                                <input type="hidden" class="form-control form-control" id="id_panitia" name="id_panitia_edit" value="" required>
 
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="kegiatan-name">Nama Kegiatan</label>
-                                        <input type="text" class="form-control form-control" id="nama_kegiatan" name="nama_kegiatan_edit" value="" required>
+                                        <label class="form-label" for="kegiatan-name">Nama</label>
+                                        <input type="text" class="form-control form-control" id="nama_panitia" name="nama_panitia_edit" value="" required>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="jenis-name">Jenis Kegiatan</label>
-                                        <select class="form-control" id="jenis_kegiatan" name="jenis_kegiatan_edit" required>
-                                            {{-- @foreach ($data_prodi as $prodi) --}}
-                                            <option>- Jenis Kegiatan -</option>
-                                            <option value="Pertemuan">Pertemuan</option>
-                                            <option value="Materi">Materi</option>
-                                            <option value="Kegiatan Wajib">Kegiatan Wajib</option>
-                                            {{-- @endforeach --}}
-                                            {{-- @foreach ($data_kegiatan as $kegiatan)
-                                                <option>{{$kegiatan->minggu_kegiatan}}</option>
-                                                @endforeach --}}
+                                        <label class="form-label" for="email-panitia">Email</label>
+                                        <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="status-panitia">Status</label>
+                                        <select class="form-control" id="status_panitia" name="status_panitia_edit" required>
+                                            <option>- Pilih Status -</option>
+                                            {{-- <option value="{{$data_user_panitia->status_panitia}}">{{$data_user_panitia->status_panitia}}</option> --}}
+                                            @foreach ($data_user_panitia as $panitia)
+                                                <option value="{{$panitia->status_panitia}}">{{$panitia->status_panitia}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="kegiatan-date">Tanggal Kegiatan</label>
-                                        <div class="form-control-wrap">
-                                            {{-- <div class="form-icon form-icon-right">
-                                                <em class="icon ni ni-calendar-alt"></em>
-                                            </div> --}}
-                                            <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan_edit" value="" required>
-                                        </div>
+                                        <label class="form-label" for="passsword-panitia">Password</label>
+                                        <input type="password" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="" required>
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label class="form-label" for="kegiatan-date">Jam Kegiatan</label>
-                                        <div class="form-control-wrap">
-                                            <div class="form-icon form-icon-right">
-                                                <em class="icon ni ni-clock"></em>
-                                            </div>
-                                            <input type="text" class="form-control time-picker" id="jam_kegiatan" name="jam_kegiatan" required>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label class="form-label" for="kegiatan-minggu">Minggu Ke-</label>
-                                        <input type="text" class="form-control form-control" id="minggu_kegiatan" name="minggu_kegiatan_edit" value="" required>
-                                        <small>Contoh : 1</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    {{-- <div class="form-group">
-                                        <label class="form-label" for="phone-no">Detail Kegiatan</label>
-                                        <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
-                                    </div> --}}
-                                    <textarea name="detail_kegiatan_edit" id="detail_kegiatan_edit" required>
-
-                                    </textarea>
-                                </div>
-
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
@@ -353,21 +289,16 @@
                 var id = $(this).data('id');
                 console.log(id)
                 $.ajax({
-                    url: "<?php echo route('getKegiatanByID') ?>",
+                    url: "<?php echo route('getUserPanitiaByID') ?>",
                     method: 'POST',
-                    data: {id_kegiatan:id, _token:token},
+                    data: {id_panitia:id, _token:token},
                     // dd($data);
                     success: function(data) {
-                        var d = new Date(data.options.tanggal_kegiatan);
-                        const dateDB =d.getFullYear()+"-"+ ("0" + (d.getMonth() + 1)).slice(-2) +"-"+ ("0" + d.getDate()).slice(-2);
-                        $("input[name='id_kegiatan_edit']").val(data.options.id_kegiatan);
-                        $("input[name='nama_kegiatan_edit']").val(data.options.nama_kegiatan);
-                        $("select[name='jenis_kegiatan_edit']").val(data.options.jenis_kegiatan);
-                        $("input[name='tanggal_kegiatan_edit']").val(dateDB);
-                        $("input[name='minggu_kegiatan_edit']").val(data.options.minggu_kegiatan);
-                        $("textarea[name='detail_kegiatan_edit']").val(data.options.detail_kegiatan);
-                        // initGetDataKegiatan();
-                        $("textarea[name='detail_kegiatan_edit']").ckeditor();
+                        $("input[name='id_panitia_edit']").val(data.options.id_panitia);
+                        $("input[name='nama_panitia_edit']").val(data.options.nama_panitia);
+                        $("input[name='email_panitia_edit']").val(data.options.email_panitia);
+                        $("select[name='status_panitia_edit']").val(data.options.status_panitia).change();
+                        $("input[name='password_panitia_edit']").val(data.options.password_panitia);
                     }
                 });
         });
