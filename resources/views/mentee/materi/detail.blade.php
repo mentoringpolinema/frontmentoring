@@ -48,7 +48,7 @@
                                             <div class="card-inner card-inner-xl">
                                                 <div class="entry">
                                                     <h3>{{$data_materi->nama_materi}}</h3>
-                                                    <p>{{$data_materi->detail_materi}}</p>
+                                                    <p>{!!$data_materi->detail_materi!!}</p>
                                                     <h4>Video Materi</h4>
                                                     <p>dibawah ini merupakan video materi tentang minggu {{$data_materi->minggu_materi}} yang disampaikan oleh Ust. Rijalus Sholihun</p>
                                                     <div class="card card-preview">

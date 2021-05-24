@@ -99,11 +99,13 @@
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Edit Pertemuan</h5>
-                    <form action="/admin/addPertemuan" class="form-validate is-alter" method="POST">
-                    @csrf
+                    <form action="/admin/editPertemuan" class="form-validate is-alter" method="POST">
+                        @csrf
+                        @method('PUT')
                     <div class="tab-content">
                         <div class="tab-pane active" id="data">
                             <div class="row gy-4">
+                                <input type="hidden" class="form-control form-control" id="id_pertemuan" name="id_pertemuan_edit" value="" required>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="nama_pertemuan">Nama Pertemuan</label>
@@ -140,7 +142,14 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label" for="link_pertemuan">Detail Pertemuan</label>
-                                    <textarea type="text" class="form-control form-control-lg" id="detail_pertemuan" name="detail_pertemuan_edit"></textarea>
+                                    {{-- <textarea class="form-control form-control-lg" id="detail_pertemuan" name="detail_pertemuan_edit">
+                                    </textarea> --}}
+                                    <textarea type="text"
+                                        class="form-control form-control"
+                                        id="detail_pertemuan"
+                                        name="detail_pertemuan_edit"
+                                        value="{!!$data_pertemuan->id_pertemuan!!}">{!!$data_pertemuan->detail_pertemuan!!}
+                                    </textarea>
                                 </div>
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
@@ -161,4 +170,28 @@
         </div><!-- .modal-dialog -->
 </div><!-- .modal -->
 
+@section('jsAdd')
+        <script>
+        $('body').on('click', '#editPertemuan', function (event) {
+                event.preventDefault();
+                var token = $("input[name='_token']").val();
+                var id = $(this).data('id');
+                // console.log(id)
+                $.ajax({
+                    url: "<?php echo route('getPertemuanByID') ?>",
+                    method: 'POST',
+                    data: {id_pertemuan:id, _token:token},
+                    success: function(data) {
+                        $("input[name='id_pertemuan_edit']").val(data.pertemuan.id_pertemuan);
+                        $("input[name='nama_pertemuan_edit']").val(data.pertemuan.nama_pertemuan);
+                        $("input[name='link_pertemuan_edit']").val(data.pertemuan.link_pertemuan);
+                        $("textarea[name='detail_pertemuan_edit']").val(data.pertemuan.detail_pertemuan);
+                        $("textarea[name='detail_pertemuan_edit']").ckeditor();
+                        $("select[name='mentor_pertemuan_edit']").val(data.kelompok.mentor_id).change();
+                        $("select[name='minggu_kegiatan_edit']").val(data.kegiatan.kegiatan_id).change();
+                    }
+                });
+        });
+        </script>
+    @endsection
 @stop
