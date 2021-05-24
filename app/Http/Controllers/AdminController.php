@@ -914,8 +914,9 @@ class AdminController extends Controller
             $totalKelompok = Kelompok::count();
             $data_mentor = Mentor::all();
             $filter_pertemuan = Pertemuan::all();
+            $data_kelompok = Kelompok::all();
         }
-        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan','data_mentor','filter_pertemuan']));
+        return view('admin.pertemuan', compact(['data_pertemuan', 'data_kelompok', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan','data_mentor','filter_pertemuan']));
     }
 
     // Add Pertemuan

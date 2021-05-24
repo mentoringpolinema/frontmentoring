@@ -21,6 +21,7 @@ class MateriSeeder extends Seeder
                 'link_materi_embed' => 'https://www.youtube.com/embed/K57BYZbwcr8',
                 'detail_materi' => 'Dilaksanakan Pukul 09.00 WIB',
                 'slug' => 'belajar-makhorijul-huruf',
+                'user_id' => 1,
                 'kegiatan_id' => 2
             ],
             [
@@ -29,6 +30,7 @@ class MateriSeeder extends Seeder
                 'link_materi_embed' => 'https://www.youtube.com/embed/obAfYylyXAM',
                 'detail_materi' => 'Batas Pengumpulan Tugas Pukul 15.00 WIB',
                 'slug' => 'belajar-membaca-surat-pendek',
+                'user_id' => 2,
                 'kegiatan_id' => 4
             ]
             

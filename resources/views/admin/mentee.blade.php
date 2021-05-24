@@ -142,7 +142,7 @@
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Jurusan</label>
-                                                                                        <select class="form-select form-select-sm">
+                                                                                        <select class="form-select" id="jurusanMentee" name="jurusanMentee">
                                                                                             <option>-Pilih Jurusan-</option>
                                                                                             @foreach ($data_jurusan as $jurusan)
                                                                                                 <option value="{{$jurusan->id_jurusan}}">{{$jurusan->nama_jurusan}}</option>
@@ -152,19 +152,16 @@
                                                                                 </div>
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Prodi</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            <option>-Pilih Prodi-</option>
-                                                                                            {{-- @foreach ($data_absensi as $absensi)
-                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
-                                                                                            @endforeach --}}
+                                                                                        <label class="overline-title overline-title-alt">Program Studi</label>
+                                                                                        <select class="form-select" id="prodiMentee" name="prodiMentee">
+                                                                                            <option>-Pilih Program Studi-</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Kelas</label>
-                                                                                        <select class="form-select form-select-sm">
+                                                                                        <select class="form-select" id="kelasId" name="kelasId">
                                                                                             <option>-Pilih Kelas-</option>
                                                                                             {{-- @foreach ($data_absensi as $absensi)
                                                                                                 <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
@@ -318,7 +315,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label" for="phone-no">Jurusan</label>
-                                            <select class="form-select" id="jurusan_mentee" id="jurusan_mentee" name="jurusan_mentee" data-ui="lg" required>
+                                            <select class="form-select" id="jurusan_mentee" name="jurusan_mentee" data-ui="lg" required>
                                                 <option>-Pilih Jurusan-</option>
                                                 @foreach ($data_jurusan as $jurusan)
                                                     <option value="{{$jurusan->id_jurusan}}">{{$jurusan->nama_jurusan}}</option>
@@ -329,7 +326,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label" for="phone-no">Program Studi</label>
-                                            <select class="form-select" id="prodi_mentee" id="prodi_mentee"  name="prodi_mentee" data-ui="lg" required>
+                                            <select class="form-select" id="prodi_mentee" name="prodi_mentee" data-ui="lg" required>
                                                 <option>-Pilih Program Studi-</option>
                                             </select>
                                         </div>
@@ -591,7 +588,82 @@
                     }
                 });
             });
-        </script>
+            
+        //--------------------------------------
+
+        $("select#jurusanMentee").change(function(event){
+            event.preventDefault();
+            var id = $(this).children("option:selected").val();
+            $.ajax({
+                url: "/admin/getProdiByIdJurusan/"+id,
+                method: 'GET',
+                success: function(data) {
+                    // console.log(data)
+                    var select = document.getElementById("prodiMentee");
+                    var length = select.options.length;
+                    for (i = length-1; i >= 0; i--) {
+                        select.options[i] = null;
+                    }
+                    var select = document.getElementById("kelasId");
+                    var length = select.options.length;
+                    for (i = length-1; i >= 0; i--) {
+                        select.options[i] = null;
+                    }
+                    $('select[name="kelasId"]')
+                        .append($('<option />')  // Create new <option> element
+                            .text("-Pilih Kelas-")           // Set textContent as "Hello"
+                            .prop('selected', false)  // Mark it selected
+                        );
+                    $('select[name="prodiMentee"]')
+                        .append($('<option />')  // Create new <option> element
+                            .text("-Pilih Program Studi-")           // Set textContent as "Hello"
+                            .prop('selected', false)  // Mark it selected
+                        );
+                    for (a = 0; a < data.length; a++){
+                        // console.log(data[a].id_prodi);
+                        $('select[name="prodiMentee"]')
+                            .append($('<option />')  // Create new <option> element
+                                .val(data[a].id_prodi)            // Set value as "Hello"
+                                .text(data[a].nama_prodi)           // Set textContent as "Hello"
+                                .prop('selected', false)  // Mark it selected
+                            );
+                    }
+                }
+            });
+        });
+
+        $("select#prodiMentee").change(function(event){
+            event.preventDefault();
+            var id = $(this).children("option:selected").val();
+            $.ajax({
+                url: "/admin/getKelasByIdProdi/"+id,
+                method: 'GET',
+                success: function(data) {
+                    // console.log(data)
+                    var select = document.getElementById("kelasId");
+                    var length = select.options.length;
+                    for (i = length-1; i >= 0; i--) {
+                        select.options[i] = null;
+                    }
+                    $('select[name="kelasId"]')
+                        .append($('<option />')  // Create new <option> element
+                            .text("-Pilih Kelas-")           // Set textContent as "Hello"
+                            .prop('selected', false)  // Mark it selected
+                        );
+                    for (a = 0; a < data.length; a++){
+                        // console.log(data[a].id_prodi);
+                        $('select[name="kelasId"]')
+                            .append($('<option />')  // Create new <option> element
+                                .val(data[a].id_kelas)            // Set value as "Hello"
+                                .text(data[a].kelas)           // Set textContent as "Hello"
+                                .prop('selected', false)  // Mark it selected
+                            );
+                    }
+                }
+            });
+        });
+        
+    </script>
 
     @endsection
 @stop

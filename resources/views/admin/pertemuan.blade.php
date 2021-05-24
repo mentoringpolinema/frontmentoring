@@ -261,7 +261,6 @@
                                             @endforeach
                                         </select>
                                      </div>
-<<<<<<< HEAD
                                 </div> 
                                 {{-- <div class="col-md-6">
                                     <div class="form-group">
@@ -281,11 +280,6 @@
                                      </div>
                                 </div>  --}}
                                 <div class="col-md-6">
-=======
-                                </div>
-
-                                <div class="col-md-12">
->>>>>>> e3fd121079bedd0ae25334835a5eaf3dca3c3d63
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kegiatan</label>
                                         <select class="form-select" id="kegiatan_id" name="kegiatan_id" required>
