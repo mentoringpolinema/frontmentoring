@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Mentee;
 use App\Models\Kegiatan;
 use App\Models\Kelompok;
+use App\Models\User;
 use App\Models\Materi;
 use Illuminate\Http\Request;
 use Svg\Tag\Rect;
+use Illuminate\Support\Str;
 
 class MentorController extends Controller
 {
@@ -70,14 +72,67 @@ class MentorController extends Controller
         // Add Materi
         public function addMateri(Request $request)
         {
-            Materi::create($request->all());
+             // Convert link materi untuk ditampilkan di embed
+
+            // Dari input link youtube, dipecah berdasarkan /
+            //explode itu string ke array
+            $last = explode("/", $request->link_materi);
+
+            //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
+            //0 dan 8 panjang dari watch?v=
+            $convertedLast = substr_replace($last[3], "embed/", 0, 8);
+
+            $embedLink = "https://youtube.com/" . $convertedLast;
+            $materi = Materi::create([
+                "nama_materi" => $request->nama_materi,
+                "link_materi" => $request->link_materi,
+                "kegiatan_id" => $request->kegiatan_id,
+                "link_materi_embed" => $embedLink,
+                "detail_materi" => $request->detail_materi,
+                "user_id" => auth()->user()->id,
+                "slug" => Str::slug($request->nama_materi, '-')
+            ]);
+            // $materi = Materi::create($request->all());
             return redirect('/mentor/materi')->with('success', 'Materi Berhasil ditambahkan !');
         }
+        
         // Delete Materi
-        public function delMateri($id_materi)
+        public function delMateri($slug)
         {
-            $data_materi = Materi::find($id_materi);
+            $data_materi = Materi::where('slug', $slug)->get()->first();;
             $data_materi->delete($data_materi);
             return redirect('/mentor/materi')->with('success', 'Materi Berhasil dihapus !');
+        }
+        // Get By Id Materi
+        public function getByIdMateri(Request $request)
+        {
+            if ($request->ajax()) {
+                $data_materi = Materi::findOrFail($request->id_materi);
+                $data_kegiatan = Kegiatan::findOrFail($data_materi->kegiatan_id);
+                $data_user = User::findOrFail($data_materi->user_id);
+                return response()->json(['materi' => $data_materi, 'kegiatan' => $data_kegiatan, 'user' => $data_user]);
+            }
+        }
+        // Edit Materi
+        public function editMateri(Request $request)
+        {
+            $id = $request->id_materi_edit;
+            $materi = Materi::findOrFail($id);
+            $last = explode("/", $request->link_materi_edit);
+
+            //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
+            //0 dan 8 panjang dari watch?v=
+            $convertedLast = substr_replace($last[3], "embed/", 0, 8);
+
+            $embedLink = "https://youtube.com/" . $convertedLast;
+            $materi->update([
+                "nama_materi" => $request->nama_materi_edit,
+                "link_materi" => $request->link_materi_edit,
+                "kegiatan_id" => $request->minggu_materi_edit,
+                "link_materi_embed" => $embedLink,
+                "detail_materi" => $request->detail_materi_edit
+            ]);
+            // dd($materi);
+            return redirect('/admin/materi')->with('success', 'Materi Berhasil diedit !');
         }
 }
