@@ -20,6 +20,7 @@ var initSample = ( function() {
 	return function() {
 		var detail_kegiatan = CKEDITOR.document.getById( 'detail_kegiatan' );
 		var detail_materi = CKEDITOR.document.getById( 'detail_materi' );
+		var detail_pertemuan = CKEDITOR.document.getById( 'detail_pertemuan' );
 		var detail_pengumuman = CKEDITOR.document.getById( 'detail_pengumuman' );
 
 		// Depending on the wysiwygarea plugin availability initialize classic or inline editor.
@@ -27,6 +28,7 @@ var initSample = ( function() {
 			CKEDITOR.replace( 'detail_kegiatan' );
 			CKEDITOR.replace( 'detail_materi' );
 			CKEDITOR.replace( 'detail_pengumuman' );
+			CKEDITOR.replace( 'detail_pertemuan' );
 		} else {
 			detail_kegiatan.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( 'detail_kegiatan' );
@@ -34,6 +36,8 @@ var initSample = ( function() {
 			CKEDITOR.inline( 'detail_pengumuman' );
 			detail_materi.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( 'detail_materi' );
+			detail_pertemuan.setAttribute( 'contenteditable', 'true' );
+			CKEDITOR.inline( 'detail_pertemuan' );
 			editorElement.setAttribute( 'contenteditable', 'true' );
 			// TODO we can consider displaying some info box that
 			// without wysiwygarea the classic editor may not work.
