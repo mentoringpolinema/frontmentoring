@@ -286,10 +286,10 @@ Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
     Route::get('/mentor/kelompok/{id}', '\App\Http\Controllers\MentorController@kelompok');
 
     // Materi
-    // Get Materi
-    Route::get('/mentor/materi', '\App\Http\Controllers\MentorController@materi');
-    // Add Materi
-    Route::post('/mentor/addMateri', '\App\Http\Controllers\MentorController@addMateri');
+        // Get Materi
+        Route::get('/mentor/materi', '\App\Http\Controllers\MentorController@materi');
+        // Add Materi
+        Route::post('/mentor/addMateri', '\App\Http\Controllers\MentorController@addMateri');
 });
 
 // MENTEE ROUTES =========================================================================================================>
