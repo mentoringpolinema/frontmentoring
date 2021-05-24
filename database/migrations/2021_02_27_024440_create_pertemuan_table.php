@@ -17,7 +17,7 @@ class CreatePertemuanTable extends Migration
             $table->increments('id_pertemuan');
             $table->string('nama_pertemuan');
             // $table->integer('mentor_id')->unsigned();
-            $table->string('detail_pertemuan');
+            $table->text('detail_pertemuan');
             $table->string('link_pertemuan');
             $table->integer('kegiatan_id')->unsigned();
             $table->integer('kelompok_id')->unsigned();

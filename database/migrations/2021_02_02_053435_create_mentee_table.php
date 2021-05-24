@@ -19,9 +19,8 @@ class CreateMenteeTable extends Migration
             $table->string('nim_mentee');
             $table->string('nama_mentee');
             $table->integer('kelas_id')->unsigned();
-            $table->integer('kelompok_id')->unsigned();
+            $table->integer('kelompok_id')->unsigned()->nullable();
             $table->integer('angkatan_id')->unsigned();
-            $table->enum('status_mentee', ['lulus', 'tidak lulus']);
             $table->string('slug');
             $table->timestamp('updated_at')->useCurrent();
             $table->timestamp('created_at')->useCurrent();

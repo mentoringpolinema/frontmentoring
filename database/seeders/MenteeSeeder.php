@@ -27,7 +27,6 @@ class MenteeSeeder extends Seeder
                 'kelas_id' => 1,
                 'kelompok_id' => 1,
                 'angkatan_id' => 1,
-                'status_mentee' => 'lulus',
                 'slug' => Str::slug('ismail-bin-mail'),
             ],
             [
@@ -37,7 +36,6 @@ class MenteeSeeder extends Seeder
                 'kelas_id' => 2,
                 'kelompok_id' => 2,
                 'angkatan_id' => 1,
-                'status_mentee' => 'lulus',
                 'slug' => Str::slug('wahyuning-setyaningsih'),
             ]
            

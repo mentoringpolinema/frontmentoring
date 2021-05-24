@@ -54,7 +54,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="project-details">
-                                                            {{$kegiatan->detail_kegiatan}}
+                                                            {!!$kegiatan->detail_kegiatan!!}
                                                         </div>
                                                         <div class="project-meta">
                                                             <ul class="project-users g-1">

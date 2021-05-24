@@ -15,11 +15,13 @@ class CreateMateriTable extends Migration
     {
         Schema::create('materi', function (Blueprint $table) {
             $table->increments('id_materi');
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_materi');
             $table->string('link_materi');
             $table->string('link_materi_embed');
-            $table->string('detail_materi');
+            $table->text('detail_materi');
             $table->string('slug');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('kegiatan_id')->unsigned();
             $table->foreign('kegiatan_id')->references('id_kegiatan')->on('kegiatan');
             // $table->timestamps();
