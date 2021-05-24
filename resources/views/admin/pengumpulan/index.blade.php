@@ -112,58 +112,25 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="dropdown-body dropdown-body-rg">
+                                                                            <form action="/admin/pengumpulan/filter">
                                                                             <div class="row gx-6 gy-4">
-                                                                                {{-- <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Jurusan</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            <option value="any">Teknologi Informasi</option>
-                                                                                            <option value="deposit">Teknik Elektro</option>
-                                                                                            <option value="buy">Teknik Mesin</option>
-                                                                                            <option value="sell">Teknik Kimia</option>
-                                                                                            <option value="transfer">Akutansi</option>
-                                                                                            <option value="withdraw">Administrasi Niaga</option>
-                                                                                        </select>
+                                                                                    <div class="col-12">
+                                                                                        <div class="form-group">
+                                                                                            <label class="overline-title overline-title-alt">Minggu Tugas</label>
+                                                                                            <select class="form-select form-select-sm" name="tugas_id">
+                                                                                                @foreach ($data_tugas as $tugas)
+                                                                                                    <option value="{{$tugas->id_tugas}}">{{$tugas->materi->kegiatan->minggu_kegiatan}}</option>
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </div>
                                                                                     </div>
-                                                                                </div> --}}
-                                                                                {{-- <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Prodi</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            <option value="any">D3 Manajemen Informatika</option>
-                                                                                            <option value="pending">D4 Teknik Informatika</option>
-                                                                                            <option value="cancel">D4 Akutansi Manajemen</option>
-                                                                                            <option value="process">D3 Akutansi</option>
-                                                                                            <option value="completed">D4 Keuangan</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div> --}}
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Minggu Tugas</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            @foreach ($data_materi as $materi)
-                                                                                                <option value="{{$materi->kegiatan->minggu_kegiatan}}">{{$materi->kegiatan->minggu_kegiatan}}</option>
-                                                                                            @endforeach
-                                                                                        </select>
+                                                                                    <div class="col-12">
+                                                                                        <div class="form-group">
+                                                                                            <button type="submit" class="btn btn-secondary">Filter</button>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                {{-- <div class="col-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Kelompok</label>
-                                                                                        <select class="form-select form-select-sm">
-                                                                                            <option value="any">1</option>
-                                                                                            <option value="paypal">2</option>
-                                                                                            <option value="bank">3</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div> --}}
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <button type="button" class="btn btn-secondary">Filter</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div><!-- .filter-wg -->
                                                                 </div><!-- .dropdown -->

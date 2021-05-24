@@ -16,7 +16,7 @@ class AuthController extends Controller
         if(Auth::attempt($request->only('email','password'))){
             return redirect('/dashboard')->with('success', 'Yeay Anda Berhasil Login !');
         }else{
-            return redirect('/auth')->with('error', 'User/Pass Anda Salah Goblok !');
+            return redirect('/auth')->with('error', 'User/Pass Anda Salah  !');
         }
     }
     // public function login(Request $request, $user)

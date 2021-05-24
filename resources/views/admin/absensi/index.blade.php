@@ -112,13 +112,14 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="dropdown-body dropdown-body-rg">
+                                                                            <form action="/admin/absensi/filter/">
                                                                             <div class="row gx-6 gy-4">
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
                                                                                         <label class="overline-title overline-title-alt">Minggu Kegiatan</label>
-                                                                                        <select class="form-select form-select-sm">
+                                                                                        <select class="form-select form-select-sm" name="absensi">
                                                                                             <option>-Pilih Minggu Kegiatan-</option>
-                                                                                            @foreach ($data_absensi as $absensi)
+                                                                                            @foreach ($absensi as $absensi)
                                                                                                 <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
                                                                                             @endforeach
                                                                                         </select>
@@ -126,10 +127,11 @@
                                                                                 </div>                                                                                 
                                                                                 <div class="col-12">
                                                                                     <div class="form-group">
-                                                                                        <button type="button" class="btn btn-secondary">Filter</button>
+                                                                                        <button type="submit" class="btn btn-secondary">Filter</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div><!-- .filter-wg -->
                                                                 </div><!-- .dropdown -->

@@ -52,11 +52,13 @@
     </div>
     <!-- app-root @e -->
     <!-- JavaScript -->
-    <script src="{{asset('template/dashboard//assets/js/bundle.js?ver=2.2.0')}}"></script>
-    <script src="{{asset('template/dashboard//assets/js/scripts.js?ver=2.2.0')}}"></script>
-    <script src="{{asset('template/dashboard//assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
+    <script src="{{asset('template/dashboard/assets/js/bundle.js?ver=2.2.0')}}"></script>
+    <script src="{{asset('template/dashboard/assets/js/scripts.js?ver=2.2.0')}}"></script>
+    <script src="{{asset('template/dashboard/assets/js/charts/chart-ecommerce.js?ver=2.2.0')}}"></script>
      <!-- Sweet Alert JS -->
-    <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.4.0')}}"></script>
+    {{-- <script src="{{asset('template/dashboard/assets/js/example-sweetalert.js?ver=2.4.0')}}"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <!-- Button Loading -->
     <script>
     (function (NioApp, $){
         $('.loading-data').on("click", function (e) {
