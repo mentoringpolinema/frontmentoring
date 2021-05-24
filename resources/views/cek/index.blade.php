@@ -18,6 +18,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if (session('error'))
+                                <div class="example-alert">
+                                   <div class="alert alert-danger alert-icon alert-dismissible">
+                                         <em class="icon ni ni-cross-circle"></em> <strong>NIM Salah </strong>! silahkan cek kembali. <button class="close" data-dismiss="alert"></button>
+                                     </div>
+                                </div>
+                                @endif
+                                
                                 <form action="/cekMentoring" class="form-validate" method="GET" >
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg" id="cari" name="cari" placeholder="contoh : 1831710190" required>

@@ -10,7 +10,7 @@ class Tugas extends Model
     use HasFactory;
     protected $table = 'tugas';
     protected $primaryKey = 'id_tugas';
-    protected $fillable = ['nama_tugas','detail_tugas', 'materi_id','status_tugas'];
+    protected $fillable = ['nama_tugas','detail_tugas', 'materi_id'];
 
     public function materi()
     {

@@ -50,7 +50,7 @@
                                                     <tr class="tb-odr-item">
                                                         <td class="tb-odr-info">
                                                             <span class="tb-odr-id">{{$data_pertemuan->nama_pertemuan}}</span>
-                                                            <span class="tb-odr-date">{{$data_pertemuan->mentor->nama_mentor}}</span>
+                                                            {{-- <span class="tb-odr-date">{{$data_pertemuan->kelompok->mentor->nama_mentor}}</span> --}}
                                                         </td>
                                                         <td class="tb-odr-amount">
                                                             <span class="tb-odr-total">

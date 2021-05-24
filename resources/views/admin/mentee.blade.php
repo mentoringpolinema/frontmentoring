@@ -343,7 +343,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="kelompok_id">Kelompok</label>
                                             <select class="form-select" id="kelompok_id" name="kelompok_id" data-ui="lg">
-                                                <option>-Pilih Kelompok-</option>
+                                                <option value="">-Pilih Kelompok-</option>
                                                 @foreach ($data_kelompok as $kelompok)
                                                     <option value="{{$kelompok->id_kelompok}}">{{$kelompok->nama_kelompok}}</option>
                                                 @endforeach

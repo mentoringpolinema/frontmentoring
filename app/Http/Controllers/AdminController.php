@@ -69,6 +69,7 @@ class AdminController extends Controller
     public function kegiatan()
     {
         $data_kegiatan = Kegiatan::all();
+        // dd($data_kegiatan);
         $totalKegiatan = Kegiatan::count();
         return view('admin.kegiatan', compact(['data_kegiatan', 'totalKegiatan']));
     }
@@ -131,7 +132,7 @@ class AdminController extends Controller
         $kegiatan = Kegiatan::find($id_kegiatan);
 
         $kegiatan->update([
-            "status_kegiatan" => "Close"
+            "status_kegiatan" => "Closed"
         ]);
         Alert::success('Berhasil', 'Kegiatan Berhasil Ditutup');
         return redirect()->back();
@@ -604,16 +605,16 @@ class AdminController extends Controller
     public function materi()
     {
         $data_materi = Materi::all();
-        $data_kegiatan = Kegiatan::where([
-            "jenis_kegiatan" => "Materi"
-        ])->get();
+        $data_kegiatan = Kegiatan::where('jenis_kegiatan' ,'=', 'Materi')
+        ->orWhere('jenis_kegiatan', '=','Kegiatan Wajib')
+        ->orWhere('jenis_kegiatan', '=','Pengganti')
+        ->get();
         $totalMateri = Materi::count();
         return view('admin.materi', compact(['data_materi', 'data_kegiatan', 'totalMateri']));
     }
     // Add Materi
     public function addMateri(Request $request)
     {
-        // $materi = Materi::create($request->all());
 
         // Convert link materi untuk ditampilkan di embed
 
@@ -632,6 +633,7 @@ class AdminController extends Controller
             "kegiatan_id" => $request->kegiatan_id,
             "link_materi_embed" => $embedLink,
             "detail_materi" => $request->detail_materi,
+            "user_id" => auth()->user()->id,
             "slug" => Str::slug($request->nama_materi, '-')
         ]);
         // $materi = Materi::create($request->all());
@@ -710,12 +712,18 @@ class AdminController extends Controller
     public function delTugas($id_tugas)
     {
         $data_tugas = Tugas::find($id_tugas);
-        if ($data_tugas) {
+        // Cek di Pengumpulan Tugas
+        $pengumpulan_tugas = PengumpulanTugas::where([
+            'tugas_id' => $id_tugas
+        ])->first();
+
+        if ($pengumpulan_tugas) {
             Alert::error('Gagal !', 'Tugas Gagal dihapus');
             return redirect()->back();
         } else {
             $data_tugas->delete($data_tugas);
-            return redirect('/admin/tugas')->with('success', 'Tugas Berhasil dihapus !');
+            Alert::success('Yesy !', 'Tugas berhasil dihapus');
+            return redirect('/admin/tugas');
         }
     }
     // Get By Id Tugas
@@ -817,7 +825,7 @@ class AdminController extends Controller
 
         $cek_mentee = Mentee::where([
             "kelompok_id" => $id_kelompok
-        ]);
+        ])->first();
         if ($cek_mentee) {
             Alert::error('Kelompok Gagal dihapus', 'kosongkan data Mentee terlebih dahulu');
             return redirect()->back();
@@ -858,7 +866,7 @@ class AdminController extends Controller
         return view('admin.kelompok.tambahMentee', compact(['data_kelompok', 'data_mentee']));
     }
 
-    //-------------------------------------------Keluhan-------------------------------------------
+    //-------------------------------------------1-------------------------------------------
 
     // Get Function
     public function keluhan()
@@ -885,10 +893,16 @@ class AdminController extends Controller
         Alert::success('Yeay', 'Keluhan berhasil dijawab !');
         return redirect()->back();
     }
+    // Hapus Keluhan
+    public function hapusKeluhan($id_keluhan){
+        $data_keluhan = Keluhan::find($id_keluhan);
+        $data_keluhan->delete($id_keluhan);
+        Alert::success('Yeay', 'Keluhan berhasil dijawab !');
+        return redirect()->back();
+    }
 
     //-------------------------------------------Pertemuan-------------------------------------------
 
-    // Pertemuan Function
     // Get Pertemuan
     public function pertemuan(Request $request)
     {
@@ -922,16 +936,24 @@ class AdminController extends Controller
     // Add Pertemuan
     public function addPertemuan(Request $request)
     {
-        // $pertemuan = Pertemuan::create($request->all());
-        $pertemuan = Pertemuan::create([
-            "nama_pertemuan" => $request->nama_pertemuan,
-            "link_pertemuan" => $request->link_pertemuan,
+        // Cek Pertemuan 
+        $cek = Pertemuan::where([
             "kegiatan_id" => $request->kegiatan_id,
-            "kelompok_id" => $request->mentor_id,
-            "detail_pertemuan" => $request->detail_pertemuan
-        ]);
-        dd($pertemuan);
-        Alert::success('Yeay Berhasil !', 'Pertemuan Berhasil Ditambahkan !');
+            "kelompok_id" => $request->mentor_id
+        ])->first();
+        if ($cek) {
+            Alert::warning('Pertemuan Gagal dihapus !','Pertemuan Sudah Tersedia !');
+        } else {
+            $pertemuan = Pertemuan::create([
+                "nama_pertemuan" => $request->nama_pertemuan,
+                "link_pertemuan" => $request->link_pertemuan,
+                "kegiatan_id" => $request->kegiatan_id,
+                "kelompok_id" => $request->mentor_id,
+                "detail_pertemuan" => $request->detail_pertemuan
+            ]);
+            // dd($pertemuan);
+            Alert::success('Yeay Berhasil !', 'Pertemuan Berhasil Ditambahkan !');
+        }
         return redirect('/admin/pertemuan');
     }
     // Del Pertemuan
@@ -949,6 +971,7 @@ class AdminController extends Controller
         $totalKelompok = Kelompok::count();
         $data_mentor = Mentor::all();
         $filter_pertemuan = Pertemuan::all();
+        $data_kelompok = Kelompok::all();
         $data_pertemuan = Pertemuan::where([
             "kegiatan_id" => $request->minggu_kegiatan
         ])->get();
@@ -956,7 +979,7 @@ class AdminController extends Controller
             "jenis_kegiatan" => "Pertemuan"
         ])->get();
         // dd($data_pertemuan);
-        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan','data_mentor','filter_pertemuan']));
+        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan','data_mentor','filter_pertemuan','data_kelompok']));
     }
     // Detail Pertemuan
     public function detPertemuan($id_pertemuan)

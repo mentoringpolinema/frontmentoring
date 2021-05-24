@@ -52,7 +52,7 @@
                                                         </div>
                                                     </div><!-- .card-search --> --}}
                                                 </div><!-- .card-title-group -->
-                                                <br>
+                                                {{-- <br> --}}
                                                 <table class="datatable-init nk-tb-list nk-tb-ulist" data-auto-responsive="false">
                                                     <thead>
                                                         <tr class="nk-tb-item nk-tb-head">
@@ -86,6 +86,7 @@
                                                                 <div class="nk-ibx-context-badges"><span class="badge badge-success">{{$keluhan->keterangan_keluhan}}</span></div>
                                                                 @endif
                                                                 @if ($keluhan->keterangan_keluhan == 'Pengganti')
+                                                                <div class="nk-ibx-context-badges"><span class="badge badge-warning">{{$keluhan->keterangan_keluhan}}</span></div>
                                                                 @endif
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
@@ -101,7 +102,7 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">                                                                
                                                                     <a href="/admin/keluhan/{{$keluhan->id_keluhan}}"><button class="btn btn-sm btn-primary">Detail</button></a>
-                                                                    {{-- <a href="/admin/keluhan/hapus/{{$keluhan->id_keluhan}}"><button class="btn btn-sm btn-danger">Hapus</button></a> --}}
+                                                                    <a href="/admin/keluhan/{{$keluhan->id_keluhan}}/hapus"><button class="btn btn-sm btn-danger">Hapus</button></a>
                                                                 {{-- @endif --}}
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->

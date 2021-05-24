@@ -54,7 +54,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="project-details">
-                                                            <p>{!!$pertemuan->detail_pertemuan!!}</p>
+                                                            {!!$pertemuan->detail_pertemuan!!}
                                                         </div>
                                                         <div class="project-meta">
                                                             <ul class="project-users g-1">

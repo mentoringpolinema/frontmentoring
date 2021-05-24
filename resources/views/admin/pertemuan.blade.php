@@ -88,7 +88,7 @@
                                                                     <li class="item">
                                                                         <div class="info">
                                                                             <div class="title">Total Pertemuan</div>
-                                                                            <div class="count">{{$totalMentee}}</div>
+                                                                            <div class="count">{{$total}}</div>
                                                                         </div>
                                                                         <em class="icon bg-success-dim ni ni-video-fill"></em>
                                                                     </li>
@@ -251,13 +251,13 @@
                                         <input type="text" class="form-control form-control-lg" id="nama_pertemuan" name="nama_pertemuan" placeholder="Enter Nama Pertemuan">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Mentor</label>
                                         <select class="form-select" id="mentor_id" name="mentor_id" data-ui="lg" required>
                                             <option value="#">-Pilih Mentor-</option>
                                             @foreach ($data_kelompok as $kelompok)                                            
-                                            <option value="{{$kelompok->mentor->id_mentor}}">{{$kelompok->mentor->nama_mentor}} : Kelompok - {{$kelompok->nama_kelompok}}</option>
+                                            <option value="{{$kelompok->id_kelompok}}">{{$kelompok->mentor->nama_mentor}} : Kelompok - {{$kelompok->nama_kelompok}}</option>
                                             @endforeach
                                         </select>
                                      </div>

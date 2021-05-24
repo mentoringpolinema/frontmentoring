@@ -57,6 +57,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Panitia::class);
     }
+    public function materi()
+    {
+        return $this->hasOne(Materi::class);
+    }
     
 
     

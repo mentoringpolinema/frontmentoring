@@ -56,9 +56,6 @@ class MentorController extends Controller
 
             return view('mentor.kelompok',compact('data_kelompok','data_mentee','mentee'));
         }
-        // Delete Kelompok
-
-        // Update Kelompok
 
     // Materi Mentor
 
@@ -73,13 +70,13 @@ class MentorController extends Controller
         // Add Materi
         public function addMateri(Request $request)
         {
-            \App\Models\Materi::create($request->all());
+            Materi::create($request->all());
             return redirect('/mentor/materi')->with('success', 'Materi Berhasil ditambahkan !');
         }
         // Delete Materi
         public function delMateri($id_materi)
         {
-            $data_materi = \App\Models\Materi::find($id_materi);
+            $data_materi = Materi::find($id_materi);
             $data_materi->delete($data_materi);
             return redirect('/mentor/materi')->with('success', 'Materi Berhasil dihapus !');
         }
