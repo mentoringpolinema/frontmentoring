@@ -117,7 +117,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="slider-content">
-                                    <h1 class="title">Mentoring Polinema 2020</h1>
+                                    <h1 class="title">Mentoring Polinema <?php echo date("Y");?></h1>
                                     <p class="text">Program Pembinaan Mahasiswa Baru Muslim dalam bidang kerohanian di Politeknik Negeri Malang.</p>
                                     <!-- <ul class="slider-btn rounded-buttons">
                                         <li><a class="main-btn rounded-one" href="#">GET STARTED</a></li>
@@ -140,7 +140,7 @@
                             <div class="col-lg-6">
                                 <div class="slider-content">
                                     <h1 class="title">Mentoring New System</h1>
-                                    <p class="text">Sistem Informasi Mentoring 2020 sudah disesuaikan oleh Sistem Kegiatan Terbaru dari Kegiatan Mentoring .</p>
+                                    <p class="text">Sistem Informasi Mentoring <?php echo date("Y");?> sudah disesuaikan oleh Sistem Kegiatan Terbaru dari Kegiatan Mentoring .</p>
                                     <ul class="slider-btn rounded-buttons">
                                     </ul>
                                 </div> <!-- slider-content -->
@@ -262,15 +262,15 @@
                     <div class="portfolio-menu text-center mt-50">
                         <ul>
                             <li data-filter="*" class="active">Seluruh Kegiatan</li>
-                            <li data-filter=".branding-4">Opening Mentoring</li>
-                            <li data-filter=".marketing-4">Closing Mentoring</li>
-                            <li data-filter=".planning-4">Kegiatan Mentoring</li>
+                            <li data-filter=".opment">Opening Mentoring</li>
+                            <li data-filter=".closement">Closing Mentoring</li>
+                            <li data-filter=".kegiatan">Kegiatan Mentoring</li>
                         </ul>
                     </div> <!-- portfolio menu -->
                 </div>
                 <div class="col-lg-9 col-md-9">
                     <div class="row no-gutters grid mt-50">
-                        <div class="col-lg-4 col-sm-6 branding-4 planning-4">
+                        <div class="col-lg-4 col-sm-6 opment">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
                                     <img src="{{asset('template/homepage/assets/images/portfolio/opment-min.JPG')}}" alt="">
@@ -289,14 +289,14 @@
                                 </div>
                             </div> <!-- single portfolio -->
                         </div>
-                        <div class="col-lg-4 col-sm-6 marketing-4 research-4">
+                        <div class="col-lg-4 col-sm-6 closement">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
-                                    <img src="{{asset('template/homepage/assets/images/portfolio/2.png')}}" alt="">
+                                    <img src="{{asset('template/homepage/assets/images/portfolio/closement1.png')}}" alt="">
                                     <div class="portfolio-overlay d-flex align-items-center justify-content-center">
                                         <div class="portfolio-content">
                                             <div class="portfolio-icon">
-                                                <a class="image-popup" href="{{asset('template/homepage/assets/images/portfolio/2.png')}}"><i class="lni lni-zoom-in"></i></a>
+                                                <a class="image-popup" href="{{asset('template/homepage/assets/images/portfolio/closement1.png')}}"><i class="lni lni-zoom-in"></i></a>
                                                 <img src="{{asset('template/homepage/assets/images/portfolio/shape.svg')}}" alt="shape" class="shape">
                                             </div>
                                             <div class="portfolio-icon">
@@ -308,7 +308,7 @@
                                 </div>
                             </div> <!-- single portfolio -->
                         </div>
-                        <div class="col-lg-4 col-sm-6 branding-4 marketing-4">
+                        <div class="col-lg-4 col-sm-6 opment">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
                                     <img src="{{asset('template/homepage/assets/images/portfolio/opment2-min.JPG')}}" alt="">
@@ -327,14 +327,14 @@
                                 </div>
                             </div> <!-- single portfolio -->
                         </div>
-                        <div class="col-lg-4 col-sm-6 planning-4 research-4">
+                        <div class="col-lg-4 col-sm-6 closement">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
-                                    <img src="{{asset('template/homepage/assets/images/portfolio/4.png')}}" alt="">
+                                    <img src="{{asset('template/homepage/assets/images/portfolio/closement2.png')}}" alt="">
                                     <div class="portfolio-overlay d-flex align-items-center justify-content-center">
                                         <div class="portfolio-content">
                                             <div class="portfolio-icon">
-                                                <a class="image-popup" href="{{asset('template/homepage/assets/images/portfolio/4.png')}}"><i class="lni lni-zoom-in"></i></a>
+                                                <a class="image-popup" href="{{asset('template/homepage/assets/images/portfolio/closement2.png')}}"><i class="lni lni-zoom-in"></i></a>
                                                 <img src="{{asset('template/homepage/assets/images/portfolio/shape.svg')}}" alt="shape" class="shape">
                                             </div>
                                             <div class="portfolio-icon">
@@ -346,7 +346,7 @@
                                 </div>
                             </div> <!-- single portfolio -->
                         </div>
-                        <div class="col-lg-4 col-sm-6 marketing-4">
+                        <div class="col-lg-4 col-sm-6 kegiatan">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
                                     <img src="{{asset('template/homepage/assets/images/portfolio/5.png')}}" alt="">
@@ -365,14 +365,14 @@
                                 </div>
                             </div> <!-- single portfolio -->
                         </div>
-                        <div class="col-lg-4 col-sm-6 planning-4">
+                        <div class="col-lg-4 col-sm-6 closement">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
-                                    <img src="{{asset('template/homepage/assets/images/portfolio/6.png')}}" alt="">
+                                    <img src="{{asset('template/homepage/assets/images/portfolio/closement3.png')}}" alt="">
                                     <div class="portfolio-overlay d-flex align-items-center justify-content-center">
                                         <div class="portfolio-content">
                                             <div class="portfolio-icon">
-                                                <a class="image-popup" href="{{asset('template/homepage/assets/images/portfolio/6.png')}}"><i class="lni lni-zoom-in"></i></a>
+                                                <a class="image-popup" href="{{asset('template/homepage/assets/images/portfolio/closement3.png')}}"><i class="lni lni-zoom-in"></i></a>
                                                 <img src="{{asset('template/homepage/assets/images/portfolio/shape.svg')}}" alt="shape" class="shape">
                                             </div>
                                             <div class="portfolio-icon">
@@ -384,7 +384,7 @@
                                 </div>
                             </div> <!-- single portfolio -->
                         </div>
-                        <div class="col-lg-4 col-sm-6 research-4">
+                        <div class="col-lg-4 col-sm-6 kegiatan">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
                                     <img src="{{asset('template/homepage/assets/images/portfolio/7.png')}}" alt="">
@@ -403,7 +403,7 @@
                                 </div>
                             </div> <!-- single portfolio -->
                         </div>
-                        <div class="col-lg-4 col-sm-6 branding-4 planning-4">
+                        <div class="col-lg-4 col-sm-6 opment">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
                                     <img src="{{asset('template/homepage/assets/images/portfolio/opment3-min.JPG')}}" alt="">
@@ -421,26 +421,7 @@
                                     </div>
                                 </div>
                             </div> <!-- single portfolio -->
-                        </div>
-                        <div class="col-lg-4 col-sm-6 marketing-4">
-                            <div class="single-portfolio">
-                                <div class="portfolio-image">
-                                    <img src="{{asset('template/homepage/assets/images/portfolio/9.png')}}" alt="">
-                                    <div class="portfolio-overlay d-flex align-items-center justify-content-center">
-                                        <div class="portfolio-content">
-                                            <div class="portfolio-icon">
-                                                <a class="image-popup" href="a{{asset('template/homepage/assets/images/portfolio/9.png')}}"><i class="lni lni-zoom-in"></i></a>
-                                                <img src="assets/images/portfolio/shape.svg" alt="shape" class="shape">
-                                            </div>
-                                            <div class="portfolio-icon">
-                                                <a href="#"><i class="lni lni-link"></i></a>
-                                                <img src="{{asset('template/homepage/assets/images/portfolio/shape.svg')}}" alt="shape" class="shape">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- single portfolio -->
-                        </div>
+                        </div>                        
                     </div> <!-- row -->
                 </div>
             </div> <!-- row -->
@@ -570,7 +551,7 @@
                             </div> <!-- single testimonial -->
                             <div class="single-testimonial">
                                 <div class="testimonial-text">
-                                    <p class="text">“Ya gimana ye kegiatan ini sangat bagus bagi mahasiswa, dapat memberikan pemahaman seputar al-qur'an dan masih banyak manfaat yang didapatkan, tapi saya yang pusying s*t !”</p>
+                                    <p class="text">“Mentoring adalah kegiatan yang bertujuan untuk memberantas buta huruf al-quran, ”</p>
                                 </div>
                                 <div class="testimonial-author d-sm-flex justify-content-between">
                                     <div class="author-info d-flex align-items-center">
@@ -627,7 +608,7 @@
                 <div class="col-lg-6 col-md-10">
                     <div class="section-title text-center pb-30">
                         <h3 class="title">Meet The Team</h3>
-                        <p class="text">Dibalik Layar Website Sistem Informasi Mentoring Polinema 2020</p>
+                        <p class="text">Dibalik Layar Website Sistem Informasi Mentoring Polinema <?php echo date("Y");?></p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -695,7 +676,7 @@
                 <div class="col-lg-6 col-md-10">
                     <div class="section-title text-center pb-30">
                         <h3 class="title">Contact</h3>
-                        <p class="text">Ada Keperluan dan Pertanyaan Seputar Mentoring ? Langsung saja ke Lokasi Kami</p>
+                        <p class="text">Ada Keperluan dan Pertanyaan Seputar Mentoring ?<br> Langsung saja ke Lokasi Kami</p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -743,7 +724,7 @@
                     </div>
                 </div> <!-- row -->
             </div> <!-- contact info -->
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-12">
                     <div class="contact-wrapper form-style-two pt-115">
                         <h4 class="contact-title pb-10"><i class="lni lni-envelope"></i> Leave <span>A Message.</span></h4>
@@ -787,7 +768,7 @@
                         </form>
                     </div> <!-- contact wrapper form -->
                 </div>
-            </div> <!-- row -->
+            </div> <!-- row --> --}}
         </div> <!-- container -->
     </section>
 
@@ -800,19 +781,21 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="footer-logo text-center">
-                        <a class="mt-30" href="index.html"><img src="template/homepage/assets/images/logoWhite.png" alt="Logo"></a>
+                        <a class="mt-30" href="#"><img src="template/homepage/assets/images/logoWhite.png" alt="Logo" height="100px" width="300px"></a>
                     </div> <!-- footer logo -->
                     <ul class="social text-center mt-60">
                         <li><a href="https://facebook.com/rohispolinema"><i class="lni lni-facebook-filled"></i></a></li>
                         <li><a href="https://instagram.com/rohis_polinema"><i class="lni lni-instagram-original"></i></a></li>
                         <li><a href="https://youtube.com/rohis_polinema"><i class="lni lni-youtube"></i></a></li>
+                        <li><a href="http://rohispolinema.my.id"><i class="lni lni-firefox-original"></i></a></li>
                     </ul> <!-- social -->
                     <div class="footer-support text-center">
                         <span class="number">+62 812 5922 4380</span>
                         <span class="mail">mentoringpolinema@polinema.ac.id</span>
                     </div>
                     <div class="copyright text-center mt-35">
-                        <p class="text">Developed By Mentoring Polinema <br> Designed by <a href="https://uideck.com" rel="nofollow">UIdeck</a> and Built-with <a rel="nofollow" href="https://ayroui.com">Ayro UI</a> </p>
+                        {{-- <p class="text">Developed By Mentoring Polinema <br> Designed by <a href="https://uideck.com" rel="nofollow">UIdeck</a> and Built-with <a rel="nofollow" href="https://ayroui.com">Ayro UI</a> </p> --}}
+                        <p class="text">Developed By <a href="#" rel="nofollow">Mentoring Polinema</a> </p>
                     </div> <!--  copyright -->
                 </div>
             </div> <!-- row -->
@@ -888,18 +871,18 @@
     });
     </script>
 
-     <!--Start of Tawk.to Script-->
-        <script type="text/javascript">
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
         s1.async=true;
-        s1.src='template/tawkto.js/tawkto.js';
+        s1.src='https://embed.tawk.to/60a304b1b1d5182476b9cbd3/1f5ucklnn';
         s1.charset='UTF-8';
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
         })();
-        </script>
+    </script>
     <!--End of Tawk.to Script-->
 
 </body>

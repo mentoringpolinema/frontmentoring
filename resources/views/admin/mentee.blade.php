@@ -23,7 +23,7 @@
                                                 <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">
-                                                        <li>
+                                                        {{-- <li>
                                                             <div class="drodown">
                                                                 <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-search"></em><span><span class="d-none d-md-inline">Cari</span></span><em class="dd-indc icon ni ni-chevron-right"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
@@ -34,7 +34,7 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </li>
+                                                        </li> --}}
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#menteeModal"><em class="icon ni ni-user-add"></em><span>Tambah Mentee</span></a></li>
                                                         {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li> --}}
                                                         <li class="preview-btn-item col-sm-6 col-lg-3">
@@ -121,78 +121,7 @@
                                                             <li>
                                                                 <a href="#" class="search-toggle toggle-search btn btn-icon" data-target="search"><em class="icon ni ni-search"></em></a>
                                                             </li><!-- li -->
-                                                            <li class="btn-toolbar-sep"></li><!-- li -->
-                                                            <li>
-                                                                <div class="dropdown">
-                                                                    <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        {{-- <div class="badge badge-circle badge-primary">4</div> --}}
-                                                                        <em class="icon ni ni-filter-alt"></em>
-                                                                    </a>
-                                                                    <div class="filter-wg dropdown-menu dropdown-menu-xl dropdown-menu-right">
-                                                                        <div class="dropdown-head">
-                                                                            <span class="sub-title dropdown-title">Filter By</span>
-                                                                            <div class="dropdown">
-                                                                                <a href="#" class="link link-light">
-                                                                                    <em class="icon ni ni-more-h"></em>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="dropdown-body dropdown-body-rg">
-                                                                            <div class="row gx-6 gy-4">
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Jurusan</label>
-                                                                                        <select class="form-select" id="jurusanMentee" name="jurusanMentee">
-                                                                                            <option>-Pilih Jurusan-</option>
-                                                                                            @foreach ($data_jurusan as $jurusan)
-                                                                                                <option value="{{$jurusan->id_jurusan}}">{{$jurusan->nama_jurusan}}</option>
-                                                                                            @endforeach
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Program Studi</label>
-                                                                                        <select class="form-select" id="prodiMentee" name="prodiMentee">
-                                                                                            <option>-Pilih Program Studi-</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Kelas</label>
-                                                                                        <select class="form-select" id="kelasId" name="kelasId">
-                                                                                            <option>-Pilih Kelas-</option>
-                                                                                            {{-- @foreach ($data_absensi as $absensi)
-                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
-                                                                                            @endforeach --}}
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <button type="button" class="btn btn-secondary">Filter</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div><!-- .filter-wg -->
-                                                                </div><!-- .dropdown -->
-                                                            </li><!-- li -->
-                                                            <li>
-                                                                <div class="dropdown">
-                                                                    <a href="#" class="btn btn-trigger btn-icon dropdown-toggle" data-toggle="dropdown">
-                                                                        <em class="icon ni ni-setting"></em>
-                                                                    </a>
-                                                                    <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
-                                                                        <ul class="link-check">
-                                                                            <li><span>Order</span></li>
-                                                                            <li class="active"><a href="#">DESC</a></li>
-                                                                            <li><a href="#">ASC</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div><!-- .dropdown -->
-                                                            </li><!-- li -->
+                                                            <li class="btn-toolbar-sep"></li><!-- li -->                                                            
                                                         </ul><!-- .btn-toolbar -->
                                                     </div><!-- .card-tools -->
                                                     <div class="card-search search-wrap" data-search="search">

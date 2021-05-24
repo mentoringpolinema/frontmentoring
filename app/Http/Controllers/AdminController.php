@@ -235,7 +235,7 @@ class AdminController extends Controller
     }
 
     //-------------------------------------------Mentee-------------------------------------------
-    // Mentee Function
+
     public function mentee()
     {
         $data_mentee = Mentee::all();
