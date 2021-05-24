@@ -290,6 +290,12 @@ Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
     Route::get('/mentor/materi', '\App\Http\Controllers\MentorController@materi');
     // Add Materi
     Route::post('/mentor/addMateri', '\App\Http\Controllers\MentorController@addMateri');
+    // Delete Materi
+    Route::get('/mentor/materi/{id}', '\App\Http\Controllers\MentorController@delMateri');
+    //Get Data By Id Materi
+    Route::post('/mentor/materi/getByIdMateri', '\App\Http\Controllers\MentorController@getByIdMateri')->name('getMateriByID');
+    //Update Materi
+    Route::put('/mentor/materi', '\App\Http\Controllers\MentorController@editMateri');
 });
 
 // MENTEE ROUTES =========================================================================================================>

@@ -241,7 +241,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="email-panitia">Email</label>
-                                        <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="{{$panitia->user->email}}" required>
+                                        <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="{{$panitia->users->email}}" required>
                                         {{-- <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="" required> --}}
                                     </div>
                                 </div>
@@ -261,7 +261,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="passsword-panitia">Password</label>
-                                        <input type="text" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="{{$panitia->user->password}}" required>
+                                        <input type="text" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="{{$panitia->users->password}}" required>
                                         {{-- <input type="text" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="" required> --}}
                                     </div>
                                 </div>
@@ -299,9 +299,9 @@
                     success: function(data) {
                         $("input[name='id_panitia_edit']").val(data.panitia.id_panitia);
                         $("input[name='nama_panitia_edit']").val(data.panitia.nama_panitia);
-                        $("input[name='email_panitia_edit']").val(data.user.email_panitia);
+                        $("input[name='email_panitia_edit']").val(data.user.email);
                         $("select[name='status_panitia_edit']").val(data.panitia.status_panitia).change();
-                        $("input[name='password_panitia_edit']").val(data.user.password_panitia);
+                        $("input[name='password_panitia_edit']").val(data.user.password);
                     }
                     // console.log(data);
                 });
