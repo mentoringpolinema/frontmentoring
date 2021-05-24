@@ -103,10 +103,9 @@
                                                             </td>
                                                             <td class="nk-tb-col tb-col-md">
                                                                 @if ($keluhan->status_keluhan == "Pending")
-                                                                    <span>Maaf :(</span>
+                                                                    <a href="/mentee/keluhan/hapus/{{$keluhan->id_keluhan}}"><button class="btn btn-sm btn-danger">Hapus</button></a>
                                                                 @else
                                                                     <a href="/mentee/keluhan/detail/{{$keluhan->id_keluhan}}"><button class="btn btn-sm btn-primary">Detail</button></a>
-                                                                    <a href="/mentee/keluhan/hapus/{{$keluhan->id_keluhan}}"><button class="btn btn-sm btn-danger">Hapus</button></a>
                                                                 @endif
                                                             </td>
                                                         </tr><!-- .nk-tb-item  -->

@@ -155,7 +155,7 @@
                                                    name="nama_tugas" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="form-label" for="materi_id">Materi</label>
                                             <select class="form-control" id="materi_id" name="materi_id" required>
@@ -164,17 +164,7 @@
                                                     <option value="{{$Materi->id_materi}}">{{$Materi->nama_materi}}</option>
                                                 @endforeach
                                             </select></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="nama_tugas">Status Tugas</label>
-                                            <select class="form-control" id="status_tugas" name="status_tugas" required>
-                                                <option>-Pilih Status-</option>
-                                                    <option value="Open">Open</option>
-                                                    <option value="Closed">Closed</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    </div>                                    
                                     <div class="col-md-12">
                                         <label class="form-label" for="detail_tugas">Detail Tugas</label>
                                         <textarea id="detail_materi" name="detail_tugas">

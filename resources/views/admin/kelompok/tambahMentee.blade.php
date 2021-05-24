@@ -9,11 +9,21 @@
                                     <ul class="breadcrumb breadcrumb-arrow">
                                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                                         <li class="breadcrumb-item">Kelompok</li>
-                                        <li class="breadcrumb-item"><a href="/admin/kelompok/{{$data_kelompok->id_kelompok}}">Detail</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Detail</a></li>
                                         <li class="breadcrumb-item active">Tambah</li>
                                     </ul>
                                     <br>
-                                    </nav>                                        
+                                    </nav>
+                                    <div class="nk-block-head-content">
+                                            <div class="toggle-wrap nk-block-tools-toggle">
+                                                <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                                                <div class="toggle-expand-content" data-content="pageMenu">
+                                                    <ul class="nk-block-tools g-3">
+                                                        <li class="nk-block-tools-opt"><a href="/admin/kelompok/{{$data_kelompok->id_kelompok}}" class="btn btn-outline-secondary" ><em class="icon ni ni-arrow-left"></em><span>Kembali</span></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div><!-- .nk-block-head-content -->                                        
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block nk-block-lg">

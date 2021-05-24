@@ -94,9 +94,9 @@ class MenteeController extends Controller
         {
             $cek_tugas = PengumpulanTugas::where([
                 ['mentee_id', '=', auth()->user()->mentee->id_mentee],
-                ['tugas_id', "=" ,$request->tugas_id]
+                ['tugas_id', "=" , $id_tugas]
             ])->first();
-
+            // dd($cek_tugas);
             if ($cek_tugas) {
                 Alert::error('yaah','kamu sudah mengumpulkan !');
                 return redirect()->back();
@@ -114,7 +114,6 @@ class MenteeController extends Controller
                         "tugas_id" => $id_tugas,
                         "status_tugas" => "Pending"
                         ]);
-
                         Alert::success('Yeay', 'Tugas Berhasil dikumpulkan !');
                     }
                 return redirect()->back(); 
@@ -139,7 +138,7 @@ class MenteeController extends Controller
         public function pertemuan()
         {
             $data_pertemuan = Pertemuan::where([
-                "mentor_id" => auth()->user()->mentee->kelompok->mentor->id_mentor
+                "kelompok_id" => auth()->user()->mentee->kelompok->id_kelompok
             ])->get();
             // dd($data_pertemuan);
             return view('mentee.pertemuan.index',compact(['data_pertemuan']));

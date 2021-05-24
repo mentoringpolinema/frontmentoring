@@ -23,7 +23,7 @@
                                                 <div class="toggle-expand-content" data-content="pageMenu">
                                                     <ul class="nk-block-tools g-3">                                                       
                                                         <li class="nk-block-tools-opt"><a href="/admin/kelompok/tambah/{{$data_kelompok->id_kelompok}}" class="btn btn-primary"><em class="icon ni ni-user-add"></em><span>Tambah Mentee</span></a></li>
-                                                        {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li> --}}
+                                                        <li class="nk-block-tools-opt"><a href="/admin/kelompok" class="btn btn-outline-secondary" ><em class="icon ni ni-arrow-left"></em><span>Kembali</span></a></li>
                                                     </ul>
                                                 </div>
                                             </div>

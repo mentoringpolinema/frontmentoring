@@ -71,7 +71,7 @@
                                                             <div class="nk-support-content">
                                                                 <div class="title">
                                                                     <span>{{$tugasku->file_tugas}}</span>
-                                                                        @if ($data_tugas->status_tugas == 'Open')
+                                                                        @if ($data_tugas->materi->kegiatan->status_kegiatan == 'Open')
                                                                             <a href="/mentee/tugas/delete/{{$tugasku->id_pengumpulan_tugas}}">
                                                                                 <button class="btn btn-sm btn-danger">
                                                                                     <em class="icon ni ni-trash"></em>
@@ -136,11 +136,11 @@
                                                                         <input type="text" class="form-control" id="id_tugas" name="id_tugas" value="{{$data_tugas->id_tugas}}" hidden>
                                                                     </div>  
                                                                     <div class="form-group">
-                                                                        <label class="form-label" for="customMultipleFilesLabel">Silahkan Upload Tugas yang telah diberikan</label>
+                                                                        <label class="form-label" for="customFileLabel">Upload File Tugas</label>
                                                                         <div class="form-control-wrap">
                                                                             <div class="custom-file">
-                                                                                <input type="file" id="file_tugas" name="file_tugas" required>
-                                                                                {{-- <label class="custom-file-label" for="customMultipleFiles">Choose files</label> --}}
+                                                                                <input type="file" class="custom-file-input" id="file_tugas" name="file_tugas" required>
+                                                                                <label class="custom-file-label" for="customFile">Choose file</label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                 </div>
-@section('script-filepond')
+{{-- @section('script-filepond')
 <script>
     const inputElement = document.querySelector('input[id="file_tugas"]');
     const pond = FilePond.create( inputElement );
@@ -177,6 +177,6 @@
         }
     });
 </script>
-@endsection
+@endsection --}}
 
 @stop

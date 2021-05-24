@@ -8,7 +8,7 @@ class Materi extends Model
 {
     protected $table = 'materi';
     protected $primaryKey = 'id_materi';
-    protected $fillable = ['nama_materi','link_materi','link_materi_embed','detail_materi', 'slug','kegiatan_id'];
+    protected $fillable = ['nama_materi','link_materi','link_materi_embed','detail_materi', 'slug','kegiatan_id','user_id'];
 
     public function tugas(){
         return $this->hasMany(Tugas::class);
@@ -16,5 +16,9 @@ class Materi extends Model
     public function kegiatan()
     {
         return $this->belongsTo(Kegiatan::class, 'kegiatan_id');
+    }
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

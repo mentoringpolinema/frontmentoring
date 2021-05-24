@@ -143,7 +143,7 @@
                                                         </div>
                                                         <div class="user-card user-card-s2">
                                                             <div class="user-avatar md bg-warning">
-                                                                <span>K{{$kelompok->nama_kelompok}}</span>
+                                                                <span>K{{$kelompok->id_kelompok}}</span>
                                                                 <div class="status dot dot-lg dot-success"></div>
                                                             </div>
                                                             <div class="user-info">

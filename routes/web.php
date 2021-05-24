@@ -220,6 +220,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::get('/admin/keluhan/{id}', '\App\Http\Controllers\AdminController@detailKeluhan');
     // Jawab Keluhan
     Route::get('/admin/keluhan/{id}/update', '\App\Http\Controllers\AdminController@jawabKeluhan');
+    // Hapus keluhan
+    Route::get('/admin/keluhan/{id}/hapus', '\App\Http\Controllers\AdminController@hapusKeluhan');
 
 // Pertemuan =========================================================================================================>
     // Get Pertemuan
@@ -237,34 +239,6 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Get Data By Id Pertemuan
     Route::post('/admin/pertemuan/getByIdPertemuan', '\App\Http\Controllers\AdminController@getByIdPertemuan')->name('getPertemuanByID');
 
-//filter pertemuan
-// Route::get('filter', function (Request $request) {
-    
-    // $pertemuan = Pertemuan::where( function($query) use($request){
-    //                  return $request->kegiatan_id ?
-    //                         $query->from('pertemuan')->where('id_pertemuan',$request->kegiatan_id) : '';
-    //             })
-    //             ->with('pertemuan')
-    //             ->get();
-     
-    // $selected_id = [];
-    // $selected_id['kegiatan_id'] = $request->kegiatan_id;
-
-    // return view('pertemuan',compact('product','selected_id'));
-
-//     $product = Pertemuan::where( function($query) use($request){
-//         return $request->kegiatan_id ?
-//                $query->from('pertemuan')->where('kegiatan_id',$request->kegiatan_id) : '';
-//    })
-//    ->with('kegiatan')
-//    ->get();
-
-// $selected_id = [];
-// $selected_id['kegiatan_id'] = $request->kegiatan_id;
-
-// return view('admin.pertemuan',compact('product','selected_id'));
-
-// })->name('filter');
 
 // Pengumuman ========================================================================================================>
     // Get Pengumuman
@@ -321,70 +295,68 @@ Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
 // MENTEE ROUTES =========================================================================================================>
 Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     // Dashboard
-    // Get Dashboard
-    Route::get('/mentee', '\App\Http\Controllers\MenteeController@index');
+        // Get Dashboard
+        Route::get('/mentee', '\App\Http\Controllers\MenteeController@index');
 
     // Kelompok
-    // Get Kelompok
-    Route::get('/mentee/kelompok/{id}', '\App\Http\Controllers\MenteeController@kelompok');
+        // Get Kelompok
+        Route::get('/mentee/kelompok/{id}', '\App\Http\Controllers\MenteeController@kelompok');
 
     // Profile
-    // Get Profile
-    Route::get('/mentee/profile', '\App\Http\Controllers\MenteeController@profile');
-    // Edit Profile
-    Route::post('/mentee/profile/update/{id}', '\App\Http\Controllers\MenteeController@updProfile');
+        // Get Profile
+        Route::get('/mentee/profile', '\App\Http\Controllers\MenteeController@profile');
+        // Edit Profile
+        Route::post('/mentee/profile/update/{id}', '\App\Http\Controllers\MenteeController@updProfile');
 
     // Materi dan Tugas
-    // Get Materi dan Tugas
-    Route::get('/mentee/materi', '\App\Http\Controllers\MenteeController@materi');
-    // Detail Materi
-    Route::get('/mentee/materi/{id}', '\App\Http\Controllers\MenteeController@detailMateri');
-    // Detail Tugas
-    Route::get('/mentee/tugas/{id}', '\App\Http\Controllers\MenteeController@detailTugas');
-    // Upload Tugas
-    Route::post('/mentee/tugas/upload/{id}', '\App\Http\Controllers\MenteeController@uploadTugas');
-    // Delete Tugas
-    Route::get('/mentee/tugas/delete/{id}', '\App\Http\Controllers\MenteeController@deleteTugas');
+        // Get Materi dan Tugas
+        Route::get('/mentee/materi', '\App\Http\Controllers\MenteeController@materi');
+        // Detail Materi
+        Route::get('/mentee/materi/{id}', '\App\Http\Controllers\MenteeController@detailMateri');
+        // Detail Tugas
+        Route::get('/mentee/tugas/{id}', '\App\Http\Controllers\MenteeController@detailTugas');
+        // Upload Tugas
+        Route::post('/mentee/tugas/upload/{id}', '\App\Http\Controllers\MenteeController@uploadTugas');
+        // Delete Tugas
+        Route::get('/mentee/tugas/delete/{id}', '\App\Http\Controllers\MenteeController@deleteTugas');
 
     // Pertemuan
-    // Get Pertemuan
-    Route::get('/mentee/pertemuan', '\App\Http\Controllers\MenteeController@pertemuan');
-    // Detail Pertemuan
-    Route::get('/mentee/pertemuan/detail/{id}', '\App\Http\Controllers\MenteeController@detPertemuan');
-    // Absensi Pertemuan
-    Route::post('/mentee/pertemuan/absenPertemuan', '\App\Http\Controllers\MenteeController@absenPertemuan');
+        // Get Pertemuan
+        Route::get('/mentee/pertemuan', '\App\Http\Controllers\MenteeController@pertemuan');
+        // Detail Pertemuan
+        Route::get('/mentee/pertemuan/detail/{id}', '\App\Http\Controllers\MenteeController@detPertemuan');
+        // Absensi Pertemuan
+        Route::post('/mentee/pertemuan/absenPertemuan', '\App\Http\Controllers\MenteeController@absenPertemuan');
    
-
-
     // Keluhan
-    // Get Keluhan
-    Route::get('/mentee/keluhan', '\App\Http\Controllers\MenteeController@keluhan');
-    // Tanya Keluhan
-    Route::get('/mentee/keluhan/kirim', '\App\Http\Controllers\MenteeController@kirimKeluhan');
-    // Detail keluhan
-    Route::get('/mentee/keluhan/detail/{id}', '\App\Http\Controllers\MenteeController@detailKeluhan');
-    // Hapus keluhan
-    Route::get('/mentee/keluhan/hapus/{id}', '\App\Http\Controllers\MenteeController@hapusKeluhan');
-    // Form Keluhan
-    Route::get('/mentee/keluhan/form', '\App\Http\Controllers\MenteeController@keluhanForm');
+        // Get Keluhan
+        Route::get('/mentee/keluhan', '\App\Http\Controllers\MenteeController@keluhan');
+        // Tanya Keluhan
+        Route::get('/mentee/keluhan/kirim', '\App\Http\Controllers\MenteeController@kirimKeluhan');
+        // Detail keluhan
+        Route::get('/mentee/keluhan/detail/{id}', '\App\Http\Controllers\MenteeController@detailKeluhan');
+        // Hapus keluhan
+        Route::get('/mentee/keluhan/hapus/{id}', '\App\Http\Controllers\MenteeController@hapusKeluhan');
+        // Form Keluhan
+        Route::get('/mentee/keluhan/form', '\App\Http\Controllers\MenteeController@keluhanForm');
 
     // Pengganti
-    // Get Pengganti
-    Route::get('/mentee/pengganti', '\App\Http\Controllers\MenteeController@pengganti');
-    // Detail Pengganti
-    Route::get('/mentee/detailPengganti', '\App\Http\Controllers\MenteeController@detailPengganti');
-    // Cetak
-    // Get Cetak
-    Route::get('/mentee/cetak/{id}', '\App\Http\Controllers\MenteeController@cetak');
-    // Get Print
-    Route::get('/mentee/print', '\App\Http\Controllers\MenteeController@print');
-    // Kegiatan
-    // Get Kegiatan
-    Route::get('/mentee/kegiatan', '\App\Http\Controllers\MenteeController@kegiatan');
-    // Detail Kegiatan
-    Route::get('/mentee/kegiatan/{id}', '\App\Http\Controllers\MenteeController@detailKegiatan');
-    // Absen Kegiatan
-    Route::post('/mentee/kegiatan/absen', '\App\Http\Controllers\MenteeController@absenKegiatan');
+        // Get Pengganti
+        Route::get('/mentee/pengganti', '\App\Http\Controllers\MenteeController@pengganti');
+        // Detail Pengganti
+        Route::get('/mentee/detailPengganti', '\App\Http\Controllers\MenteeController@detailPengganti');
+        // Cetak
+        // Get Cetak
+        Route::get('/mentee/cetak/{id}', '\App\Http\Controllers\MenteeController@cetak');
+        // Get Print
+        Route::get('/mentee/print', '\App\Http\Controllers\MenteeController@print');
+        // Kegiatan
+        // Get Kegiatan
+        Route::get('/mentee/kegiatan', '\App\Http\Controllers\MenteeController@kegiatan');
+        // Detail Kegiatan
+        Route::get('/mentee/kegiatan/{id}', '\App\Http\Controllers\MenteeController@detailKegiatan');
+        // Absen Kegiatan
+        Route::post('/mentee/kegiatan/absen', '\App\Http\Controllers\MenteeController@absenKegiatan');
 });
 
 Auth::routes();

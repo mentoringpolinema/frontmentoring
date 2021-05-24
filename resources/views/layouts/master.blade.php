@@ -88,7 +88,7 @@
     <script src="{{asset('template/dashboardassets/js/apps/messages.js?ver=2.4.0')}}"></script>
     <!-- File Pond -->
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script> 
-    @yield('script-filepond')
+    {{-- @yield('script-filepond') --}}
     <script>
     (function (NioApp, $){
         $('.eg-swal-galulus').on("click", function (e) {
