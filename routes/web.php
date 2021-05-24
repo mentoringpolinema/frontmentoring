@@ -133,14 +133,14 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
 // Data Management ===================================================================================================>
     //Get Data
     Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
-//Add Data
+    //Add Data
     // Add Data Jurusan
     Route::post('/admin/addJurusan', '\App\Http\Controllers\AdminController@addJurusan');
     // Add Data Prodi
     Route::post('/admin/addProdi', '\App\Http\Controllers\AdminController@addProdi');
     // Add Data Kelas
     Route::post('/admin/addKelas', '\App\Http\Controllers\AdminController@addKelas');
-//Delete Data
+    //Delete Data
     // Add Data Jurusan
     Route::get('/admin/{id_jurusan}/delJurusan', '\App\Http\Controllers\AdminController@delJurusan');
     // Add Data Prodi
@@ -167,6 +167,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
 // Export Data Jurusan
     //Export Excel
     Route::get('/admin/jurusan/extJur/', '\App\Http\Controllers\AdminController@extJur');
+    
 // Materi ============================================================================================================>
     // Get Materi
     Route::get('/admin/materi', '\App\Http\Controllers\AdminController@materi');
@@ -195,7 +196,6 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::get('/admin/tugas/open/{id}', '\App\Http\Controllers\AdminController@openTugas');
     // Close Tugas
     Route::get('/admin/tugas/close/{id}', '\App\Http\Controllers\AdminController@closedTugas');
-    
 
 // Kelompok ==========================================================================================================>
     // Get Kelompok
@@ -229,10 +229,42 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Delete Pertemuan
     Route::get('/admin/delPertemuan/{id}', '\App\Http\Controllers\AdminController@delPertemuan');
     // Search Pertemuan
-    Route::get('/admin/cariPertemuan/', '\App\Http\Controllers\AdminController@cariPertemuan');
+    Route::get('/admin/cariPertemuan/{id}', '\App\Http\Controllers\AdminController@cariPertemuan');
     // Detail Pertemuan
     Route::get('/admin/detPertemuan/{id}', '\App\Http\Controllers\AdminController@detPertemuan');
     // Edit Pertemuan
+    Route::put('/admin/editPertemuan', '\App\Http\Controllers\AdminController@editPertemuan');
+    // Get Data By Id Pertemuan
+    Route::post('/admin/pertemuan/getByIdPertemuan', '\App\Http\Controllers\AdminController@getByIdPertemuan')->name('getPertemuanByID');
+
+//filter pertemuan
+// Route::get('filter', function (Request $request) {
+    
+    // $pertemuan = Pertemuan::where( function($query) use($request){
+    //                  return $request->kegiatan_id ?
+    //                         $query->from('pertemuan')->where('id_pertemuan',$request->kegiatan_id) : '';
+    //             })
+    //             ->with('pertemuan')
+    //             ->get();
+     
+    // $selected_id = [];
+    // $selected_id['kegiatan_id'] = $request->kegiatan_id;
+
+    // return view('pertemuan',compact('product','selected_id'));
+
+//     $product = Pertemuan::where( function($query) use($request){
+//         return $request->kegiatan_id ?
+//                $query->from('pertemuan')->where('kegiatan_id',$request->kegiatan_id) : '';
+//    })
+//    ->with('kegiatan')
+//    ->get();
+
+// $selected_id = [];
+// $selected_id['kegiatan_id'] = $request->kegiatan_id;
+
+// return view('admin.pertemuan',compact('product','selected_id'));
+
+// })->name('filter');
 
 // Pengumuman ========================================================================================================>
     // Get Pengumuman
@@ -259,8 +291,6 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::get('/admin/pengumpulan/acc/{id}', '\App\Http\Controllers\AdminController@accTugas');
     // Decline Tugas
     Route::get('/admin/pengumpulan/dec/{id}', '\App\Http\Controllers\AdminController@decTugas');
-    // Filter Tugas
-    Route::get('/admin/pengumpulan/filter/', '\App\Http\Controllers\AdminController@filterTugas');
 // Absensi
     // Get Absensi
     Route::get('/admin/absensi', '\App\Http\Controllers\AdminController@absensi');
@@ -268,8 +298,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::get('/admin/absensi/detail/{id}', '\App\Http\Controllers\AdminController@detailAbsen');
     // Get Absensi Kegiatan
     Route::get('/admin/absen/kegiatan', '\App\Http\Controllers\AdminController@absensiKegiatan');
-    // Filter Absensi
-    Route::get('/admin/absensi/filter', '\App\Http\Controllers\AdminController@filterAbsensi');
+    // Filter Kegiatan
+    Route::get('/admin/absensi/filter', '\App\Http\Controllers\AdminController@filterKegiatan');
 
 // MENTOR ROUTES =========================================================================================================>
 Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
@@ -323,6 +353,8 @@ Route::middleware(['auth', 'checkRole:Mentee'])->group(function () {
     Route::get('/mentee/pertemuan/detail/{id}', '\App\Http\Controllers\MenteeController@detPertemuan');
     // Absensi Pertemuan
     Route::post('/mentee/pertemuan/absenPertemuan', '\App\Http\Controllers\MenteeController@absenPertemuan');
+   
+
 
     // Keluhan
     // Get Keluhan
