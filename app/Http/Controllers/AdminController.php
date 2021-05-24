@@ -916,6 +916,7 @@ class AdminController extends Controller
         }
         return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan','data_kelompok']));
     }
+
     // Add Pertemuan
     public function addPertemuan(Request $request)
     {
@@ -927,7 +928,7 @@ class AdminController extends Controller
             "kelompok_id" => $request->mentor_id,
             "detail_pertemuan" => $request->detail_pertemuan
         ]);
-        // dd($pertemuan);
+        dd($pertemuan);
         Alert::success('Yeay Berhasil !', 'Pertemuan Berhasil Ditambahkan !');
         return redirect('/admin/pertemuan');
     }
@@ -948,9 +949,40 @@ class AdminController extends Controller
     public function detPertemuan($id_pertemuan)
     {
         $data_pertemuan = Pertemuan::find($id_pertemuan);
-        return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan']));
+        $data_kelompok = Kelompok::all();
+        $data_kegiatan = Kegiatan::where([
+            "jenis_kegiatan" => "Pertemuan"
+        ])->get();
+        return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan', 'data_kelompok', 'data_kegiatan']));
     }
 
+    // Get By Id Pertemuan
+    public function getByIdPertemuan(Request $request)
+    {
+        // dd($request);
+        if ($request->ajax()) {
+            $data_pertemuan = Pertemuan::findOrFail($request->id_pertemuan);
+            $data_kegiatan = Kegiatan::findOrFail($data_pertemuan->kegiatan_id);
+            $data_kelompok = Kelompok::findOrFail($data_pertemuan->kelompok_id);
+            return response()->json(['pertemuan' => $data_pertemuan, 'kegiatan' => $data_kegiatan, 'kelompok' => $data_kelompok]);
+        }
+    }
+
+    // Edit Pertemuan
+    public function editPertemuan(Request $request)
+    {
+        $id = $request->id_pertemuan_edit;
+        $pertemuan = Pertemuan::findOrFail($id);
+        // dd($pertemuan);
+        $pertemuan->update([
+            "nama_pertemuan" => $request->nama_pertemuan_edit,
+            "link_pertemuan" => $request->link_pertemuan_edit,
+            "detail_pertemuan" => $request->detail_pertemuan_edit,
+            "mentor_kegiatan" => $request->mentor_kegiatan_edit,
+            "minggu_pertemuan" => $request->minggu_pertemuan_edit
+        ]);
+        return redirect('/admin/pertemuan')->with('success', 'Pertemuan Berhasil diedit !');
+    }
     //Filter
    
 
