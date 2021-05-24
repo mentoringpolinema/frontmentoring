@@ -28,7 +28,7 @@ class MainController extends Controller
 
             if ($data_mentee == null) {
                 Alert::error('Ups, Maaf','Sepertinya NIM nya salah input');
-                return view('cek.index');
+                return redirect()->back()->with('error','NIM Nya Salah ! ');
             } else {
                 // Cek Kelulusan
                 $tugas = PengumpulanTugas::where([
@@ -47,7 +47,6 @@ class MainController extends Controller
             }
         }
         else{
-            Alert::error('Ups, Maaf', 'Sepertinya NIM nya salah input');
             return view('cek.index');
         }
         return view('cek.detail',compact('data_mentee'))->with('success','yeay');

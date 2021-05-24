@@ -914,8 +914,12 @@ class AdminController extends Controller
             $totalKelompok = Kelompok::count();
             $data_mentor = Mentor::all();
             $filter_pertemuan = Pertemuan::all();
+            $data_kelompok = Kelompok::all();
         }
-        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan','data_mentor','filter_pertemuan']));
+        return view('admin.pertemuan', compact([
+            'data_pertemuan',
+            'total',
+            'totalMentee', 'totalKelompok', 'data_kegiatan','data_mentor','filter_pertemuan', 'data_kelompok']));
     }
     // Add Pertemuan
     public function addPertemuan(Request $request)
@@ -947,6 +951,7 @@ class AdminController extends Controller
         $totalKelompok = Kelompok::count();
         $data_mentor = Mentor::all();
         $filter_pertemuan = Pertemuan::all();
+        $data_kelompok = Kelompok::all();
         $data_pertemuan = Pertemuan::where([
             "kegiatan_id" => $request->minggu_kegiatan
         ])->get();
@@ -954,7 +959,7 @@ class AdminController extends Controller
             "jenis_kegiatan" => "Pertemuan"
         ])->get();
         // dd($data_pertemuan);
-        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan','data_mentor','filter_pertemuan']));
+        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan','data_mentor','filter_pertemuan','data_kelompok']));
     }
     // Detail Pertemuan
     public function detPertemuan($id_pertemuan)
