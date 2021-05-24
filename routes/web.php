@@ -6,6 +6,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\MenteeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MentorController;
+use Illuminate\Http\Request;
+use App\Models\Pertemuan;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -89,6 +91,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     //Export PDF
     Route::get('/admin/expMentorP/', '\App\Http\Controllers\AdminController@exportMentorPDF');
 
+
 // Mentee ============================================================================================================>
     //Get Mentee
     Route::get('/admin/mentee', '\App\Http\Controllers\AdminController@mentee');
@@ -123,7 +126,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     //Get Data By Id User Panitia
     Route::post('/admin/user/getByIdUserPanitia', '\App\Http\Controllers\AdminController@getByIdUserPanitia')->name('getUserPanitiaByID');
     //Update User Panitia
-    Route::put('/admin/user', '\App\Http\Controllers\AdminController@editUserPanitia');
+    Route::put('/admin/user/editPanitia', '\App\Http\Controllers\AdminController@editUserPanitia');
     //Delete User Panitia
     Route::delete('/admin/user/{id}', '\App\Http\Controllers\AdminController@delUserPanitia');
 
@@ -175,6 +178,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::post('/admin/materi/getByIdMateri', '\App\Http\Controllers\AdminController@getByIdMateri')->name('getMateriByID');
     //Update Materi
     Route::put('/admin/materi', '\App\Http\Controllers\AdminController@editMateri');
+
 
 // Tugas ============================================================================================================>
     // Get Tugas

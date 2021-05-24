@@ -17,14 +17,16 @@ class PertemuanSeeder extends Seeder
         $dataPertemuan = [
             [
                 'nama_pertemuan' => 'Membaca Al Quran',
-                'mentor_id' => 1,
+                // 'mentor_id' => 1,
+                'kelompok_id' => 1,
                 'detail_pertemuan' => 'Wajib membawa Al Quran',
                 'link_pertemuan' => 'https://meet.google.com/rqh-cwfi-tra',
                 'kegiatan_id' => 3
             ],
             [
                 'nama_pertemuan' => 'Tilawatil Quran',
-                'mentor_id' => 2,
+                // 'mentor_id' => 2,
+                'kelompok_id' => 2,
                 'detail_pertemuan' => 'Wajib membawa Al Quran',
                 'link_pertemuan' => 'https://meet.google.com/rqh-cwfi-tra',
                 'kegiatan_id' => 4

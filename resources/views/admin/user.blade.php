@@ -184,7 +184,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Status</label>
-                                        <select class="form-control" id="status" name="status_panitia" required>
+                                        <select class="form-control" id="status_panitia" name="status_panitia" required>
                                             {{-- @foreach ($data_prodi as $prodi) --}}
                                             <option>- Pilih Status -</option>
                                             <option value="aktif">Aktif</option>
@@ -226,7 +226,7 @@
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Edit Panitia</h5>
-                            <form action="/admin/user" class="form-validate is-alter" method="POST">
+                            <form action="/admin/user/editPanitia" class="form-validate is-alter" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="row gy-4">
@@ -241,25 +241,28 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="email-panitia">Email</label>
-                                        <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="" required>
+                                        <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="{{$panitia->user->email}}" required>
+                                        {{-- <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="" required> --}}
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="status-panitia">Status</label>
-                                        <select class="form-control" id="status_panitia" name="status_panitia_edit" required>
+                                        <select class="form-control" id="status_panitia" name="status_panitia_edit" value="{{$panitia->status_panitia}}" required>
                                             <option>- Pilih Status -</option>
-                                            {{-- <option value="{{$data_user_panitia->status_panitia}}">{{$data_user_panitia->status_panitia}}</option> --}}
-                                            @foreach ($data_user_panitia as $panitia)
+                                            <option value="aktif">Aktif</option>
+                                            <option value="tidak aktif">Tidak Aktif</option>
+                                            {{-- @foreach ($data_user_panitia as $panitia)
                                                 <option value="{{$panitia->status_panitia}}">{{$panitia->status_panitia}}</option>
-                                            @endforeach
+                                            @endforeach --}}
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="passsword-panitia">Password</label>
-                                        <input type="password" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="" required>
+                                        <input type="text" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="{{$panitia->user->password}}" required>
+                                        {{-- <input type="text" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="" required> --}}
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -287,19 +290,20 @@
                 event.preventDefault();
                 var token = $("input[name='_token']").val();
                 var id = $(this).data('id');
-                console.log(id)
+                // console.log(id)
                 $.ajax({
                     url: "<?php echo route('getUserPanitiaByID') ?>",
                     method: 'POST',
                     data: {id_panitia:id, _token:token},
                     // dd($data);
                     success: function(data) {
-                        $("input[name='id_panitia_edit']").val(data.options.id_panitia);
-                        $("input[name='nama_panitia_edit']").val(data.options.nama_panitia);
-                        $("input[name='email_panitia_edit']").val(data.options.email_panitia);
-                        $("select[name='status_panitia_edit']").val(data.options.status_panitia).change();
-                        $("input[name='password_panitia_edit']").val(data.options.password_panitia);
+                        $("input[name='id_panitia_edit']").val(data.panitia.id_panitia);
+                        $("input[name='nama_panitia_edit']").val(data.panitia.nama_panitia);
+                        $("input[name='email_panitia_edit']").val(data.user.email_panitia);
+                        $("select[name='status_panitia_edit']").val(data.panitia.status_panitia).change();
+                        $("input[name='password_panitia_edit']").val(data.user.password_panitia);
                     }
+                    // console.log(data);
                 });
         });
         </script>

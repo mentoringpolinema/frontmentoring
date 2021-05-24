@@ -359,9 +359,10 @@ class AdminController extends Controller
     {
         // $data_user_panitia = User::where('role', 'Panitia')->get();
         $data_user_panitia = Panitia::all();
+        $data_user = User::all();
         $totalUserPanitia = Panitia::count();
         // dd($data_user_panitia);
-        return view('admin.user', compact(['totalUserPanitia', 'data_user_panitia']));
+        return view('admin.user', compact(['totalUserPanitia', 'data_user_panitia', 'data_user']));
     }
 
     // Add User Panitia
@@ -404,25 +405,30 @@ class AdminController extends Controller
 
     //Get By Id User Panitia
     public function getByIdUserPanitia(Request $request){
+        // dd($request);
         if($request->ajax()){
-            $data = Panitia::findOrFail($request->id_panitia);
-            return response()->json(['options'=>$data]);
+            $data_panitia = Panitia::findOrFail($request->id_panitia);
+            $data_user = User::findOrFail($data_panitia->user_id);
+            // dd($data_panitia);
+            // dd($data_user);
+            return response()->json(['panitia'=>$data_panitia, 'user'=>$data_user]);
         }
     }
 
-    //Edit Kegiatan
+    //Edit User Panitia
     public function editUserPanitia(Request $request)
     {
         $id = $request->id_panitia_edit;
         $panitia = Panitia::find($id);
+        // dd($panitia);
         $panitia->update([
             "nama_panitia" => $request->nama_panitia_edit,
-            "email_panitia" => $request->email_panitia_edit,
+            "email" => $request->email_panitia_edit,
             "status_panitia" => $request->status_panitia_edit,
-            "password_panitia" => $request->password_panitia_edit,
+            "password" => $request->password_panitia_edit,
         ]);
 
-        
+        // dd($panitia);
         $panitia->update($request->all());
         return redirect('/admin/user')->with('success', 'Panitia Berhasil diedit !');
     }
@@ -896,6 +902,7 @@ class AdminController extends Controller
             $filter_pertemuan = Pertemuan::all();
             $totalMentee = Mentee::count();
             $totalKelompok = Kelompok::count();
+            $data_kelompok = Kelompok::all();
             
         } else {
             $data_pertemuan = Pertemuan::orderBy('created_at', 'desc')->get();
@@ -913,7 +920,15 @@ class AdminController extends Controller
     // Add Pertemuan
     public function addPertemuan(Request $request)
     {
-        $pertemuan = Pertemuan::create($request->all());
+        // $pertemuan = Pertemuan::create($request->all());
+        $pertemuan = Pertemuan::create([
+            "nama_pertemuan" => $request->nama_pertemuan,
+            "link_pertemuan" => $request->link_pertemuan,
+            "kegiatan_id" => $request->kegiatan_id,
+            "kelompok_id" => $request->mentor_id,
+            "detail_pertemuan" => $request->detail_pertemuan
+        ]);
+        // dd($pertemuan);
         Alert::success('Yeay Berhasil !', 'Pertemuan Berhasil Ditambahkan !');
         return redirect('/admin/pertemuan');
     }
@@ -947,6 +962,9 @@ class AdminController extends Controller
         $data_pertemuan = Pertemuan::find($id_pertemuan);
         return view('admin.pertemuan.detailPertemuan', compact(['data_pertemuan']));
     }
+
+    //Filter
+   
 
     //-------------------------------------------Pengumuman-------------------------------------------
 
