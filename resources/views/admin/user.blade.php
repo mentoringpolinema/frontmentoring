@@ -241,7 +241,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="email-panitia">Email</label>
-                                        <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="{{$panitia->users->email}}" required>
+                                        <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="{{$panitia->user->email}}" required>
                                         {{-- <input type="email" class="form-control form-control" id="email_panitia" name="email_panitia_edit" value="" required> --}}
                                     </div>
                                 </div>
@@ -261,8 +261,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="passsword-panitia">Password</label>
-                                        <input type="text" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="{{$panitia->users->password}}" required>
-                                        {{-- <input type="text" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="" required> --}}
+                                        <input type="text" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="{{$panitia->user->password}}" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
