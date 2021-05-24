@@ -16,13 +16,15 @@ class CreatePertemuanTable extends Migration
         Schema::create('pertemuan', function (Blueprint $table) {
             $table->increments('id_pertemuan');
             $table->string('nama_pertemuan');
-            $table->integer('mentor_id')->unsigned();
+            // $table->integer('mentor_id')->unsigned();
             $table->string('detail_pertemuan');
             $table->string('link_pertemuan');
             $table->integer('kegiatan_id')->unsigned();
+            $table->integer('kelompok_id')->unsigned();
             // $table->timestamps();
-            $table->foreign('mentor_id')->references('id_mentor')->on('mentor');
+            // $table->foreign('mentor_id')->references('id_mentor')->on('mentor');
             $table->foreign('kegiatan_id')->references('id_kegiatan')->on('kegiatan');
+            $table->foreign('kelompok_id')->references('id_kelompok')->on('kelompok');
             $table->timestamp('updated_at')->useCurrent();
             $table->timestamp('created_at')->useCurrent();
         });

@@ -27,49 +27,54 @@
                                                         <div class="data-head">
                                                             <h6 class="overline-title">Detail {{$data_pertemuan->nama_pertemuan}} </h6>
                                                         </div>
-                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                                                        <div class="data-item" data-toggle="modal" data-target="#modalEditPertemuan" id="editPertemuan" data-id="{{$data_pertemuan->id_pertemuan}}">
                                                             <div class="data-col">
                                                                 <span class="data-label">Pertemuan </span>
                                                                 <span class="data-value">{{$data_pertemuan->nama_pertemuan}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->                                                        
-                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                                                        <div class="data-item" data-toggle="modal" data-target="#modalEditPertemuan" id="editPertemuan" data-id="{{$data_pertemuan->id_pertemuan}}">
                                                             <div class="data-col">
                                                                 <span class="data-label">Nama Mentor</span>
-                                                                <span class="data-value">{{$data_pertemuan->mentor->nama_mentor}}</span>
+                                                                <span class="data-value">{{$data_pertemuan->kelompok->mentor->nama_mentor}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more "><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
-                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                                                        <div class="data-item" data-toggle="modal" data-target="#modalEditPertemuan" id="editPertemuan" data-id="{{$data_pertemuan->id_pertemuan}}">
                                                             <div class="data-col">
                                                                 <span class="data-label">Minggu Ke-</span>
                                                                 <span class="data-value text-soft">{{$data_pertemuan->kegiatan->minggu_kegiatan}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->                                                        
-                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                                                        <div class="data-item" data-toggle="modal" data-target="#modalEditPertemuan" id="editPertemuan" data-id="{{$data_pertemuan->id_pertemuan}}">
                                                             <div class="data-col">
                                                                 <span class="data-label">Tanggal</span>
+                                                                {{-- <?php 
+                                                                    // $date = Date('d M Y', strtotime($data_pertemuan->kegiatan->tanggal_kegiatan));
+
+                                                                // ?>
+                                                                {{-- <span class="tb-amount">{{$date}}</span> --}}
                                                                 <span class="data-value">{{$data_pertemuan->kegiatan->tanggal_kegiatan}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
-                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                                                        <div class="data-item" data-toggle="modal" data-target="#modalEditPertemuan" id="editPertemuan" data-id="{{$data_pertemuan->id_pertemuan}}">
                                                             <div class="data-col">
                                                                 <span class="data-label">Link</span>
                                                                 <span class="data-value">{{$data_pertemuan->link_pertemuan}}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
-                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                                                        <div class="data-item" data-toggle="modal" data-target="#modalEditPertemuan" id="editPertemuan" data-id="{{$data_pertemuan->id_pertemuan}}">
                                                             <div class="data-col">
                                                                 <span class="data-label">Detail</span>
-                                                                <span class="data-value">{{$data_pertemuan->detail_pertemuan}}</span>
+                                                                <span class="data-value">{!!$data_pertemuan->detail_pertemuan!!}</span>
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
-                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit">
+                                                        <div class="data-item" data-toggle="modal" data-target="#modalEditPertemuan" id="editPertemuan" data-id="{{$data_pertemuan->id_pertemuan}}">
                                                             <div class="data-col">
                                                                 <span class="data-label">Status</span>
                                                                 <span class="data-value">{{$data_pertemuan->kegiatan->status_kegiatan}}</span>
@@ -88,12 +93,12 @@
                 </div>
 
 <!-- Modal Update pertemuan -->
-<div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
+<div class="modal fade" tabindex="-1" role="dialog" id="modalEditPertemuan">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
-                    <h5 class="title">Tambah Pertemuan</h5>
+                    <h5 class="title">Edit Pertemuan</h5>
                     <form action="/admin/addPertemuan" class="form-validate is-alter" method="POST">
                     @csrf
                     <div class="tab-content">
@@ -102,87 +107,45 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="nama_pertemuan">Nama Pertemuan</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_pertemuan" name="nama_pertemuan" placeholder="Enter Nama Pertemuan">
+                                        <input type="text" class="form-control form-control-lg" id="nama_pertemuan" name="nama_pertemuan_edit" placeholder="Enter Nama Pertemuan">
                                     </div>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Mentor</label>
-                                        <select class="form-select" id="mentor_pertemuan" name="mentor_pertemuan" data-ui="lg" required>
-                                            <option value="#">-Pilih Mentor-</option>
-                                            <option value="Ust Yahya">Ust Yahya</option>
-                                            <option value="Ust Rijal">Ust Rijal</option>
+                                        <select class="form-select" id="mentor_pertemuan" name="mentor_pertemuan_edit" data-ui="lg" required>
+                                            <option>- Pilih Mentor -</option>
+                                            @foreach ($data_kelompok as $kelompok)                                            
+                                            <option value="{{$kelompok->mentor->id_mentor}}">{{$kelompok->mentor->nama_mentor}} : Kelompok - {{$kelompok->nama_kelompok}}</option>
+                                            @endforeach
                                         </select>
                                      </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="phone-no">Minggu Ke-</label>
-                                        <select class="form-select" id="minggu_pertemuan" name="minggu_pertemuan" data-ui="lg" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="4">4</option>
+                                        <label class="form-label" for="phone-no">Kegiatan</label>
+                                        <select class="form-select" id="minggu_kegiatan" name="minggu_kegiatan_edit" data-ui="lg" required>
+                                            <option>-Pilih Kegiatan-</option>
+                                            @foreach ($data_kegiatan as $kegiatan)
+                                            <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->nama_kegiatan}} : Minggu Ke - {{$kegiatan->minggu_kegiatan}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-label">Tanggal</label>
-                                            <div class="form-control-wrap">
-                                                <div class="form-icon form-icon-right">
-                                                     <em class="icon ni ni-calendar-alt"></em>
-                                                </div>
-                                                 <input type="text" class="form-control date-picker" id="tanggal_pertemuan" name="tanggal_pertemuan" data-ui="lg" required>
-                                            </div>
-                                     </div>
-                                </div>                  
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Kelompok</label>
-                                        <select class="form-select" id="kelompok_pertemuan" name="kelompok_pertemuan" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Sesi</label>
-                                        <select class="form-select" id="sesi_pertemuan" name="sesi_pertemuan" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                </div>                
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="form-label" for="link_pertemuan">Link Pertemuan</label>
-                                        <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="form-label" for="phone-no">Status</label>
-                                        <select class="form-select" id="status_pertemuan" name="status_pertemuan" data-ui="lg" required>
-                                            <option value="Aktif">Aktif</option>
-                                            <option value="Selesai">Selesai</option>
-                                        </select>
+                                        <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan_edit" placeholder="Enter Link" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label" for="link_pertemuan">Detail Pertemuan</label>
-                                        <textarea type="textarea" class="form-control form-control-lg" id="detail_pertemuan" name="detail_pertemuan" required></textarea>      
+                                    <textarea type="text" class="form-control form-control-lg" id="detail_pertemuan" name="detail_pertemuan_edit"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
-                                            <button class="btn btn-lg btn-primary" type="submit">Tambah Pertemuan</button>
+                                            <button class="btn btn-lg btn-primary" type="submit">Update</button>
                                         </li>
                                         <li>
                                             <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
