@@ -167,7 +167,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
 // Export Data Jurusan
     //Export Excel
     Route::get('/admin/jurusan/extJur/', '\App\Http\Controllers\AdminController@extJur');
-    // Materi ============================================================================================================>
+    
+// Materi ============================================================================================================>
     // Get Materi
     Route::get('/admin/materi', '\App\Http\Controllers\AdminController@materi');
     // Add Materi
@@ -290,7 +291,6 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::get('/admin/pengumpulan/acc/{id}', '\App\Http\Controllers\AdminController@accTugas');
     // Decline Tugas
     Route::get('/admin/pengumpulan/dec/{id}', '\App\Http\Controllers\AdminController@decTugas');
-
 // Absensi
     // Get Absensi
     Route::get('/admin/absensi', '\App\Http\Controllers\AdminController@absensi');

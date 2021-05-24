@@ -127,34 +127,26 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="dropdown-body dropdown-body-rg">
-                                                                            <div class="row gx-6 gy-4">
-                                                                                <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <label class="overline-title overline-title-alt">Minggu Pertemuan</label>
-                                                                                        {{-- <form action="{{ route('filter') }}" method="GET" style="margin-top: 20px;"> --}}
-                                                                                        <select class="form-select form-select-sm">
-                                                                                                {{-- {{-- <option>-Pilih Minggu Pertemuan-</option> --}}
-                                                                                                @foreach (App\Models\Pertemuan::select('id_pertemuan','kegiatan_id')->get() as $pertemuan)
-                                                                                                <option value="{{ $pertemuan->id_pertemuan }}" {{ $pertemuan->id_pertemuan == $pertemuan['kegiatan_id'] ? 'selected' : '' }}>
-                                                                                                {{ $pertemuan['kegiatan_id'] }}
-                                                                                                </option>
-                                                                                                @endforeach --}}
-                                                                                           
-                                                                                            {{-- @foreach ($pertemuan)
-                                                                                                <option value="{{$pertemuan->kegiatan_id}}">{{$pertemuan->kegiatan->minggu_kegiatan}}</option>
-                                                                                            @endforeach --}}
-                                                                                        </select>
-                                                                                        <button type="submit" class="btn btn-secondary">Filter</button>
-                                                                                    </form>
+                                                                            <form action="/admin/cariPertemuan">
+                                                                                <div class="row gx-6 gy-4">
+                                                                                    <div class="col-12">
+                                                                                        <div class="form-group">
+                                                                                            <label class="overline-title overline-title-alt">Minggu Pertemuan</label>
+                                                                                            <select class="form-select form-select-sm" name="minggu_kegiatan">
+                                                                                                <option>-Pilih Minggu Pertemuan-</option>
+                                                                                                @foreach ($data_kegiatan as $pertemuan)
+                                                                                                    <option value="{{$pertemuan->id_kegiatan}}">{{$pertemuan->minggu_kegiatan}}</option>
+                                                                                                @endforeach
+                                                                                            </select>`
+                                                                                        </div>
+                                                                                    </div>                                                                                
+                                                                                    <div class="col-12">
+                                                                                        <div class="form-group">
+                                                                                            <button type="submit" class="btn btn-secondary">Filter</button>
+                                                                                        </div>
                                                                                     </div>
-                                                                                </div>                                                                                
-                                                                                {{-- <div class="col-12">
-                                                                                    <div class="form-group">
-                                                                                        <button type="submit" class="btn btn-secondary">Filter</button>
-                                                                                    </div>
-                                                                                </div> --}}
-                                                                            
-                                                                            </div>
+                                                                                </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div><!-- .filter-wg -->
                                                                 </div><!-- .dropdown -->
@@ -269,9 +261,31 @@
                                             @endforeach
                                         </select>
                                      </div>
+<<<<<<< HEAD
+                                </div> 
+                                {{-- <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="link_pertemuan">Link Pertemuan</label>
+                                        <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link" required>
+                                    </div>
+                                </div>                                --}}
+                                {{-- <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">Tanggal</label>
+                                            <div class="form-control-wrap">
+                                                <div class="form-icon form-icon-right">
+                                                     <em class="icon ni ni-calendar-alt"></em>
+                                                </div>
+                                                 <input type="text" class="form-control date-picker" id="tanggal_pertemuan" name="tanggal_pertemuan" data-date-format="yyyy-mm-dd" required>
+                                            </div>
+                                     </div>
+                                </div>  --}}
+                                <div class="col-md-6">
+=======
                                 </div>
 
                                 <div class="col-md-12">
+>>>>>>> e3fd121079bedd0ae25334835a5eaf3dca3c3d63
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kegiatan</label>
                                         <select class="form-select" id="kegiatan_id" name="kegiatan_id" required>

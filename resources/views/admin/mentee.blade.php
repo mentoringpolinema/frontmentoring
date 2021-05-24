@@ -144,9 +144,9 @@
                                                                                         <label class="overline-title overline-title-alt">Jurusan</label>
                                                                                         <select class="form-select form-select-sm">
                                                                                             <option>-Pilih Jurusan-</option>
-                                                                                            {{-- @foreach ($data_absensi as $absensi)
-                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
-                                                                                            @endforeach --}}
+                                                                                            @foreach ($data_jurusan as $jurusan)
+                                                                                                <option value="{{$jurusan->id_jurusan}}">{{$jurusan->nama_jurusan}}</option>
+                                                                                            @endforeach
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -291,7 +291,7 @@
 
                 <!-- Sweet Alert-->
                 @include('sweetalert::alert')
-    <!-- Added Mentor Mentee -->
+    <!-- Add Mentee -->
     <div class="modal fade" tabindex="-1" role="dialog" id="menteeModal">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
