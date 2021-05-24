@@ -605,12 +605,16 @@ class AdminController extends Controller
     public function materi()
     {
         $data_materi = Materi::all();
+        $data_user = User::where('role' ,'Panitia')
+        ->orWhere('role' ,'Mentor')
+        ->get();
         $data_kegiatan = Kegiatan::where('jenis_kegiatan' ,'=', 'Materi')
         ->orWhere('jenis_kegiatan', '=','Kegiatan Wajib')
         ->orWhere('jenis_kegiatan', '=','Pengganti')
         ->get();
+        // $data_user_panitia = User::where('role', 'Panitia')->get();
         $totalMateri = Materi::count();
-        return view('admin.materi', compact(['data_materi', 'data_kegiatan', 'totalMateri']));
+        return view('admin.materi', compact(['data_materi', 'data_user', 'data_kegiatan', 'totalMateri']));
     }
     // Add Materi
     public function addMateri(Request $request)
@@ -650,8 +654,10 @@ class AdminController extends Controller
     public function getByIdMateri(Request $request)
     {
         if ($request->ajax()) {
-            $data = Materi::findOrFail($request->id_materi);
-            return response()->json(['options' => $data]);
+            $data_materi = Materi::findOrFail($request->id_materi);
+            $data_kegiatan = Kegiatan::findOrFail($data_materi->kegiatan_id);
+            $data_user = User::findOrFail($data_materi->user_id);
+            return response()->json(['materi' => $data_materi, 'kegiatan' => $data_kegiatan, 'user' => $data_user]);
         }
     }
     // Edit Materi
@@ -669,7 +675,7 @@ class AdminController extends Controller
         $materi->update([
             "nama_materi" => $request->nama_materi_edit,
             "link_materi" => $request->link_materi_edit,
-            "minggu_materi" => $request->minggu_materi_edit,
+            "kegiatan_id" => $request->minggu_materi_edit,
             "link_materi_embed" => $embedLink,
             "detail_materi" => $request->detail_materi_edit
         ]);

@@ -116,6 +116,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="minggu-materi">Minggu Ke-</label>
                                         <select class="form-control" id="kegiatan_id" name="kegiatan_id" required>
+                                            <option>- Pilih Minggu Kegiatan -</option>
                                             @foreach ($data_kegiatan as $kegiatan)
                                                 <option value="{{$kegiatan->id_kegiatan}}">Minggu - {{$kegiatan->minggu_kegiatan == 0? "Pengganti":$kegiatan->minggu_kegiatan}} : {{$kegiatan->nama_kegiatan}}</option>
                                             @endforeach
@@ -190,7 +191,7 @@
                                         <select class="form-select" id="minggu_materi" name="minggu_materi_edit" required>
                                             <option>Minggu Ke-</option>
                                             @foreach ($data_kegiatan as $kegiatan)
-                                                <option value="{{$kegiatan->minggu_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
+                                                <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -258,7 +259,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="form-label" for="minggu-materi">Minggu Ke-</label>
-                                        <input type="text" class="form-control form-control" id="minggu_materi" name="minggu_materi_detail" value="" readonly>
+                                        <input type="text" class="form-control form-control" id="minggu_materi" name="minggu_materi_detail" value="{{$materi->kegiatan->minggu_kegiatan}}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -281,7 +282,7 @@
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <label class="form-label" for="materi-name">Peng-Upload Materi: </label>
-                                        <input type="text" class="form-control form-control" id="nama_materi" name="nama_materi_detail" value="" readonly>
+                                        <input type="text" class="form-control form-control" id="nama_pengupload" name="nama_pengupload_detail" value="{{$materi->users->name}}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -305,13 +306,13 @@
                     method: 'POST',
                     data: {id_materi:id, _token:token},
                     success: function(data) {
-                        $("input[name='id_materi_edit']").val(data.options.id_materi);
-                        $("input[name='nama_materi_edit']").val(data.options.nama_materi);
-                        $("input[name='link_materi_edit']").val(data.options.link_materi);
-                        $("input[name='minggu_materi_edit']").val(data.options.minggu_materi);
-                        $("iframe[name='link_materi_embed_edit']").attr('src', data.options.link_materi_embed);
-                        $("textarea[name='detail_materi_edit']").val(data.options.detail_materi);
-                        $("select[name='minggu_materi_edit']").val(data.options.minggu_materi).change();
+                        $("input[name='id_materi_edit']").val(data.materi.id_materi);
+                        $("input[name='nama_materi_edit']").val(data.materi.nama_materi);
+                        $("input[name='link_materi_edit']").val(data.materi.link_materi);
+                        // $("input[name='minggu_materi_edit']").val(data.kegiatan.minggu_materi);
+                        $("iframe[name='link_materi_embed_edit']").attr('src', data.materi.link_materi_embed);
+                        $("textarea[name='detail_materi_edit']").val(data.materi.detail_materi);
+                        $("select[name='minggu_materi_edit']").val(data.kegiatan.id_kegiatan).change();
                         // initGetDataMateri();
                         $("textarea[name='detail_materi_edit']").ckeditor();
                     }
@@ -332,12 +333,14 @@
                     data: {id_materi:id, _token:token},
                     success: function(data) {
                         // console.log("TEESR"); 
-                        $("input[name='id_materi_detail']").val(data.options.id_materi);
-                        $("input[name='nama_materi_detail']").val(data.options.nama_materi);
-                        $("input[name='link_materi_detail']").val(data.options.link_materi);
-                        $("input[name='minggu_materi_detail']").val(data.options.minggu_materi);
-                        $("iframe[name='link_materi_embed_detail']").attr('src', data.options.link_materi_embed);
-                        $("textarea[name='detail_materi_detail']").val(data.options.detail_materi);
+                        $("input[name='id_materi_detail']").val(data.materi.id_materi);
+                        $("input[name='nama_materi_detail']").val(data.materi.nama_materi);
+                        $("input[name='link_materi_detail']").val(data.materi.link_materi);
+                        $("input[name='nama_pengupload_detail']").val(data.user.name);
+                        // $("input[name='minggu_materi_detail']").val(data.kegiatan.minggu_materi);
+                        $("select[name='minggu_materi_detail']").val(data.kegiatan.id_kegiatan).change();
+                        $("iframe[name='link_materi_embed_detail']").attr('src', data.materi.link_materi_embed);
+                        $("textarea[name='detail_materi_detail']").val(data.materi.detail_materi);
                         // initGetDataMateri();
                         $("textarea[name='detail_materi_detail']").ckeditor();
                     }
