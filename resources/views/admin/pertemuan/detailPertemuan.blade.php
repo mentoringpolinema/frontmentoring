@@ -118,7 +118,7 @@
                                         <select class="form-select" id="mentor_pertemuan" name="mentor_pertemuan_edit" data-ui="lg" required>
                                             <option>- Pilih Mentor -</option>
                                             @foreach ($data_kelompok as $kelompok)                                            
-                                            <option value="{{$kelompok->mentor->id_mentor}}">{{$kelompok->mentor->nama_mentor}} : Kelompok - {{$kelompok->nama_kelompok}}</option>
+                                            <option value="{{$kelompok->id_kelompok}}">{{$kelompok->mentor->nama_mentor}} : Kelompok - {{$kelompok->nama_kelompok}}</option>
                                             @endforeach
                                         </select>
                                      </div>
@@ -187,8 +187,8 @@
                         $("input[name='link_pertemuan_edit']").val(data.pertemuan.link_pertemuan);
                         $("textarea[name='detail_pertemuan_edit']").val(data.pertemuan.detail_pertemuan);
                         $("textarea[name='detail_pertemuan_edit']").ckeditor();
-                        $("select[name='mentor_pertemuan_edit']").val(data.kelompok.mentor_id).change();
-                        $("select[name='minggu_kegiatan_edit']").val(data.kegiatan.kegiatan_id).change();
+                        $("select[name='mentor_pertemuan_edit']").val(data.kelompok.id_kelompok).change();
+                        $("select[name='minggu_kegiatan_edit']").val(data.kegiatan.id_kegiatan).change();
                     }
                 });
         });

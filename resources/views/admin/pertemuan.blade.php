@@ -262,23 +262,6 @@
                                         </select>
                                      </div>
                                 </div> 
-                                {{-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="link_pertemuan">Link Pertemuan</label>
-                                        <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan" placeholder="Enter Link" required>
-                                    </div>
-                                </div>                                --}}
-                                {{-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Tanggal</label>
-                                            <div class="form-control-wrap">
-                                                <div class="form-icon form-icon-right">
-                                                     <em class="icon ni ni-calendar-alt"></em>
-                                                </div>
-                                                 <input type="text" class="form-control date-picker" id="tanggal_pertemuan" name="tanggal_pertemuan" data-date-format="yyyy-mm-dd" required>
-                                            </div>
-                                     </div>
-                                </div>  --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kegiatan</label>
