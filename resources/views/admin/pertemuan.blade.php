@@ -127,7 +127,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="dropdown-body dropdown-body-rg">
-                                                                            <form action="/admin/cariPertemuan">
+                                                                            <form action="/admin/pertemuan/filter">
                                                                                 <div class="row gx-6 gy-4">
                                                                                     <div class="col-12">
                                                                                         <div class="form-group">

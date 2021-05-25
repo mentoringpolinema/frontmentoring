@@ -6,7 +6,7 @@
                             {{-- <img class="logo-light logo-img" src="{{asset('template/dashboard/images/logoBig.png')}}" srcset="{{asset('template/dashboard/images/logoBig.png')}}" alt="logo')}}"> --}}
                             {{-- <img class="logo-small logo-img logo-img-small" src="{{asset('template/dashboard/images/logoBig.png')}}" srcset="{{asset('template/dashboard/images/logoBig.png')}}" alt="logo-small"> --}}
                             <img class="logo-light logo-img" src="{{asset('template/dashboard/images/LogoBig.png')}}" alt="logo">
-                            <img class="logo-dark logo-img" src="{{asset('template/dashboard/images/logoBig.png')}}" alt="logo-dark">
+                            <img class="logo-dark logo-img" src="{{asset('template/dashboard/images/logoBig.png')}}" alt="logo">
                         </a>
                     </div>
                     <div class="nk-menu-trigger mr-n2">

@@ -238,7 +238,8 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::put('/admin/editPertemuan', '\App\Http\Controllers\AdminController@editPertemuan');
     // Get Data By Id Pertemuan
     Route::post('/admin/pertemuan/getByIdPertemuan', '\App\Http\Controllers\AdminController@getByIdPertemuan')->name('getPertemuanByID');
-
+    // Filter Pertemuan
+    Route::get('/admin/pertemuan/filter', '\App\Http\Controllers\AdminController@filterPertemuan');
 
 // Pengumuman ========================================================================================================>
     // Get Pengumuman
@@ -265,6 +266,9 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::get('/admin/pengumpulan/acc/{id}', '\App\Http\Controllers\AdminController@accTugas');
     // Decline Tugas
     Route::get('/admin/pengumpulan/dec/{id}', '\App\Http\Controllers\AdminController@decTugas');
+    // Filter Pengumpulan tugas
+    Route::get('/admin/pengumpulan/filter', '\App\Http\Controllers\AdminController@filterPengumpulan');
+    
 // Absensi
     // Get Absensi
     Route::get('/admin/absensi', '\App\Http\Controllers\AdminController@absensi');
@@ -273,7 +277,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Get Absensi Kegiatan
     Route::get('/admin/absen/kegiatan', '\App\Http\Controllers\AdminController@absensiKegiatan');
     // Filter Kegiatan
-    Route::get('/admin/absensi/filter', '\App\Http\Controllers\AdminController@filterKegiatan');
+    Route::get('/admin/absensi/filter', '\App\Http\Controllers\AdminController@filterAbsensi');
 
 // MENTOR ROUTES =========================================================================================================>
 Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {

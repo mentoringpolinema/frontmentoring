@@ -932,6 +932,7 @@ class AdminController extends Controller
             $total = Pertemuan::count();
             $filter_pertemuan = Pertemuan::all();
             $totalMentee = Mentee::count();
+            $data_mentor = Mentor::all();
             $totalKelompok = Kelompok::count();
             $data_kelompok = Kelompok::all();
             
@@ -1036,7 +1037,24 @@ class AdminController extends Controller
         ]);
         return redirect('/admin/pertemuan')->with('success', 'Pertemuan Berhasil diedit !');
     }
-    //Filter
+    //Filter Pertemuan
+    public function filterPertemuan(Request $request){
+
+        $total = Pertemuan::count();
+        $totalMentee = Mentee::count();
+        $totalKelompok = Kelompok::count();
+        $data_mentor = Mentor::all();
+        $filter_pertemuan = Pertemuan::all();
+        $data_kelompok = Kelompok::all();
+        $data_pertemuan = Pertemuan::where([
+            "kegiatan_id" => $request->minggu_kegiatan
+        ])->get();
+        $data_kegiatan = Kegiatan::where([
+            "jenis_kegiatan" => "Pertemuan"
+        ])->get();
+        // dd($data_pertemuan);
+        return view('admin.pertemuan', compact(['data_pertemuan', 'total', 'totalMentee', 'totalKelompok', 'data_kegiatan', 'data_mentor', 'filter_pertemuan', 'data_kelompok']));
+    }
    
 
     //-------------------------------------------Pengumuman-------------------------------------------
@@ -1135,7 +1153,7 @@ class AdminController extends Controller
         return redirect()->back();
     }
     // Filter Tugas
-    public function filterTugas(Request $request){
+    public function filterPengumpulan(Request $request){
         // $pengumpulan_tugas = PengumpulanTugas::all();
         $pengumpulan_tugas = PengumpulanTugas::where([
             "tugas_id" => $request->tugas_id

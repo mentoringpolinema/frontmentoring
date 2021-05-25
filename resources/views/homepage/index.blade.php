@@ -349,7 +349,7 @@
                         <div class="col-lg-4 col-sm-6 kegiatan">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
-                                    <img src="{{asset('template/homepage/assets/images/portfolio/5.png')}}" alt="">
+                                    <img src="{{asset('template/homepage/assets/images/portfolio/kegiatan3.jpg')}}" alt="">
                                     <div class="portfolio-overlay d-flex align-items-center justify-content-center">
                                         <div class="portfolio-content">
                                             <div class="portfolio-icon">
@@ -387,7 +387,26 @@
                         <div class="col-lg-4 col-sm-6 kegiatan">
                             <div class="single-portfolio">
                                 <div class="portfolio-image">
-                                    <img src="{{asset('template/homepage/assets/images/portfolio/7.png')}}" alt="">
+                                    <img src="{{asset('template/homepage/assets/images/portfolio/kegiatan1.jpg')}}" alt="">
+                                    <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                                        <div class="portfolio-content">
+                                            <div class="portfolio-icon">
+                                                <a class="image-popup" href="{{asset('template/homepage/assets/images/portfolio/7.png')}}"><i class="lni lni-zoom-in"></i></a>
+                                                <img src="{{asset('template/homepage/assets/images/portfolio/shape.svg')}}" alt="shape" class="shape">
+                                            </div>
+                                            <div class="portfolio-icon">
+                                                <a href="#"><i class="lni lni-link"></i></a>
+                                                <img src="{{asset('template/homepage/assets/images/portfolio/shape.svg')}}" alt="shape" class="shape">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- single portfolio -->
+                        </div>
+                        <div class="col-lg-4 col-sm-6 kegiatan">
+                            <div class="single-portfolio">
+                                <div class="portfolio-image">
+                                    <img src="{{asset('template/homepage/assets/images/portfolio/kegiatan2.jpg')}}" alt="">
                                     <div class="portfolio-overlay d-flex align-items-center justify-content-center">
                                         <div class="portfolio-content">
                                             <div class="portfolio-icon">
