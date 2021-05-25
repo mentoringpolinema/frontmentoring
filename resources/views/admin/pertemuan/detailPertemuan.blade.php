@@ -148,7 +148,7 @@
                                         class="form-control form-control"
                                         id="detail_pertemuan"
                                         name="detail_pertemuan_edit"
-                                        value="{!!$data_pertemuan->id_pertemuan!!}">{!!$data_pertemuan->detail_pertemuan!!}
+                                        value="{{$data_pertemuan->id_pertemuan}}">{!!$data_pertemuan->detail_pertemuan!!}
                                     </textarea>
                                 </div>
                                 <div class="col-12">
