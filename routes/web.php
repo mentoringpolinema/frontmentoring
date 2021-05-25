@@ -254,7 +254,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Edit Pengumuman
     Route::post('/admin/{id}/editPengumuman', '\App\Http\Controllers\AdminController@editPengumuman');
     // Detail Pengumuman
-    Route::get('/admin/{id}/detPengumuman', '\App\Http\Controllers\AdminController@detPengumuman');
+    Route::get('/admin/detPengumuman/{id}', '\App\Http\Controllers\AdminController@detPengumuman');
 
 // Cetak Bukti ========================================================================================================>
     // Get Bukti

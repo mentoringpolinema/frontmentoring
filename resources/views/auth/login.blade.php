@@ -119,7 +119,7 @@
                                     <div class="nk-block-head-content">
                                         <h5 class="nk-block-title">Log-In Mentoring Polinema <?php echo date("Y");?></h5>
                                         <div class="nk-block-des">
-                                            <p>Gunakan NIM untuk mahasiswa dan username untuk admin</p>
+                                            <p>Masukkan Email dan Password anda !</p>
                                         </div>
                                     </div>
                                 </div><!-- .nk-block-head -->
@@ -128,9 +128,9 @@
                                     @csrf
                                     <div class="form-group">
                                         <div class="form-label-group">
-                                            <label class="form-label" for="default-01">NIM atau Username</label>
+                                            <label class="form-label" for="default-01">Email Anda</label>
                                         </div>
-                                        <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="NIM atau Username" autofocus>
+                                        <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Anda" autofocus>
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

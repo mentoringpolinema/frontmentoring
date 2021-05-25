@@ -30,28 +30,21 @@
                                         </div>
                                     </div><!-- .nk-block-between -->
                                 </div><!-- .nk-block-head -->
-                               <div class="nk-block nk-block-lg">                                        
+                               <div class="nk-block nk-block-lg">
                                     <div class="card card-preview">
-                                            <table class="table table-orders">
-                                                <thead class="tb-odr-head">
-                                                    <tr class="tb-odr-item">
-                                                        <th class="tb-odr-info">
-                                                            <span class="tb-odr-id">Nama Kegiatan</span>
-                                                            {{-- <span class="tb-odr-date d-none d-md-inline-block">Status</span> --}}
-                                                        </th>
-                                                        <th class="tb-odr-amount">
-                                                            {{-- <span class="tb-odr-total">link_pertemuan</span> --}}
-                                                            <span class="tb-odr-status d-none d-md-inline-block">Status</span>
-                                                        </th>
-                                                        <th class="tb-odr-action">&nbsp;</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="tb-odr-body">
-                                                    <tr class="tb-odr-item">
-                                                        <td class="tb-odr-info">
-                                                            <span class="tb-odr-id">{{$data_kegiatan->nama_kegiatan}}</span>
-                                                        </td>
-                                                        <td class="tb-odr-amount">                                                            
+                                            <div class="card-inner">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Nama Kegiatan</th>
+                                                            <th scope="col">Status</th>
+                                                            <th scope="col">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>{{$data_kegiatan->nama_kegiatan}}</td>
+                                                            <td>
                                                             @if ($data_absensi == null)
                                                             <span class="tb-odr-status">
                                                                 <span class="badge badge-dot badge-danger">Tidak Absen</span>
@@ -60,12 +53,10 @@
                                                             <span class="tb-odr-status">
                                                                 <span class="badge badge-dot badge-success">Hadir</span>
                                                             </span>
-                                                            @endif 
-                                                        </td>
-                                                        @if ($data_absensi == null)                                                 
-                                                        <td class="tb-odr-action">
-                                                            <div class="tb-odr-btns d-none d-md-inline">
-                                                                <form action="/mentee/kegiatan/absen" method="POST">
+                                                            @endif </td>
+                                                            <td>
+                                                            @if ($data_absensi == null)
+                                                            <form action="/mentee/kegiatan/absen" method="POST">
                                                                     @csrf
                                                                     @if ($data_kegiatan->status_kegiatan == "Close")
                                                                     <button type="submit" class="btn btn-sm btn-warning" disabled><span>Absen</span></button>
@@ -73,14 +64,14 @@
                                                                     <button type="submit" class="btn btn-sm btn-warning"><span>Absen</span></button>
                                                                     @endif
                                                                     <input type="hidden" name="kegiatan_id" id="kegiatan_id" value="{{$data_kegiatan->id_kegiatan}}">
-                                                                </form>                                                        
-                                                            </div>                                                            
-                                                        </td>
-                                                         @endif
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div><!-- .card -->                                        
+                                                                </form>
+                                                            @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                     </div><!-- .card-preview -->                                    
                                 </div>
                             </div>

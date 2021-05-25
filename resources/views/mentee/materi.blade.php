@@ -42,7 +42,7 @@
                                                             <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill:#b5b3ff" /></svg>
                                                     </div>
                                                     <div class="info">
-                                                        <h6 class="title"><span class="name">{{$materi->nama_materi}}</span> <span class="badge badge-dim badge-primary badge-pill">New</span></h6>
+                                                        <h6 class="title"><span class="name">{{$materi->nama_materi}}</span></h6>
                                                         <div class="meta">
                                                             <span class="version">
                                                                 <span class="text-soft">Minggu Ke : </span> <span>{{$materi->kegiatan->minggu_kegiatan}}</span>

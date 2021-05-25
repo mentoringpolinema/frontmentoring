@@ -43,7 +43,7 @@ class AdminController extends Controller
     {
         $totalMentee = Mentee::count();
         $totalMentor = Mentor::count();
-        $data_kegiatan = Kegiatan::all();
+        $data_kegiatan = Kegiatan::paginate(5);
         $data_pengumuman = Pengumuman::all();
         $totalKegiatan = Kegiatan::count();
         $totalMateri = Materi::count();

@@ -40,7 +40,7 @@
                                     <div class="nk-block-head-content">
                                         <h5 class="nk-block-title">Log-In Mentoring Polinema <?php echo date("Y");?></h5>
                                         <div class="nk-block-des">
-                                            <p>Gunakan NIM untuk mahasiswa dan username untuk admin</p>
+                                            <p>Masukkan Email untuk panitia dan mentor, Masukkan email NIM untuk Mentee</p>
                                         </div>
                                     </div>
                                 </div><!-- .nk-block-head -->
@@ -49,7 +49,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <div class="form-label-group">
-                                            <label class="form-label" for="default-01">NIM atau Username</label>
+                                            <label class="form-label" for="default-01">Email</label>
                                         </div>
                                         <input type="text" id="email" name="email" class="form-control form-control-lg" placeholder="NIM atau Username" required>
                                     </div><!-- .foem-group -->
