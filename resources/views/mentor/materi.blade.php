@@ -62,8 +62,8 @@
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalDetailMateri" id="detailMateri" data-id="{{$materi->id_materi}}"><em class="icon ni ni-eye"></em><span>Lihat Materi</span></a></li>
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditMateri" id="editMateri" data-id="{{$materi->id_materi}}"><em class="icon ni ni-edit"></em><span>Edit Materi</span></a></li>                                                                       
+                                                                        <li><a href="#" data-toggle="modal" data-target="#modalDetailMateriMentor" id="detailMateriMentor" data-id="{{$materi->id_materi}}"><em class="icon ni ni-eye"></em><span>Lihat Materi</span></a></li>
+                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditMateriMentor" id="editMateriMentor" data-id="{{$materi->id_materi}}"><em class="icon ni ni-edit"></em><span>Edit Materi</span></a></li>                                                                       
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -170,7 +170,7 @@
     </div><!-- .modal -->
 
     <!--  Edit Materi Modal @e -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditMateri">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditMateriMentor">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
@@ -242,7 +242,7 @@
     </div><!-- .modal -->
 
     <!--  Detail Materi Modal @e -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modalDetailMateri">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalDetailMateriMentor">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
@@ -308,13 +308,13 @@
     @section('jsAdd')
         <script>
 
-        $('body').on('click', '#editMateri', function (event) {
+        $('body').on('click', '#editMateriMentor', function (event) {
                 event.preventDefault();
                 var token = $("input[name='_token']").val();
                 var id = $(this).data('id');
-                console.log(id)
+                // console.log(id)
                 $.ajax({
-                    url: "<?php echo route('getMateriByID') ?>",
+                    url: "<?php echo route('getMateriMentorByID') ?>",
                     method: 'POST',
                     data: {id_materi:id, _token:token},
                     success: function(data) {
@@ -332,15 +332,15 @@
         });
 
 
-        $('body').on('click', '#detailMateri', function (event) {
+        $('body').on('click', '#detailMateriMentor', function (event) {
                 event.preventDefault();
-                console.log("Testt");
+                // console.log("Testt");
 
                 var token = $("input[name='_token']").val();
                 var id = $(this).data('id');
                 console.log(id)
                 $.ajax({
-                    url: "<?php echo route('getMateriByID') ?>",
+                    url: "<?php echo route('getMateriMentorByID') ?>",
                     method: 'POST',
                     data: {id_materi:id, _token:token},
                     success: function(data) {

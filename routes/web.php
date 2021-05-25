@@ -297,9 +297,9 @@ Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
         // Delete Materi
         Route::get('/mentor/materi/{id}', '\App\Http\Controllers\MentorController@delMateri');
         //Get Data By Id Materi
-        Route::post('/mentor/materi/getByIdMateri', '\App\Http\Controllers\MentorController@getByIdMateri')->name('getMateriByID');
+        Route::post('/mentor/materi/getByIdMateriMentor', '\App\Http\Controllers\MentorController@getByIdMateriMentor')->name('getMateriMentorByID');
         //Update Materi
-        Route::put('/mentor/materi', '\App\Http\Controllers\MentorController@editMateri');
+        Route::put('/mentor/materi', '\App\Http\Controllers\MentorController@editMateriMentor');
 });
 
 // MENTEE ROUTES =========================================================================================================>
