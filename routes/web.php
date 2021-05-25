@@ -188,14 +188,17 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::post('/admin/tugas/addTugas', '\App\Http\Controllers\AdminController@addTugas');
     // Delete Tugas
     Route::get('/admin/tugas/{id}', '\App\Http\Controllers\AdminController@delTugas');
-    //Get Data By Id Tugas
-    Route::post('/admin/tugas/getByIdTugas', '\App\Http\Controllers\AdminController@getByIdTugas')->name('getTugasByID');
-    //Update Tugas
-    Route::put('/admin/tugas', '\App\Http\Controllers\AdminController@editTugas');
     // Open Tugas
     Route::get('/admin/tugas/open/{id}', '\App\Http\Controllers\AdminController@openTugas');
     // Close Tugas
     Route::get('/admin/tugas/close/{id}', '\App\Http\Controllers\AdminController@closedTugas');
+    // Edit Tugas
+    // Route::put('/admin/editTugas', '\App\Http\Controllers\AdminController@editTugas');
+    Route::put('/admin/tugas', '\App\Http\Controllers\AdminController@editTugas');
+    // Detail Tugas
+    // Route::put('/admin/detailTugas', '\App\Http\Controllers\AdminController@detailTugas');
+    // Get Data By Id Tugas
+    Route::post('/admin/tugas/getByIdTugas', '\App\Http\Controllers\AdminController@getByIdTugas')->name('getTugasByID');
 
 // Kelompok ==========================================================================================================>
     // Get Kelompok

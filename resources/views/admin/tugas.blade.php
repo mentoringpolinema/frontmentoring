@@ -204,25 +204,25 @@
                     </ul><!-- .nav-tabs --> --}}
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
-                            <form action="/admin/tugas" class="form-validate is-alter" method="POST">
+                            <form action="#" class="form-validate is-alter" method="POST">
                                 {{-- {{ csrf_field() }} --}}
                                 @csrf
                                 @method('PUT')
                                 <div class="row gy-4">
-                                    <input type="hidden" class="form-control form-control" id="id_mentee"
+                                    <input type="hidden" class="form-control form-control" id="id_tugas"
                                            name="id_tugas_edit" value="" required>
                                     <div class="row gy-4">
-                                        <div class="col-md-9">
+                                        <div class="col-md-7">
                                             <div class="form-group">
                                                 <label class="form-label" for="nama_tugas">Nama Tugas</label>
                                                 <input type="text" class="form-control form-control" id="nama_tugas"
-                                                       name="nama_tugas" required>
+                                                       name="nama_tugas_edit" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-5">
                                             <div class="form-group">
                                                 <label class="form-label" for="materi_id">Materi</label>
-                                                <select class="form-control" id="materi_id" name="materi_id"
+                                                <select class="form-control" id="nama_materi" name="nama_materi_edit"
                                                         required>
                                                     <option>-Pilih Materi-</option>
                                                     @foreach ($data_materi as $materi)
@@ -233,14 +233,14 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="form-label" for="detail_tugas">Detail Tugas</label>
-                                            <textarea id="detail_tugas" name="detail_tugas">
+                                            <textarea id="detail_tugas_edit" name="detail_tugas_edit">
 
-                                    </textarea>
+                                            </textarea>
                                         </div>
                                         <div class="col-12">
                                             <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                                 <li>
-                                                    <button type="submit" class="btn btn-lg btn-primary">Tambah</button>
+                                                    <button type="submit" class="btn btn-lg btn-primary">Update</button>
                                                 </li>
                                                 <li>
                                                     <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
@@ -264,115 +264,101 @@
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
                 <div class="modal-body modal-body-lg">
                     <h5 class="title">Detail Tugas</h5>
-                    {{-- <ul class="nk-nav nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#personal">Kegiatan</a>
-                        </li>
-                    </ul><!-- .nav-tabs --> --}}
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
-                            <form action="#" class="form-validate is-alter" method="POST">
-                                {{-- {{ csrf_field() }} --}}
-                                @csrf
-                                <div class="row gy-4">
-                                    <input type="hidden" class="form-control form-control" id="id_tugas"
-                                           name="id_tugas_detail" value="" readonly>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <label class="form-label" for="nama_tugas">Nama Tugas</label>
-                                            <input type="text" class="form-control form-control" id="nama_tugas"
-                                                   name="nama_tugas" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-label" for="materi_id">Materi</label>
-                                            <select class="form-control" id="materi_id" name="materi_id"
-                                                    required>
-                                                <option>-Pilih Materi-</option>
-                                                @foreach ($data_materi as $materi)
-                                                    <option
-                                                        value="{{$materi->id_materi}}">{{$materi->nama_materi}}</option>
-                                                @endforeach
-                                            </select></div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label" for="detail_tugas">Detail Tugas</label>
-                                        <textarea id="detail_tugas" name="detail_tugas">
+                            <form action="" class="form-validate is-alter" method="POST">
+                            @csrf
+                            <div class="row gy-4">
+                                <input type="hidden" class="form-control form-control" id="id_tugas" name="id_tugas_detail" value="" readonly>
 
-                                    </textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                            <li>
-                                                <button type="submit" class="btn btn-lg btn-primary">Tambah</button>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-dismiss="modal" class="link link-light">Cancel</a>
-                                            </li>
-                                        </ul>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label class="form-label" for="kegiatan-name">Nama Kegiatan</label>
+                                        <input type="text" class="form-control form-control" id="nama_tugas" name="nama_tugas_detail" value="" readonly>
                                     </div>
                                 </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="form-label" for="materi_id">Materi</label>
+                                        <input type="text" class="form-control form-control" id="nama_materi" name="nama_materi_detail" value="{{$materi->nama_materi}}" readonly>
+                                            {{-- <select class="form-control" id="nama_materi" name="nama_materi_detail" readonly>
+                                                <option>-Pilih Materi-</option>
+                                                @foreach ($data_materi as $materi)
+                                                    <option value="{{$materi->id_materi}}">
+                                                        {{$materi->nama_materi}}
+                                                    </option>
+                                                @endforeach
+                                            </select> --}}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    {{-- <div class="form-group">
+                                        <label class="form-label" for="phone-no">Detail Kegiatan</label>
+                                        <textarea type="text" class="form-control form-control-lg" id="detail_kegiatan" name="detail_kegiatan" placeholder="Pertemuan dst..." required></textarea>
+                                    </div> --}}
+                                    <label class="form-label" for="detail_kegiatan">Detail Kegiatan</label>
+                                    <textarea name="detail_tugas_detail" id="detail_tugas_detail" readonly>
+                                    </textarea>
+                                </div>
+                            </div>
+                            </form>
                         </div>
-                        </form>
+                    </form>
                     </div><!-- .tab-content -->
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
-    </div><!-- .modal -->
-@section('jsAdd')
-    <script>
-
-        $('body').on('click', '#editMateri', function (event) {
-            event.preventDefault();
-            var token = $("input[name='_token']").val();
-            var id = $(this).data('id');
-            console.log(id)
-            $.ajax({
-                url: "<?php echo route('getMateriByID') ?>",
-                method: 'POST',
-                data: {id_materi: id, _token: token},
-                success: function (data) {
-                    $("input[name='id_materi_edit']").val(data.options.id_materi);
-                    $("input[name='nama_materi_edit']").val(data.options.nama_materi);
-                    $("input[name='link_materi_edit']").val(data.options.link_materi);
-                    $("input[name='minggu_materi_edit']").val(data.options.minggu_materi);
-                    $("iframe[name='link_materi_embed_edit']").attr('src', data.options.link_materi_embed);
-                    $("textarea[name='detail_materi_edit']").val(data.options.detail_materi);
-                    $("select[name='minggu_materi_edit']").val(data.options.minggu_materi).change();
-                    // initGetDataMateri();
-                    $("textarea[name='detail_materi_edit']").ckeditor();
-                }
-            });
-        });
+    </div>
+    <!-- .modal -->
 
 
-        $('body').on('click', '#detailMateri', function (event) {
-            event.preventDefault();
-            console.log("Testt");
+    
+        @section('jsAdd')
+            <script>
 
-            var token = $("input[name='_token']").val();
-            var id = $(this).data('id');
-            console.log(id)
-            $.ajax({
-                url: "<?php echo route('getMateriByID') ?>",
-                method: 'POST',
-                data: {id_materi: id, _token: token},
-                success: function (data) {
-                    console.log("TEESR");
-                    $("input[name='id_materi_detail']").val(data.options.id_materi);
-                    $("input[name='nama_materi_detail']").val(data.options.nama_materi);
-                    $("input[name='link_materi_detail']").val(data.options.link_materi);
-                    $("input[name='minggu_materi_detail']").val(data.options.minggu_materi);
-                    $("iframe[name='link_materi_embed_detail']").attr('src', data.options.link_materi_embed);
-                    $("textarea[name='detail_materi_detail']").val(data.options.detail_materi);
-                    // initGetDataMateri();
-                    $("textarea[name='detail_materi_detail']").ckeditor();
-                }
-            });
-        });
+                $('body').on('click', '#editTugas', function (event) {
+                    event.preventDefault();
+                    var token = $("input[name='_token']").val();
+                    var id = $(this).data('id');
+                    console.log(id)
+                    $.ajax({
+                        url: "<?php echo route('getTugasByID') ?>",
+                        method: 'POST',
+                        data: {id_tugas: id, _token: token},
+                        success: function (data) {
+                            $("input[name='id_tugas_edit']").val(data.tugas.id_tugas);
+                            $("input[name='nama_tugas_edit']").val(data.tugas.nama_tugas);
+                            $("select[name='nama_materi_edit']").val(data.materi.id_materi).change();
+                            $("textarea[name='detail_tugas_edit']").val(data.tugas.detail_tugas);
+                            $("textarea[name='detail_tugas_edit']").ckeditor();
+                        }
+                    });
+                });
 
-    </script>
-@endsection
+
+                $('body').on('click', '#detailTugas', function (event) {
+                    event.preventDefault();
+
+                    var token = $("input[name='_token']").val();
+                    var id = $(this).data('id');
+                    console.log(id)
+                    $.ajax({
+                        url: "<?php echo route('getTugasByID') ?>",
+                        method: 'POST',
+                        data: {id_tugas: id, _token: token},
+                        success: function (data) {
+                            $("input[name='id_tugas_detail']").val(data.tugas.id_tugas);
+                            $("input[name='nama_tugas_detail']").val(data.tugas.nama_tugas);
+                            $("textarea[name='detail_tugas_detail']").val(data.tugas.detail_tugas);
+                            $("textarea[name='detail_tugas_detail']").ckeditor();
+                            $("select[name='nama_materi_detail']").val(data.materi.id_materi).change();
+                            // initGetDataMateri();
+                            
+                        }
+                    });
+                });
+
+            </script>
+        @endsection
 
 @stop

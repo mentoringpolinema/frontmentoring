@@ -748,8 +748,9 @@ class AdminController extends Controller
     public function getByIdTugas(Request $request)
     {
         if ($request->ajax()) {
-            $data = Materi::findOrFail($request->id_materi);
-            return response()->json(['options' => $data]);
+            $data_tugas = Tugas::findOrFail($request->id_tugas);
+            $data_materi = Materi::findOrFail($data_tugas->materi_id);
+            return response()->json(['tugas' => $data_tugas, 'materi' => $data_materi]);
         }
     }
     // Edit Tugas
@@ -761,10 +762,11 @@ class AdminController extends Controller
         $tugas->update([
             "nama_tugas" => $request->nama_tugas_edit,
             "detail_tugas" => $request->detail_tugas_edit,
-            "pertemuan_id" => $request->pertemuan_id_edit,
+            "materi_id" => $request->nama_materi_edit,
         ]);
         return redirect('/admin/tugas')->with('success', 'Tugas Berhasil diedit !');
     }
+    
     // Closed Tugas 
     public function closedTugas($id_tugas)
     {
