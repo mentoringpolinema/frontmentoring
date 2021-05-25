@@ -42,9 +42,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="actions">
+                                                    {{-- <div class="actions">
                                                         <a href="#" class="btn btn-info">Detail</a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div><!-- .sp-pdl-item -->
                                             </div><!-- .col -->
                                     <div class="col-xxl-3 col-md-6">

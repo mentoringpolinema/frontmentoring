@@ -66,7 +66,9 @@ class MentorController extends Controller
         {
             $data_materi = Materi::all();
             $totalMateri = Materi::count();
-            $data_kegiatan = Kegiatan::all();
+            $data_kegiatan = Kegiatan::where([
+                'jenis_kegiatan' => 'Materi' 
+            ])->get();
             return view('mentor.materi',compact('data_materi','data_kegiatan','totalMateri'));
         }
         // Add Materi

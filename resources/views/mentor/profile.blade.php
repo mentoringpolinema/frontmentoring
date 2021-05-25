@@ -65,7 +65,7 @@
                     </div>
                 </div>
                     <!-- @@ Profile Edit Modal @e -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
+    {{-- <div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
@@ -130,5 +130,5 @@
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
-    </div><!-- .modal -->
+    </div><!-- .modal --> --}}
 @stop

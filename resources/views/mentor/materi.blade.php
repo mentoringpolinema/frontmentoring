@@ -63,9 +63,7 @@
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
                                                                         <li><a href="#" data-toggle="modal" data-target="#modalDetailMateri" id="detailMateri" data-id="{{$materi->id_materi}}"><em class="icon ni ni-eye"></em><span>Lihat Materi</span></a></li>
-                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditMateri" id="editMateri" data-id="{{$materi->id_materi}}"><em class="icon ni ni-edit"></em><span>Edit Materi</span></a></li>
-                                                                        <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Tandai Materi</span></a></li>
-                                                                        <li><a href="/mentor/materi/{{$materi->slug}}"><em class="icon ni ni-trash-alt"></em><span>Hapus Materi</span></a></li>
+                                                                        <li><a href="#" data-toggle="modal" data-target="#modalEditMateri" id="editMateri" data-id="{{$materi->id_materi}}"><em class="icon ni ni-edit"></em><span>Edit Materi</span></a></li>                                                                       
                                                                     </ul>
                                                                 </div>
                                                             </div>
