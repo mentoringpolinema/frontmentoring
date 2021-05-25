@@ -1032,8 +1032,8 @@ class AdminController extends Controller
             "nama_pertemuan" => $request->nama_pertemuan_edit,
             "link_pertemuan" => $request->link_pertemuan_edit,
             "detail_pertemuan" => $request->detail_pertemuan_edit,
-            "mentor_kegiatan" => $request->mentor_kegiatan_edit,
-            "minggu_pertemuan" => $request->minggu_pertemuan_edit
+            "kelompok_id" => $request->mentor_pertemuan_edit,
+            "kegiatan_id" => $request->minggu_kegiatan_edit
         ]);
         return redirect('/admin/pertemuan')->with('success', 'Pertemuan Berhasil diedit !');
     }

@@ -135,6 +135,6 @@ class MentorController extends Controller
                 "detail_materi" => $request->detail_materi_edit
             ]);
             // dd($materi);
-            return redirect('/admin/materi')->with('success', 'Materi Berhasil diedit !');
+            return redirect('/mentor/materi')->with('success', 'Materi Berhasil diedit !');
         }
 }
