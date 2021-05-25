@@ -106,7 +106,7 @@ class MentorController extends Controller
             return redirect('/mentor/materi')->with('success', 'Materi Berhasil dihapus !');
         }
         // Get By Id Materi
-        public function getByIdMateri(Request $request)
+        public function getByIdMateriMentor(Request $request)
         {
             if ($request->ajax()) {
                 $data_materi = Materi::findOrFail($request->id_materi);
@@ -116,14 +116,14 @@ class MentorController extends Controller
             }
         }
         // Edit Materi
-        public function editMateri(Request $request)
+        public function editMateriMentor(Request $request)
         {
             $id = $request->id_materi_edit;
             $materi = Materi::findOrFail($id);
             $last = explode("/", $request->link_materi_edit);
 
-            //setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
-            //0 dan 8 panjang dari watch?v=
+            // setelah jadi bagian2, ambil bagian yang terakhir. Setelah itu watch?v= nya direplace dengan embed/
+            // 0 dan 8 panjang dari watch?v=
             $convertedLast = substr_replace($last[3], "embed/", 0, 8);
 
             $embedLink = "https://youtube.com/" . $convertedLast;
