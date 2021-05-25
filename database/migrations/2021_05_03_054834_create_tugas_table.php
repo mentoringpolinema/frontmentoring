@@ -16,7 +16,7 @@ class CreateTugasTable extends Migration
         Schema::create('tugas', function (Blueprint $table) {
             $table->increments('id_tugas');
             $table->string('nama_tugas');
-            $table->string('detail_tugas');
+            $table->text('detail_tugas');
             $table->integer('materi_id')->unsigned();
             $table->timestamp('updated_at')->useCurrent();
             $table->timestamp('created_at')->useCurrent();
