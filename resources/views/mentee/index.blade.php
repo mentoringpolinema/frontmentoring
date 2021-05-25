@@ -18,7 +18,7 @@
                                        data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                     <div class="toggle-expand-content" data-content="pageMenu">
                                         <ul class="nk-block-tools g-3">
-                                            @if ($status == '10')
+                                            @if ($status == '12')
                                             <button type="button" class="btn btn-round btn-success"
                                                     data-toggle="tooltip" data-placement="bottom"
                                                     title="Mentoring Anda Sudah Lulus, Segera Cetak Bukti.">
@@ -26,7 +26,7 @@
                                                 Status Mentoring : Lulus
                                             </button>
                                             @else
-                                            <button type="button" class="btn btn-round btn-danger" data-toggle="tooltip" data-placement="bottom" title="Mentoring Anda Tidak Lulus, Segera Upload Kekurangan !"><em class="icon ni ni-cross-circle-fill"></em>
+                                            <button type="button" class="btn btn-round btn-danger" data-toggle="tooltip" data-placement="bottom" title="Semangaat !"><em class="icon ni ni-cross-circle-fill"></em>
                                             Status Mentoring : Tidak Lulus
                                             </button>
                                             @endif
@@ -64,7 +64,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @if ($status == '10')
+                                            @if ($status == '12')
                                             <div class="actions">
                                             <a href="/mentee/cetak/{{auth()->user()->mentee->id_mentee}}" class="btn btn-round btn-success">
                                                 <em class="icon ni ni-printer-fill"></em><span>Cetak Bukti</span>

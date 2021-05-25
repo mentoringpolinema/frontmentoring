@@ -66,7 +66,7 @@ class MenteeController extends Controller
         // Materi
         public function materi()
         {
-            $data_materi = Materi::where('id_materi','!=','7')->get();
+            $data_materi = Materi::all();
             $data_tugas = Tugas::all();
             // dd($data_materi);
             return view('mentee.materi',compact(['data_materi'],['data_tugas']));

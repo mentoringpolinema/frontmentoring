@@ -93,7 +93,7 @@
                                                                 <span class="text-soft">Minggu Ke: </span> <span>{{$tugas->materi->kegiatan->minggu_kegiatan}}</span>
                                                             </span>
                                                             <span class="release">
-                                                                @if ($tugas->materi->kegiatan->status_kegiatan == 'Closed')
+                                                                @if ($tugas->materi->kegiatan->status_kegiatan = 'Closed')
                                                                 <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-danger">{{$tugas->materi->kegiatan->status_kegiatan}}</span>    
                                                                 @else
                                                                     <span class="text-soft">Status: </span> <span class="badge badge-dot badge-dot-xs badge-success">{{$tugas->materi->kegiatan->status_kegiatan}}</span>

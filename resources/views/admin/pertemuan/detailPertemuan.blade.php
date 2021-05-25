@@ -134,7 +134,7 @@
                                         </select>
                                     </div>
                                 </div>                
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="link_pertemuan">Link Pertemuan</label>
                                         <input type="text" class="form-control form-control-lg" id="link_pertemuan" name="link_pertemuan_edit" placeholder="Enter Link" required>

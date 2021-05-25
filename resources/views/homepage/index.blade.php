@@ -800,7 +800,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="footer-logo text-center">
-                        <a class="mt-30" href="#"><img src="template/homepage/assets/images/logoWhite.png" alt="Logo" height="100px" width="300px"></a>
+                        <a class="mt-30" href="#"><img src="template/homepage/assets/images/LogoWhite.png" alt="Logo" height="100px" width="300px"></a>
                     </div> <!-- footer logo -->
                     <ul class="social text-center mt-60">
                         <li><a href="https://facebook.com/rohispolinema"><i class="lni lni-facebook-filled"></i></a></li>

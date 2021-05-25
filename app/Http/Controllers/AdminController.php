@@ -619,6 +619,7 @@ class AdminController extends Controller
         $data_user = User::where('role' ,'Panitia')
         ->orWhere('role' ,'Mentor')
         ->get();
+        
         $data_kegiatan = Kegiatan::where('jenis_kegiatan' ,'=', 'Materi')
         ->orWhere('jenis_kegiatan', '=','Kegiatan Wajib')
         ->orWhere('jenis_kegiatan', '=','Pengganti')

@@ -111,7 +111,7 @@
                                                         </li>
                                                     </ul> --}}
                                                     {{-- <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock"></em><span>4 Days Left</span></span> --}}
-                                                    @if ($tugas->materi->kegiatan->status_kegiatan == 'Close')
+                                                    @if ($tugas->materi->kegiatan->status_kegiatan == 'Closed')
                                                     <span class="badge badge-dim badge-danger"><em class="icon ni ni-cross-circle"></em><span>Status : {!!$tugas->materi->kegiatan->status_kegiatan!!}</span></span>
                                                     @else
                                                     <span class="badge badge-dim badge-success"><em class="icon ni ni-check-circle"></em><span>Status : {!!$tugas->materi->kegiatan->status_kegiatan!!}</span></span>

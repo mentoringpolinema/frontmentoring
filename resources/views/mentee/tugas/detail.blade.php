@@ -123,7 +123,6 @@
                                         </div>
                                          @enderror
                                          @if ($data_tugas->materi->kegiatan->status_kegiatan == 'Open')
-                                         {{-- @if($data_tugasku = "") --}}
                                          <div class="col-xxl-3 col-md-12">
                                             <div class="card card-preview">
                                                 <div class="card-inner">
@@ -155,7 +154,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endif   
+                                        @endif                                         
                                     </div><!-- .card-preview -->
                                 </div><!-- .nk-block -->
                             </div>

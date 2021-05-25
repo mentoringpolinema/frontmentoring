@@ -262,7 +262,7 @@
                                         </select>
                                      </div>
                                 </div> 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Kegiatan</label>
                                         <select class="form-select" id="kegiatan_id" name="kegiatan_id" required>

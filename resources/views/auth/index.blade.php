@@ -32,8 +32,8 @@
                             <div class="nk-block nk-block-middle nk-auth-body">
                                 <div class="brand-logo pb-5">
                                     <a href="#" class="logo-link">
-                                        <img class="logo-light logo-img logo-img-lg" src="template/dashboard/images/logoMini.png" srcset="./images/logo2x.png 2x" alt="logo">
-                                        <img class="" src="template/dashboard/images/logoBig.png" width="300px" height="100px">
+                                        <img class="logo-light logo-img logo-img-lg" src="template/dashboard/images/LogoMini.png" srcset="./images/logo2x.png 2x" alt="logo">
+                                        <img class="" src="template/dashboard/images/LogoBig.png" width="300px" height="100px">
                                     </a>
                                 </div>
                                 <div class="nk-block-head">
