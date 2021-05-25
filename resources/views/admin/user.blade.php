@@ -258,12 +258,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="passsword-panitia">Password</label>
                                         <input type="text" class="form-control form-control" id="password_panitia" name="password_panitia_edit" value="{{$panitia->user->password}}" required>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-12">
                                     <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                                         <li>
@@ -300,7 +300,7 @@
                         $("input[name='nama_panitia_edit']").val(data.panitia.nama_panitia);
                         $("input[name='email_panitia_edit']").val(data.user.email);
                         $("select[name='status_panitia_edit']").val(data.panitia.status_panitia).change();
-                        $("input[name='password_panitia_edit']").val(data.user.password);
+                        // $("input[name='password_panitia_edit']").val(data.user.password);
                     }
                     // console.log(data);
                 });

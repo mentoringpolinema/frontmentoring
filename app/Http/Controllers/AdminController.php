@@ -421,16 +421,27 @@ class AdminController extends Controller
     {
         $id = $request->id_panitia_edit;
         $panitia = Panitia::find($id);
+        $data_user = User::Find($panitia->user_id);
         // dd($panitia);
+        $getPass = explode("@", $request->email_panitia_edit);
+        $generate_password = $getPass[0];
+
         $panitia->update([
             "nama_panitia" => $request->nama_panitia_edit,
             "email" => $request->email_panitia_edit,
             "status_panitia" => $request->status_panitia_edit,
-            "password" => $request->password_panitia_edit,
+            // "password" => $request->password_panitia_edit,
+        ]);
+
+        $data_user->update([
+            "name" => $request->nama_panitia_edit,
+            "email" => $request->email_panitia_edit,
+            "password" => Hash::make($generate_password)
         ]);
 
         // dd($panitia);
         $panitia->update($request->all());
+        $data_user->update($request->all());
         return redirect('/admin/user')->with('success', 'Panitia Berhasil diedit !');
     }
 
