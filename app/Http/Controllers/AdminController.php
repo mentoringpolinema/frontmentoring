@@ -190,9 +190,7 @@ class AdminController extends Controller
         $data_mentor = Mentor::where('slug', $slug)->get()->first();
         $dataUser = User::where('id', $data_mentor->user_id)->get()->first();
         $data_kelompok = Kelompok::where('mentor_id', $data_mentor->id_mentor)->get()->first();
-        $data_pertemuan = Pertemuan::where('mentor_id', $data_mentor->id_mentor)->get()->first();
-
-        if ($data_kelompok == null && $data_pertemuan == null) {
+        if ($data_kelompok == null ) {
             $dataUser->delete($dataUser);
             return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
         } else {
@@ -1179,18 +1177,19 @@ class AdminController extends Controller
         $data_pertemuan = Pertemuan::all();
         $total_absensi = Absensi::count();
         $total_kegiatan = Kegiatan::count();
+        $data_kegiatan = Kegiatan::all();
         $absensi = Absensi::all();
-        return view('admin.absensi.index', compact('total_absensi', 'data_absensi', 'total_mentee', 'total_pertemuan', 'data_pertemuan', 'total_kegiatan','absensi'));
+        return view('admin.absensi.index', compact('total_absensi', 'data_absensi', 'total_mentee', 'total_pertemuan', 'data_pertemuan', 'total_kegiatan','absensi','data_kegiatan'));
     }
     // Detail Absensi
-    public function detailAbsen($id_pertemuan)
-    {
-        $data_pertemuan = Pertemuan::find($id_pertemuan);
-        $absen = Absensi::where([
-            "pertemuan_id" => $id_pertemuan
-        ])->get();
-        return view('admin.absensi.detail', compact('data_pertemuan', 'absen'));
-    }
+    // public function detailAbsen($id_pertemuan)
+    // {
+    //     $data_pertemuan = Pertemuan::find($id_pertemuan);
+    //     $absen = Absensi::where([
+    //         "pertemuan_id" => $id_pertemuan
+    //     ])->get();
+    //     return view('admin.absensi.detail', compact('data_pertemuan', 'absen'));
+    // }
     // Absensi Kegiatan
     public function absensiKegiatan()
     {
@@ -1209,6 +1208,7 @@ class AdminController extends Controller
         $data_pertemuan = Pertemuan::all();
         $total_absensi = Absensi::count();
         $total_kegiatan = Kegiatan::count();
-        return view('admin.absensi.index', compact('total_absensi', 'data_absensi', 'total_mentee', 'total_pertemuan', 'data_pertemuan', 'total_kegiatan','absensi'));
+        $data_kegiatan = Kegiatan::all();
+        return view('admin.absensi.index', compact('total_absensi', 'data_absensi', 'total_mentee', 'total_pertemuan', 'data_pertemuan', 'total_kegiatan','absensi','data_kegiatan'));
     }
 }

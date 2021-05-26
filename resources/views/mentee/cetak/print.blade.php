@@ -18,10 +18,13 @@
 
 <body class="bg-white" onload="printPromot()">
     <div class="nk-block">
-        <div class="invoice">
-            <div class="invoice-wrap">
-                                        <div class="invoice-brand text-center">
-                                                <img src="{{asset('template/dashboard/images/logoMentoring.png')}}" srcset="{{asset('template/dashboard/images/logoMentoring.png 2x')}}" alt="">
+                                    <div class="invoice">
+                                        <div class="invoice-action">
+                                            {{-- <a class="btn btn-icon btn-lg btn-white btn-dim btn-outline-primary" href="/mentee/print" target="_blank"><em class="icon ni ni-printer-fill"></em></a> --}}
+                                        </div><!-- .invoice-actions -->
+                                        <div class="invoice-wrap">
+                                            <div class="invoice-brand text-center">
+                                                <img src="{{asset('template/dashboard/images/LogoMentoring.png')}}" srcset="{{asset('template/dashboard/images/LogoMentoring.png 2x')}}" alt="">
                                                 <img src="{{asset('template/dashboard/images/LogoRispol.png')}}" srcset="{{asset('template/dashboard/images/LogoRispol.png 2x')}}" alt="">
                                             </div>
                                             <div class="invoice-head">
@@ -33,7 +36,7 @@
                                                 </div>
                                                 <div class="invoice-desc">
                                                     <ul class="list-plain">
-                                                        <li class="invoice-id"><span>ID Cetak</span>:<span>66K5W3</span></li>
+                                                        <li class="invoice-id"><span>ID Cetak</span>:<span>{{$cetak->kode_cetak}}</span></li>
                                                         <li class="invoice-date"><span>Tanggal</span>:<span><?php echo date("d M Y");?></span></li>
                                                     </ul>
                                                 </div>
@@ -124,7 +127,7 @@
                                             </div><!-- .invoice-bills -->
                                         </div><!-- .invoice-wrap -->
                                     </div><!-- .invoice -->
-    </div><!-- .nk-block -->
+                                </div><!-- .nk-block -->
     <script>
         function printPromot() {
             window.print();

@@ -119,8 +119,8 @@
                                                                                         <label class="overline-title overline-title-alt">Minggu Kegiatan</label>
                                                                                         <select class="form-select form-select-sm" name="absensi">
                                                                                             <option>-Pilih Minggu Kegiatan-</option>
-                                                                                            @foreach ($absensi as $absensi)
-                                                                                                <option value="{{$absensi->kegiatan_id}}">{{$absensi->kegiatan->minggu_kegiatan}}</option>
+                                                                                            @foreach ($data_kegiatan as $kegiatan)
+                                                                                                <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->minggu_kegiatan}}</option>
                                                                                             @endforeach
                                                                                         </select>
                                                                                     </div>
@@ -154,7 +154,7 @@
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Minggu Ke-</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Tanggal</span></th>
-                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
+                                                            {{-- <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th> --}}
                                                             </th>
                                                         </tr>
                                                     </thead>
@@ -177,9 +177,9 @@
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$absensi->kegiatan->tanggal_kegiatan->format('d M Y')}}</span>
                                                             </td>
-                                                            <td class="nk-tb-col nk-tb-col-tools">
-                                                                <a href="/admin/absensi/detail/{{$absensi->id_pertemuan}}" class="btn btn-sm btn-success"><em class="icon ni ni-eye"></em><span>Detail</span></a>
-                                                            </td>
+                                                            {{-- <td class="nk-tb-col nk-tb-col-tools">
+                                                                <a href="/admin/absensi/detail/{{$absensi->kegiatan_id}}" class="btn btn-sm btn-success"><em class="icon ni ni-eye"></em><span>Detail</span></a>
+                                                            </td> --}}
                                                         </tr><!-- .nk-tb-item  -->                                                 
                                                         @endforeach
                                                     </tbody>

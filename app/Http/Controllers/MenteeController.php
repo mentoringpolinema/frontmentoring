@@ -274,7 +274,15 @@ class MenteeController extends Controller
     }
     public function print()
     {
-        return view('mentee.cetak.print');
+        $data_mentee = Mentee::where([
+            ['id_mentee', '=', auth()->user()->mentee->id_mentee]
+        ])->first();
+
+        $cetak = CetakBukti::where([
+            ['mentee_id', '=', auth()->user()->mentee->id_mentee]
+        ])->first();
+
+        return view('mentee.cetak.print',compact('data_mentee', 'cetak'));
     }
     // Profile
     public function profile()

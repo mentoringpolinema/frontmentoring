@@ -104,6 +104,7 @@
                                                                 </span>
                                                             @endif 
                                                             </td>
+                                                            <td>
                                                              @if ($data_pertemuan->kegiatan->status_kegiatan == 'Open')
                                                                 <form action="/mentee/pertemuan/absenPertemuan" method="POST">
                                                                     @csrf
@@ -111,6 +112,7 @@
                                                                     <input type="hidden" name="kegiatan_id" id="kegiatan_id" value="{{$data_pertemuan->kegiatan_id}}">
                                                                 </form>
                                                             @endif
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                     </tbody>

@@ -7,8 +7,8 @@
                             </div>
                             <div class="nk-header-brand d-xl-none">
                                 <a href="/homepage" class="logo-link">
-                                    <img class="logo-light logo-img" src="{{asset('template/dashboard/images/logoMentoring.png')}}" srcset="{{asset('template/dashboard/images/logoMentoring.png')}} 2x" alt="logo">
-                                    <img class="logo-dark logo-img" src="{{asset('template/dashboard/images/logoMentoring.png')}}" srcset="{{asset('template/dashboard/images/logoMentoring.png')}} 2x" alt="logo-dark">
+                                    <img class="logo-light logo-img" src="{{asset('template/dashboard/images/LogoMentoring.png')}}" srcset="{{asset('template/dashboard/images/LogoMentoring.png')}} 2x" alt="logo">
+                                    <img class="logo-dark logo-img" src="{{asset('template/dashboard/images/LogoMentoring.png')}}" srcset="{{asset('template/dashboard/images/LogoMentoring.png')}} 2x" alt="logo-dark">
                                 </a>
                             </div><!-- .nk-header-brand -->
                             <div class="nk-header-search ml-3 ml-xl-0">
@@ -17,7 +17,7 @@
                             </div><!-- .nk-header-news -->
                             <div class="nk-header-tools">
                                 <ul class="nk-quick-nav">
-                                    @if(auth()->user()->role == 'Panitia') 
+                                    {{-- @if(auth()->user()->role == 'Panitia') 
                                     <li class="dropdown chats-dropdown hide-mb-xs">
                                         <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-toggle="dropdown">
                                             <div class="icon-status icon-status-na"><em class="icon ni ni-comments"></em></div>
@@ -181,13 +181,13 @@
                                                             <div class="nk-notification-time">2 hrs ago</div>
                                                         </div>
                                                     </div>                                                     --}}
-                                                </div><!-- .nk-notification -->
+                                                {{-- </div><!-- .nk-notification -->
                                             </div><!-- .nk-dropdown-body -->
                                             <div class="dropdown-foot center">
                                                 <a href="#">View All</a>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> --}} 
                                     <li class="dropdown user-dropdown">
                                         <a href="#" class="dropdown-toggle mr-n1" data-toggle="dropdown">
                                             <div class="user-toggle">

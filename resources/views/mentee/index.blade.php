@@ -64,7 +64,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @if ($status == '12')
+                                            @if ($status == '1')
                                             <div class="actions">
                                             <a href="/mentee/cetak/{{auth()->user()->mentee->id_mentee}}" class="btn btn-round btn-success">
                                                 <em class="icon ni ni-printer-fill"></em><span>Cetak Bukti</span>
