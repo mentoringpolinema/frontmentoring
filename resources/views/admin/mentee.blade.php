@@ -282,7 +282,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label" for="angkatan_id">Angkatan</label>
-                                            <select class="form-select" id="angkatan_id" name="angkatan_id" data-ui="lg">
+                                            <select class="form-select" id="angkatan_id" name="angkatan_id" data-ui="lg" required>
                                                 <option>-Pilih Angkatan-</option>
                                                 @foreach ($data_angkatan as $angkatan)
                                                     <option value="{{$angkatan->id_angkatan}}">{{$angkatan->angkatan}}</option>
