@@ -127,8 +127,14 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::post('/admin/user/getByIdUserPanitia', '\App\Http\Controllers\AdminController@getByIdUserPanitia')->name('getUserPanitiaByID');
     //Update User Panitia
     Route::put('/admin/user/editPanitia', '\App\Http\Controllers\AdminController@editUserPanitia');
+    //Get Data By Id User Mentor
+    Route::post('/admin/user/getByIdUserMentor', '\App\Http\Controllers\AdminController@getByIdUserMentor')->name('getUserMentorByID');
+    //Update User Mentor
+    Route::put('/admin/user/editMentor', '\App\Http\Controllers\AdminController@editUserMentor');
     //Delete User Panitia
     Route::delete('/admin/user/{id}', '\App\Http\Controllers\AdminController@delUserPanitia');
+    //Delete User Mentor
+    Route::delete('/admin/user/{id}', '\App\Http\Controllers\AdminController@delUserMentor');
 
 // Data Management ===================================================================================================>
     //Get Data

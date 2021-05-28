@@ -34,12 +34,12 @@
                                                             </div>
                                                             <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
-                                                        <div class="data-item">
+                                                        <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
                                                                 <span class="data-label">Email</span>
                                                                 <span class="data-value">{{$data_mentor->email_mentor}}</span>
                                                             </div>
-                                                            <div class="data-col data-col-end"><span class="data-more disable"><em class="icon ni ni-lock-alt"></em></span></div>
+                                                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
                                                         </div><!-- data-item -->
                                                         <div class="data-item" data-toggle="modal" data-target="#profile-edit">
                                                             <div class="data-col">
@@ -120,25 +120,25 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="full-name">Full Name</label>
-                                        <input type="text" class="form-control form-control-lg" id="nama_mentor" name="nama_mentor" value="{{$data_mentor->nama_mentor}}" placeholder="Enter Full name">
+                                        <input type="text" class="form-control form-control-lg" id="nama_mentor" name="nama_mentor" value="{{$data_mentor->nama_mentor}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">Email</label>
-                                        <input type="text" class="form-control form-control-lg" id="email_mentor" name="email_mentor" disabled value="{{$data_mentor->email_mentor}}" >
+                                        <input type="text" class="form-control form-control-lg" id="email_mentor" name="email_mentor" value="{{$data_mentor->email_mentor}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">No Telp</label>
-                                        <input type="text" class="form-control form-control-lg" id="notelp_mentor" name="notelp_mentor" value="{{$data_mentor->notelp_mentor}}" placeholder="Phone Number">
+                                        <input type="text" class="form-control form-control-lg" id="notelp_mentor" name="notelp_mentor" value="{{$data_mentor->notelp_mentor}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="phone-no">Alamat</label>
-                                        <input type="text" class="form-control form-control-lg" id="alamat_mentor" name="alamat_mentor" value="{{$data_mentor->alamat_mentor}}" placeholder="Phone Number">
+                                        <input type="text" class="form-control form-control-lg" id="alamat_mentor" name="alamat_mentor" value="{{$data_mentor->alamat_mentor}}" required>
                                     </div>
                                 </div>
                                 <div class="col-12">

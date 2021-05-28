@@ -194,7 +194,7 @@ class AdminController extends Controller
             $dataUser->delete($dataUser);
             return redirect('/admin/mentor')->with('success', 'Mentor Berhasil dihapus !');
         } else {
-            return redirect('/admin/mentor')->with('warning', 'Mentor Gagal dihapus, karena berelasi dengan Data Kelompok dan Pertemuan !');
+            return redirect('/admin/mentor')->with('warning', 'Mentor Gagal dihapus, karena berelasi dengan Data Kelompok !');
         }
     
     }
@@ -215,8 +215,30 @@ class AdminController extends Controller
     // Update Mentor
     public function updMentor(Request $request, $id_mentor)
     {
-        $data_mentor = Mentor::find($id_mentor);
-        $data_mentor->update($request->all());
+        // $data_mentor = Mentor::find($id_mentor);
+        // $data_mentor->update($request->all());
+
+        $id = $request->id_mentor;
+        $data_mentor = Mentor::find($id);
+        $data_user = User::Find($data_mentor->user_id);
+        // dd($panitia);
+        $getPass = explode("@", $request->email_mentor);
+        $generate_password = $getPass[0];
+
+        $data_mentor->update([
+            "nama_mentor" => $request->nama_mentor,
+            "email_mentor" => $request->email_mentor,
+            "notelp_mentor" => $request->notelp_mentor,
+            "alamat_mentor" => $request->alamat_mentor,
+            // "password" => $request->password_panitia_edit,
+        ]);
+        // dd($data_mentor);
+        $data_user->update([
+            "name" => $request->nama_mentor,
+            "email" => $request->email_mentor,
+            "password" => Hash::make($generate_password)
+        ]);
+        // dd($data_mentor);
         return redirect('/admin/mentor')->with('success', 'Mentor Berhasil di Update !');;
     }
     // Export Mentor Excel
@@ -358,10 +380,12 @@ class AdminController extends Controller
     {
         // $data_user_panitia = User::where('role', 'Panitia')->get();
         $data_user_panitia = Panitia::all();
+        $data_user_mentor = Mentor::all();
         $data_user = User::all();
         $totalUserPanitia = Panitia::count();
+        $totalUserMentor = Mentor::count();
         // dd($data_user_panitia);
-        return view('admin.user', compact(['totalUserPanitia', 'data_user_panitia', 'data_user']));
+        return view('admin.user', compact(['totalUserPanitia', 'data_user_panitia', 'totalUserMentor', 'data_user_mentor', 'data_user']));
     }
 
     // Add User Panitia
@@ -388,7 +412,7 @@ class AdminController extends Controller
         // dd($panitia);
         return redirect('/admin/user')->with('success', 'Panitia Berhasil ditambahkan !');
     }
-    // Delete User
+    // Delete User Panitia
     public function delUserPanitia($id_panitia)
     {
         // dd($id_panitia);
@@ -400,6 +424,21 @@ class AdminController extends Controller
         
         // dd($dataUserPanitia);
         return redirect('/admin/user')->with('success', 'Panitia Berhasil dihapus !');
+    }
+
+    // Delete User Mentor
+    public function delUserMentor($slug)
+    {
+        // dd($id_panitia);
+        $data_mentor = Mentor::where('slug', $slug)->get()->first();
+        $dataUser = User::where('id', $data_mentor->user_id)->get()->first();
+        $data_kelompok = Kelompok::where('mentor_id', $data_mentor->id_mentor)->get()->first();
+        if ($data_kelompok == null ) {
+            $dataUser->delete($dataUser);
+            return redirect('/admin/user')->with('success', 'Mentor Berhasil dihapus !');
+        } else {
+            return redirect('/admin/user')->with('warning', 'Mentor Gagal dihapus, karena berelasi dengan Data Kelompok !');
+        }
     }
 
     //Get By Id User Panitia
@@ -442,6 +481,48 @@ class AdminController extends Controller
         $data_user->update($request->all());
         return redirect('/admin/user')->with('success', 'Panitia Berhasil diedit !');
     }
+
+    //Get By Id User Mentor
+    public function getByIdUserMentor(Request $request){
+        // dd($request);
+        if($request->ajax()){
+            $data_mentor = Mentor::findOrFail($request->id_mentor);
+            $data_user = User::findOrFail($data_mentor->user_id);
+            // dd($data_panitia);
+            // dd($data_user);
+            return response()->json(['mentor'=>$data_mentor, 'user'=>$data_user]);
+        }
+    }
+
+    //Edit User Panitia
+    public function editUserMentor(Request $request)
+    {
+        $id = $request->id_mentor_edit;
+        $mentor = Mentor::find($id);
+        $data_user = User::Find($mentor->user_id);
+        // dd($panitia);
+        $getPass = explode("@", $request->email_mentor_edit);
+        $generate_password = $getPass[0];
+
+        $mentor->update([
+            "nama_mentor" => $request->nama_mentor_edit,
+            "email_mentor" => $request->email_mentor_edit,
+            "status_mentor" => $request->status_mentor_edit,
+            // "password" => $request->password_panitia_edit,
+        ]);
+
+        $data_user->update([
+            "name" => $request->nama_mentor_edit,
+            "email" => $request->email_mentor_edit,
+            "password" => Hash::make($generate_password)
+        ]);
+
+        // dd($panitia);
+        $mentor->update($request->all());
+        $data_user->update($request->all());
+        return redirect('/admin/user')->with('success', 'Mentor Berhasil diedit !');
+    }
+
 
     //-------------------------------------------Data-------------------------------------------
 
