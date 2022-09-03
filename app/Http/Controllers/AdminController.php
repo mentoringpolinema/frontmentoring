@@ -36,6 +36,7 @@ use App\Models\Pengumuman;
 use Barryvdh\DomPDF\Facade as PDF;
 use Dompdf\Dompdf;
 use GrahamCampbell\ResultType\Success;
+use Illuminate\Database\QueryException;
 use Svg\Tag\Rect;
 
 class AdminController extends Controller
@@ -346,10 +347,11 @@ class AdminController extends Controller
     {
         $data_mentee = Mentee::where('slug', $slug)->get()->first();
         $dataUser = User::where('id', $data_mentee->user_id)->get()->first();
-        if($dataUser == null){
+        
+        try {
             $dataUser->delete($dataUser);
             return redirect('/admin/mentee')->with('success', 'Mentee Berhasil dihapus !');
-        }else{
+        }catch(QueryException $e){
             return redirect('/admin/mentee')->with('warning', 'Data Mentee Gagal dihapus, karena berelasi dengan Data Lain !');
         }
     }

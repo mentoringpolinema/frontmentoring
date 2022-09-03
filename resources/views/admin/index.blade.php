@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-@if(auth()->user()->role == 'Panitia')
+@if(auth()->user()->role == 'Panitia' || 'Super Panitia')
 <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
@@ -9,7 +9,12 @@
                                 <div class="nk-block-head nk-block-head-sm">
                                     <div class="nk-block-between">
                                         <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title">Dashboard</h3>
+                                            @if(auth()->user()->role == 'Super Panitia')
+                                                <h3 class="nk-block-title page-title">Dashboard <i>Super Panitia</i></h3>
+                                            @endif    
+                                            @if(auth()->user()->role == 'Panitia')
+                                                <h3 class="nk-block-title page-title">Dashboard</h3>
+                                            @endif    
                                         </div><!-- .nk-block-head-content -->
                                         <div class="nk-block-head-content">
                                             <div class="toggle-wrap nk-block-tools-toggle">
@@ -33,7 +38,7 @@
                                                                 <em class="icon ni ni-user-alt"></em>
                                                             </div>
                                                             <div class="user-info">
-                                                                <h4 class="title"><span class="name">Selamat Datang ! {{auth()->user()->name}} </span> <span class="badge badge-dim badge-primary badge-pill">Panitia</span></h4>
+                                                                <h4 class="title"><span class="name">Selamat Datang ! {{auth()->user()->name}} </span> <span class="badge badge-dim badge-primary badge-pill">{{auth()->user()->role}}</span></h4>
                                                             <div class="meta">
                                                                 <span class="version">
                                                                     <span class="text-soft">{{auth()->user()->email}}</span>

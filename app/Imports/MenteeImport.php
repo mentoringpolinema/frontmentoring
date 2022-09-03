@@ -36,7 +36,7 @@ class MenteeImport implements ToCollection
                     'kelas_id' => $row[2],
                     'kelompok_id' => $row[3],
                     'angkatan_id' => $row[4],
-                    'status_mentee' => $row[5],
+                    'status_mentee' => "tidak lulus",
                     'slug' => Str::slug($user->id . '-' . $row[1])
                 ]);
             } 

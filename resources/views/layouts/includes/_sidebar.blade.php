@@ -90,6 +90,106 @@
                                         <span class="nk-menu-icon"><em class="icon ni ni-list-thumb-fill"></em></span>
                                         <span class="nk-menu-text">Absensi </span>
                                     </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Kelola Lainnya</h6>
+                                </li><!-- .nk-menu-heading -->
+                                <li class="nk-menu-item">
+                                    <a href="/admin/cetak" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-printer-fill"></em></span>
+                                        <span class="nk-menu-text">Cetak Bukti</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Kelola Sistem</h6>
+                                </li><!-- .nk-menu-heading -->
+                                <li class="nk-menu-item">
+                                    <a href="/admin/data" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb-fill"></em></span>
+                                        <span class="nk-menu-text">Data</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                            </ul><!-- .nk-menu -->
+                        </div><!-- .nk-sidebar-menu -->
+                    </div><!-- .nk-sidebar-content -->
+                </div><!-- .nk-sidebar-element -->
+                @endif
+
+                <!-- Role : Panitia -->
+                @if(auth()->user()->role == 'Super Panitia')
+                <div class="nk-sidebar-element">
+                    <div class="nk-sidebar-content">
+                        <div class="nk-sidebar-menu" data-simplebar>
+                            <ul class="nk-menu">
+                                <br>
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Menu Utama</h6>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/admin" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
+                                        <span class="nk-menu-text">Dashboard</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Kelola Data Mentoring</h6>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/admin/mentor" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
+                                        <span class="nk-menu-text">Mentor</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/admin/mentee" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                        <span class="nk-menu-text">Mentee</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/admin/kelompok" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-view-cols-fill"></em></span>
+                                        <span class="nk-menu-text">Kelompok</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-heading">
+                                    <h6 class="overline-title text-primary-alt">Kelola Kegiatan Mentoring</h6>
+                                </li><!-- .nk-menu-item -->
+                                 <li class="nk-menu-item">
+                                    <a href="/admin/kegiatan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-clock"></em></span>
+                                        <span class="nk-menu-text">Kegiatan</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                 <li class="nk-menu-item">
+                                    <a href="/admin/pertemuan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-video-fill"></em></span>
+                                        <span class="nk-menu-text">Pertemuan</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/admin/materi" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-todo"></em></span>
+                                        <span class="nk-menu-text">Materi</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
+                                    <a href="/admin/tugas" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-folders-fill"></em></span>
+                                        <span class="nk-menu-text">Tugas</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->                                                              
+                                <li class="nk-menu-item">
+                                    <a href="/admin/pengumpulan" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
+                                        <span class="nk-menu-text">Pengumpulan Tugas</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->   
+                                <li class="nk-menu-item">
+                                    <a href="/admin/absensi" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-list-thumb-fill"></em></span>
+                                        <span class="nk-menu-text">Absensi </span>
+                                    </a>
                                 </li><!-- .nk-menu-item -->   
                                 {{-- <li class="nk-menu-item">
                                     <a href="/admin/absen/kegiatan" class="nk-menu-link">
@@ -112,12 +212,12 @@
                                         <span class="nk-menu-text">Pengumuman</span>
                                     </a>
                                 </li>
-                                <li class="nk-menu-item">
+                                {{-- <li class="nk-menu-item">
                                     <a href="/admin/keluhan" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-chat-fill"></em></span>
                                         <span class="nk-menu-text">Keluhan</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->  
+                                </li><!-- .nk-menu-item -->   --}}
                                 <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Kelola Sistem</h6>
                                 </li><!-- .nk-menu-heading -->
@@ -257,12 +357,12 @@
                                  <li class="nk-menu-heading">
                                     <h6 class="overline-title text-primary-alt">Menu Lainnya</h6>
                                 </li><!-- .nk-menu-item -->                                
-                                <li class="nk-menu-item">
+                                {{-- <li class="nk-menu-item">
                                     <a href="/mentee/keluhan" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-chat-fill"></em></span>
                                         <span class="nk-menu-text">Keluhan</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li><!-- .nk-menu-item --> --}}
                                 <li class="nk-menu-item">
                                     <a href="/mentee/profile" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-alt"></em></span>

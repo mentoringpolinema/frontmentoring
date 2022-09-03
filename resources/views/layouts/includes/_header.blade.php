@@ -204,7 +204,7 @@
                                             <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                                 <div class="user-card">
                                                     <div class="user-avatar">
-                                                        <span>AY</span>
+                                                        <span>MP</span>
                                                     </div>
                                                     <div class="user-info">
                                                         <span class="lead-text">{{auth()->user()->name}}</span>

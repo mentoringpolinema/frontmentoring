@@ -36,12 +36,12 @@ Route::get('/cekMentoring/hasil', '\App\Http\Controllers\MainController@cek');
 
 
 // DASHBOARD ROUTES ======================================================================================================>
-Route::middleware(['auth', 'checkRole:Panitia,Mentor,Mentee'])->group(function () {
+Route::middleware(['auth', 'checkRole:Super Panitia,Panitia,Mentor,Mentee'])->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index']);
 });
 
 // PANITIA ROUTES =========================================================================================================>
-Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
+Route::middleware(['auth', 'checkRole:Super Panitia,Panitia'])->group(function () {
     // Dashboard Routes ===================================================================================================>
     Route::get('/admin', '\App\Http\Controllers\AdminController@index');
     // Cetak ==============================================================================================================>
@@ -66,10 +66,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::get('/admin/kegiatan/open/{id}', '\App\Http\Controllers\AdminController@openKegiatan');
     // Close Kegiatan
     Route::get('/admin/kegiatan/close/{id}', '\App\Http\Controllers\AdminController@closeKegiatan');
-});
-
-
-// Mentor ============================================================================================================>
+    // Mentor ============================================================================================================>
     //Get Mentor
     Route::get('/admin/mentor', '\App\Http\Controllers\AdminController@mentor');
     //Get Mentor by ID
@@ -91,8 +88,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     //Export PDF
     Route::get('/admin/expMentorP/', '\App\Http\Controllers\AdminController@exportMentorPDF');
 
-
-// Mentee ============================================================================================================>
+    // Mentee ============================================================================================================>
     //Get Mentee
     Route::get('/admin/mentee', '\App\Http\Controllers\AdminController@mentee');
     //Detail Mentee
@@ -118,7 +114,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Get Kelas BY Id Prodi
     Route::get('/admin/getKelasByIdProdi/{id}', '\App\Http\Controllers\AdminController@getKelasByIdProdi')->name('getKelasByIdProdi');
 
-// User Management ===================================================================================================>
+    // User Management ===================================================================================================>
     //Get Users
     Route::get('/admin/user', '\App\Http\Controllers\AdminController@user');
     //Add User Panitia
@@ -136,7 +132,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     //Delete User Mentor
     Route::delete('/admin/user/{id}', '\App\Http\Controllers\AdminController@delUserMentor');
 
-// Data Management ===================================================================================================>
+    // Data Management ===================================================================================================>
     //Get Data
     Route::get('/admin/data', '\App\Http\Controllers\AdminController@data');
     //Add Data
@@ -154,7 +150,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Add Data Kelas
     Route::get('/admin/{id_kelas}/delKelas', '\App\Http\Controllers\AdminController@delKelas');
 
-//Update Data
+    //Update Data
     //Update Jurusan
     Route::put('/admin/data/jurusan', '\App\Http\Controllers\AdminController@editJurusan');
     //Update Prodi
@@ -162,7 +158,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     //Update Kelas
     Route::put('/admin/data/kelas', '\App\Http\Controllers\AdminController@editKelas');
 
-//Get Data By Id 
+    //Get Data By Id 
     //Get Data By Id Jurusan
     Route::post('/admin/data/getByIdJurusan', '\App\Http\Controllers\AdminController@getByIdJurusan')->name('getJurusanByID');
     //Get Data By Id Prodi
@@ -170,11 +166,11 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     //Get Data By Id Kelas
     Route::post('/admin/data/getByIdKelas', '\App\Http\Controllers\AdminController@getByIdKelas')->name('getKelasByID');
 
-// Export Data Jurusan
+    // Export Data Jurusan
     //Export Excel
     Route::get('/admin/jurusan/extJur/', '\App\Http\Controllers\AdminController@extJur');
     
-// Materi ============================================================================================================>
+    // Materi ============================================================================================================>
     // Get Materi
     Route::get('/admin/materi', '\App\Http\Controllers\AdminController@materi');
     // Add Materi
@@ -187,7 +183,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::put('/admin/materi', '\App\Http\Controllers\AdminController@editMateri');
 
 
-// Tugas ============================================================================================================>
+    // Tugas ============================================================================================================>
     // Get Tugas
     Route::get('/admin/tugas', '\App\Http\Controllers\AdminController@tugas');
     // Add Tugas
@@ -206,7 +202,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Get Data By Id Tugas
     Route::post('/admin/tugas/getByIdTugas', '\App\Http\Controllers\AdminController@getByIdTugas')->name('getTugasByID');
 
-// Kelompok ==========================================================================================================>
+    // Kelompok ==========================================================================================================>
     // Get Kelompok
     Route::get('/admin/kelompok', '\App\Http\Controllers\AdminController@kelompok');
     // Detail Kelompok
@@ -222,7 +218,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Add Mentee
     Route::get('/admin/kelompok/tambah/{id}', '\App\Http\Controllers\AdminController@addMenKelompok');
 
-// Keluhan ===========================================================================================================>
+    // Keluhan ===========================================================================================================>
     // Get Keluhan
     Route::get('/admin/keluhan', '\App\Http\Controllers\AdminController@keluhan');
     // Detail Keluhan
@@ -232,7 +228,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Hapus keluhan
     Route::get('/admin/keluhan/{id}/hapus', '\App\Http\Controllers\AdminController@hapusKeluhan');
 
-// Pertemuan =========================================================================================================>
+        // Pertemuan =========================================================================================================>
     // Get Pertemuan
     Route::get('/admin/pertemuan', '\App\Http\Controllers\AdminController@pertemuan');
     // Add Pertemuan
@@ -250,23 +246,11 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Filter Pertemuan
     Route::get('/admin/pertemuan/filter', '\App\Http\Controllers\AdminController@filterPertemuan');
 
-// Pengumuman ========================================================================================================>
-    // Get Pengumuman
-    Route::get('/admin/pengumuman', '\App\Http\Controllers\AdminController@pengumuman');
-    // Add Pengumuman
-    Route::post('/admin/pengumuman/addPengumuman', '\App\Http\Controllers\AdminController@addPengumuman');
-    // Del Pengumuman
-    Route::get('/admin/{id}/delPengumuman', '\App\Http\Controllers\AdminController@delPengumuman');
-    // Edit Pengumuman
-    Route::post('/admin/{id}/editPengumuman', '\App\Http\Controllers\AdminController@editPengumuman');
-    // Detail Pengumuman
-    Route::get('/admin/detPengumuman/{id}', '\App\Http\Controllers\AdminController@detPengumuman');
-
-// Cetak Bukti ========================================================================================================>
+    // Cetak Bukti ========================================================================================================>
     // Get Bukti
     Route::get('/admin/bukti', '\App\Http\Controllers\AdminController@cetak');
 
-// Pengumpulan Tugas  =================================================================================================>
+    // Pengumpulan Tugas  =================================================================================================>
     // Get Kumpul
     Route::get('/admin/pengumpulan', '\App\Http\Controllers\AdminController@pengumpulan');
     // Download Tugas
@@ -278,7 +262,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     // Filter Pengumpulan tugas
     Route::get('/admin/pengumpulan/filter', '\App\Http\Controllers\AdminController@filterPengumpulan');
     
-// Absensi
+    // Absensi =================================================================================================>
     // Get Absensi
     Route::get('/admin/absensi', '\App\Http\Controllers\AdminController@absensi');
     // Detail Absensi
@@ -287,6 +271,22 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     Route::get('/admin/absen/kegiatan', '\App\Http\Controllers\AdminController@absensiKegiatan');
     // Filter Kegiatan
     Route::get('/admin/absensi/filter', '\App\Http\Controllers\AdminController@filterAbsensi');
+
+});
+// SUPER PANITIA ROUTES ===================================================================================================>
+Route::middleware(['auth', 'checkRole:Super Panitia'])->group(function () {
+// Pengumuman ========================================================================================================>
+    // Get Pengumuman
+    Route::get('/admin/pengumuman', '\App\Http\Controllers\AdminController@pengumuman');
+    // Add Pengumuman
+    Route::post('/admin/pengumuman/addPengumuman', '\App\Http\Controllers\AdminController@addPengumuman');
+    // Del Pengumuman
+    Route::get('/admin/{id}/delPengumuman', '\App\Http\Controllers\AdminController@delPengumuman');
+    // Edit Pengumuman
+    Route::post('/admin/{id}/editPengumuman', '\App\Http\Controllers\AdminController@editPengumuman');
+    // Detail Pengumuman
+    Route::get('/admin/detPengumuman/{id}', '\App\Http\Controllers\AdminController@detPengumuman');
+});
 
 // MENTOR ROUTES =========================================================================================================>
 Route::middleware(['auth', 'checkRole:Mentor'])->group(function () {
