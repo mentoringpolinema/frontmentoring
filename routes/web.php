@@ -106,7 +106,7 @@ Route::middleware(['auth', 'checkRole:Panitia'])->group(function () {
     //Delete Mentee
     Route::delete('/admin/mentee/{id}', '\App\Http\Controllers\AdminController@delMentee');
     //Import Mentee
-    Route::post('/admin/impMentee', '\App\Http\Controllers\AdminController@impMentee')->name('mentee.import');
+    Route::post('/admin/impMentee', '\App\Http\Controllers\AdminController@impMentee');
     //Update Mentee
     Route::post('/admin/{id_mentee}/updMentee', '\App\Http\Controllers\AdminController@updMentee');
     //Export Excel

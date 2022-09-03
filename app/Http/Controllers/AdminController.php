@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Exports\JurusanExport;
 use App\Exports\MentorExport;
-use App\Imports\MentorImport; 
+use App\Imports\MenteeImport;
+use App\Imports\MentorImport;
+use App\Imports\UserImport;
 use App\Models\Absensi;
 use App\Models\Angkatan;
 use App\Models\Tugas;
@@ -225,6 +227,8 @@ class AdminController extends Controller
         $getPass = explode("@", $request->email_mentor);
         $generate_password = $getPass[0];
 
+        // dd($request->email_mentor);
+
         $data_mentor->update([
             "nama_mentor" => $request->nama_mentor,
             "email_mentor" => $request->email_mentor,
@@ -317,7 +321,7 @@ class AdminController extends Controller
 
         return redirect('/admin/mentee')->with('success', 'Mentee Berhasil ditambahkan !');
     }
-
+    
     public function getProdiByIdJurusan($id)
     {
         $prodi = Prodi::where('jurusan_id', $id)->get();
@@ -342,15 +346,22 @@ class AdminController extends Controller
     {
         $data_mentee = Mentee::where('slug', $slug)->get()->first();
         $dataUser = User::where('id', $data_mentee->user_id)->get()->first();
-
-        $dataUser->delete($dataUser);
-        return redirect('/admin/mentee')->with('success', 'Mentee Berhasil dihapus !');
+        if($dataUser == null){
+            $dataUser->delete($dataUser);
+            return redirect('/admin/mentee')->with('success', 'Mentee Berhasil dihapus !');
+        }else{
+            return redirect('/admin/mentee')->with('warning', 'Data Mentee Gagal dihapus, karena berelasi dengan Data Lain !');
+        }
     }
 
     // Import Mentee
     public function impMentee(Request $request)
     {
-        Excel::import(new MentorImport, $request->file('data_mentor'));
+        // dd($request->all());
+        Excel::import(new UserImport, $request->file('data_mentee'));
+
+        Excel::import(new MenteeImport, $request->file('data_mentee'));
+        
         return redirect('/admin/mentee')->with('success', 'Mentee Berhasil di Import !');
     }
 

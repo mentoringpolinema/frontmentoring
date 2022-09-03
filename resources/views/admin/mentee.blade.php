@@ -36,7 +36,7 @@
                                                             </div>
                                                         </li> --}}
                                                         <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#menteeModal"><em class="icon ni ni-user-add"></em><span>Tambah Mentee</span></a></li>
-                                                        {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li> --}}
+                                                        <li class="nk-block-tools-opt"><a href="#" class="btn btn-success" data-toggle="modal" data-target="#importModal"><em class="icon ni ni-microsoft"></em><span>Import Excel</span></a></li>
                                                         <li class="preview-btn-item col-sm-6 col-lg-3">
                                                             <div class="dropdown">
                                                                 <a href="#" class="btn btn-warning" data-toggle="dropdown"><em class="icon ni ni-download-cloud"></em><span>Export</span><em class="icon ni ni-chevron-down"></em></a>
@@ -410,20 +410,27 @@
                     </ul><!-- .nav-tabs -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="personal">
-                            <form action="/admin/eddImpMentee" class="form-validate is-alter" method="POST">
+                            <form action="/admin/impMentee" class="form-validate is-alter" method="POST" enctype="multipart/form-data">
                                 {{-- {{ csrf_field() }} --}}
                                 @csrf
                                 <div class="row gy-4">
                                     <div class="col-md-12">
-                                        <div class="upload-zone small bg-lighter my-2">
+                                        {{-- <div class="upload-zone small bg-lighter my-2">
                                             <div class="dz-message">
                                                 <span class="dz-message-text">Drag and drop file</span>
                                             </div>
+                                        </div> --}}
+                                        <div class="form-control-wrap">
+                                            <div class="custom-file">
+                                                <input type="file" multiple class="custom-file-input" id="data_mentee" name="data_mentee">
+                                                    <label class="custom-file-label" for="data_mentee">Choose file</label>
+                                            </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="full-name">File Extensi Harus berupa excel (csx dan xs),<br> Jika Belum ada dowload <a href="#">format excel</a></label>
+                                            <label class="form-label" for="full-name">File Extensi Harus berupa excel (csx dan xs), Jika Belum ada dowload <a href="#">format excel</a></label>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -444,6 +451,8 @@
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- .modal -->
+
+    {{-- JS Tambah Mentee --}}
     @section('jsAdd')
         <script>
             $("select#jurusan_mentee").change(function(event){
