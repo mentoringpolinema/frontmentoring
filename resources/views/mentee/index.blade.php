@@ -25,12 +25,13 @@
                                                     <em class="icon ni ni-check-circle-fill"></em>
                                                 Status Mentoring : Lulus
                                             </button>
+                                            @elseif($status == null)
+                                            <li class="nk-block-tools-opt"><a href="#" class="btn btn-round btn-warning eg-swal-warningMenteeStatus"><em class="icon ni ni-loader"></em><span>Status Mentoring : On Progress</span></a></li>
                                             @else
                                                 <button type="button" class="btn btn-round btn-danger" data-toggle="tooltip" data-placement="bottom" title="Semangaat !"><em class="icon ni ni-cross-circle-fill"></em>
                                                 Status Mentoring : Tidak Lulus
                                                 </button>
                                             @endif
-                                            {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-round btn-warning eg-swal-warningMenteeStatus"><em class="icon ni ni-loader"></em><span>Status Mentoring : On Progress</span></a></li> --}}
                                         </ul>
                                     </div>
                                 </div>

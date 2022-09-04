@@ -191,9 +191,19 @@
                                     <li class="dropdown user-dropdown">
                                         <a href="#" class="dropdown-toggle mr-n1" data-toggle="dropdown">
                                             <div class="user-toggle">
-                                                <div class="user-avatar sm">
-                                                    <em class="icon ni ni-user-alt"></em>
-                                                </div>
+                                                @if(auth()->user()->role == 'Panitia') 
+                                                    <div class="user-avatar bg-dark sm">
+                                                        <em class="icon ni ni-user-alt"></em>
+                                                    </div>
+                                                @elseif(auth()->user()->role == 'Super Panitia')
+                                                    <div class="user-avatar bg-danger sm">
+                                                        <em class="icon ni ni-user-alt"></em>
+                                                    </div>
+                                                @else
+                                                    <div class="user-avatar sm">
+                                                        <em class="icon ni ni-user-alt"></em>
+                                                    </div>
+                                                @endif
                                                 <div class="user-info d-none d-xl-block">
                                                     <div class="user-status user-status-active">{{auth()->user()->role}}</div>
                                                     <div class="user-name dropdown-indicator">{{auth()->user()->name}}</div>
