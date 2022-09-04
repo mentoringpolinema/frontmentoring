@@ -61,7 +61,13 @@ class User extends Authenticatable
     {
         return $this->hasOne(Materi::class);
     }
-    
+
+    public function pengumpulan_tugas(){
+        return $this->hasMany(PengumpulanTugas::class);
+    }
+    public function cetak_bukti(){
+        return $this->hasMany(CetakBukti::class);
+    }
 
     
 }

@@ -170,6 +170,7 @@
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Tugas</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Waktu</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Penolak/Penerima</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
@@ -210,6 +211,16 @@
                                                                     <span class="badge badge-dim badge-warning"><em class="icon ni ni-clock-fill"></em><span>Pending</span></span>
                                                                 @endif
                                                             </td>
+                                                                @if ($tugas->user_id == null)
+                                                                <td class="nk-tb-col tb-col-md">
+                                                                    <span class="badge badge-dim badge-danger"><em class="icon ni ni-user-alt"></em><span>Belum Tersedia</span></span>
+                                                                </td>
+                                                                @else
+                                                                <td class="nk-tb-col tb-col-md">
+                                                                    <span>{{$tugas->user->name}}</span>
+                                                                </td>
+                                                                @endif
+
                                                             <td class="nk-tb-col nk-tb-col-tools">
                                                                 <ul class="nk-tb-actions gx-1">                                                                    
                                                                     <li>
@@ -222,6 +233,7 @@
                                                                                     {{-- <li><a href="#" data-toggle="modal" data-target="#tolakTugas"><em class="icon ni ni-na"></em><span>Ditolak</span></a></li> --}}
                                                                                     <li class="divider"></li>
                                                                                     <li><a href="/admin/download/{{$tugas->file_tugas}}"><em class="icon ni ni-download-cloud"></em><span>Download</span></a></li>
+                                                                                    <li><a href="/admin/pengumpulan/delete/{{$tugas->id_pengumpulan_tugas}}"><em class="icon ni ni-trash-alt"></em><span>Hapus</span></a></li>
                                                                                 </ul>
                                                                             </div>
                                                                         </div>

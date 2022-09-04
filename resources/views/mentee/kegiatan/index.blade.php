@@ -37,6 +37,7 @@
                                                 <div class="card-inner">
                                                     <div class="project">
                                                         <div class="project-head">
+                                                            @if($kegiatan->status_kegiatan == 'Open')
                                                             <a href="/mentee/kegiatan/{{$kegiatan->id_kegiatan}}" class="project-title">
                                                                 <div class="user-avatar sq bg-warning"><span>PM</span></div>
                                                                 <div class="project-info">
@@ -44,11 +45,24 @@
                                                                     <span class="sub-text">Minggu Ke : {{$kegiatan->minggu_kegiatan}}</span>
                                                                 </div>
                                                             </a>
+                                                            @else
+                                                            <a href="#" class="project-title">
+                                                                <div class="user-avatar sq bg-warning"><span>PM</span></div>
+                                                                <div class="project-info">
+                                                                    <h6 class="title">{{$kegiatan->nama_kegiatan}}</h6>
+                                                                    <span class="sub-text">Minggu Ke : {{$kegiatan->minggu_kegiatan}}</span>
+                                                                </div>
+                                                            </a>
+                                                            @endif
                                                             <div class="drodown">
                                                                 <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 mr-n1" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-right">
                                                                     <ul class="link-list-opt no-bdr">
+                                                                        @if($kegiatan->status_kegiatan == 'Open')
                                                                         <li><a href="/mentee/kegiatan/{{$kegiatan->id_kegiatan}}" ><em class="icon ni ni-eye"></em><span>Lihat Pertemuan</span></a></li>
+                                                                        @else
+                                                                        <li><a href="#" ><em class="icon ni ni-eye"></em><span>Lihat Pertemuan</span></a></li>
+                                                                        @endif
                                                                     </ul>
                                                                 </div>
                                                             </div>

@@ -92,7 +92,7 @@
                                                                     <div class="col-lg-12 col-xxl-4">
                                                                         <div class="example-alert">
                                                                             <div class="alert alert-danger alert-icon">
-                                                                                <em class="icon ni ni-cross-circle"></em> <strong>Mohon Maaf ! </strong> Tugas anda ditolak <span>-Panitia Mentoring 2021.</span> 
+                                                                                <em class="icon ni ni-cross-circle"></em> Mohon Maaf, <strong>Tugas anda ditolak </strong> <span>- Panitia Mentoring <?php echo date("Y");?>.</span> 
                                                                             </div>                                                       
                                                                         </div>
                                                                     </div>
@@ -103,7 +103,7 @@
                                                                     <div class="col-lg-12 col-xxl-4">
                                                                         <div class="example-alert">
                                                                             <div class="alert alert-success alert-icon">
-                                                                                <em class="icon ni ni-check"></em> <strong>Selamat ! </strong> Tugas anda diterima <span>-Panitia Mentoring 2021.</span> 
+                                                                                <em class="icon ni ni-check"></em> <strong>Selamat ! </strong> Tugas anda diterima <span>- Panitia Mentoring <?php echo date("Y");?>.</span> 
                                                                             </div>                                                       
                                                                         </div>
                                                                     </div>

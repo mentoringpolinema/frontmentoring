@@ -1202,6 +1202,14 @@ class AdminController extends Controller
         $data_cetak = CetakBukti::find($id_cetak);
         return view('admin.cetakBukti.detail', compact('data_cetak'));
     }
+    // Hapus Cetak
+    public function deleteCetak($id_cetak)
+    {
+        $data_cetak = CetakBukti::find($id_cetak);
+        $data_cetak->delete($data_cetak);
+
+        return redirect()->back()->with('success', 'Bukti Berhasil dihapus !');
+    }
     public function accept(Request $request, $id_cetak)
     {
         $data_cetak = CetakBukti::find($id_cetak);
@@ -1232,7 +1240,8 @@ class AdminController extends Controller
     {
         $data_pengumpulan = PengumpulanTugas::find($id_pengumpulan_tugas);
         $data_pengumpulan->update([
-            "status_tugas" => "Diterima"
+            "status_tugas" => "Diterima",
+            "user_id" => auth()->user()->id,
         ]);
         Alert::success('Berhasil !', 'Tugas telah diterima');
         return redirect()->back();
@@ -1242,7 +1251,8 @@ class AdminController extends Controller
     {
         $data_pengumpulan = PengumpulanTugas::find($id_pengumpulan_tugas);
         $data_pengumpulan->update([
-            "status_tugas" => "Ditolak"
+            "status_tugas" => "Ditolak",
+            "user_id" => auth()->user()->id,
         ]);
         Alert::warning('Yaah:(', 'Tugas telah ditolak');
         return redirect()->back();
@@ -1261,6 +1271,20 @@ class AdminController extends Controller
         return view('admin.pengumpulan.index', compact('pengumpulan_tugas', 'total_tugas', 'total_pengumpulan', 'data_materi','data_tugas'));
     }
 
+     // Delete Tugas
+     public function delPengumpulan($id_pengumpulan_tugas){
+        $tugas = PengumpulanTugas::find($id_pengumpulan_tugas);
+
+        $file_name = $tugas->file_tugas;
+        $file_path = public_path('file_tugas/' . $file_name);
+        unlink($file_path);
+
+        $tugas->delete();
+
+        Alert::warning('Tugas berhasil dihapus !', 'Segera upload lagi ya ! ');
+        return redirect()->back();
+    }
+
     //-------------------------------------------Absensi-------------------------------------------
     // Get Absensi
     public function absensi()
@@ -1275,6 +1299,7 @@ class AdminController extends Controller
         $absensi = Absensi::all();
         return view('admin.absensi.index', compact('total_absensi', 'data_absensi', 'total_mentee', 'total_pertemuan', 'data_pertemuan', 'total_kegiatan','absensi','data_kegiatan'));
     }
+
     // Detail Absensi
     // public function detailAbsen($id_pertemuan)
     // {
@@ -1284,6 +1309,7 @@ class AdminController extends Controller
     //     ])->get();
     //     return view('admin.absensi.detail', compact('data_pertemuan', 'absen'));
     // }
+
     // Absensi Kegiatan
     public function absensiKegiatan()
     {
@@ -1304,5 +1330,13 @@ class AdminController extends Controller
         $total_kegiatan = Kegiatan::count();
         $data_kegiatan = Kegiatan::all();
         return view('admin.absensi.index', compact('total_absensi', 'data_absensi', 'total_mentee', 'total_pertemuan', 'data_pertemuan', 'total_kegiatan','absensi','data_kegiatan'));
+    }
+    // Delete Absensi
+    public function deleteAbsensi($id_absensi){
+
+        $data_absensi = Absensi::find($id_absensi);
+        $data_absensi->delete($data_absensi);
+
+        return redirect('/admin/absensi')->with('success', 'Absensi Berhasil dihapus !');
     }
 }

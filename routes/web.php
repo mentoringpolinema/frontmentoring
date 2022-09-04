@@ -44,13 +44,17 @@ Route::middleware(['auth', 'checkRole:Super Panitia,Panitia,Mentor,Mentee'])->gr
 Route::middleware(['auth', 'checkRole:Super Panitia,Panitia'])->group(function () {
     // Dashboard Routes ===================================================================================================>
     Route::get('/admin', '\App\Http\Controllers\AdminController@index');
+
     // Cetak ==============================================================================================================>
     //Get Cetak
     Route::get('/admin/cetak', '\App\Http\Controllers\AdminController@cetak');
     //Detail Cetak
+    Route::get('/admin/cetak/delete/{id}', '\App\Http\Controllers\AdminController@deleteCetak');
+    //Detail Cetak
     Route::get('/admin/cetak/detail/{id}', '\App\Http\Controllers\AdminController@detailCetak');
     //Accept Cetak
     Route::post('/admin/cetak/acc/{id}', '\App\Http\Controllers\AdminController@accept');
+
     // Kegiatan ===========================================================================================================>
     //Get Kegiatan
     Route::get('/admin/kegiatan', '\App\Http\Controllers\AdminController@kegiatan');
@@ -228,7 +232,7 @@ Route::middleware(['auth', 'checkRole:Super Panitia,Panitia'])->group(function (
     // Hapus keluhan
     Route::get('/admin/keluhan/{id}/hapus', '\App\Http\Controllers\AdminController@hapusKeluhan');
 
-        // Pertemuan =========================================================================================================>
+    // Pertemuan =========================================================================================================>
     // Get Pertemuan
     Route::get('/admin/pertemuan', '\App\Http\Controllers\AdminController@pertemuan');
     // Add Pertemuan
@@ -246,13 +250,11 @@ Route::middleware(['auth', 'checkRole:Super Panitia,Panitia'])->group(function (
     // Filter Pertemuan
     Route::get('/admin/pertemuan/filter', '\App\Http\Controllers\AdminController@filterPertemuan');
 
-    // Cetak Bukti ========================================================================================================>
-    // Get Bukti
-    Route::get('/admin/bukti', '\App\Http\Controllers\AdminController@cetak');
-
     // Pengumpulan Tugas  =================================================================================================>
     // Get Kumpul
     Route::get('/admin/pengumpulan', '\App\Http\Controllers\AdminController@pengumpulan');
+    // Delete Tugas
+    Route::get('/admin/pengumpulan/delete/{id}', '\App\Http\Controllers\AdminController@delPengumpulan');
     // Download Tugas
     Route::get('/admin/download/{file}', '\App\Http\Controllers\AdminController@downloadTugas');
     // Accept Tugas
@@ -267,6 +269,8 @@ Route::middleware(['auth', 'checkRole:Super Panitia,Panitia'])->group(function (
     Route::get('/admin/absensi', '\App\Http\Controllers\AdminController@absensi');
     // Detail Absensi
     Route::get('/admin/absensi/detail/{id}', '\App\Http\Controllers\AdminController@detailAbsen');
+    // Delete Absensi
+    Route::get('/admin/absensi/delete/{id}', '\App\Http\Controllers\AdminController@deleteAbsensi');
     // Get Absensi Kegiatan
     Route::get('/admin/absen/kegiatan', '\App\Http\Controllers\AdminController@absensiKegiatan');
     // Filter Kegiatan

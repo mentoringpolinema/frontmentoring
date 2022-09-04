@@ -38,6 +38,7 @@ class MenteeController extends Controller
             "mentee_id" => $data_mentee->id_mentee
         ])->count();
         $status = $tugas + $pertemuan;
+        
         // Tes Status Count
         // dd($status);
         // Get Another Data

@@ -18,7 +18,7 @@
                                        data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
                                     <div class="toggle-expand-content" data-content="pageMenu">
                                         <ul class="nk-block-tools g-3">
-                                            @if ($status == '12')
+                                            @if ($status == '1')
                                             <button type="button" class="btn btn-round btn-success"
                                                     data-toggle="tooltip" data-placement="bottom"
                                                     title="Mentoring Anda Sudah Lulus, Segera Cetak Bukti.">
@@ -26,9 +26,9 @@
                                                 Status Mentoring : Lulus
                                             </button>
                                             @else
-                                            <button type="button" class="btn btn-round btn-danger" data-toggle="tooltip" data-placement="bottom" title="Semangaat !"><em class="icon ni ni-cross-circle-fill"></em>
-                                            Status Mentoring : Tidak Lulus
-                                            </button>
+                                                <button type="button" class="btn btn-round btn-danger" data-toggle="tooltip" data-placement="bottom" title="Semangaat !"><em class="icon ni ni-cross-circle-fill"></em>
+                                                Status Mentoring : Tidak Lulus
+                                                </button>
                                             @endif
                                             {{-- <li class="nk-block-tools-opt"><a href="#" class="btn btn-round btn-warning eg-swal-warningMenteeStatus"><em class="icon ni ni-loader"></em><span>Status Mentoring : On Progress</span></a></li> --}}
                                         </ul>

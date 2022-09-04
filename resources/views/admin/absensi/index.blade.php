@@ -154,7 +154,7 @@
                                                             <th class="nk-tb-col tb-col-mb"><span class="sub-text">Kegiatan</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Minggu Ke-</span></th>
                                                             <th class="nk-tb-col tb-col-md"><span class="sub-text">Tanggal</span></th>
-                                                            {{-- <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th> --}}
+                                                            <th class="nk-tb-col tb-col-md"><span class="sub-text">Action</span></th>
                                                             </th>
                                                         </tr>
                                                     </thead>
@@ -177,9 +177,9 @@
                                                             <td class="nk-tb-col tb-col-md">
                                                                 <span>{{$absensi->kegiatan->tanggal_kegiatan->format('d M Y')}}</span>
                                                             </td>
-                                                            {{-- <td class="nk-tb-col nk-tb-col-tools">
-                                                                <a href="/admin/absensi/detail/{{$absensi->kegiatan_id}}" class="btn btn-sm btn-success"><em class="icon ni ni-eye"></em><span>Detail</span></a>
-                                                            </td> --}}
+                                                            <td class="nk-tb-col nk-tb-col-tools">
+                                                                <a href="/admin/absensi/delete/{{$absensi->id_absensi}}" class="btn btn-sm btn-danger"><em class="icon ni ni-trash"></em><span>Hapus</span></a>
+                                                            </td>
                                                         </tr><!-- .nk-tb-item  -->                                                 
                                                         @endforeach
                                                     </tbody>
